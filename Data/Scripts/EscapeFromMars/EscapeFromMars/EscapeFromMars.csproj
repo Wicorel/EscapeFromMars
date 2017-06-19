@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ECB5A2CA-22D2-4BF8-ACFC-FC3508BDC72E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EscapeFromMars</RootNamespace>
+    <AssemblyName>EscapeFromMars</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Sandbox.Common">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\Sandbox.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Sandbox.Game">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\Sandbox.Game.dll</HintPath>
+    </Reference>
+    <Reference Include="SpaceEngineers.Game">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\SpaceEngineers.Game.dll</HintPath>
+    </Reference>
+    <Reference Include="SpaceEngineers.ObjectBuilders">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\SpaceEngineers.ObjectBuilders.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VRage">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.dll</HintPath>
+    </Reference>
+    <Reference Include="VRage.Game">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Game.dll</HintPath>
+    </Reference>
+    <Reference Include="VRage.Library">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="VRage.Math">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="VRage.Render, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Render.dll</HintPath>
+    </Reference>
+    <Reference Include="VRage.Scripting">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SpaceEngineers\Bin64\VRage.Scripting.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractCore.cs" />
+    <Compile Include="AudioRelay.cs" />
+    <Compile Include="ModSystemCloseable.cs" />
+    <Compile Include="DuckExtensions.cs" />
+    <Compile Include="DuckUtils.cs" />
+    <Compile Include="InterruptingAudioSystem.cs" />
+    <Compile Include="MachineType.cs" />
+    <Compile Include="ModSystemRapidUpdatable.cs" />
+    <Compile Include="ModLog.cs" />
+    <Compile Include="IAudioClip.cs" />
+    <Compile Include="ModSystemUpdatable.cs" />
+    <Compile Include="QueuedAudioSystem.cs" />
+    <Compile Include="Scenario\AudioClip.cs" />
+    <Compile Include="Scenario\BaseManager.cs" />
+    <Compile Include="Scenario\IronComponent.cs" />
+    <Compile Include="Scenario\MikiScrap.cs" />
+    <Compile Include="Scenario\BackupGroup.cs" />
+    <Compile Include="Scenario\CargoType.cs" />
+    <Compile Include="Scenario\Convoy.cs" />
+    <Compile Include="Scenario\ConvoyAir.cs" />
+    <Compile Include="Scenario\ConvoyGround.cs" />
+    <Compile Include="Scenario\ConvoySpawner.cs" />
+    <Compile Include="Scenario\EfmCore.cs" />
+    <Compile Include="Scenario\GCorpBase.cs" />
+    <Compile Include="Scenario\HeatSystem.cs" />
+    <Compile Include="Scenario\HUDTextAPI.cs" />
+    <Compile Include="Scenario\MikiScrapManager.cs" />
+    <Compile Include="Scenario\MissionSystem.cs" />
+    <Compile Include="Scenario\NetworkComms.cs" />
+    <Compile Include="Scenario\NpcGroup.cs" />
+    <Compile Include="Scenario\NpcGroupManager.cs" />
+    <Compile Include="Scenario\PrefabGrid.cs" />
+    <Compile Include="Scenario\ResearchControl.cs" />
+    <Compile Include="Scenario\ResearchHacking.cs" />
+    <Compile Include="Scenario\RoleAndUnitType.cs" />
+    <Compile Include="Scenario\SaveArrivalObserver.cs" />
+    <Compile Include="Scenario\ShipSize.cs" />
+    <Compile Include="Scenario\TechGroup.cs" />
+    <Compile Include="Scenario\Turret.cs" />
+    <Compile Include="Scenario\TurretDualAxis.cs" />
+    <Compile Include="Scenario\TurretManager.cs" />
+    <Compile Include="Scenario\TurretSingleAxis.cs" />
+    <Compile Include="Scenario\UnitRole.cs" />
+    <Compile Include="Scenario\UnitType.cs" />
+    <Compile Include="IModSystemRegistry.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
