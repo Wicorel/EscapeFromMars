@@ -8,7 +8,7 @@
           <SubtypeName />
           <EntityId>112538181725389726</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
-           <PositionAndOrientation>
+          <PositionAndOrientation>
             <Position x="0" y="0" z="0" />
             <Forward x="0" y="0" z="-1" />
             <Up x="0" y="1" z="0" />
