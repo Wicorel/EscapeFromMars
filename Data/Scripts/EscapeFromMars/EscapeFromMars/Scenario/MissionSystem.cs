@@ -155,7 +155,7 @@ namespace EscapeFromMars
 			AddProximityPrompt(210, commsSatellite, 9000,
 				PlayAudioClip(AudioClip.EscapedMars));
 
-			AddProximityPrompt(220, commsSatellite, 500,
+			AddProximityPrompt(220, commsSatellite, 250, // reduced from 500 to allow satelite turret to kill incoming players in jetpack.
 				PlayAudioClip(AudioClip.EndCredits),
 				UnlockAllTech());
 

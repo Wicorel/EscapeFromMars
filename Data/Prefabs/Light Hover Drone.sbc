@@ -6,92 +6,65 @@
       <CubeGrids>
         <CubeGrid>
           <SubtypeName />
-          <EntityId>138445652867104458</EntityId>
+          <EntityId>106654186181123369</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
           <PositionAndOrientation>
             <Position x="0" y="0" z="0" />
-            <Forward x="4.62659E-06" y="3.54564168E-06" z="-1" />
-            <Up x="-9.757198E-07" y="1" z="3.54563713E-06" />
+            <Forward x="0.603815734" y="-0.797098458" z="-0.00633399561" />
+            <Up x="0.5599831" y="0.418515384" z="0.7150269" />
             <Orientation>
-              <X>1.7728197E-06</X>
-              <Y>-2.313296E-06</Y>
-              <Z>4.878558E-07</Z>
-              <W>1</W>
+              <X>0.0443131328</X>
+              <Y>0.7034695</Y>
+              <Z>0.5373814</Z>
+              <W>-0.463020772</W>
             </Orientation>
           </PositionAndOrientation>
-          <ComponentContainer>
-            <Components>
-              <ComponentData>
-                <TypeId>MyHierarchyComponentBase</TypeId>
-                <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                  <Children />
-                </Component>
-              </ComponentData>
-            </Components>
-          </ComponentContainer>
           <GridSizeEnum>Small</GridSizeEnum>
           <CubeBlocks>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_MotorSuspension">
               <SubtypeName>SmallSuspension1x1</SubtypeName>
-              <EntityId>95034473106857053</EntityId>
+              <EntityId>92785923747237006</EntityId>
               <Min x="1" y="2" z="-3" />
               <BlockOrientation Forward="Up" Up="Forward" />
               <ColorMaskHSV x="0.575" y="-0.8" z="0.61" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
+              <CustomName>Wheel Suspension 1x1 Right</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>true</Enabled>
-              <MasterToSlaveTransform xsi:nil="true" />
-              <weldSpeed>95</weldSpeed>
-              <forceWeld>false</forceWeld>
-              <TopBlockId>87817586763012752</TopBlockId>
-              <IsWelded>false</IsWelded>
+              <TopBlockId>117744676139448848</TopBlockId>
+              <ShareInertiaTensor>false</ShareInertiaTensor>
+              <SafetyDetach>5</SafetyDetach>
               <RotorEntityId xsi:nil="true" />
               <WeldedEntityId xsi:nil="true" />
               <SteerAngle>0</SteerAngle>
-              <Damping>0.012</Damping>
-              <Strength>0.503086448</Strength>
+              <Steering>false</Steering>
+              <Damping>0.9</Damping>
+              <Strength>3.40282347E+38</Strength>
               <Propulsion>false</Propulsion>
-              <Friction>0</Friction>
+              <Friction>2.8</Friction>
               <Power>0</Power>
-              <Height>-0.458</Height>
+              <Height>-0.32</Height>
               <MaxSteerAngle>0.32</MaxSteerAngle>
-              <SteerSpeed>0.01</SteerSpeed>
-              <SteerReturnSpeed>0.01</SteerReturnSpeed>
               <InvertSteer>false</InvertSteer>
               <InvertPropulsion>false</InvertPropulsion>
-              <SuspensionTravel>1</SuspensionTravel>
               <SpeedLimit>360</SpeedLimit>
+              <PowerNew>0.3434245</PowerNew>
+              <StrengthNew>0.321246654</StrengthNew>
+              <FrictionNew>0</FrictionNew>
+              <AirShockEnabled>true</AirShockEnabled>
+              <BrakingEnabled>true</BrakingEnabled>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_BatteryBlock">
               <SubtypeName>SmallBlockBatteryBlock</SubtypeName>
-              <EntityId>94285900792852909</EntityId>
+              <EntityId>81364190020493639</EntityId>
               <Min x="-1" y="2" z="-1" />
               <BlockOrientation Forward="Backward" Up="Up" />
               <ColorMaskHSV x="0.575" y="-0.8" z="0.61" />
-              <Owner>144115188075855880</Owner>
+              <Owner>144115188075855895</Owner>
               <ShareMode>Faction</ShareMode>
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
+              <CustomName>Battery</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
@@ -105,47 +78,38 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_MotorSuspension">
               <SubtypeName>SmallSuspension1x1</SubtypeName>
-              <EntityId>78569697799608268</EntityId>
+              <EntityId>97174197391801439</EntityId>
               <Min x="-1" y="2" z="-3" />
               <BlockOrientation Forward="Up" Up="Forward" />
               <ColorMaskHSV x="0.575" y="-0.8" z="0.61" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Wheel Suspension 1x1 2</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>true</Enabled>
-              <MasterToSlaveTransform xsi:nil="true" />
-              <weldSpeed>95</weldSpeed>
-              <forceWeld>false</forceWeld>
-              <TopBlockId>99050213929516940</TopBlockId>
-              <IsWelded>false</IsWelded>
+              <TopBlockId>123323350599398675</TopBlockId>
+              <ShareInertiaTensor>false</ShareInertiaTensor>
+              <SafetyDetach>5</SafetyDetach>
               <RotorEntityId xsi:nil="true" />
               <WeldedEntityId xsi:nil="true" />
               <SteerAngle>0</SteerAngle>
-              <Damping>0.012</Damping>
-              <Strength>0.503086448</Strength>
+              <Steering>false</Steering>
+              <Damping>0.9</Damping>
+              <Strength>3.40282347E+38</Strength>
               <Propulsion>false</Propulsion>
-              <Friction>0</Friction>
+              <Friction>2.8</Friction>
               <Power>0</Power>
-              <Height>-0.458</Height>
+              <Height>-0.32</Height>
               <MaxSteerAngle>0.32</MaxSteerAngle>
-              <SteerSpeed>0.01</SteerSpeed>
-              <SteerReturnSpeed>0.01</SteerReturnSpeed>
               <InvertSteer>false</InvertSteer>
               <InvertPropulsion>false</InvertPropulsion>
-              <SuspensionTravel>1</SuspensionTravel>
               <SpeedLimit>360</SpeedLimit>
+              <PowerNew>0.3434245</PowerNew>
+              <StrengthNew>0.321246654</StrengthNew>
+              <FrictionNew>0</FrictionNew>
+              <AirShockEnabled>true</AirShockEnabled>
+              <BrakingEnabled>true</BrakingEnabled>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
               <SubtypeName>SmallBlockArmorBlock</SubtypeName>
@@ -154,47 +118,38 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_MotorSuspension">
               <SubtypeName>SmallSuspension1x1</SubtypeName>
-              <EntityId>87846551387370713</EntityId>
+              <EntityId>90639456368181006</EntityId>
               <Min x="1" y="2" z="2" />
               <BlockOrientation Forward="Up" Up="Backward" />
               <ColorMaskHSV x="0.575" y="-0.8" z="0.61" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Wheel Suspension 1x1 4</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>true</Enabled>
-              <MasterToSlaveTransform xsi:nil="true" />
-              <weldSpeed>95</weldSpeed>
-              <forceWeld>false</forceWeld>
-              <TopBlockId>137063769385385479</TopBlockId>
-              <IsWelded>false</IsWelded>
+              <TopBlockId>95911831805739451</TopBlockId>
+              <ShareInertiaTensor>false</ShareInertiaTensor>
+              <SafetyDetach>5</SafetyDetach>
               <RotorEntityId xsi:nil="true" />
               <WeldedEntityId xsi:nil="true" />
               <SteerAngle>0</SteerAngle>
-              <Damping>0.012</Damping>
-              <Strength>0.503086448</Strength>
+              <Steering>false</Steering>
+              <Damping>0.9</Damping>
+              <Strength>3.40282347E+38</Strength>
               <Propulsion>false</Propulsion>
-              <Friction>0</Friction>
+              <Friction>2.8</Friction>
               <Power>0</Power>
-              <Height>-0.458</Height>
+              <Height>-0.32</Height>
               <MaxSteerAngle>0.32</MaxSteerAngle>
-              <SteerSpeed>0.01</SteerSpeed>
-              <SteerReturnSpeed>0.01</SteerReturnSpeed>
               <InvertSteer>false</InvertSteer>
               <InvertPropulsion>false</InvertPropulsion>
-              <SuspensionTravel>1</SuspensionTravel>
               <SpeedLimit>360</SpeedLimit>
+              <PowerNew>0.3434245</PowerNew>
+              <StrengthNew>0.321246654</StrengthNew>
+              <FrictionNew>0</FrictionNew>
+              <AirShockEnabled>true</AirShockEnabled>
+              <BrakingEnabled>true</BrakingEnabled>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
               <SubtypeName>SmallBlockArmorBlock</SubtypeName>
@@ -203,47 +158,38 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_MotorSuspension">
               <SubtypeName>SmallSuspension1x1</SubtypeName>
-              <EntityId>123850281510086670</EntityId>
+              <EntityId>79477940617284395</EntityId>
               <Min x="-1" y="2" z="2" />
               <BlockOrientation Forward="Up" Up="Backward" />
               <ColorMaskHSV x="0.575" y="-0.8" z="0.61" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Wheel Suspension 1x1 6</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <Enabled>true</Enabled>
-              <MasterToSlaveTransform xsi:nil="true" />
-              <weldSpeed>95</weldSpeed>
-              <forceWeld>false</forceWeld>
-              <TopBlockId>104469872392826243</TopBlockId>
-              <IsWelded>false</IsWelded>
+              <TopBlockId>104015261143137248</TopBlockId>
+              <ShareInertiaTensor>false</ShareInertiaTensor>
+              <SafetyDetach>5</SafetyDetach>
               <RotorEntityId xsi:nil="true" />
               <WeldedEntityId xsi:nil="true" />
               <SteerAngle>0</SteerAngle>
-              <Damping>0.012</Damping>
-              <Strength>0.503086448</Strength>
+              <Steering>false</Steering>
+              <Damping>0.9</Damping>
+              <Strength>3.40282347E+38</Strength>
               <Propulsion>false</Propulsion>
-              <Friction>0</Friction>
+              <Friction>2.8</Friction>
               <Power>0</Power>
-              <Height>-0.458</Height>
+              <Height>-0.32</Height>
               <MaxSteerAngle>0.32</MaxSteerAngle>
-              <SteerSpeed>0.01</SteerSpeed>
-              <SteerReturnSpeed>0.01</SteerReturnSpeed>
               <InvertSteer>false</InvertSteer>
               <InvertPropulsion>false</InvertPropulsion>
-              <SuspensionTravel>1</SuspensionTravel>
               <SpeedLimit>360</SpeedLimit>
+              <PowerNew>0.3434245</PowerNew>
+              <StrengthNew>0.321246654</StrengthNew>
+              <FrictionNew>0</FrictionNew>
+              <AirShockEnabled>true</AirShockEnabled>
+              <BrakingEnabled>true</BrakingEnabled>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
               <SubtypeName>SmallBlockArmorBlock</SubtypeName>
@@ -252,19 +198,9 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Thrust">
               <SubtypeName>SmallBlockSmallAtmosphericThrust</SubtypeName>
-              <EntityId>94914003689486481</EntityId>
+              <EntityId>141065806605500971</EntityId>
               <Min x="1" y="3" z="-5" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Atmospheric Thrusters 5</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -274,35 +210,23 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_RemoteControl">
               <SubtypeName>SmallBlockRemoteControl</SubtypeName>
-              <EntityId>132699341000845407</EntityId>
+              <EntityId>86360804339812090</EntityId>
               <Min x="0" y="3" z="2" />
               <ColorMaskHSV x="0.575" y="-0.8" z="0.61" />
-              <Owner>144115188075855880</Owner>
+              <Owner>144115188075855895</Owner>
               <ShareMode>Faction</ShareMode>
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
+              <CustomName>Remote Control</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
               <ShowInToolbarConfig>true</ShowInToolbarConfig>
               <ShowInInventory>true</ShowInInventory>
               <UseSingleWeaponMode>false</UseSingleWeaponMode>
-              <ControlWheels>true</ControlWheels>
               <Toolbar>
                 <ToolbarType>Character</ToolbarType>
                 <SelectedSlot xsi:nil="true" />
                 <Slots />
               </Toolbar>
               <SelectedGunId xsi:nil="true" />
-              <IsMainCockpit>false</IsMainCockpit>
-              <HorizonIndicatorEnabled>true</HorizonIndicatorEnabled>
               <BuildToolbar>
                 <ToolbarType>Character</ToolbarType>
                 <SelectedSlot xsi:nil="true" />
@@ -317,7 +241,10 @@
               <Direction>0</Direction>
               <DockingModeEnabled>false</DockingModeEnabled>
               <CollisionAvoidance>false</CollisionAvoidance>
+              <Coords />
+              <Names />
               <WaypointThresholdDistance>0</WaypointThresholdDistance>
+              <IsMainRemoteControl>false</IsMainRemoteControl>
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
               <SubtypeName>SmallBlockArmorSlope2Tip</SubtypeName>
@@ -332,19 +259,9 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Thrust">
               <SubtypeName>SmallBlockSmallAtmosphericThrust</SubtypeName>
-              <EntityId>121768885501479960</EntityId>
+              <EntityId>77867589118492064</EntityId>
               <Min x="-1" y="3" z="-5" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Atmospheric Thrusters 6</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -360,19 +277,9 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_ReflectorLight">
               <SubtypeName>SmallBlockFrontLight</SubtypeName>
-              <EntityId>72222948342612284</EntityId>
+              <EntityId>109229179279942053</EntityId>
               <Min x="0" y="3" z="-4" />
               <ColorMaskHSV x="0.575" y="-0.8" z="0.61" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Spotlight 3</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -383,7 +290,7 @@
               <ReflectorRadius>120</ReflectorRadius>
               <ColorRed>0.215686277</ColorRed>
               <ColorGreen>0.270588249</ColorGreen>
-              <Falloff>1</Falloff>
+              <Falloff>0.3</Falloff>
               <Intensity>3</Intensity>
               <BlinkIntervalSeconds>0</BlinkIntervalSeconds>
               <BlinkLenght>10</BlinkLenght>
@@ -413,20 +320,10 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Thrust">
               <SubtypeName>SmallBlockSmallAtmosphericThrust</SubtypeName>
-              <EntityId>116059858474893898</EntityId>
+              <EntityId>136453874995979087</EntityId>
               <Min x="-1" y="3" z="3" />
               <BlockOrientation Forward="Backward" Up="Up" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Atmospheric Thrusters 5</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -436,18 +333,12 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_LargeGatlingTurret">
               <SubtypeName>SmallGatlingTurret</SubtypeName>
-              <EntityId>78177173036533846</EntityId>
+              <EntityId>81751076421213461</EntityId>
               <Min x="-2" y="4" z="-2" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
               <ShareMode>All</ShareMode>
               <ComponentContainer>
                 <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
                   <ComponentData>
                     <TypeId>MyInventoryBase</TypeId>
                     <Component xsi:type="MyObjectBuilder_Inventory">
@@ -481,6 +372,8 @@
               <IsShooting>false</IsShooting>
               <IsShootingFromTerminal>false</IsShootingFromTerminal>
               <IsLargeTurret>true</IsLargeTurret>
+              <MinFov>0.1</MinFov>
+              <MaxFov>1.04719758</MaxFov>
               <Inventory>
                 <Items>
                   <MyObjectBuilder_InventoryItem>
@@ -507,7 +400,6 @@
               <Rotation>0</Rotation>
               <Elevation>0</Elevation>
               <GunBase>
-                <RemainingAmmo>0</RemainingAmmo>
                 <CurrentAmmoMagazineName>NATO_25x184mm</CurrentAmmoMagazineName>
                 <RemainingAmmosList />
                 <LastShootTime>0</LastShootTime>
@@ -518,20 +410,10 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Thrust">
               <SubtypeName>SmallBlockSmallAtmosphericThrust</SubtypeName>
-              <EntityId>117223491589642902</EntityId>
+              <EntityId>143425368388424905</EntityId>
               <Min x="1" y="3" z="3" />
               <BlockOrientation Forward="Backward" Up="Up" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Atmospheric Thrusters 6</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -586,21 +468,11 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_TextPanel">
               <SubtypeName>SmallTextPanel</SubtypeName>
-              <EntityId>95074341080156296</EntityId>
+              <EntityId>144070198191127214</EntityId>
               <Min x="-3" y="4" z="0" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
               <ShareMode>All</ShareMode>
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Text panel 6</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -611,15 +483,17 @@
               <Title>Title</Title>
               <AccessFlag>READ_AND_WRITE_FACTION</AccessFlag>
               <ChangeInterval>0</ChangeInterval>
-              <SelectedImages>
-                <string>Galactic Corporation Logo</string>
-              </SelectedImages>
+              <SelectedImages />
+              <Font Type="MyObjectBuilder_FontDefinition" Subtype="Debug" />
               <FontSize>1</FontSize>
               <PublicDescription />
               <PublicTitle>Public title</PublicTitle>
               <ShowText>NONE</ShowText>
               <FontColor>
                 <PackedValue>4294967295</PackedValue>
+                <X>255</X>
+                <Y>255</Y>
+                <Z>255</Z>
                 <R>255</R>
                 <G>255</G>
                 <B>255</B>
@@ -627,6 +501,9 @@
               </FontColor>
               <BackgroundColor>
                 <PackedValue>4278190080</PackedValue>
+                <X>0</X>
+                <Y>0</Y>
+                <Z>0</Z>
                 <R>0</R>
                 <G>0</G>
                 <B>0</B>
@@ -806,20 +683,10 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Gyro">
               <SubtypeName>SmallBlockGyro</SubtypeName>
-              <EntityId>127871404173453223</EntityId>
+              <EntityId>89974631248297857</EntityId>
               <Min x="0" y="3" z="-2" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
               <ShareMode>All</ShareMode>
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Gyroscope 4</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -847,20 +714,10 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Thrust">
               <SubtypeName>SmallBlockSmallAtmosphericThrust</SubtypeName>
-              <EntityId>80267888394905391</EntityId>
+              <EntityId>109587832348011417</EntityId>
               <Min x="-2" y="4" z="4" />
               <BlockOrientation Forward="Left" Up="Up" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Atmospheric Thrusters 10</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -870,20 +727,10 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Thrust">
               <SubtypeName>SmallBlockSmallAtmosphericThrust</SubtypeName>
-              <EntityId>124694571253138859</EntityId>
+              <EntityId>114189213290005886</EntityId>
               <Min x="0" y="4" z="3" />
               <BlockOrientation Forward="Right" Up="Up" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Atmospheric Thrusters 9</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -893,21 +740,11 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Beacon">
               <SubtypeName>SmallBlockBeacon</SubtypeName>
-              <EntityId>89673954473811809</EntityId>
+              <EntityId>138745044853904741</EntityId>
               <Min x="0" y="2" z="3" />
               <BlockOrientation Forward="Up" Up="Backward" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
               <ShareMode>All</ShareMode>
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Beacon 3</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -951,21 +788,11 @@
             </MyObjectBuilder_CubeBlock>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_TextPanel">
               <SubtypeName>SmallTextPanel</SubtypeName>
-              <EntityId>122933153774803895</EntityId>
+              <EntityId>116200882101300126</EntityId>
               <Min x="3" y="4" z="0" />
               <BlockOrientation Forward="Left" Up="Up" />
               <ColorMaskHSV x="0.594444454" y="0.11" z="-0.34" />
               <ShareMode>All</ShareMode>
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
               <CustomName>Text panel 8</CustomName>
               <ShowOnHUD>false</ShowOnHUD>
               <ShowInTerminal>true</ShowInTerminal>
@@ -976,15 +803,17 @@
               <Title>Title</Title>
               <AccessFlag>READ_AND_WRITE_FACTION</AccessFlag>
               <ChangeInterval>0</ChangeInterval>
-              <SelectedImages>
-                <string>Galactic Corporation Logo</string>
-              </SelectedImages>
+              <SelectedImages />
+              <Font Type="MyObjectBuilder_FontDefinition" Subtype="Debug" />
               <FontSize>1</FontSize>
               <PublicDescription />
               <PublicTitle>Public title</PublicTitle>
               <ShowText>NONE</ShowText>
               <FontColor>
                 <PackedValue>4294967295</PackedValue>
+                <X>255</X>
+                <Y>255</Y>
+                <Z>255</Z>
                 <R>255</R>
                 <G>255</G>
                 <B>255</B>
@@ -992,6 +821,9 @@
               </FontColor>
               <BackgroundColor>
                 <PackedValue>4278190080</PackedValue>
+                <X>0</X>
+                <Y>0</Y>
+                <Z>0</Z>
                 <R>0</R>
                 <G>0</G>
                 <B>0</B>
@@ -1238,24 +1070,8 @@
           </CubeBlocks>
           <Skeleton>
             <BoneInfo>
-              <BonePosition x="-1" y="8" z="0" />
-              <BoneOffset x="133" y="164" z="155" />
-            </BoneInfo>
-            <BoneInfo>
-              <BonePosition x="-2" y="7" z="-1" />
-              <BoneOffset x="161" y="134" z="64" />
-            </BoneInfo>
-            <BoneInfo>
-              <BonePosition x="-2" y="7" z="3" />
-              <BoneOffset x="145" y="137" z="119" />
-            </BoneInfo>
-            <BoneInfo>
-              <BonePosition x="-1" y="7" z="0" />
-              <BoneOffset x="127" y="127" z="139" />
-            </BoneInfo>
-            <BoneInfo>
-              <BonePosition x="0" y="7" z="0" />
-              <BoneOffset x="127" y="127" z="148" />
+              <BonePosition x="-1" y="7" z="4" />
+              <BoneOffset x="127" y="127" z="134" />
             </BoneInfo>
             <BoneInfo>
               <BonePosition x="1" y="7" z="0" />
@@ -1266,8 +1082,24 @@
               <BoneOffset x="133" y="127" z="134" />
             </BoneInfo>
             <BoneInfo>
-              <BonePosition x="-1" y="7" z="4" />
-              <BoneOffset x="127" y="127" z="134" />
+              <BonePosition x="-1" y="7" z="0" />
+              <BoneOffset x="127" y="127" z="139" />
+            </BoneInfo>
+            <BoneInfo>
+              <BonePosition x="-2" y="7" z="3" />
+              <BoneOffset x="145" y="137" z="119" />
+            </BoneInfo>
+            <BoneInfo>
+              <BonePosition x="-2" y="7" z="-1" />
+              <BoneOffset x="161" y="134" z="64" />
+            </BoneInfo>
+            <BoneInfo>
+              <BonePosition x="0" y="7" z="0" />
+              <BoneOffset x="127" y="127" z="148" />
+            </BoneInfo>
+            <BoneInfo>
+              <BonePosition x="-1" y="8" z="0" />
+              <BoneOffset x="133" y="164" z="155" />
             </BoneInfo>
           </Skeleton>
           <DisplayName>Light Hover Drone</DisplayName>
@@ -1276,48 +1108,30 @@
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>
           <IsRespawnGrid>false</IsRespawnGrid>
           <LocalCoordSys>0</LocalCoordSys>
+          <TargetingTargets />
         </CubeGrid>
         <CubeGrid>
           <SubtypeName />
-          <EntityId>124836144999285588</EntityId>
+          <EntityId>142553601053342228</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
           <PositionAndOrientation>
-            <Position x="0.50000322237610817" y="0.65212702751159668" z="-2.1565036773681641" />
-            <Forward x="6.371476E-05" y="0.9999998" z="-5.354271E-07" />
-            <Up x="-4.998583E-09" y="-1.2022403E-07" z="-0.9999998" />
+            <Position x="1.365234375" y="-1.587646484375" z="0.83447265625" />
+            <Forward x="0.5576995" y="0.415909469" z="0.718324363" />
+            <Up x="0.603437" y="-0.797381043" z="-0.00681875646" />
             <Orientation>
-              <X>-2.25248041E-05</X>
-              <Y>-0.7071066</Y>
-              <Z>0.707106948</Z>
-              <W>2.25283457E-05</W>
+              <X>0.8783007</X>
+              <Y>0.2962265</Y>
+              <Z>-0.356761158</Z>
+              <W>0.116443828</W>
             </Orientation>
           </PositionAndOrientation>
-          <ComponentContainer>
-            <Components>
-              <ComponentData>
-                <TypeId>MyHierarchyComponentBase</TypeId>
-                <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                  <Children />
-                </Component>
-              </ComponentData>
-            </Components>
-          </ComponentContainer>
           <GridSizeEnum>Small</GridSizeEnum>
           <CubeBlocks>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Wheel">
               <SubtypeName>SmallRealWheel1x1</SubtypeName>
-              <EntityId>87817586763012752</EntityId>
+              <EntityId>117744676139448848</EntityId>
               <ColorMaskHSV x="0" y="-0.96" z="-0.5" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
+              <YieldLastComponent>true</YieldLastComponent>
             </MyObjectBuilder_CubeBlock>
           </CubeBlocks>
           <DisplayName>Small Grid 3997</DisplayName>
@@ -1326,48 +1140,30 @@
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>
           <IsRespawnGrid>false</IsRespawnGrid>
           <LocalCoordSys>0</LocalCoordSys>
+          <TargetingTargets />
         </CubeGrid>
         <CubeGrid>
           <SubtypeName />
-          <EntityId>124703095914223402</EntityId>
+          <EntityId>103573450118574196</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
           <PositionAndOrientation>
-            <Position x="-0.49999675154685974" y="0.65212726593017578" z="-2.1565036773681641" />
-            <Forward x="5.7121375E-05" y="0.99999994" z="-5.87890732E-08" />
-            <Up x="-4.998583E-09" y="5.87890732E-08" z="-0.99999994" />
+            <Position x="1.93408203125" y="-1.151123046875" z="0.1376953125" />
+            <Forward x="0.5577911" y="0.415799" z="0.7183175" />
+            <Up x="0.6033582" y="-0.7974401" z="-0.006923169" />
             <Orientation>
-              <X>-2.01936873E-05</X>
-              <Y>-0.7071067</Y>
-              <Z>0.7071068</Z>
-              <W>2.01972252E-05</W>
+              <X>0.8783072</X>
+              <Y>0.296201259</Y>
+              <Z>-0.35678634</Z>
+              <W>0.116381794</W>
             </Orientation>
           </PositionAndOrientation>
-          <ComponentContainer>
-            <Components>
-              <ComponentData>
-                <TypeId>MyHierarchyComponentBase</TypeId>
-                <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                  <Children />
-                </Component>
-              </ComponentData>
-            </Components>
-          </ComponentContainer>
           <GridSizeEnum>Small</GridSizeEnum>
           <CubeBlocks>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Wheel">
               <SubtypeName>SmallRealWheel1x1</SubtypeName>
-              <EntityId>99050213929516940</EntityId>
+              <EntityId>123323350599398675</EntityId>
               <ColorMaskHSV x="0" y="-0.96" z="-0.5" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
+              <YieldLastComponent>true</YieldLastComponent>
             </MyObjectBuilder_CubeBlock>
           </CubeBlocks>
           <DisplayName>Small Grid 5380</DisplayName>
@@ -1376,48 +1172,30 @@
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>
           <IsRespawnGrid>false</IsRespawnGrid>
           <LocalCoordSys>0</LocalCoordSys>
+          <TargetingTargets />
         </CubeGrid>
         <CubeGrid>
           <SubtypeName />
-          <EntityId>128417757958298540</EntityId>
+          <EntityId>141062718829925994</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
           <PositionAndOrientation>
-            <Position x="0.49998510256409645" y="0.6521141529083252" z="2.1565160751342773" />
-            <Forward x="4.2853E-05" y="0.99999994" z="3.45763215E-06" />
-            <Up x="-4.590416E-06" y="-3.45743547E-06" z="0.99999994" />
+            <Position x="-1.1484375" y="1.738525390625" z="0.865234375" />
+            <Forward x="0.55674547" y="0.4172209" z="0.7183046" />
+            <Up x="-0.604347467" y="0.7967008" z="0.005662605" />
             <Orientation>
-              <X>0.707107961</X>
-              <Y>-1.6773758E-05</Y>
-              <Z>-1.35278951E-05</Z>
-              <W>0.7071056</W>
+              <X>-0.296518356</X>
+              <Y>0.8781965</Y>
+              <Z>-0.117160067</Z>
+              <W>-0.3565407</W>
             </Orientation>
           </PositionAndOrientation>
-          <ComponentContainer>
-            <Components>
-              <ComponentData>
-                <TypeId>MyHierarchyComponentBase</TypeId>
-                <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                  <Children />
-                </Component>
-              </ComponentData>
-            </Components>
-          </ComponentContainer>
           <GridSizeEnum>Small</GridSizeEnum>
           <CubeBlocks>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Wheel">
               <SubtypeName>SmallRealWheel1x1</SubtypeName>
-              <EntityId>137063769385385479</EntityId>
+              <EntityId>95911831805739451</EntityId>
               <ColorMaskHSV x="0" y="-0.96" z="-0.5" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
+              <YieldLastComponent>true</YieldLastComponent>
             </MyObjectBuilder_CubeBlock>
           </CubeBlocks>
           <DisplayName>Small Grid 5362</DisplayName>
@@ -1426,48 +1204,30 @@
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>
           <IsRespawnGrid>false</IsRespawnGrid>
           <LocalCoordSys>0</LocalCoordSys>
+          <TargetingTargets />
         </CubeGrid>
         <CubeGrid>
           <SubtypeName />
-          <EntityId>104370375108269545</EntityId>
+          <EntityId>80599808891130111</EntityId>
           <PersistentFlags>CastShadows InScene</PersistentFlags>
           <PositionAndOrientation>
-            <Position x="-0.50001493096351624" y="0.65211296081542969" z="2.1565113067626953" />
-            <Forward x="4.95534841E-05" y="0.99999994" z="3.45780268E-06" />
-            <Up x="-4.60211231E-06" y="-3.45757462E-06" z="0.99999994" />
+            <Position x="-0.58349609375" y="2.17236328125" z="0.163818359375" />
+            <Forward x="0.5568137" y="0.4171055" z="0.718317866" />
+            <Up x="-0.604269147" y="0.7967595" z="0.00575329363" />
             <Orientation>
-              <X>0.707107961</X>
-              <Y>-1.9146868E-05</Y>
-              <Z>-1.58927432E-05</Z>
-              <W>0.7071056</W>
+              <X>-0.2964927</X>
+              <Y>0.878209054</Y>
+              <Z>-0.117099822</Z>
+              <W>-0.356550872</W>
             </Orientation>
           </PositionAndOrientation>
-          <ComponentContainer>
-            <Components>
-              <ComponentData>
-                <TypeId>MyHierarchyComponentBase</TypeId>
-                <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                  <Children />
-                </Component>
-              </ComponentData>
-            </Components>
-          </ComponentContainer>
           <GridSizeEnum>Small</GridSizeEnum>
           <CubeBlocks>
             <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_Wheel">
               <SubtypeName>SmallRealWheel1x1</SubtypeName>
-              <EntityId>104469872392826243</EntityId>
+              <EntityId>104015261143137248</EntityId>
               <ColorMaskHSV x="0" y="-0.96" z="-0.5" />
-              <ComponentContainer>
-                <Components>
-                  <ComponentData>
-                    <TypeId>MyHierarchyComponentBase</TypeId>
-                    <Component xsi:type="MyObjectBuilder_HierarchyComponentBase">
-                      <Children />
-                    </Component>
-                  </ComponentData>
-                </Components>
-              </ComponentContainer>
+              <YieldLastComponent>true</YieldLastComponent>
             </MyObjectBuilder_CubeBlock>
           </CubeBlocks>
           <DisplayName>Small Grid 6304</DisplayName>
@@ -1476,6 +1236,7 @@
           <EnableSmallToLargeConnections>false</EnableSmallToLargeConnections>
           <IsRespawnGrid>false</IsRespawnGrid>
           <LocalCoordSys>0</LocalCoordSys>
+          <TargetingTargets />
         </CubeGrid>
       </CubeGrids>
     </Prefab>

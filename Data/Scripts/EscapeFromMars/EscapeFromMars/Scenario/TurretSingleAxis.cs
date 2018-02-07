@@ -59,7 +59,7 @@ namespace EscapeFromMars
 
 		/// <summary>
 		/// This code is taken from Whip's AI Rotor Turret Control Script. All credit to Whiplash.
-		/// https://steamcommunity.com/sharedfiles/filedetails/?id=672678005&
+		/// https://steamcommunity.com/sharedfiles/filedetails/?id=672678005
 		/// </summary>
 		/// <param name="targetPosition">point to face</param>
 		private void TurnToFacePosition(Vector3D targetPosition)
