@@ -146,33 +146,36 @@ namespace EscapeFromMars
 			return DebugConvoys || !DuckUtils.IsAnyPlayerNearPosition(baseRc.GetPosition(), 1000);
 		}
 
-		private void SpawnConvoy(IMyShipController baseToSpawnAt)
-		{
-			var factionId = baseToSpawnAt.OwnerId;
-			var spawnerPosition = baseToSpawnAt.GetPosition();
-			var gravity = baseToSpawnAt.GetNaturalGravity();
-			var unitType = baseToSpawnAt.CustomName.Contains("GROUND") ? UnitType.Ground : UnitType.Air;
-			var cargoSize = heatSystem.GenerateCargoShipSize();
+        private void SpawnConvoy(IMyShipController baseToSpawnAt)
+        {
+            var factionId = baseToSpawnAt.OwnerId;
+            var spawnerPosition = baseToSpawnAt.GetPosition();
+            var gravity = baseToSpawnAt.GetNaturalGravity();
+            var unitType = baseToSpawnAt.CustomName.Contains("GROUND") ? UnitType.Ground : UnitType.Air;
+            var cargoSize = heatSystem.GenerateCargoShipSize();
 
-			if (unitType == UnitType.Air)
-			{
-				var positionToSpawn = spawnerPosition + gravity * -5f + baseToSpawnAt.WorldMatrix.Forward * 30;
-				var transportPrefab = PrefabGrid.GetAirTransport(cargoSize);
-				DuckUtils.SpawnInGravity(positionToSpawn, gravity, factionId, transportPrefab.PrefabName,
-					transportPrefab.InitialBeaconName,
-					Vector3D.Normalize(baseToSpawnAt.WorldMatrix.Forward));
-			}
-			else
-			{
-				var positionToSpawn = spawnerPosition + gravity * -1f + baseToSpawnAt.WorldMatrix.Forward * 35;
-				var transportPrefab = PrefabGrid.GetGroundTransport(cargoSize);
-				DuckUtils.SpawnInGravity(positionToSpawn, gravity, factionId, transportPrefab.PrefabName,
-					transportPrefab.InitialBeaconName,
-					Vector3D.Normalize(baseToSpawnAt.WorldMatrix.Forward));
-			}
-		}
+            //TODO: Should let base define the convoy spawn points
+            //TODO: gravity is not normalized and is being used to scale the spawn point...  It should be normalized and then meters used to modify.
+            // NOTE: The .Forward IS normalized, so the scalar is in meters.
+            if (unitType == UnitType.Air)
+            {
+                var positionToSpawn = spawnerPosition + gravity * -5f + baseToSpawnAt.WorldMatrix.Forward * 30;
+                var transportPrefab = PrefabGrid.GetAirTransport(cargoSize);
+                DuckUtils.SpawnInGravity(positionToSpawn, gravity, factionId, transportPrefab.PrefabName,
+                    transportPrefab.InitialBeaconName,
+                    Vector3D.Normalize(baseToSpawnAt.WorldMatrix.Forward));
+            }
+            else
+            {
+                var positionToSpawn = spawnerPosition + gravity * -1f + baseToSpawnAt.WorldMatrix.Forward * 35;
+                var transportPrefab = PrefabGrid.GetGroundTransport(cargoSize);
+                DuckUtils.SpawnInGravity(positionToSpawn, gravity, factionId, transportPrefab.PrefabName,
+                    transportPrefab.InitialBeaconName,
+                    Vector3D.Normalize(baseToSpawnAt.WorldMatrix.Forward));
+            }
+        }
 
-		internal void SpawnConvoyEscorts(IMyCubeGrid convoyLeaderGrid, UnitType unitType, MyPlanet marsPlanet)
+        internal void SpawnConvoyEscorts(IMyCubeGrid convoyLeaderGrid, UnitType unitType, MyPlanet marsPlanet)
 		{
 			var gravity = marsPlanet.GetGravityAtPoint(convoyLeaderGrid.GetPosition());
 			var escortsNeededToSpawn = heatSystem.GenerateEscortSpecs();

@@ -14,7 +14,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
 		// Current mod version, increased each time before workshop publish
-		private const int CurrentModVersion = 8;
+		private const int CurrentModVersion = 9;
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7);
@@ -38,8 +38,8 @@ namespace EscapeFromMars
 			if (modBuildWhenGameStarted > 4)
 			{
 				DuckUtils.PutPlayerIntoFaction("CRASH");
-			}
-			researchControl = new ResearchControl(audioSystem);
+            }
+            researchControl = new ResearchControl(audioSystem);
 			researchControl.InitResearchRestrictions();
 			researchHacking = new ResearchHacking(researchControl, hudTextApi, networkComms);
 			networkComms.Init(audioSystem, researchControl, researchHacking);

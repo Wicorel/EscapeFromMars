@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
 using VRage.Game.ModAPI;
@@ -21,37 +22,63 @@ namespace EscapeFromMars
 		private bool waitingOnBackup;
 		private DateTime lastBackupRespondTime;
 
-		internal GCorpBase(IMyRemoteControl remoteControl, DateTime lastBackupRespondTime, MyPlanet marsPlanet, HeatSystem heatSystem, QueuedAudioSystem audioSystem)
-		{
-			RemoteControl = remoteControl;
-			this.lastBackupRespondTime = lastBackupRespondTime;
-			this.marsPlanet = marsPlanet;
-			this.heatSystem = heatSystem;
-			this.audioSystem = audioSystem;
-			baseId = remoteControl.EntityId;
-		}
+        private List<IMyLargeTurretBase> turrets;
 
-		internal void Update()
-		{
-			if (!RemoteControl.IsControlledByFaction("GCORP"))
-			{
-				return; // Maybe remove from list of bases?
-			}
 
-			var player = DuckUtils.GetNearestPlayerToPosition(RemoteControl.GetPosition(), 1000);
-			if (!DebugStopBackupGroups && player != null)
-			{
-				if (lastBackupRespondTime + BackupTimeDelay < MyAPIGateway.Session.GameDateTime)
-				{
-					SpawnHelperPatrol(player);
-					waitingOnBackup = true;
-					lastBackupRespondTime = MyAPIGateway.Session.GameDateTime;
-					audioSystem.PlayAudio(AudioClip.FacilityDetectedHostile, AudioClip.GCorpFacilityThreatened);
-				}
-			}
-		}
+        internal GCorpBase(IMyRemoteControl remoteControl, DateTime lastBackupRespondTime, MyPlanet marsPlanet, HeatSystem heatSystem, QueuedAudioSystem audioSystem)
+        {
+            RemoteControl = remoteControl;
+            this.lastBackupRespondTime = lastBackupRespondTime;
+            this.marsPlanet = marsPlanet;
+            this.heatSystem = heatSystem;
+            this.audioSystem = audioSystem;
+            baseId = remoteControl.EntityId;
 
-		internal bool OfferBackup()
+
+            turrets = new List<IMyLargeTurretBase>();
+            var slimBlocks2 = new List<IMySlimBlock>();
+            remoteControl.CubeGrid.GetBlocks(slimBlocks2, b => b.FatBlock is IMyLargeTurretBase);
+            foreach (var slim in slimBlocks2)
+            {
+                var turret = slim.FatBlock as IMyLargeTurretBase;
+                //                turret.Enabled = false;
+                turrets.Add(turret);
+            }
+        }
+
+        internal void Update()
+        {
+            if (!RemoteControl.IsControlledByFaction("GCORP"))
+            {
+                return; // Maybe remove from list of bases?
+            }
+
+            // TODO: get this value from base itself instead of hard-coding?
+            var player = DuckUtils.GetNearestPlayerToPosition(RemoteControl.GetPosition(), 1000);
+
+            // turn turrets off on bases if no player is nearby to save simspeed hits
+            if (player != null)
+            {
+                foreach (var turret in turrets)
+                    turret.Enabled = true;
+            }
+            else
+            {
+                foreach (var turret in turrets)
+                    turret.Enabled = false;
+            }
+            if (!DebugStopBackupGroups && player != null)
+            {
+                if (lastBackupRespondTime + BackupTimeDelay < MyAPIGateway.Session.GameDateTime)
+                {
+                    SpawnHelperPatrol(player);
+                    waitingOnBackup = true;
+                    lastBackupRespondTime = MyAPIGateway.Session.GameDateTime;
+                    audioSystem.PlayAudio(AudioClip.FacilityDetectedHostile, AudioClip.GCorpFacilityThreatened);
+                }
+            }
+        }
+        internal bool OfferBackup()
 		{
 			if (waitingOnBackup)
 			{
