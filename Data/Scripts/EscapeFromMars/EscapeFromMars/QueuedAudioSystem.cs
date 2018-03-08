@@ -75,7 +75,12 @@ namespace Duckroll
 				localPlayerSoundEmitter.StopSound(true);
 				localPlayerSoundEmitter.PlaySingleSound(soundPair);
 			}
-			MyAPIGateway.Utilities.ShowNotification(clip.Speaker + ": " + clip.Subtitle, clip.DisappearTimeMs, clip.Font);
+
+            // From Discord:
+            //MyVisualScriptLogicProvider.SendChatMessage($"You can now build {MyDefinitionManager.Static.GetCubeBlockDefinition(blockId).DisplayNameText}.", "Research Control", player, "Green");
+            // chat, notifications, billboards... Bad on DS.
+            // The following should NOT be done on  DS because nowhere to show it..
+            MyAPIGateway.Utilities.ShowNotification(clip.Speaker + ": " + clip.Subtitle, clip.DisappearTimeMs, clip.Font);
 			timeUntilNextAudioSeconds = clip.DisappearTimeMs / 1000 + 2; // Add a little 2 second pause between them
 		}
 

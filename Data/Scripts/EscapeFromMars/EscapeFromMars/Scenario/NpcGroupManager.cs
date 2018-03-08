@@ -8,6 +8,7 @@ using VRage.Game.Entity;
 using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
+using VRage.Utils;
 
 namespace EscapeFromMars
 {
@@ -93,9 +94,12 @@ namespace EscapeFromMars
 
 		private void OfferPotentialDestination(IMyCubeGrid grid)
 		{
+//            ModLog.Info("Potential Destination:" + grid.CustomName);
+
 			foreach (var remoteControl in grid.GetTerminalBlocksOfType<IMyRemoteControl>())
 			{
-				if (!remoteControl.IsControlledByFaction("GCORP"))
+//                ModLog.Info(" RC:" + remoteControl.CustomName);
+                if (!remoteControl.IsControlledByFaction("GCORP"))
 				{
 					continue;
 				}
@@ -105,24 +109,38 @@ namespace EscapeFromMars
 					// If the destination has not yet been setup (ie restored from a save), do so now
 					if (Vector3D.IsZero(airConvoyDestinationPosition))
 					{
-						airConvoyDestinationPosition = remoteControl.GetPosition() + remoteControl.GetNaturalGravity() *
-						                               -23f;
-					}
-				}
-				else if (remoteControl.CustomName.Contains("GROUND_DELIVERY_DESTINATION"))
+//                        ModLog.Info(" Setting airConvoyDestinationPosition:" + remoteControl.GetPosition().ToString());
+						airConvoyDestinationPosition = remoteControl.GetPosition() + remoteControl.GetNaturalGravity() * -23f;
+//                        ModLog.Info(" Gravity:" + remoteControl.GetNaturalGravity());
+//                        ModLog.Info(" Set airConvoyDestinationPosition:" + airConvoyDestinationPosition.ToString());
+                    }
+                    else
+                    {
+//                        ModLog.Info(" Using Saved airConvoyDestinationPosition:" + airConvoyDestinationPosition.ToString());
+                    }
+                }
+                else if (remoteControl.CustomName.Contains("GROUND_DELIVERY_DESTINATION"))
 				{
 					//basesToInit.Add(remoteControl); // Is in the same place as the air destination, so disabled this
 					// If the destination has not yet been setup (ie restored from a save), do so now
 					if (Vector3D.IsZero(groundConvoyDestinationPosition))
 					{
-						groundConvoyDestinationPosition = remoteControl.GetPosition() + remoteControl.GetNaturalGravity() * -0.3f;
-						// 3M above for Ground Destination
-					}
-				}
+//                        ModLog.Info(" Setting groundConvoyDestinationPosition:" + remoteControl.GetPosition().ToString());
+                        groundConvoyDestinationPosition = remoteControl.GetPosition() + remoteControl.GetNaturalGravity() * -0.3f;
+                        //                      // 3M above for Ground Destination
+                        ModLog.Info(" Gravity:" + remoteControl.GetNaturalGravity());
+//                        ModLog.Info(" Set groundConvoyDestinationPosition:" + groundConvoyDestinationPosition.ToString());
+                    }
+                    else
+                    {
+//                        ModLog.Info(" using Saved groundConvoyDestinationPosition:" + groundConvoyDestinationPosition.ToString());
+                    }
+                }
 			}
-		}
-		
-		private void OfferPotentialNpcShip(IMyCubeGrid grid)
+//            ModLog.Info("EO:Potential Destination:" + grid.CustomName);
+        }
+
+        private void OfferPotentialNpcShip(IMyCubeGrid grid)
 		{
 			NpcGroupSaveData npcGroupSaveData;
 			if (restoredNpcGroupData.TryGetValue(grid.EntityId, out npcGroupSaveData))
@@ -230,10 +248,19 @@ namespace EscapeFromMars
 					case UnitRole.Delivery:
 						var cargoType = CargoType.GenerateRandomCargo(random);
 						LoadCargo(grid, cargoType);
-						grid.SetAllBeaconNames("T" + random.Next(10000, 99999) + " - " + cargoType.GetDisplayName() + " Shipment",
+
+                        string sPrefix = "T";
+                        if (unitType == UnitType.Air) sPrefix += "A";
+                        else sPrefix += "G";
+
+                        grid.SetAllBeaconNames(sPrefix + random.Next(10000, 99999) + " - " + cargoType.GetDisplayName() + " Shipment",
 							20000f);
 						var destination = unitType == UnitType.Air ? airConvoyDestinationPosition : groundConvoyDestinationPosition;
-						SetDestination(grid, destination);
+
+//                        ModLog.Info("Air Destination=" + airConvoyDestinationPosition.ToString());
+//                        ModLog.Info("GND Destination=" + groundConvoyDestinationPosition.ToString());
+//                        ModLog.Info("Chosen Dest=" + destination.ToString());
+                        SetDestination(grid, destination);
 						RegisterConvoy(grid, NpcGroupState.Travelling, unitType, destination, MyAPIGateway.Session.GameDateTime);
 
 						var planet = DuckUtils.FindPlanetInGravity(grid.GetPosition());
@@ -322,10 +349,25 @@ namespace EscapeFromMars
 			foreach (var slim in slimBlocks)
 			{
 				var block = slim.FatBlock as IMyGyro;
-				// using STARTED_DELIVERY as a way to find our grids! For autopilot it's a harmless comment.
-				block.CustomName = "NAV: C STARTED_DELIVERY; S 10; D 80 ; W " + destination.X + ":" + destination.Y +
-				                   ":" + destination.Z;
-				break; // We only need to set up one gyro, it may have more
+                // using STARTED_DELIVERY as a way to find our grids! For autopilot it's a harmless comment.
+                // NOTE: comment is not correct: it's not used as a way to find our grids
+
+                // C <comment>
+                // S <max speed>
+                // D <arrival distance>
+                // W x:y:z
+                // W <GPS> 
+                // set destination
+                block.CustomName = "NAV: C STARTED_DELIVERY; S 10; D 80 ; W " + destination.X + ":" + destination.Y +
+//                block.CustomName = "NAV: C STARTED_DELIVERY; S 80; D 80 ; W " + destination.X + ":" + destination.Y +
+                                   ":" + destination.Z;
+
+                ModLog.Info("Set Waypoint to: " + block.CustomName);
+                /*
+                MyLog.Default.WriteLine("Set Waypoint to: " + block.CustomName);
+                MyLog.Default.Flush();
+                */
+                break; // We only need to set up one gyro, it may have more
 			}
 		}
 

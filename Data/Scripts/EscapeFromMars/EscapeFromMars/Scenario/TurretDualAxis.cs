@@ -24,7 +24,7 @@ namespace EscapeFromMars
 		private readonly IMyMotorStator azimuthRotor;
 		private readonly List<IMyMotorStator> elevationRotors;
 		private readonly List<IMyUserControllableGun> weapons;
-		private readonly Vector3D position; // Turrets like this don't move
+//		private readonly Vector3D position; // Turrets like this don't move
 		private IMyPlayer playerTarget;
 		private int timeSincePlayerSeen;
 		private bool spoken;
@@ -37,7 +37,9 @@ namespace EscapeFromMars
 			this.azimuthRotor = azimuthRotor;
 			this.elevationRotors = elevationRotors;
 			this.weapons = weapons;
-			position = bodyGrid.GetPosition();
+            // move this fix to overally sound block fixup
+//            bodyGrid.SetSoundBlocks("Mech Intruders Must Be Destroyed"); // fix missing sound on sound block on mech
+//			position = bodyGrid.GetPosition();
 		}
 
 		public void Update60()
@@ -47,10 +49,12 @@ namespace EscapeFromMars
 				return; // No point bothering to remove from the list, it will disappear next time the game reloads
 			}
 
-			playerTarget = DuckUtils.GetNearestPlayerToPosition(position, Range);
+			playerTarget = DuckUtils.GetNearestPlayerToPosition(bodyGrid.GetPosition(), Range);
 			if (playerTarget != null)
 			{
-				IHitInfo hitInfo;
+//MyAPIGateway.Utilities.ShowNotification("Found Player: " + info.Type, 2000, MyFontEnum.DarkBlue);
+
+                IHitInfo hitInfo;
 				if (MyAPIGateway.Physics.CastLongRay(weapons[0].GetPosition(), playerTarget.GetPosition(), out hitInfo, false))
 				{
 					if (!spoken)
@@ -76,8 +80,8 @@ namespace EscapeFromMars
 					{
 						SetWeaponsShooting(false);
 					}
-					//	MyAPIGateway.Utilities.ShowNotification("Hit: " + info.Type, 2000, MyFontEnum.DarkBlue);
-					//	MyAPIGateway.Utilities.ShowNotification("Relation: " + info.Relationship, 2000, MyFontEnum.DarkBlue);
+//					MyAPIGateway.Utilities.ShowNotification("Hit: " + info.Type, 2000, MyFontEnum.DarkBlue);
+//					MyAPIGateway.Utilities.ShowNotification("Relation: " + info.Relationship, 2000, MyFontEnum.DarkBlue);
 				}
 				else
 				{
@@ -123,10 +127,14 @@ namespace EscapeFromMars
 				return; // No point bothering to remove from the list, it will disappear next time the game reloads
 			}
 
-			TurnToFacePosition(playerTarget.GetPosition());
-		}
 
-		private void StopAllRotors()
+//            TurnToFacePosition(playerTarget.GetPosition());
+            TurnToFacePosition(playerTarget.Character.WorldAABB.Center);
+
+
+        }
+
+        private void StopAllRotors()
 		{
 			azimuthRotor.SetValue("Velocity", 0f);
 			foreach (var rotor in elevationRotors)

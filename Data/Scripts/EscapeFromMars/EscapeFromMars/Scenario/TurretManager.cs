@@ -13,7 +13,8 @@ namespace EscapeFromMars
 		{
 			if (grid.IsStatic)
 			{
-				return;
+                // change in SE 1.186.  Small grids in voxels are no longer 'static'
+//				return;
 			}
 			
 			//if (grid.IsAliveAndGCorpControlled()) ?? do we need this for turrets?
@@ -83,8 +84,22 @@ namespace EscapeFromMars
 			}
 		}
 
+        bool bShownTurretCount = false;
+        int turretshowncount = 0;
 		public override void Update60()
 		{
+/*
+            if(!bShownTurretCount)// && turretshowncount < 5)
+            {
+                turretshowncount++;
+                if(turretshowncount >= 4)
+                {
+                    bShownTurretCount = true;
+                    MyAPIGateway.Utilities.ShowNotification("#rotor Turrest=: " + turrets.Count, 2000, MyFontEnum.DarkBlue);
+                }
+            }
+            */
+
 			// Lets turrets check around for enemies, but they mostly sleep until needed
 			foreach (var turret in turrets)
 			{

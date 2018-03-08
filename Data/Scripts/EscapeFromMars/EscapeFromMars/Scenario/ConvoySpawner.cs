@@ -14,6 +14,9 @@ namespace EscapeFromMars
 	internal class ConvoySpawner : ModSystemUpdatable
 	{
 		public static readonly bool DebugConvoys = false;
+        public static readonly bool ForceGroundOnly = false;
+        public static readonly bool ForceAirOnly = false;
+
 		private readonly HeatSystem heatSystem;
 		private readonly QueuedAudioSystem audioSystem;
 		private readonly List<IMyRemoteControl> spawningBases = new List<IMyRemoteControl>();
@@ -123,7 +126,10 @@ namespace EscapeFromMars
 				}
 
 				var distSq = Vector3D.DistanceSquared(spawningBase.PositionComp.GetPosition(), positionToSpawnNearTo);
-				baseDistances.Add(distSq, spawningBase);
+                if (DebugConvoys && ForceGroundOnly && !spawningBase.CustomName.Contains("GROUND")) continue;
+                if (DebugConvoys && ForceAirOnly && spawningBase.CustomName.Contains("GROUND")) continue;
+
+                baseDistances.Add(distSq, spawningBase);
 			}
 
 			var sortedDistances = baseDistances.Keys.ToList();

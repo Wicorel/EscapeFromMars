@@ -11,8 +11,13 @@ namespace EscapeFromMars
 	public class ResearchHacking : ModSystemUpdatable
 	{
 		public const string SeTextColor = "<color=202,228,241>";
-		private HUDTextAPI.HUDMessage hackBar = new HUDTextAPI.HUDMessage(100, 30, new Vector2D(-0.95, 0.95), "");
-		private readonly HUDTextAPI.HUDMessage hackInterrupted = new HUDTextAPI.HUDMessage(100, 30, new Vector2D(-0.95, 0.95),
+//        private HUDTextAPI.HUDMessage hackBar = new HUDTextAPI.HUDMessage(100, 30, new Vector2D(-0.95, 0.95), "");
+//        private readonly HUDTextAPI.HUDMessage hackInterrupted = new HUDTextAPI.HUDMessage(100, 30, new Vector2D(-0.95, 0.95),
+//            SeTextColor + "CONNECTION LOST");
+
+            // Change for Version 10: Move more to center to avoid chromatic aberation in 1.186 in the edges
+        private HUDTextAPI.HUDMessage hackBar = new HUDTextAPI.HUDMessage(100, 30, new Vector2D(-0.5, 0.5), "");
+        private readonly HUDTextAPI.HUDMessage hackInterrupted = new HUDTextAPI.HUDMessage(100, 30, new Vector2D(-0.5, 0.5),
 			SeTextColor +"CONNECTION LOST");
 
 		private const int HackingRangeSquared = 5*5; // 5 meters

@@ -124,7 +124,22 @@ namespace Duckroll
 			return false;
 		}
 
-		public static void PlaySoundBlocks(this IMyCubeGrid grid)
+        // added Verison 10 --Wico
+        public static void SetSoundBlocks(this IMyCubeGrid grid, string sSound, bool bForce=false)
+        {
+            var slimBlocks = new List<IMySlimBlock>(8);
+            grid.GetBlocks(slimBlocks, b => b.FatBlock is IMySoundBlock);
+            foreach (var slim in slimBlocks)
+            {
+                var soundBlock = (IMySoundBlock)slim.FatBlock;
+                if (bForce || soundBlock.SelectedSound == "")
+                {
+                    soundBlock.SelectedSound = sSound;
+                }
+            }
+        }
+
+        public static void PlaySoundBlocks(this IMyCubeGrid grid)
 		{
 			var slimBlocks = new List<IMySlimBlock>(8);
 			grid.GetBlocks(slimBlocks, b => b.FatBlock is IMySoundBlock);

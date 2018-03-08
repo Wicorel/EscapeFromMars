@@ -30,7 +30,9 @@ namespace Duckroll
 				if (!init && updateCount > UpdatesUntilInitAttempted)
 				{
 					ModLog.Init();
-					machineType = MyAPIGateway.Multiplayer.IsServer ? MachineType.Host : MachineType.Client;
+//                    (MyAPIGateway.Multiplayer.IsServer && MyAPIGateway.Utilities.IsDedicated)
+
+                    machineType = MyAPIGateway.Multiplayer.IsServer ? MachineType.Host : MachineType.Client;
 					InitCommon(modProxy);
 					if (machineType == MachineType.Host)
 					{

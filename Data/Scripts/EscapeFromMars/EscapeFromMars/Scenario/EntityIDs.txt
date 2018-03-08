@@ -1,0 +1,1324 @@
+﻿
+((Air base Alpha))
+GCorp Air Base:109860709347788978
+{X:1874526.59687591 Y:-2011024.3806605 Z:1317585.70575995}
+-----TEXTPANELS
+93454819909380839:1:+LCD Panel
+|White screen
+107888803067907687:2:+LCD Panel 13
+|Galactic Corporation Logo
+|Automation Simplified
+117397297414311676:1:+LCD Panel 10
+|White screen
+72594565551196748:1:+LCD Panel 11
+|White screen
+116339521966762017:1:+LCD Panel 12
+|White screen
+122608562122913654:1:+LCD Panel 21
+|White screen
+72166149439952061:1:+LCD Panel 2
+|White screen
+88984051464355006:1:+LCD Panel 3
+|White screen
+110719548337426322:1:+LCD Panel 4
+|White screen
+91732402835082717:1:+LCD Panel 5
+|Galactic Corporation Logo
+96205606728897411:1:+LCD Panel 6
+|White screen
+96602864065583060:1:+LCD Panel 7
+|White screen
+74591022422957642:1:+LCD Panel 8
+|White screen
+127115647072643979:1:+LCD Panel 9
+|White screen
+130293950861161974:1:+LCD Panel 14
+|White screen
+123431655294614202:1:+LCD Panel 15
+|White screen
+134408635070238070:1:+LCD Panel 16
+|White screen
+116081635111933706:1:+LCD Panel 17
+|White screen
+102146539703374419:1:+LCD Panel 18
+|White screen
+140536421206731855:1:+LCD Panel 19
+|White screen
+137007398185828085:1:+LCD Panel 20
+|White screen
+82749359198303064:1:+LCD Panel 22
+|White screen
+138802856263984670:2:+LCD Panel 23
+|Galactic Corporation Logo
+|Automation Simplified
+99770216702326754:1:+LCD Panel 24
+|White screen
+124385479014269988:1:+LCD Panel 25
+|White screen
+92844401608268332:1:+LCD Panel 26
+|White screen
+112754769156290054:1:+LCD Panel 27
+|White screen
+108203472917598708:2:+LCD Panel 40
+|Galactic Corporation Logo
+|Automation Simplified
+94474169365553707:2:+LCD Panel 38
+|Galactic Corporation Logo
+|Automation Simplified
+75355774748088990:1:+LCD Panel 37
+|Galactic Corporation Logo
+-----SOUND
+116378614635193269:Sound Block:WelcomeToGcorp
+
+
+
+
+
+Crashed Shuttle:92770753627258475
+{X:1868088.00058876 Y:-2003485.99356789 Z:1316645.85240929}
+-----TEXTPANELS
+121786820996539580:TEXT!
+    
+    OUTGOING TRANSMISSION
+    ERROR: FAILED TO SEND
+
+    M,
+
+    I'm going to Mars to talk to
+    the CEO about what that 
+    weasel Bhaskar has been up to.
+    I think we can trust him.
+
+    - T
+128623467162369040:TEXT!
+
+    INCOMING TRANSMISSION...
+
+    T,
+
+    Those shipments you asked 
+    me to check were NOT solar 
+    cells. Crates were packed 
+    with guns, like they're trying 
+    to start a small war.
+
+    -M 
+79781732474214152:TEXT!
+
+    REGISTERING FRIENDLY FIRE
+    
+    TRANSMITTING CODES
+    
+    NO RESPONSE
+
+    ATTEMPTING LANDING
+142828776791892368:TEXT!
+    
+    AUTO-LOG
+
+    DETACHING FROM JUMPER-TRAM
+
+    COURSE SET TO MARS
+
+    FRIENDLY SHIP DETECTED
+
+    HAILING GCORP KRATOS
+110371608100898677:TEXT!
+        TOOLS LOCKER
+80461927256500036:TEXT!
+Mabel: Loading survival guide...
+
+> Recommend searching cargo
+   and disassembling shuttle for 
+   rover parts
+> Recommend configuration:
+    - Six wheels
+    - Friction 10%
+    - Damping 30%
+    - Strength ~5% 
+               (Depends on load)
+    - Speed Limit 100km/h
+87005598531295535:TEXT!
+ EMERGENCY SUPPLIES
+143319951822334717:TEXT!
+SPARE PARTS STORAGE
+-----SOUND
+113240311055457124:Sound Block:SoundBlockAlert2
+
+
+
+(( Ice Mine Entrance))
+Static Grid 1300:141864706275857195
+{X:1869175.27852051 Y:-2004745.97266307 Z:1316375.91819424}
+-----TEXTPANELS
+74525033656413945:1:+LCD Panel 2
+|Galactic Corporation Logo
+123983074205720301:TEXT!
+    
+    NO ENTRY
+
+    MINE IS SHUT DOWN
+    UNTIL FURTHER NOTICE
+-----SOUND
+101979433782763108:Sound Block:NotAuthorisedDeployDefences
+
+((Ice Mine Shaft Bottom))
+Static Grid 5830:105126279038514731
+{X:1869144.82476038 Y:-2004882.73519876 Z:1316386.21857053}
+-----TEXTPANELS
+-----SOUND
+106640376870960334:Sound Block:MineClosed
+
+
+((tablet bottom ice mine))
+Small Nuclear Tablet:100970341838889782
+{X:1869124.2689786 Y:-2004858.31594809 Z:1316324.10264582}
+-----TEXTPANELS
+79948364085004862:TEXT!
+
+    Andre,
+
+    Word is the mine is shutting down,
+    they don't need no more O2 cuz 
+    the machines don't need it yeah?
+
+    Fuckin corp sees us as needless 
+    expense now. Where else we gonna
+    find jobs on this hell rock?
+   
+    Mick
+-----SOUND
+
+((First Ice Mine Rotor Turret))
+G-Corp AP Turret:90993635246938934
+{X:1869181.02464316 Y:-2004930.92598957 Z:1316373.01984176}
+-----TEXTPANELS
+85851298076636389:1:+Text panel 4
+|Galactic Corporation Logo
+-----SOUND
+
+
+((Lower Ice Mine rotor Turret))
+G-Corp AP Turret:104641259049382389
+{X:1869125.95042441 Y:-2004895.9628548 Z:1316351.36676559}
+-----TEXTPANELS
+73253857071975335:1:+Text panel 4
+|Galactic Corporation Logo
+-----SOUND
+
+((Upper Ice Mine Meeting Room))
+Static Grid 1176:93058758639071176
+{X:1869176.67818993 Y:-2004930.50366838 Z:1316377.58089576}
+-----TEXTPANELS
+82707451669813998:1:+LCD Panel 3
+|Galactic Corporation Logo
+-----SOUND
+80185389104537910:Sound Block 2:BigSwitch
+
+
+((Ice Mine Meeting room tablet))
+Small Grid 8202:143985942956684928
+{X:1869170.28324823 Y:-2004914.12563933 Z:1316371.45389789}
+-----TEXTPANELS
+86019926591513346:TEXT!
+
+    Alston,
+
+    Arrange the meeting for the evening
+    when the other miners are home.
+
+    If the foreman gives you trouble, we 
+    left you something under your chair 
+    to deal with him. The automation 
+    initiative must go ahead.
+
+    - HQ
+    
+-----SOUND
+
+((Ground Base Beta))
+GCorp Ground Base:137699461534422634
+{X:1867609.55990348 Y:-1998629.29461492 Z:1313950.98894314}
+-----TEXTPANELS
+100921834705524658:1:+LCD Panel
+|Galactic Corporation Logo
+130324516314349201:1:+LCD Panel 3
+|Galactic Corporation Logo
+97815012978320797:TEXT!
+
+   HOVER BAY 1
+114632987598584646:1:+LCD Panel 3
+|Galactic Corporation Logo
+140243495577258353:1:+LCD Panel 4
+|Danger
+83297165601692692:TEXT!
+
+84978447735688646:TEXT!
+
+72618230494179514:TEXT!
+
+  RADIO TOWER
+123682171860264140:1:+LCD Panel 14
+|White screen
+112615048348505313:1:+LCD Panel 23
+|Galactic Corporation Logo
+129093879286925993:1:+LCD Panel 15
+|White screen
+87458108835132543:1:+LCD Panel 17
+|White screen
+116174933134404114:1:+LCD Panel 18
+|White screen
+89920611708807218:1:+LCD Panel 19
+|White screen
+76279078129224992:1:+LCD Panel 20
+|White screen
+127210818800359129:1:+LCD Panel 21
+|White screen
+110367666696288990:1:+LCD Panel 22
+|White screen
+-----SOUND
+
+
+((MRE hidden Base))
+MRE Experiment Base:104361129531664144
+{X:1858398.21613573 Y:-1989137.98910994 Z:1312706.48643797}
+-----TEXTPANELS
+98971232666660757:2:+LCD Panel 5
+|MRE Logo
+|MRE Logo
+97512105090353134:2:+LCD Panel 6
+|MRE Logo
+|MRE Logo
+114123195861242522:TEXT!
+  REACTOR CORE
+132977230724001624:TEXT!
+    EMERGENCY DISTRESS 
+            BEACON
+89121948394092071:TEXT!
+Initialising MRED (Mars Research 
+Expedition Database)
+
+AI Systems online...
+
+Distress Beacon   CRITICAL ERROR
+Air Processing      MINOR ERROR
+Reactor                 CRITICAL ERROR
+Vocal Systems     MINOR ERROR
+Backup Power      ACTIVE
+87367419229874157:TEXT!
+    
+        COMPUTER SYSTEMS
+79602244201520225:1:+LCD Panel 4
+|MRE Logo
+101419842949782053:TEXT!
+Hey guys!
+
+Remember it's movie night tonight
+at the beach! I found an old classic
+TV show, it was the best sci-fi 
+of it's time!
+Apparently they only made one 
+season and a movie 
+because they were 
+worried it would make all the 
+other TV shows look bad.
+
+~~~ Milly ~~~
+81228556864103207:1:+LCD Panel 6
+|MRE Logo
+100805083727067672:TEXT!
+Pitman,
+
+Do NOT even think of using that 
+experimental jump drive to hide 
+the freighter in the cavern. If you 
+get the calculations off, you could 
+damage both it and the experiment.
+
+Vierra
+
+-----------------
+
+GOD DAMNIT PITMAN
+81985176766745915:TEXT!
+  SYSTEM STATUS
+
+  45 SYSTEM TESTS FAILING
+  LIFE SUPPORT: NEGATIVE
+  AIR CONTROL SYSTEMS AT 23% 
+
+  CONCLUSION:
+  HUMAN REPAIR NEEDED 
+
+  ESTIMATED TIME:
+  5 DAYS
+81115229247652301:1:+LCD Panel 11
+|MRE Logo
+142625361712416552:TEXT!
+
+DANGER - BLASTING EXPLOSIVES
+-----SOUND
+95206901925432014:Sound Block:BigSwitch
+100498114358496283:Sound Block 2:BigSwitch
+77589249328205128:Sound Block 3:BigSwitch
+104066113506074975:Sound Block 4:BigSwitch
+90866709199081947:Sound Block 5:BigSwitch
+141427853315146800:Sound Block 6:BigSwitch
+116242415031561830:Sound Block 7:BigSwitch
+110850485077900653:Sound Block 8:BigSwitch
+88298229398547791:Sound Block 9:BigSwitch
+
+
+((Iguana Class Freighter))
+Iguana Class Freighter:91712174990175924
+{X:1858221.19386927 Y:-1988883.75778756 Z:1312623.38582747}
+-----TEXTPANELS
+-----SOUND
+
+
+((firefly screen))
+Dropped Light:122473764388166353
+{X:1858314.32606441 Y:-1989037.77876375 Z:1312591.7456382}
+-----TEXTPANELS
+121310483203757946:1:+LCD Panel 2
+|Firefly
+-----SOUND
+
+((Ruined GCorp Vehicle))
+Ruined GCorp Vehicle:114105633279074526
+{X:1864443.18154016 Y:-1997505.13571725 Z:1315484.45247786}
+-----TEXTPANELS
+135845350963389555:1:+LCD Panel 4
+|Galactic Corporation Logo
+143359346189829745:1:+LCD Panel 4
+|Galactic Corporation Logo
+95946706500752776:1:+LCD Panel 5
+|Galactic Corporation Logo
+124199790472255993:1:+LCD Panel 5
+|Galactic Corporation Logo
+-----SOUND
+
+
+((Garage))
+Mars Garage:117297155456773569
+{X:1872566.99301326 Y:-2014858.68520336 Z:1317832.00533528}
+-----TEXTPANELS
+85441312020805004:TEXT!
+
+    TODO
+
+    CHANGE OIL
+    CHECK TYRES
+    FIX SOLAR PANELS ON ROOF
+-----SOUND
+
+
+((Ground Base Alpha))
+GCorp Ground Base:84998510375140511
+{X:1861330.46390801 Y:-2010321.93787811 Z:1323721.09696137}
+-----TEXTPANELS
+132862092054125710:1:+LCD Panel
+|Galactic Corporation Logo
+115102464487493383:1:+LCD Panel 3
+|Galactic Corporation Logo
+97547981527537368:TEXT!
+
+   HOVER BAY 1
+115785566262981213:1:+LCD Panel 3
+|Galactic Corporation Logo
+102071415361918281:1:+LCD Panel 4
+|Danger
+86667658071698344:TEXT!
+
+105732547826021959:TEXT!
+
+112650211190598054:TEXT!
+
+  RADIO TOWER
+95944161731256356:1:+LCD Panel 14
+|White screen
+75096194242929118:1:+LCD Panel 23
+|Galactic Corporation Logo
+99827158777402669:1:+LCD Panel 15
+|White screen
+128407953275550926:1:+LCD Panel 17
+|White screen
+92899757479686213:1:+LCD Panel 18
+|White screen
+73143277476973512:1:+LCD Panel 19
+|White screen
+78794686986136158:1:+LCD Panel 20
+|White screen
+132269641297837629:1:+LCD Panel 21
+|White screen
+135871598152874136:1:+LCD Panel 22
+|White screen
+-----SOUND
+
+
+((MRE MedBay 1))
+MRE Emergency Medical Station:121781861229132223
+{X:1857941.86467213 Y:-2006162.46095049 Z:1324055.09994799}
+-----TEXTPANELS
+142050601822883707:1:LCD Panel 2
+|MRE Logo
+117087962786183236:TEXT!:+Corner LCD Flat Top 4
+   DR H.P. BRAINCASE
+109969046554135449:TEXT!:+Corner LCD Flat Top 3
+      NURSE JESSICA
+-----SOUND
+
+
+((Jim's House @ MRE Medbay 1))
+Jim's House:77425199507156893
+{X:1857936.00229539 Y:-2006123.65531854 Z:1324045.56026903}
+-----TEXTPANELS
+126919499981361977:TEXT!:+LCD Panel 9
+
+    JIM
+        
+    YOUR SHIP IS AT THE OLD DOCKYARD
+
+    MEET ME THERE IF YOU WANT TO GET
+    OFF THIS RUSTBALL
+    
+    EARL
+82130275158280452:TEXT!:+LCD Panel 8
+    
+    JIM
+
+    WHERE'S MY PLATINUM YOU
+    SKUNK?
+
+    CUTTER
+134675554373261627:TEXT!:+LCD Panel 11
+    
+    NO CONTACTS FOUND
+-----SOUND
+
+((Ruined Refuling Station))
+Ruined Refuling Station:141539423784393296
+{X:1857767.55822889 Y:-2007190.51474612 Z:1324545.94547988}
+-----TEXTPANELS
+-----SOUND
+
+
+((Wrecked Drone))
+Old GCorp Drone:108245713014936511
+{X:1854935.34544394 Y:-2006196.25381039 Z:1325293.44340054}
+-----TEXTPANELS
+125165391786413279:1:Text panel 2
+|Galactic Corporation Logo
+-----SOUND
+102293828213773618:Sound Block:PowerUpClipped
+
+((tablet @ Wrecked Drone))
+Small Nuclear Tablet:124515759438974225
+{X:1854919.44943216 Y:-2006190.7466712 Z:1325302.99521291}
+-----TEXTPANELS
+117856802065242608:TEXT!:+Text panel
+
+    BRUCE,
+
+    STOP TRYING TO MAKE THE
+    BLOODY OLD DRONES WORK
+    AND FIX THAT THIRD HANGAR 
+    INSTEAD! 
+
+    THEY AIN'T GONNA WORK 
+    AGAIN.
+    
+    EVER.
+-----SOUND
+
+
+((signal station at air research))
+Signal Station:86773281471237981
+{X:1854846.68937983 Y:-2005847.72871386 Z:1325384.05468032}
+-----TEXTPANELS
+72333469059648894:1:LCD Panel 4
+|Galactic Corporation Logo
+-----SOUND
+
+
+((Hanger 1 @ air research))
+GCorp Hangar:86938570775375127
+{X:1854856.22157923 Y:-2005885.30075631 Z:1325385.98201888}
+-----TEXTPANELS
+115426021163834360:1:LCD Panel 2
+|Galactic Corporation Logo
+92950737245523471:1:LCD Panel 4
+|Galactic Corporation Logo
+-----SOUND
+102205921517716815:Sound Block 6:
+121663548600937796:Sound Block 2:
+136802996521469395:Sound Block 4:
+72885602064321128:Sound Block 3:
+94675199992582630:Sound Block 2:
+109267860605580757:Sound Block 5:
+
+
+((old drone @ hangar 1))
+Old GCorp Drone:93227668619763280
+{X:1854855.65696737 Y:-2005886.9671893 Z:1325385.63236539}
+-----TEXTPANELS
+91316796732267193:1:Text panel 2
+|Galactic Corporation Logo
+-----SOUND
+108074122634121508:Sound Block:PowerUpClipped
+
+
+((hangar 2 @ Air Research))
+GCorp Hangar:119098008400517704
+{X:1854831.02577845 Y:-2005905.69724069 Z:1325404.83358138}
+-----TEXTPANELS
+90141650430200994:1:LCD Panel 2
+|Galactic Corporation Logo
+73554296446686740:1:LCD Panel 4
+|Galactic Corporation Logo
+-----SOUND
+
+
+((hangar 3 @ air research))
+GCorp Hangar:88755030636380323
+{X:1854807.50917688 Y:-2005924.73435006 Z:1325422.42879622}
+-----TEXTPANELS
+102770953895352379:1:Text panel 2
+|Galactic Corporation Logo
+137328373115125485:1:LCD Panel 2
+|Galactic Corporation Logo
+81472858482220707:1:LCD Panel 4
+|Galactic Corporation Logo
+-----SOUND
+
+
+((Air Research))
+GCorp Flight Research Center:76779347935557670
+{X:1854754.1883761 Y:-2005852.06052194 Z:1325419.84578841}
+-----TEXTPANELS
+134621564384224681:TEXT!:+LCD Panel 2
+
+    POWER AT 0%
+
+    PREPARING FOR NEXT TEST...
+
+    STAND BY MODE
+101174654334777857:TEXT!:+Text panel 3
+
+    X5011 THRUSTER
+
+    THE FASTEST ENGINE OF
+    IT'S TIME, HAD TO BE
+    RECALLED DUE TO
+    ACCIDENTS ON MARS
+    IN 2085
+
+    NICKNAMED THE CLANGER
+118405294099572669:TEXT!:+Text panel 2
+
+    X509 THRUSTER
+
+    - STILL IN USE ON
+    SOME OLDER CRAFT
+    - CHEAP TO PRODUCE
+    - WAS POPULAR FROM
+    2070-2078
+    - MOST SOLD THRUSTER
+    FOR 70 YEARS
+73042641872560299:TEXT!:+Text panel 4
+
+    OBSOLETE X501 THRUSTER
+
+
+    HAS SINCE BEEN 
+    REPLACED WITH 
+    SMALLER MODELS AND
+    LIGHTER CRAFT THAT ARE
+    MORE ENERGY EFFICIENT
+108488677170964366:TEXT!:+Text panel 5
+
+    RESEARCH STAFF ONLY
+119396907696605251:TEXT!:+Corner LCD 2 3
+           VIEWING THEATER
+91899503586440685:1:LCD Panel 15
+|Clouds
+89540866723022250:1:LCD Panel 16
+|Clouds
+78936412270830369:1:LCD Panel 4
+|Clouds
+139513180460721275:1:LCD Panel 5
+|Clouds
+123742114812299814:1:LCD Panel 6
+|Clouds
+72707843196346809:1:LCD Panel 7
+|Clouds
+84058947393377852:1:LCD Panel 8
+|Clouds
+124309978476859628:1:LCD Panel 9
+|Clouds
+85895320964444780:1:LCD Panel 11
+|Clouds
+117967784354173602:1:LCD Panel 12
+|Clouds
+128468555565951583:1:LCD Panel 13
+|Clouds
+107231006349635239:1:LCD Panel 14
+|Clouds
+142991621661418713:TEXT!:+Corner LCD 2 2
+                  STAFF ONLY
+91522547712251695:TEXT!:+Corner LCD Flat Top
+          FLIGHT SIMULATOR
+143206851131043050:1:LCD Panel 18
+|Galactic Corporation Logo
+86380250472251270:TEXT!:+Corner LCD Flat Bottom
+        RESEARCH CENTER 
+       AND EXHIBITION HALL
+-----SOUND
+84998344586050021:Sound Block Thruster Room:SoundBlockAlert2
+91070301367474416:Sound Block Simulator:AirplaneSound
+90629854631902381:Sound Block Hall:FlightResearchExhibition
+
+((Air Base Beta))
+GCorp Air Base:110760975034878882
+{X:1854615.90732834 Y:-2004429.32234722 Z:1324902.70932332}
+-----TEXTPANELS
+112758510039777665:1:LCD Panel
+|White screen
+89286622574862132:2:LCD Panel 13
+|Galactic Corporation Logo
+|Automation Simplified
+134369034551694237:1:LCD Panel 10
+|White screen
+123854290493211271:1:LCD Panel 11
+|White screen
+92090465192876545:1:LCD Panel 12
+|White screen
+124049218323244634:1:LCD Panel 21
+|White screen
+105924882812878610:1:LCD Panel 2
+|White screen
+126732934571328325:1:LCD Panel 3
+|White screen
+79947061782279707:1:LCD Panel 4
+|White screen
+134031052286519110:1:LCD Panel 5
+|Galactic Corporation Logo
+96396624796274254:1:LCD Panel 6
+|White screen
+139924959778564057:1:LCD Panel 7
+|White screen
+140492026301374232:1:LCD Panel 8
+|White screen
+121963229438904994:1:LCD Panel 9
+|White screen
+98111306433548199:1:LCD Panel 14
+|White screen
+99829297186976544:1:LCD Panel 15
+|White screen
+137345171402783222:1:LCD Panel 16
+|White screen
+126416468296301659:1:LCD Panel 17
+|White screen
+123937711744333365:1:LCD Panel 18
+|White screen
+131568789971588483:1:LCD Panel 19
+|White screen
+100495607327634727:1:LCD Panel 20
+|White screen
+110248027582971112:1:LCD Panel 22
+|White screen
+105606848476902641:2:LCD Panel 23
+|Galactic Corporation Logo
+|Automation Simplified
+76799967526030144:1:LCD Panel 24
+|White screen
+95649672873875369:1:LCD Panel 25
+|White screen
+110476778531329616:1:LCD Panel 26
+|White screen
+79184751522203470:1:LCD Panel 27
+|White screen
+72453511557680634:2:LCD Panel 40
+|Galactic Corporation Logo
+|Automation Simplified
+137794547000264987:2:LCD Panel 38
+|Galactic Corporation Logo
+|Automation Simplified
+96632462576256168:1:LCD Panel 37
+|Galactic Corporation Logo
+-----SOUND
+130193226083241264:Sound Block:WelcomeToGcorp
+
+
+((Ground Base Gamma))
+GCorp Ground Base:104401314853855872
+{X:1842262.65192125 Y:-1997679.86431159 Z:1325435.33849391}
+-----TEXTPANELS
+76035565694950164:1:LCD Panel
+|Galactic Corporation Logo
+115593264486057850:1:LCD Panel 3
+|Galactic Corporation Logo
+105777410721323302:TEXT!:+Text panel
+
+   HOVER BAY 1
+121427781681334923:1:LCD Panel 3
+|Galactic Corporation Logo
+112099608199088130:1:LCD Panel 4
+|Danger
+123227052822801862:TEXT!:+LCD Panel 5
+
+111094053846642500:TEXT!:+LCD Panel 6
+
+93442238558464001:TEXT!:+Text panel 3
+
+  RADIO TOWER
+79951589094314372:1:LCD Panel 14
+|White screen
+114732080644858080:1:LCD Panel 23
+|Galactic Corporation Logo
+88469166096099202:1:LCD Panel 15
+|White screen
+107264371269129585:1:LCD Panel 17
+|White screen
+122012564611597088:1:LCD Panel 18
+|White screen
+122126943388643118:1:LCD Panel 19
+|White screen
+96943105119013328:1:LCD Panel 20
+|White screen
+80363842659606422:1:LCD Panel 21
+|White screen
+124592037164886307:1:LCD Panel 22
+|White screen
+-----SOUND
+
+((weapons research))
+Static Grid 4529:77376648583814529
+{X:1843160.11904016 Y:-1996231.00164651 Z:1324459.70505303}
+-----TEXTPANELS
+107894675510683613:1:LCD Panel 2
+|Galactic Corporation Logo
+86237187701982214:1:LCD Panel 3
+|Automation Simplified
+87971351737406178:TEXT!:+Corner LCD Flat Top
+
+  STORAGE FACILITY MA-384
+83845427523798018:TEXT!:+Corner LCD Flat Top 2
+  LEVEL 8 CLEARANCE ONLY
+-----SOUND
+
+
+((Mainframe))
+Small Grid 285:92494735536959708
+{X:1843148.65843222 Y:-1996440.85293149 Z:1324513.64896695}
+-----TEXTPANELS
+76522016042037234:1:LCD Panel 4
+|Galactic Corporation Logo
+115250541776158553:TEXT!:+Text panel 10
+
+82961630773452080:TEXT!:+Text panel 8
+
+109269959562875925:TEXT!:+Text panel 7
+
+-----SOUND
+82762879450865423:Sound Block:IntruderRobot
+
+
+((wheeled vehicle in mainframe))
+GCorp Mobile SAM:82956013501475003
+{X:1843172.39280722 Y:-1996435.93935727 Z:1324493.19291226}
+-----TEXTPANELS
+89195368167800074:1:LCD Panel 3
+|Galactic Corporation Logo
+-----SOUND
+
+
+((Bunker in weapons Research))
+GCorp Bunker:132649980418733079
+{X:1843291.04608973 Y:-1996439.44943181 Z:1324491.09281518}
+-----TEXTPANELS
+78975817285695063:TEXT!:+LCD Panel Mgmn1
+Smythe, 
+ 
+The board wants to know when 
+we can acquire deeds on the 
+land around the other uranium 
+deposits. The information is 
+going to become common 
+knowledge any time now, one of 
+those colonists is sure to stumble
+onto one of them and set off a 
+gold rush. 
+ 
+Management
+93302907874761586:TEXT!:+LCD Panel Mgmn2
+Smythe, 
+ 
+Our news organisations have been
+set to discrediting the scientists 
+and suggesting their projects are 
+hoaxes and pyramid schemes to 
+make themselves rich. People 
+should have forgotten the climate 
+change scandals of the 20s by now. 
+We think it could gain traction with 
+our right wing audience and Earth 
+First parties. 
+
+Management
+128768918300188309:TEXT!:+LCD Panel Mgmn3
+Smythe, 
+ 
+The board has voted to take 
+exceptional measures to 
+protect our assets on Mars. 
+Your agent has clearance to 
+modify the air filtering systems 
+to flood the biodome with 
+excess nitrogen while all the 
+scientists are inside. 
+
+Make it look like an accident. 
+ 
+Management
+101085728829590847:TEXT!:+LCD Panel Smythe1
+Sir, 
+ 
+The agent has finished his task. He
+sabotaged their database and 
+emergency beacon, so it will be 
+hard for even the MRE to find the site.
+I have attached the coordinates.
+ 
+Smythe
+
+======================
+
+Coordinate data recovered and 
+added to your suit HUD - Mabel
+136093371177096394:TEXT!:+LCD Smythe2
+Sir, 
+ 
+I have disturbing reports from our 
+agent inside that a group of MRE
+scientists have had significant 
+success with a contained biodome.
+They landed an Iguana class freighter 
+today with soil nutrient supplies and 
+hydrolysis reactors to expand the 
+scale of their work. They haven't 
+gone public yet, but when they do it 
+will drive up land costs exponentially.
+
+Smythe
+130862794454016677:TEXT!:+LCD Panel Smythe 3
+Sir, 
+ 
+The auctions have been 
+delayed because the sellers 
+have realised land prices on 
+the planet are shooting up. 
+Those scientists promising to 
+build habitable domes and 
+terraform the planet are setting 
+off a frenzy of activity. We can 
+only expect more colonists and 
+rival bidders in the months to come. 
+ 
+Smythe
+102565050409374890:2:LCD Panel 8
+|Galactic Corporation Logo
+|Automation Simplified
+76555655031247133:2:LCD Panel 9
+|Galactic Corporation Logo
+|Automation Simplified
+82207545563969038:2:LCD Panel 10
+|Galactic Corporation Logo
+|Automation Simplified
+140611613672853263:2:LCD Panel 11
+|Galactic Corporation Logo
+|Automation Simplified
+103510832821425962:TEXT!:+Corner LCD Flat Bottom
+
+     MAINFRAME ACCESS
+124418170114666546:TEXT!:+Corner LCD Flat Bottom 2
+
+AUTHORISED TECHNICIANS ONLY
+125988292358464782:TEXT!:+Corner LCD Flat Bottom 3
+
+    RESEARCH STORAGE
+88608941859622846:TEXT!:+Corner LCD Flat Bottom 5
+
+    SCIENCE LEVEL 8 REQUIRED
+91069750493456357:TEXT!:+Corner LCD Flat Bottom 6
+
+         SECURITY OFFICE
+-----SOUND
+
+
+((MRE MedBay 2))
+MRE Emergency Medical Station:120085596920753880
+{X:1844533.71376673 Y:-1995424.91354928 Z:1323629.33162825}
+-----TEXTPANELS
+104050761648970549:1:LCD Panel 2
+|MRE Logo
+118625769002601328:TEXT!:+Corner LCD Flat Top 4
+   DR G.T.L PHOERA
+142327787680059637:TEXT!:+Corner LCD Flat Top 3
+      NURSE REXXAR
+-----SOUND
+
+((Tablet @ MedBay2))
+Small Nuclear Tablet:130403985545906009
+{X:1844536.52450498 Y:-1995419.80068475 Z:1323623.41810835}
+-----TEXTPANELS
+86242283427338241:TEXT!:+Text panel
+Nurse,
+
+ We have a patient with 
+ serious radiation burns,
+ please see to him as soon
+ as you get in. 
+=======================
+ 
+ DON'T WORRY DOCTOR,
+ I FIX, I FIX - Nurse R
+-----SOUND
+
+
+((Signal Station @ Medbay2))
+Signal Station:139030682896359375
+{X:1844500.54997961 Y:-1995403.72976435 Z:1323630.52767273}
+-----TEXTPANELS
+132717438306395557:1:LCD Panel
+|MRE Logo
+-----SOUND
+
+
+((Sam around HQ))
+GCorp Mobile SAM:72406769084247401
+{X:1856577.01869837 Y:-1999257.98373971 Z:1321414.17733138}
+-----TEXTPANELS
+110250540272021112:1:LCD Panel 3
+|Galactic Corporation Logo
+-----SOUND
+
+((Turret platform around HQ))
+GCorp Turret Platform:85156296664558463
+{X:1857176.1781222 Y:-2000013.37619576 Z:1321553.01815169}
+-----TEXTPANELS
+89933889116515952:1:LCD Panel 2
+|Galactic Corporation Logo
+-----SOUND
+
+((HQ))
+GCorp HQ Tower:144104082158837389
+{X:1857310.65834681 Y:-1999316.80991158 Z:1321066.96761458}
+-----TEXTPANELS
+125129893494374181:1:LCD Panel
+|White screen
+134131747655270782:1:LCD Panel 2
+|White screen
+74727284886995000:1:LCD Panel 3
+|White screen
+98708608904781783:1:LCD Panel 4
+|White screen
+138656136990359379:1:LCD Panel 5
+|White screen
+80870473015345748:1:LCD Panel 6
+|Galactic Corporation Logo
+98370398719554346:1:LCD Panel 7
+|White screen
+80724503483430325:1:LCD Panel 8
+|White screen
+87324639907322082:1:LCD Panel 9
+|White screen
+110549946960318740:2:LCD Panel 10
+|Galactic Corporation Logo
+|Automation Simplified
+77156731804052289:TEXT!:+LCD Panel 11
+
+  Scanning for unregistered
+  lifeforms.
+
+  Terminate non-GCorp 
+  personnel in Sector 10
+86219020590604754:TEXT!:+LCD Panel 12
+
+  New directive:
+  Increase transport escorts
+80579136508264863:TEXT!:+LCD Panel 13
+
+  Request:
+  Additional Combat Drones 
+  Mars HQ 
+  Mars Outposts
+142669794308472999:TEXT!:+LCD Panel 14
+
+  Shipment never arrived: 
+  Computers for Mainframe
+118563652526806529:TEXT!:+LCD Panel 15
+
+  Missing transport in
+  Sector 11!
+108740138683771799:TEXT!:+LCD Panel 16
+
+  Warning: Suspicious activity 
+  detected in sector 15!
+142860245424722839:2:LCD Panel 18
+|Galactic Corporation Logo
+|Automation Simplified
+117922822138601150:2:LCD Panel 20
+|Galactic Corporation Logo
+|Automation Simplified
+84893899376328615:TEXT!:+Corner LCD Flat Bottom
+    CONTROL ROOM
+127812487651012015:1:LCD Panel 21
+|Arrow
+76722197005722112:TEXT!:+Text panel
+
+    Maintainence 
+        Only
+85372231632250420:TEXT!:+Corner LCD Flat Bottom 2
+ TECHNICIANS ONLY
+-----SOUND
+95872484442737911:Sound Block:SoundBlockAlert1
+82604291774017685:Sound Block 2:WelcomeToGcorp
+
+
+
+((HQ Rocket))
+GCorp Space Transport:97585502667028994
+{X:1857324.30678431 Y:-1999293.08872018 Z:1321075.17171614}
+-----TEXTPANELS
+119027964533267043:TEXT!:+LCD Panel Power [LCD]
+Status Report
+
+Power
+Reactors:                                                     0W / 15 MW
+[''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''']   0.0%
+Batteries:                                (IN 0W / OUT 576.4 kW)
+  Stored:                                              12 MWh / 12 MWh
+[|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||] 100.0%
+  Output:                                           576.4 kW / 48 MW
+[|'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''']    1.2%
+  Input:                                                         0W / 48 MW
+[''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''']   0.0%
+Total Output:                                    576.4 kW / 63 MW
+[''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''']   0.9%
+
+Hydrogen Tanks                                             100.00%
+[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]
+Oxygen Tanks                                                100.00%
+[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]
+
+85854553194821606:TEXT!:+Text panel 2
+
+    SAFETY NOTICE
+
+    MIND YOUR HEAD
+
+
+
+
+   
+    GCORP
+84842282397051154:TEXT!:+Text panel 3
+
+    ENGINEERING ACCESS
+    ONLY
+
+
+
+
+
+
+    GCORP
+94269895163860597:TEXT!:+LCD Panel 3
+    
+    MEDICAL SCANNER
+    
+    STATUS: READY
+
+    PATIENT: NOT FOUND
+
+
+100199375462012403:TEXT!:+Text panel 6
+ 
+    MEDBAY 
+ <---------| 
+ 
+ 
+ 
+    ENGINEERING 
+            |----------->
+140053056838285883:TEXT!:+Text panel 7
+ 
+    BRIDGE
+            |----------->
+140237983630899577:1:LCD Panel 66
+|Galactic Corporation Logo
+105805752262318800:1:Wide LCD panel
+|Arrow
+104593951810486921:2:LCD Panel 8
+|Galactic Corporation Logo
+|Automation Simplified
+141641456443241951:2:LCD Panel 9
+|Galactic Corporation Logo
+|Automation Simplified
+101582007425482292:2:LCD Panel 10
+|Galactic Corporation Logo
+|Automation Simplified
+80366112655444611:1:LCD Panel 10
+|Galactic Corporation Logo
+-----SOUND
+
+((another HQ SAM))
+GCorp Mobile SAM:104043950566026386
+{X:1858538.51759973 Y:-1999989.95859322 Z:1320777.02901595}
+-----TEXTPANELS
+120326586562634149:1:LCD Panel 3
+|Galactic Corporation Logo
+-----SOUND
+
+((and another HQ SAM))
+GCorp Mobile SAM:89611551362269325
+{X:1857213.83363977 Y:-1998518.53635201 Z:1320657.55013411}
+-----TEXTPANELS
+95067624877541028:1:LCD Panel 3
+|Galactic Corporation Logo
+-----SOUND
+
+
+((greenhouse))
+Greenhouse:96168797372101546
+{X:1851938.46085687 Y:-2001110.32805758 Z:1324438.02342954}
+-----TEXTPANELS
+110846399081478285:1:LCD Panel 2
+|MRE Logo
+-----SOUND
+
+
+
+
+((MIKI))
+Miki Scrap:135216604045890710
+{X:1862876.12489954 Y:-2006486.74997506 Z:1321379.12508528}
+-----TEXTPANELS
+123167881858177673:TEXT!:+Out of Order LCD
+    
+     OUT OF
+    
+     ORDER
+81986956045310309:1:LCD Panel 5
+|MikiScrap
+103164071082162108:1:LCD Panel 7
+|MikiScrap
+120342266177165062:1:LCD Panel 9
+|MikiScrap
+96762650175047086:1:LCD Panel 6
+|MikiScrap
+78808963600022563:1:LCD Panel 10
+|MikiScrap
+102592293973822089:1:LCD Panel 14
+|MikiScrap
+101437493495586418:TEXT!:+LCD Panel Scrap Metal
+    
+  SCRAP METAL 
+    RECYCLING
+121136226635016280:1:LCD Panel 7
+|Arrow
+123209375839748933:TEXT!:+Text panel Customer Control
+    
+    CUSTOMER 
+
+      CONTROL 
+
+        STATION
+112721174565728932:TEXT!:+FURNACE_LCD
+      Drop
+     unwanted
+  vehicles and
+   large items
+  into furnace
+93732106466977771:1:LCD Panel 8
+|MikiScrap
+119196087123513740:1:LCD Panel 9
+|MikiScrap
+115470908890383058:1:LCD Panel 10
+|MikiScrap
+84905149027762603:1:LCD Panel 15
+|MikiScrap
+108840172688336316:TEXT!:+LCD Panel large Waste
+
+    VEHICLES AND OILY 
+    WASTE
+
+    CONSTRUCTION AND 
+    DEMOLITION DEBRIS
+
+    ELECTRONIC AND 
+    MECHANICAL EQUIPMENT
+
+    DEACTIVATED DRONES
+    AND MECHS
+103212147313890166:1:LCD Panel 12
+|Danger
+76406197443828147:1:LCD Panel 34
+|Danger
+105763960019064053:1:LCD Panel 33
+|Danger
+115252044562429817:1:LCD Panel 36
+|Danger
+109170013597609567:1:LCD Panel 35
+|Danger
+111924674388302700:TEXT!:+FURNACE_LCD
+      Drop
+     unwanted
+  vehicles and
+   large items
+  into furnace
+139455670524903855:TEXT!:+LCD Panel Dispenser
+
+    USE CONTROL STATION
+    TO ADJUST DISPENSER
+    POSITION
+
+    USE RELEASE COMMAND
+    WHEN READY TO RECIEVE 
+    GOODS
+
+    DISABLE RELEASE AFTER
+    FOR NEXT CUSTOMER!
+73748511314883089:1:LCD Panel 13
+|MikiScrap
+108707493869969783:1:LCD Panel 25
+|MikiScrap
+107003280298094914:1:LCD Panel 24
+|MikiScrap
+93717234609661072:1:LCD Panel 25
+|MikiScrap
+100685062896355827:1:LCD Panel 27
+|MikiScrap
+115445256264180919:TEXT!:+Corner LCD Flat Bottom 2
+  CRANE
+Lower/Lift
+112112793066134801:TEXT!:+Corner LCD Flat Bottom 2
+  ROTATE
+Start/Stop
+108450012927909707:TEXT!:+Corner LCD Flat Bottom 3
+  ROTATE
+ Reverse
+128143755055297004:TEXT!:+Corner LCD Top 5
+LIGHTS
+106394285460413007:TEXT!:+Corner LCD Top 2
+  Extender
+  Reverse
+96403258546369540:TEXT!:+Corner LCD Top 3
+  Extender
+   On/Off
+110853790184710627:TEXT!:+Corner LCD Top 4
+RELEASE
+-----SOUND
+129379111872365143:Sound Block Entrance:Carmen
+140249950038454545:MIKISCRAP_SPEAKER:LavaLoop

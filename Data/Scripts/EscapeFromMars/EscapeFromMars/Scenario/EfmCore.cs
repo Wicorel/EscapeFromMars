@@ -13,8 +13,8 @@ namespace EscapeFromMars
 	[MySessionComponentDescriptor(MyUpdateOrder.BeforeSimulation)]
 	public class EfmCore : AbstractCore<SaveData>
 	{
-		// Current mod version, increased each time before workshop publish
-		private const int CurrentModVersion = 9;
+        // Current mod version, increased each time before workshop publish
+        private const int CurrentModVersion = 11;
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7);
@@ -34,6 +34,8 @@ namespace EscapeFromMars
 		{
 			MyAPIGateway.Utilities.ShowNotification("Initialising Escape From Mars build " + CurrentModVersion, 10000,
 				MyFontEnum.DarkBlue);
+            ModLog.Info("Initialising Escape From Mars build " + CurrentModVersion);
+
 			hudTextApi = new HUDTextAPI(11873852597);
 			if (modBuildWhenGameStarted > 4)
 			{

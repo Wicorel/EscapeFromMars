@@ -12,7 +12,7 @@ namespace EscapeFromMars
 		private readonly IMyRemoteControl remoteControl;
 		private readonly IMyCubeGrid rotorMountedGrid;
 		private readonly IMyMotorStator rotor;
-		private readonly Vector3D position; // Turrets like this don't move
+//		private readonly Vector3D position; // Turrets like this don't move
 		private bool arePlayersNear;
 
 		internal TurretSingleAxis(IMyRemoteControl remoteControl, IMyCubeGrid rotorMountedGrid, IMyMotorStator rotor)
@@ -20,13 +20,18 @@ namespace EscapeFromMars
 			this.remoteControl = remoteControl;
 			this.rotorMountedGrid = rotorMountedGrid;
 			this.rotor = rotor;
-			position = rotorMountedGrid.GetPosition();
+//			position = rotorMountedGrid.GetPosition();
 		}
 
 		public void Update60()
 		{
-			var player = DuckUtils.GetNearestPlayerToPosition(position, 500);
-			arePlayersNear = player != null;
+//            var player = DuckUtils.GetNearestPlayerToPosition(position, 500);
+            // change in EFM V 10: allow moveable custom turrets
+            var player = DuckUtils.GetNearestPlayerToPosition(rotorMountedGrid.GetPosition(), 300);
+            arePlayersNear = player != null;
+
+            // NOTE: gun is shot by sensor on gun turret..
+            // so max range of gun is only 50m since that's max range of sensor...
 		}
 
 		public void Update1()
@@ -41,8 +46,9 @@ namespace EscapeFromMars
 				return; // No point bothering to remove from the list, it will disappear next time the game reloads
 			}
 
-			var player = DuckUtils.GetNearestPlayerToPosition(position, 300);
-			if (player == null)
+//            var player = DuckUtils.GetNearestPlayerToPosition(position, 300);
+            var player = DuckUtils.GetNearestPlayerToPosition(rotorMountedGrid.GetPosition(), 100);
+            if (player == null)
 			{
 				return;
 			}
