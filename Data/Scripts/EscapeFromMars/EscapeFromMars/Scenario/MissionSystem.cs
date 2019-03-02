@@ -5,6 +5,8 @@ using VRage.Game.ModAPI;
 using VRageMath;
 using System.Linq;
 using Duckroll;
+using VRage.Game;
+using Sandbox.Game;
 
 namespace EscapeFromMars
 {
@@ -23,8 +25,17 @@ namespace EscapeFromMars
 		private readonly Vector3D commsSatellite = new Vector3D(1891129.38, -1979974.88, 1354187);
 		private readonly Vector3D explosivesOnWalls = new Vector3D(1843157.25, -1996289, 1324475.75);
 		private readonly Vector3D weaponsResearchStationCoords = new Vector3D(1843160.75, -1996228.88, 1324462.88);
-		private readonly Vector3D computerSystems = new Vector3D(1843299.62, -1996457, 1324488.5);
-		private readonly Vector3D mreBaseEntrance = new Vector3D(1858392, -1989135.38, 1312694.25);
+
+        // computer systems in weaponsResearchStation
+        private readonly Vector3D computerSystems = new Vector3D(1843299.62, -1996457, 1324488.5);
+        private readonly Vector3D GBAlphacomputerSystems = new Vector3D(1861360.78, -2010357.91, 1323716.37);
+        private readonly Vector3D GBGammacomputerSystems = new Vector3D(1842216.2, -1997678.66, 1325445.14);
+
+        //GPS:Computer Systems GB Alpha:1861360.78:-2010357.91:1323716.37:
+        // GB Beta is close to crash site... too close=too early
+        //GPS:Computer Systems GB Gamma:1842216.2:-1997678.66:1325445.14:
+
+        private readonly Vector3D mreBaseEntrance = new Vector3D(1858392, -1989135.38, 1312694.25);
 		private readonly Vector3D mreElevator = new Vector3D(1858371.88, -1989136.88, 1312675.25);
 		private readonly Vector3D oldFreighter = new Vector3D(1858216.25, -1988904.25, 1312611.88);
 		private readonly Vector3D hiddenMreBase = new Vector3D(1858396.5, -1989138.38, 1312713.25);
@@ -32,6 +43,8 @@ namespace EscapeFromMars
 		private readonly Vector3D insideIceMine = new Vector3D(1869177.88, -2004855, 1316428.12);
 		private readonly Vector3D mreMedFacility1 = new Vector3D(1857942.38, -2006158.62, 1324054);
 		private readonly Vector3D droneWreck = new Vector3D(1854936.75, -2006193.25, 1325297.5);
+
+        // GPS:Opportunity:1859277.56:-2019476.58:1327135.68:
 
 		private readonly QueuedAudioSystem audioSystem;
 		private readonly ResearchControl researchControl;
@@ -42,6 +55,10 @@ namespace EscapeFromMars
 		private readonly List<LocationBasedMissionPrompt> locationbasedMissionPrompts =
 			new List<LocationBasedMissionPrompt>();
 
+        private readonly HashSet<long> desiredEntityIDs;
+
+         List<IMyTerminalBlock> cachedTerminalBlocks = new List<IMyTerminalBlock>();
+
 		internal MissionSystem(long missionStartTimeBinary, HashSet<int> alreadyExecutedPrompts,
 			QueuedAudioSystem audioSystem, ResearchControl researchControl)
 		{
@@ -49,11 +66,14 @@ namespace EscapeFromMars
 			this.researchControl = researchControl;
 			missionStartTime = DateTime.FromBinary(missionStartTimeBinary);
 			excludedIDs = alreadyExecutedPrompts;
-			GeneratePrompts();
+            desiredEntityIDs = new HashSet<long>();
+            GeneratePrompts();
 			timeBasedPrompts.Sort((x, y) => -x.TriggerTime.CompareTo(y.TriggerTime));
-		}
 
-		internal long GetMissionStartTimeBinary()
+            ModLog.Info("Start Time = " + missionStartTime.ToString());
+        }
+
+        internal long GetMissionStartTimeBinary()
 		{
 			return missionStartTime.ToBinary();
 		}
@@ -66,13 +86,112 @@ namespace EscapeFromMars
 		// Adds should be kept in order and never removed or reordered to after release, but can be added to!
 		private void GeneratePrompts()
 		{
-			AddTimePrompt(10, new TimeSpan(0, 0, 10),
+            // Crash medbay: 79910699489349926
+            // Crach Battery: 128751162949284485
+            // Crash Oxygen Generator: 73692089107568958
+
+            // Crash LCD Panel1 Outgoing Transmission: 121786820996539580
+            // Crash LCD Panel Incoming Transmission: 128623467162369040
+            // Crash LCD Panel Friendly Fire: 79781732474214152
+            // Crash LCD Panel Autolog: 142828776791892368
+            // Crash LCD Panel Tools Locker: 110371608100898677
+            // Crash LCD Panel Build Guide: 80461927256500036
+            // Crash LCD Panel Emergency Supplies: 87005598531295535
+            // Crash LCD Panel Spare Parts: 143319951822334717
+            // Crash Alarm Sound: 113240311055457124
+
+            long medbayID = 79910699489349926;
+            long batteryID = 128751162949284485;
+            long gasGenID=73692089107568958;
+
+            long outgoingID = 121786820996539580;
+            long icomingID = 128623467162369040;
+            long friendlyFireID = 79781732474214152;
+            long autologID = 142828776791892368;
+            long toolsLockerID = 110371608100898677;
+            long buildGuideID = 80461927256500036;
+            long emergencySuppliesID = 87005598531295535;
+            long sparePartsID = 143319951822334717;
+            long alarmSoundID = 113240311055457124;
+
+
+
+            AddInterest(outgoingID);
+            AddInterest(icomingID);
+            AddInterest(friendlyFireID);
+            AddInterest(autologID);
+            AddInterest(toolsLockerID);
+            AddInterest(buildGuideID);
+            AddInterest(emergencySuppliesID);
+            AddInterest(sparePartsID);
+            AddInterest(alarmSoundID);
+            AddInterest(medbayID);
+            AddInterest(batteryID);
+            AddInterest(gasGenID);
+            ModLog.Info("AddedInterest()");
+
+            AddTimePrompt(1, new TimeSpan(0, 0, 1),
+            TurnBlockOff(outgoingID),
+            TurnBlockOff(icomingID),
+            TurnBlockOff(friendlyFireID),
+            TurnBlockOff(autologID),
+            TurnBlockOff(toolsLockerID),
+            TurnBlockOff(buildGuideID),
+            TurnBlockOff(emergencySuppliesID),
+            TurnBlockOff(sparePartsID),
+            TurnBlockOff(alarmSoundID),
+            TurnBlockOff(medbayID),
+            TurnBlockOff(batteryID),
+            TurnBlockOff(gasGenID)
+                );
+
+            // battery
+
+            AddTimePrompt(5, new TimeSpan(0, 0, 5),
 				PlayAudioClip(AudioClip.ShuttleDamageReport));
 
-			AddTimePrompt(20, new TimeSpan(0, 3, 0),
-				PlayAudioClip(AudioClip.ShuttleDatabanks));
+            AddTimePrompt(7, new TimeSpan(0, 0, 11), TurnBlockOn(batteryID), PlayAudioClip(AudioClip.MabelPowerUpClipped));
 
-			AddTimePrompt(30, new TimeSpan(0, 5, 0),
+
+            // Medbay and gas Gen
+            AddTimePrompt(11, new TimeSpan(0, 0, 22), TurnBlockOn(medbayID), TurnBlockOn(gasGenID));
+
+            AddTimePrompt(12, new TimeSpan(0, 0, 24), PlayAudioClip(AudioClip.MabelUncoveringFiles));
+
+            // autolog
+            AddTimePrompt(13, new TimeSpan(0, 0, 28), TurnBlockOn(autologID));
+
+            // Friendly Fire
+            AddTimePrompt(14, new TimeSpan(0, 0, 35), TurnBlockOn(friendlyFireID));
+            // sound block
+            AddTimePrompt(15, new TimeSpan(0, 0, 36), TurnBlockOn(alarmSoundID));
+
+            // cargo LCD nameplates
+            AddTimePrompt(16, new TimeSpan(0, 0, 40), TurnBlockOn(emergencySuppliesID), TurnBlockOn(sparePartsID), TurnBlockOn(toolsLockerID));
+
+            AddTimePrompt(17, new TimeSpan(0, 0, 45), PlayAudioClip(AudioClip.MabelUncoveringFiles));
+            // incoming transmission
+            AddTimePrompt(18, new TimeSpan(0, 0, 50), TurnBlockOn(icomingID));
+            // outgoing transmission
+            AddTimePrompt(19, new TimeSpan(0, 0, 60), TurnBlockOn(outgoingID));
+
+            
+            AddTimePrompt(20, new TimeSpan(0, 3, 0),
+                PlayAudioClip(AudioClip.ShuttleDatabanks)
+                );
+            AddTimePrompt(21, new TimeSpan(0, 3, 5),
+                TurnBlockOn(buildGuideID)
+                );
+
+            /*
+            AddTimePrompt(21, new TimeSpan(0, 1, 1),
+                AddObjectiveGps("Communications Satellite", "Mars Communications Satellite", commsSatellite, Color.LawnGreen),
+                AddObjectiveGps("G-Corp Headquarters", "This area is extremely dangerous", gCorpHqTower, Color.LightBlue),
+                AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue)
+                );
+                */
+
+            AddTimePrompt(30, new TimeSpan(0, 5, 0),
 				PlayAudioClip(AudioClip.GCorpBlockingSignals));
 
 			AddTimePrompt(40, new TimeSpan(0, 10, 0),
@@ -84,7 +203,7 @@ namespace EscapeFromMars
 				AddGps("GCorp Ice Mine", "Mars ice mining facility", iceMineCoords));
 
 			AddTimePrompt(45, new TimeSpan(0, 15, 0),
-				PlayAudioClip(AudioClip.ArmorVehicles));
+				PlayAudioClip(AudioClip.ArmorVehicles),TurnBlockOn(80461927256500036));
 
 			AddTimePrompt(50, new TimeSpan(0, 40, 0),
 				PlayAudioClip(AudioClip.InterceptingTransmissions));
@@ -103,8 +222,9 @@ namespace EscapeFromMars
 			AddTimePrompt(80, new TimeSpan(3, 0, 0),
 				PlayAudioClip(AudioClip.MarsGCorpOperationsExplained));
 
-			AddTimePrompt(90, new TimeSpan(5, 0, 0),
-				PlayAudioClip(AudioClip.WeaponsResearchFacility),
+//            AddTimePrompt(90, new TimeSpan(5, 0, 0),
+            AddTimePrompt(90, new TimeSpan(4, 0, 0), // Changed V12 Reduce time to reveal
+                PlayAudioClip(AudioClip.WeaponsResearchFacility),
 				AddGps("Secret Weapon Research Facility", "Illegal GCorp Research Facility", weaponsResearchStationCoords));
 
 			AddProximityPrompt(90, weaponsResearchStationCoords, 200,
@@ -113,7 +233,7 @@ namespace EscapeFromMars
 
 			AddTimePrompt(100, new TimeSpan(6, 0, 0),
 				PlayAudioClip(AudioClip.NotifyOfSatellite),
-				AddGps("Communications Satellite", "Mars Communications Satellite", commsSatellite));
+				AddObjectiveGps("Communications Satellite", "Mars Communications Satellite", commsSatellite,Color.LawnGreen));
 
 			AddTimePrompt(110, new TimeSpan(7, 0, 0),
 				PlayAudioClip(AudioClip.RingAroundMars));
@@ -130,9 +250,12 @@ namespace EscapeFromMars
 				PlayAudioClip(AudioClip.GCorpFacilitiesHeavilyArmed));
 
 			AddProximityPrompt(140, gCorpHqTower, 3000,
-				PlayAudioClip(AudioClip.GCorpTowerScan));
+				PlayAudioClip(AudioClip.GCorpTowerScan),
+                AddObjectiveGps("G-Corp Headquarters", "This area is extremely dangerous",gCorpHqTower,Color.LightBlue)
+                );
 
-			AddProximityPrompt(150, iceMineCoords, 130,
+
+            AddProximityPrompt(150, iceMineCoords, 130,
 				PlayAudioClip(AudioClip.TurretsAtTheMine));
 
 			AddProximityPrompt(160, oldFreighter, 80,
@@ -150,9 +273,17 @@ namespace EscapeFromMars
 			AddProximityPrompt(200, computerSystems, 13,
 				PlayAudioClip(AudioClip.FoundFilesOnNetwork),
 				AddGps("GCorp hidden file contents", "Hidden files found by Mabel", computerSystems),
-				AddGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase));
+				AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue));
 
-			AddProximityPrompt(210, commsSatellite, 9000,
+            // V 12 Add other ways to find out about MRE base.  The two 'far' ground bases have computer systems that reveal the location
+            AddProximityPrompt(200, GBAlphacomputerSystems, 13,
+                PlayAudioClip(AudioClip.FoundFilesOnNetwork),
+                AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue));
+            AddProximityPrompt(200, GBGammacomputerSystems, 13,
+                PlayAudioClip(AudioClip.FoundFilesOnNetwork),
+                AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue));
+
+            AddProximityPrompt(210, commsSatellite, 9000,
 				PlayAudioClip(AudioClip.EscapedMars));
 
 			AddProximityPrompt(220, commsSatellite, 250, // reduced from 500 to allow satelite turret to kill incoming players in jetpack.
@@ -180,7 +311,10 @@ namespace EscapeFromMars
 
 		private Action PlayAudioClip(IAudioClip clip)
 		{
-			return () => { audioSystem.PlayAudio(clip); };
+            return () => {
+                audioSystem.PlayAudio(clip);
+//                ModLog.Info("PlayAudioClip(" + clip.Filename + ")");
+            };
 		}
 
 		internal static Action AddGps(string name, string description, Vector3D coords)
@@ -188,7 +322,76 @@ namespace EscapeFromMars
 			return () => { DuckUtils.AddGpsToAllPlayers(name, description, coords); };
 		}
 
-		internal Action UnlockAllTech()
+        internal static Action AddObjectiveGps(string name, string description, Vector3D coords, Color color)
+        {
+            return () => { MyVisualScriptLogicProvider.AddGPSObjectiveForAll(name, description, coords, color); };
+        }
+
+
+        internal void AddInterest(long EntityId)
+        {
+            // register our interest in finding this entity ID later in TerminalBlocks
+            desiredEntityIDs.Add(EntityId);
+        }
+
+        private Action SetTextPanel(long panelID, string text)
+        {
+//            ModLog.Info("SetTextPanel("+panelID+")");
+
+            return () => {
+                foreach (IMyTerminalBlock tb in cachedTerminalBlocks)
+                {
+                    if(tb.EntityId==panelID)
+                    {
+                        var panel = tb as IMyTextPanel;
+                        if (panel!=null)
+                        {
+                            panel.WritePublicText(text);
+                        }
+                        break; // we found the only one
+                    }
+                }
+            };
+        }
+        private Action TurnBlockOn(long blockID)
+        {
+            return () => {
+//                ModLog.Info("TurnBlockOn(" + blockID + ")");
+//                ModLog.Info(cachedTerminalBlocks.Count.ToString() + " Cached Blocks");
+                foreach (IMyTerminalBlock tb in cachedTerminalBlocks)
+                {
+                    if (tb.EntityId == blockID)
+                    {
+                        IMyFunctionalBlock fb = tb as IMyFunctionalBlock;
+                        if (fb != null) fb.Enabled = true;
+//                        ModLog.Info("Found");
+                        break; // we found the only one
+                    }
+                }
+
+            };
+        }
+        private Action TurnBlockOff(long blockID)
+        {
+            return () => {
+//                ModLog.Info("TurnBlockOff(" + blockID + ")");
+//                ModLog.Info(cachedTerminalBlocks.Count.ToString() + " Cached Blocks");
+                foreach (IMyTerminalBlock tb in cachedTerminalBlocks)
+                {
+                    if (tb.EntityId == blockID)
+                    {
+                        IMyFunctionalBlock fb =tb as IMyFunctionalBlock;
+                        if(fb!=null) fb.Enabled = false;
+//                        ModLog.Info("Found");
+                        break; // we found the only one
+                    }
+                }
+//                ModLog.Info("Not Found");
+            };
+        }
+
+
+        internal Action UnlockAllTech()
 		{
 			return () =>
 			{
@@ -199,15 +402,16 @@ namespace EscapeFromMars
 			};
 		}
 
-		private void AddTimePrompt(int id, TimeSpan timeIntoGameTriggered, params Action[] actions)
+		private bool AddTimePrompt(int id, TimeSpan timeIntoGameTriggered, params Action[] actions)
 		{
 			if (excludedIDs.Contains(id))
 			{
-				return;
+				return false;
 			}
 			var prompt = new TimeBasedMissionPrompt(id, new List<Action>(actions), missionStartTime + timeIntoGameTriggered,
 				excludedIDs);
 			timeBasedPrompts.Add(prompt);
+            return true;
 		}
 
 		private void AddProximityPrompt(int id, Vector3D locationVector, double distance, params Action[] actions)
@@ -266,14 +470,70 @@ namespace EscapeFromMars
 			var prompt = timeBasedPrompts[timeBasedPrompts.Count - 1];
 			if (MyAPIGateway.Session.GameDateTime >= prompt.TriggerTime)
 			{
+//                ModLog.Info("Time trigger " + prompt.ToString());
 				prompt.Run();
 				timeBasedPrompts.RemoveAt(timeBasedPrompts.Count - 1);
 				excludedIDs.Add(prompt.Id); // Never trigger this again
 			}
 		}
-	}
 
-	internal abstract class MissionPrompt
+        /// <summary>
+        /// On grid creation, walk the grid and find terminal blocks of interest
+        /// </summary>
+        /// <param name="grid"></param>
+        public override void GridInitialising(IMyCubeGrid grid)
+        {
+//            ModLog.Info("GridInit:"+grid.EntityId.ToString());
+//            ModLog.Info(desiredEntityIDs.Count + " Desired Blocks");
+            var slimBlocks = new List<IMySlimBlock>();
+            grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyTerminalBlock);
+            /*
+            if (grid.EntityId == 92770753627258475) // crash ship
+            {
+                ModLog.Info("Found Crash Ship");
+                ModLog.Info(desiredEntityIDs.Count + " Desired Blocks");
+                foreach (var l in desiredEntityIDs)
+                {
+                    ModLog.Info(l.ToString());
+                }
+                ModLog.Info(slimBlocks.Count + "  Slim Blocks");
+            }
+            */
+            foreach (var slim in slimBlocks)
+            {
+                IMyTerminalBlock tb = slim.FatBlock as IMyTerminalBlock;
+
+                if (tb == null)
+                {
+                    /*
+                    if (grid.EntityId == 92770753627258475) // crash ship
+                    {
+                        ModLog.Info("Crash: Skipping" + slim.FatBlock.ToString());
+
+                    }
+                    */
+                    //                   continue;
+                }
+                else
+                {
+                    /*
+                    if (grid.EntityId == 92770753627258475) // crash ship
+                    {
+                        ModLog.Info("Checking Block:" + tb.EntityId.ToString());
+                    }
+                    */
+                    if (desiredEntityIDs.Contains(tb.EntityId))
+                    {
+//                        ModLog.Info("Found desired Entity:" + tb.EntityId.ToString());
+
+                        cachedTerminalBlocks.Add(tb);
+                    }
+                }
+            }
+        }
+    }
+
+    internal abstract class MissionPrompt
 	{
 		internal int Id { get; }
 		private readonly List<Action> actions;

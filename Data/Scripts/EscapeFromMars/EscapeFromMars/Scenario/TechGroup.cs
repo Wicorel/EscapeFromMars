@@ -8,6 +8,7 @@ namespace EscapeFromMars
 		OxygenFarm,
 		GasStorage,
 
+        BasicWeapons,
 
 		Permabanned // Leave as last!
 	}

@@ -45,10 +45,19 @@ namespace EscapeFromMars
 			AddHackingLocation(TechGroup.GasStorage, new Vector3D(1869167.75,-2004920.12,1316376.38));
 			AddHackingLocation(TechGroup.Rockets, new Vector3D(1843300.12,-1996436.5,1324474.12));
 			AddHackingLocation(TechGroup.OxygenFarm, new Vector3D(1851936.75,-2001115.25,1324439.75));
-			AddHackingLocation(TechGroup.OxygenGenerators, new Vector3D(1869136.62,-2004926.38,1316339.62));
-		}
+            AddHackingLocation(TechGroup.OxygenGenerators, new Vector3D(1869136.62, -2004926.38, 1316339.62));
 
-		private void AddHackingLocation(TechGroup techGroup, Vector3D coords)
+            // EFM V 12 (mainly to demo the unlocking early in the game)
+            //GPS: Gatling Crash:1868130.53:-2003476.19:1316621.55:
+            AddHackingLocation(TechGroup.BasicWeapons, new Vector3D(1868130.53, -2003476.19, 1316621.55));
+
+            // GPS:Opportunity:1859277.56:-2019476.58:1327135.68:
+
+
+
+        }
+
+        private void AddHackingLocation(TechGroup techGroup, Vector3D coords)
 		{
 			if (!researchControl.UnlockedTechs.Contains(techGroup))
 			{

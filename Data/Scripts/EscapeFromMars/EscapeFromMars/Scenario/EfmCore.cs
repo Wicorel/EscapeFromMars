@@ -14,7 +14,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 11;
+        private const int CurrentModVersion = 12;
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7);
@@ -32,11 +32,21 @@ namespace EscapeFromMars
 
 		protected override void InitCommon(IModSystemRegistry modSystemRegistry)
 		{
-			MyAPIGateway.Utilities.ShowNotification("Initialising Escape From Mars build " + CurrentModVersion, 10000,
-				MyFontEnum.DarkBlue);
+			MyAPIGateway.Utilities.ShowNotification("Initialising Escape From Mars build " + CurrentModVersion, 10000, MyFontEnum.DarkBlue);
             ModLog.Info("Initialising Escape From Mars build " + CurrentModVersion);
 
-			hudTextApi = new HUDTextAPI(11873852597);
+
+            bool bResearch = Session.SessionSettings.EnableResearch;
+
+            // This works to change the setting.
+            Session.SessionSettings.EnableResearch = true;
+
+            if (!bResearch)
+            {
+//                MyAPIGateway.Utilities.ShowNotification("Save, then Exit. Edit world /Advanced settings and Enable progression", 50000, MyFontEnum.Red);
+                ModLog.Info("Research was not turned on");
+            }
+            hudTextApi = new HUDTextAPI(11873852597);
 			if (modBuildWhenGameStarted > 4)
 			{
 				DuckUtils.PutPlayerIntoFaction("CRASH");

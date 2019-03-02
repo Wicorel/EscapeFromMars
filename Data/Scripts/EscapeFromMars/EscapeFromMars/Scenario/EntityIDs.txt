@@ -1322,3 +1322,1526 @@ RELEASE
 -----SOUND
 129379111872365143:Sound Block Entrance:Carmen
 140249950038454545:MIKISCRAP_SPEAKER:LavaLoop
+
+
+
+
+
+Crash Ship.
+
+
+Landing Gear
+MyLandingGear {1ABDE0D77A556F1} Landing Gear
+120433964478715633
+TyepID=MyObjectBuilder_LandingGear
+SubtyepID=LargeBlockLandingGear
+Mass=3304
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Landing Gear
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+Lock:Lock(Unlocked)
+Unlock:Unlock(Unlocked)
+SwitchLock:Switch lock(Unlocked)
+Autolock:Autolock On/Off(On)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Landing Gear)
+ShowOnHUD:Boolean (False)
+Autolock:Boolean (True)
+
+DetailedInfo:
+Type: Landing Gear
+Lock State: Unlocked
+----------
+
+CustomInfo=
+CustomName=Landing Gear
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ No Resources
+Provided resources:
+ No Resources
+-------------
+Shuttle Medbay
+MyMedicalRoom {11BE65B98D0D126} Shuttle Medbay
+79910699489349926
+TyepID=MyObjectBuilder_MedicalRoom
+SubtyepID=LargeMedicalRoom
+Mass=4257
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Shuttle Medbay
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Shuttle Medbay)
+ShowOnHUD:Boolean (False)
+SpawnName:StringBuilder ()
+TakeOwnership:Boolean (False)
+SetFaction:Boolean (False)
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Shuttle Medbay
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0.002 Max=0.002 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+Flight Seat 2
+MyCockpit {107E54C7CE2413C} Flight Seat 2
+74280035550380348
+TyepID=MyObjectBuilder_Cockpit
+SubtyepID=CockpitOpen
+Mass=320
+IsBeingHacked =False
+IsWorking =False
+IsFunctional =False
+DisassembleRatio =1
+DisplayNameText =Flight Seat 2
+
+Actions:
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+ControlThrusters:Control thrusters On/Off(On)
+ControlWheels:Control wheels On/Off(On)
+HandBrake:Handbrake On/Off(Off)
+DampenersOverride:Inertia dampeners On/Off(Off)
+HorizonIndicator:Show horizon and altitude On/Off(On)
+MainCockpit:Main cockpit On/Off(Off)
+
+Properties:
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Flight Seat 2)
+ShowOnHUD:Boolean (False)
+ControlThrusters:Boolean (True)
+ControlWheels:Boolean (True)
+HandBrake:Boolean (False)
+DampenersOverride:Boolean (False)
+HorizonIndicator:Boolean (True)
+MainCockpit:Boolean (False)
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Flight Seat 2
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyShipController
+ ControlThrusters =True
+ ControlWheels =True
+ DampenersOverride =False
+ HandBrake =False
+ IsUnderControl =False
+
+HasInventory
+ InventoryCount=1
+
+IMyInventory[0]
+ CurrentMass=0
+ CurrentVolume=0
+ IsFull=False
+ MaxVolume=1
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0 Max=0 PoweredBy=False
+ Oxygen (Oxygen)
+ Current=0 Max=0 PoweredBy=False
+Provided resources:
+ No Resources
+-------------
+Small Cargo Container 2
+MyCargoContainer {199AA8440CE0F7D} Small Cargo Container 2
+115310750474309501
+TyepID=MyObjectBuilder_CargoContainer
+SubtyepID=LargeBlockSmallContainer
+Mass=648.4
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Small Cargo Container 2
+
+Actions:
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+
+Properties:
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Small Cargo Container 2)
+ShowOnHUD:Boolean (False)
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Small Cargo Container 2
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+HasInventory
+ InventoryCount=1
+
+IMyInventory[0]
+ CurrentMass=428
+ CurrentVolume=0.446
+ IsFull=False
+ MaxVolume=15.625
+
+Accepted resources:
+ No Resources
+Provided resources:
+ No Resources
+-------------
+Battery 2
+MyBatteryBlock {1C96A802402B285} Battery 2
+128751162949284485
+TyepID=MyObjectBuilder_BatteryBlock
+SubtyepID=LargeBlockBatteryBlock
+Mass=3845
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Battery 2
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+Recharge:Recharge On/Off(Auto)
+Discharge:Discharge On/Off(Auto)
+Auto:Enable Auto(Auto)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Battery 2)
+ShowOnHUD:Boolean (False)
+ChargeMode:Int64 (0) Valid Range: 0->2
+
+DetailedInfo:
+Type: Battery
+Max Output: 12.00 MW
+Max Required Input: 12.00 MW
+Max Stored Power: 3.00 MWh
+Current Input: 0 W
+Current Output: 4.60 kW
+Stored power: 3.00 MWh
+Fully depleted in: 27 days
+----------
+
+CustomInfo=
+CustomName=Battery 2
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+IMyPowerProducer
+ CurrentOutput=0.004600525
+ MaxOutput=12
+
+IMyBatteryBlock
+ CurrentStoredPower=3
+ HasCapacityRemaining=True
+ MaxStoredPower=3
+ MaxOutput=12
+ ChargeMode=Auto
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0 Max=12 PoweredBy=False
+Provided resources:
+ Current=0.004600525 Max=12
+ O2=12 H2=12
+-------------
+Oxygen Generator 2
+MyGasGenerator {105CE908A03593E} Oxygen Generator 2
+73692089107568958
+TyepID=MyObjectBuilder_OxygenGenerator
+SubtyepID=
+Mass=2587
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Oxygen Generator 2
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+UseConveyor:Use Conveyor System On/Off(On)
+Refill:Refill Bottles()
+Auto-Refill:Auto-Refill On/Off(On)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Oxygen Generator 2)
+ShowOnHUD:Boolean (False)
+UseConveyor:Boolean (True)
+Auto-Refill:Boolean (True)
+
+DetailedInfo:
+Type: O2/H2 Generator
+Max Required Input: 500.00 kW
+----------
+
+CustomInfo=
+CustomName=Oxygen Generator 2
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+HasInventory
+ InventoryCount=1
+
+IMyInventory[0]
+ CurrentMass=0
+ CurrentVolume=0
+ IsFull=False
+ MaxVolume=4
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0.001 Max=0.5 PoweredBy=True
+Provided resources:
+ Current=0 Max=5000
+ O2=5000 H2=5000
+-------------
+LCD Panel
+MyTextPanel {1B0AC77EBD2A4BC} LCD Panel
+121786820996539580
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeLCDPanel
+Mass=222.2
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =LCD Panel
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseFontSize:Increase Font Size(1)
+DecreaseFontSize:Decrease Font Size(1)
+IncreaseChangeIntervalSlider:Increase Image change interval(1s)
+DecreaseChangeIntervalSlider:Decrease Image change interval(1s)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (LCD Panel)
+ShowOnHUD:Boolean (False)
+Title:StringBuilder (Public title)
+ShowTextOnScreen:Boolean (True)
+Font:Int64 (151057691) Valid Range: 151057691->1147350002
+FontSize:Single (1.07) Valid Range: 0.1->10
+FontColor:Color
+alignment:Int64 (0) Valid Range: 0->2
+BackgroundColor:Color
+ChangeIntervalSlider:Single (1.3) Valid Range: 0->30
+
+DetailedInfo:
+Type: LCD Panel
+Max Required Input: 100 W
+Current Input: 100 W
+----------
+
+CustomInfo=
+CustomName=LCD Panel
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0.0001 Max=0.0001 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+LCD Panel 2
+MyTextPanel {1C8F65CA5FDFC10} LCD Panel 2
+128623467162369040
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeLCDPanel
+Mass=222.2
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =LCD Panel 2
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseFontSize:Increase Font Size(1)
+DecreaseFontSize:Decrease Font Size(1)
+IncreaseChangeIntervalSlider:Increase Image change interval(1s)
+DecreaseChangeIntervalSlider:Decrease Image change interval(1s)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (LCD Panel 2)
+ShowOnHUD:Boolean (False)
+Title:StringBuilder (Public title)
+ShowTextOnScreen:Boolean (True)
+Font:Int64 (151057691) Valid Range: 151057691->1147350002
+FontSize:Single (1.285) Valid Range: 0.1->10
+FontColor:Color
+alignment:Int64 (0) Valid Range: 0->2
+BackgroundColor:Color
+ChangeIntervalSlider:Single (1.3) Valid Range: 0->30
+
+DetailedInfo:
+Type: LCD Panel
+Max Required Input: 100 W
+Current Input: 100 W
+----------
+
+CustomInfo=
+CustomName=LCD Panel 2
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0.0001 Max=0.0001 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+LCD Panel 3
+MyTextPanel {11B71101FB0D708} LCD Panel 3
+79781732474214152
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeLCDPanel
+Mass=222.2
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =LCD Panel 3
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseFontSize:Increase Font Size(1)
+DecreaseFontSize:Decrease Font Size(1)
+IncreaseChangeIntervalSlider:Increase Image change interval(1s)
+DecreaseChangeIntervalSlider:Decrease Image change interval(1s)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (LCD Panel 3)
+ShowOnHUD:Boolean (False)
+Title:StringBuilder (Public title)
+ShowTextOnScreen:Boolean (True)
+Font:Int64 (151057691) Valid Range: 151057691->1147350002
+FontSize:Single (1.189) Valid Range: 0.1->10
+FontColor:Color
+alignment:Int64 (0) Valid Range: 0->2
+BackgroundColor:Color
+ChangeIntervalSlider:Single (1.3) Valid Range: 0->30
+
+DetailedInfo:
+Type: LCD Panel
+Max Required Input: 100 W
+Current Input: 100 W
+----------
+
+CustomInfo=
+CustomName=LCD Panel 3
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0.0001 Max=0.0001 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+LCD Panel 4
+MyTextPanel {1FB6E0408626190} LCD Panel 4
+142828776791892368
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeLCDPanel
+Mass=222.2
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =LCD Panel 4
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseFontSize:Increase Font Size(1)
+DecreaseFontSize:Decrease Font Size(1)
+IncreaseChangeIntervalSlider:Increase Image change interval(1s)
+DecreaseChangeIntervalSlider:Decrease Image change interval(1s)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (LCD Panel 4)
+ShowOnHUD:Boolean (False)
+Title:StringBuilder (Public title)
+ShowTextOnScreen:Boolean (True)
+Font:Int64 (151057691) Valid Range: 151057691->1147350002
+FontSize:Single (1.213) Valid Range: 0.1->10
+FontColor:Color
+alignment:Int64 (0) Valid Range: 0->2
+BackgroundColor:Color
+ChangeIntervalSlider:Single (1.3) Valid Range: 0->30
+
+DetailedInfo:
+Type: LCD Panel
+Max Required Input: 100 W
+Current Input: 100 W
+----------
+
+CustomInfo=
+CustomName=LCD Panel 4
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0.0001 Max=0.0001 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+Corner LCD Flat Bottom 5
+MyTextPanel {1881E648E248775} Corner LCD Flat Bottom 5
+110371608100898677
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeBlockCorner_LCD_Flat_2
+Mass=48.6
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Corner LCD Flat Bottom 5
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseFontSize:Increase Font Size(1)
+DecreaseFontSize:Decrease Font Size(1)
+IncreaseChangeIntervalSlider:Increase Image change interval(0s)
+DecreaseChangeIntervalSlider:Decrease Image change interval(0s)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Corner LCD Flat Bottom 5)
+ShowOnHUD:Boolean (False)
+Title:StringBuilder (Public title)
+ShowTextOnScreen:Boolean (True)
+Font:Int64 (151057691) Valid Range: 151057691->1147350002
+FontSize:Single (1.739) Valid Range: 0.1->10
+FontColor:Color
+alignment:Int64 (0) Valid Range: 0->2
+BackgroundColor:Color
+ChangeIntervalSlider:Single (0) Valid Range: 0->30
+
+DetailedInfo:
+Type: Corner LCD Flat Bottom
+Max Required Input: 60 W
+Current Input: 60 W
+----------
+
+CustomInfo=
+CustomName=Corner LCD Flat Bottom 5
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=6E-05 Max=6E-05 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+Small Cargo Container 3
+MyCargoContainer {11D01F7DA7D4D93} Small Cargo Container 3
+80222532396731795
+TyepID=MyObjectBuilder_CargoContainer
+SubtyepID=LargeBlockSmallContainer
+Mass=648.4
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Small Cargo Container 3
+
+Actions:
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+
+Properties:
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Small Cargo Container 3)
+ShowOnHUD:Boolean (False)
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Small Cargo Container 3
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+HasInventory
+ InventoryCount=1
+
+IMyInventory[0]
+ CurrentMass=5406
+ CurrentVolume=2.791208
+ IsFull=False
+ MaxVolume=15.625
+
+Accepted resources:
+ No Resources
+Provided resources:
+ No Resources
+-------------
+Small Cargo Container 4
+MyCargoContainer {1E5E584229B6F7A} Small Cargo Container 4
+136767719383723898
+TyepID=MyObjectBuilder_CargoContainer
+SubtyepID=LargeBlockSmallContainer
+Mass=648.4
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Small Cargo Container 4
+
+Actions:
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+
+Properties:
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Small Cargo Container 4)
+ShowOnHUD:Boolean (False)
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Small Cargo Container 4
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+HasInventory
+ InventoryCount=1
+
+IMyInventory[0]
+ CurrentMass=29
+ CurrentVolume=0.092
+ IsFull=False
+ MaxVolume=15.625
+
+Accepted resources:
+ No Resources
+Provided resources:
+ No Resources
+-------------
+Interior Light 2
+MyInteriorLight {18052A4772D4F5E} Interior Light 2
+108177257384464222
+TyepID=MyObjectBuilder_InteriorLight
+SubtyepID=SmallLight
+Mass=16
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Interior Light 2
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseRadius:Increase Radius(5m)
+DecreaseRadius:Decrease Radius(5m)
+IncreaseFalloff:Increase Falloff(1)
+DecreaseFalloff:Decrease Falloff(1)
+IncreaseIntensity:Increase Intensity(2)
+DecreaseIntensity:Decrease Intensity(2)
+IncreaseOffset:Increase Offset(0)
+DecreaseOffset:Decrease Offset(0)
+IncreaseBlink Interval:Increase Blink Interval(1s)
+DecreaseBlink Interval:Decrease Blink Interval(1s)
+IncreaseBlink Lenght:Increase Blink Length(12%)
+DecreaseBlink Lenght:Decrease Blink Length(12%)
+IncreaseBlink Offset:Increase Blink Offset(0%)
+DecreaseBlink Offset:Decrease Blink Offset(0%)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Interior Light 2)
+ShowOnHUD:Boolean (False)
+Color:Color
+Radius:Single (5.419271) Valid Range: 1->20
+Falloff:Single (1.895255) Valid Range: 0->3
+Intensity:Single (2.351563) Valid Range: 0.5->10
+Offset:Single (0.5) Valid Range: 0->5
+Blink Interval:Single (1.7) Valid Range: 0->30
+Blink Lenght:Single (12.9) Valid Range: 0->100
+Blink Offset:Single (0) Valid Range: 0->100
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Interior Light 2
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=6E-05 Max=6E-05 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+Interior Light 4
+MyInteriorLight {13E143A098070AA} Interior Light 4
+89531282094059690
+TyepID=MyObjectBuilder_InteriorLight
+SubtyepID=SmallLight
+Mass=16
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Interior Light 4
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseRadius:Increase Radius(5m)
+DecreaseRadius:Decrease Radius(5m)
+IncreaseFalloff:Increase Falloff(1)
+DecreaseFalloff:Decrease Falloff(1)
+IncreaseIntensity:Increase Intensity(2)
+DecreaseIntensity:Decrease Intensity(2)
+IncreaseOffset:Increase Offset(0)
+DecreaseOffset:Decrease Offset(0)
+IncreaseBlink Interval:Increase Blink Interval(1s)
+DecreaseBlink Interval:Decrease Blink Interval(1s)
+IncreaseBlink Lenght:Increase Blink Length(12%)
+DecreaseBlink Lenght:Decrease Blink Length(12%)
+IncreaseBlink Offset:Increase Blink Offset(0%)
+DecreaseBlink Offset:Decrease Blink Offset(0%)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Interior Light 4)
+ShowOnHUD:Boolean (False)
+Color:Color
+Radius:Single (5.419271) Valid Range: 1->20
+Falloff:Single (1.895255) Valid Range: 0->3
+Intensity:Single (2.351563) Valid Range: 0.5->10
+Offset:Single (0.5) Valid Range: 0->5
+Blink Interval:Single (1.7) Valid Range: 0->30
+Blink Lenght:Single (12.9) Valid Range: 0->100
+Blink Offset:Single (0) Valid Range: 0->100
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Interior Light 4
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=6E-05 Max=6E-05 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+Passenger Seat 4
+MyCockpit {1A978FD77BC4E01} Passenger Seat 4
+119759895132917249
+TyepID=MyObjectBuilder_Cockpit
+SubtyepID=PassengerSeatLarge
+Mass=220
+IsBeingHacked =False
+IsWorking =False
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Passenger Seat 4
+
+Actions:
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+ControlThrusters:Control thrusters On/Off(On)
+ControlWheels:Control wheels On/Off(On)
+HandBrake:Handbrake On/Off(Off)
+DampenersOverride:Inertia dampeners On/Off(Off)
+HorizonIndicator:Show horizon and altitude On/Off(On)
+MainCockpit:Main cockpit On/Off(Off)
+
+Properties:
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Passenger Seat 4)
+ShowOnHUD:Boolean (False)
+ControlThrusters:Boolean (True)
+ControlWheels:Boolean (True)
+HandBrake:Boolean (False)
+DampenersOverride:Boolean (False)
+HorizonIndicator:Boolean (True)
+MainCockpit:Boolean (False)
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Passenger Seat 4
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyShipController
+ ControlThrusters =True
+ ControlWheels =True
+ DampenersOverride =False
+ HandBrake =False
+ IsUnderControl =False
+
+HasInventory
+ InventoryCount=1
+
+IMyInventory[0]
+ CurrentMass=8
+ CurrentVolume=0.028
+ IsFull=False
+ MaxVolume=1
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0 Max=0 PoweredBy=False
+ Oxygen (Oxygen)
+ Current=0 Max=0 PoweredBy=False
+Provided resources:
+ No Resources
+-------------
+Passenger Seat 2
+MyCockpit {1E7611E7EDC598F} Passenger Seat 2
+137185097263372687
+TyepID=MyObjectBuilder_Cockpit
+SubtyepID=PassengerSeatLarge
+Mass=220
+IsBeingHacked =False
+IsWorking =False
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Passenger Seat 2
+
+Actions:
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+ControlThrusters:Control thrusters On/Off(On)
+ControlWheels:Control wheels On/Off(On)
+HandBrake:Handbrake On/Off(Off)
+DampenersOverride:Inertia dampeners On/Off(Off)
+HorizonIndicator:Show horizon and altitude On/Off(On)
+MainCockpit:Main cockpit On/Off(Off)
+
+Properties:
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Passenger Seat 2)
+ShowOnHUD:Boolean (False)
+ControlThrusters:Boolean (True)
+ControlWheels:Boolean (True)
+HandBrake:Boolean (False)
+DampenersOverride:Boolean (False)
+HorizonIndicator:Boolean (True)
+MainCockpit:Boolean (False)
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Passenger Seat 2
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyShipController
+ ControlThrusters =True
+ ControlWheels =True
+ DampenersOverride =False
+ HandBrake =False
+ IsUnderControl =False
+
+HasInventory
+ InventoryCount=1
+
+IMyInventory[0]
+ CurrentMass=8
+ CurrentVolume=0.028
+ IsFull=False
+ MaxVolume=1
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0 Max=0 PoweredBy=False
+ Oxygen (Oxygen)
+ Current=0 Max=0 PoweredBy=False
+Provided resources:
+ No Resources
+-------------
+Passenger Seat 2
+MyCockpit {12C01754BE848A6} Passenger Seat 2
+84444096309512358
+TyepID=MyObjectBuilder_Cockpit
+SubtyepID=PassengerSeatLarge
+Mass=220
+IsBeingHacked =False
+IsWorking =False
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Passenger Seat 2
+
+Actions:
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+ControlThrusters:Control thrusters On/Off(On)
+ControlWheels:Control wheels On/Off(On)
+HandBrake:Handbrake On/Off(Off)
+DampenersOverride:Inertia dampeners On/Off(Off)
+HorizonIndicator:Show horizon and altitude On/Off(On)
+MainCockpit:Main cockpit On/Off(Off)
+
+Properties:
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Passenger Seat 2)
+ShowOnHUD:Boolean (False)
+ControlThrusters:Boolean (True)
+ControlWheels:Boolean (True)
+HandBrake:Boolean (False)
+DampenersOverride:Boolean (False)
+HorizonIndicator:Boolean (True)
+MainCockpit:Boolean (False)
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Passenger Seat 2
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyShipController
+ ControlThrusters =True
+ ControlWheels =True
+ DampenersOverride =False
+ HandBrake =False
+ IsUnderControl =False
+
+HasInventory
+ InventoryCount=1
+
+IMyInventory[0]
+ CurrentMass=8
+ CurrentVolume=0.028
+ IsFull=False
+ MaxVolume=1
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0 Max=0 PoweredBy=False
+ Oxygen (Oxygen)
+ Current=0 Max=0 PoweredBy=False
+Provided resources:
+ No Resources
+-------------
+Passenger Seat 5
+MyCockpit {16077FD87C254A2} Passenger Seat 5
+99211122590241954
+TyepID=MyObjectBuilder_Cockpit
+SubtyepID=PassengerSeatLarge
+Mass=220
+IsBeingHacked =False
+IsWorking =False
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Passenger Seat 5
+
+Actions:
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+ControlThrusters:Control thrusters On/Off(On)
+ControlWheels:Control wheels On/Off(On)
+HandBrake:Handbrake On/Off(Off)
+DampenersOverride:Inertia dampeners On/Off(Off)
+HorizonIndicator:Show horizon and altitude On/Off(On)
+MainCockpit:Main cockpit On/Off(Off)
+
+Properties:
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Passenger Seat 5)
+ShowOnHUD:Boolean (False)
+ControlThrusters:Boolean (True)
+ControlWheels:Boolean (True)
+HandBrake:Boolean (False)
+DampenersOverride:Boolean (False)
+HorizonIndicator:Boolean (True)
+MainCockpit:Boolean (False)
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Passenger Seat 5
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyShipController
+ ControlThrusters =True
+ ControlWheels =True
+ DampenersOverride =False
+ HandBrake =False
+ IsUnderControl =False
+
+HasInventory
+ InventoryCount=1
+
+IMyInventory[0]
+ CurrentMass=8
+ CurrentVolume=0.028
+ IsFull=False
+ MaxVolume=1
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0 Max=0 PoweredBy=False
+ Oxygen (Oxygen)
+ Current=0 Max=0 PoweredBy=False
+Provided resources:
+ No Resources
+-------------
+LCD Panel Rover
+MyTextPanel {11DDBB250112744} LCD Panel Rover
+80461927256500036
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeLCDPanel
+Mass=222.2
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =LCD Panel Rover
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseFontSize:Increase Font Size(1)
+DecreaseFontSize:Decrease Font Size(1)
+IncreaseChangeIntervalSlider:Increase Image change interval(0s)
+DecreaseChangeIntervalSlider:Decrease Image change interval(0s)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (LCD Panel Rover)
+ShowOnHUD:Boolean (False)
+Title:StringBuilder (Rover Recommendations)
+ShowTextOnScreen:Boolean (True)
+Font:Int64 (151057691) Valid Range: 151057691->1147350002
+FontSize:Single (1.4) Valid Range: 0.1->10
+FontColor:Color
+alignment:Int64 (0) Valid Range: 0->2
+BackgroundColor:Color
+ChangeIntervalSlider:Single (0) Valid Range: 0->30
+
+DetailedInfo:
+Type: LCD Panel
+Max Required Input: 100 W
+Current Input: 100 W
+----------
+
+CustomInfo=
+CustomName=LCD Panel Rover
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0.0001 Max=0.0001 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+Sound Block
+MySoundBlock {1924F7682B71B64} Sound Block
+113240311055457124
+TyepID=MyObjectBuilder_SoundBlock
+SubtyepID=LargeBlockSoundBlock
+Mass=60.6
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Sound Block
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseVolumeSlider:Increase Volume(44 %)
+DecreaseVolumeSlider:Decrease Volume(44 %)
+IncreaseRangeSlider:Increase Range(87 m)
+DecreaseRangeSlider:Decrease Range(87 m)
+PlaySound:Play()
+StopSound:Stop()
+IncreaseLoopableSlider:Increase Loop time(30 min)
+DecreaseLoopableSlider:Decrease Loop time(30 min)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Sound Block)
+ShowOnHUD:Boolean (False)
+VolumeSlider:Single (44.03936) Valid Range: 0->100
+RangeSlider:Single (87.57722) Valid Range: 0->500
+LoopableSlider:Single (1800) Valid Range: 1->1800
+
+DetailedInfo:
+
+----------
+
+CustomInfo=
+CustomName=Sound Block
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0.0002 Max=0.0002 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+Corner LCD Flat Top 2
+MyTextPanel {1351B2181ED992F} Corner LCD Flat Top 2
+87005598531295535
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeBlockCorner_LCD_Flat_1
+Mass=48.6
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Corner LCD Flat Top 2
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseFontSize:Increase Font Size(1)
+DecreaseFontSize:Decrease Font Size(1)
+IncreaseChangeIntervalSlider:Increase Image change interval(0s)
+DecreaseChangeIntervalSlider:Decrease Image change interval(0s)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Corner LCD Flat Top 2)
+ShowOnHUD:Boolean (False)
+Title:StringBuilder (Public title)
+ShowTextOnScreen:Boolean (True)
+Font:Int64 (151057691) Valid Range: 151057691->1147350002
+FontSize:Single (1.739) Valid Range: 0.1->10
+FontColor:Color
+alignment:Int64 (0) Valid Range: 0->2
+BackgroundColor:Color
+ChangeIntervalSlider:Single (0) Valid Range: 0->30
+
+DetailedInfo:
+Type: Corner LCD Flat Top
+Max Required Input: 60 W
+Current Input: 60 W
+----------
+
+CustomInfo=
+CustomName=Corner LCD Flat Top 2
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=6E-05 Max=6E-05 PoweredBy=True
+Provided resources:
+ No Resources
+-------------
+Oxygen Tank
+MyGasTank {114F215B81D7591} Oxygen Tank
+77953268669314449
+TyepID=MyObjectBuilder_OxygenTank
+SubtyepID=
+Mass=3161.6
+IsBeingHacked =False
+IsWorking =False
+IsFunctional =False
+DisassembleRatio =1
+DisplayNameText =Oxygen Tank
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+Stockpile:Stockpile On/Off(Off)
+Stockpile_On:Stockpile On(Off)
+Stockpile_Off:Stockpile Off(Off)
+Refill:Refill Bottles()
+Auto-Refill:Auto-Refill On/Off(Off)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Oxygen Tank)
+ShowOnHUD:Boolean (False)
+Stockpile:Boolean (False)
+Auto-Refill:Boolean (False)
+
+DetailedInfo:
+Type: Oxygen Tank
+Max Required Input: 1.00 kW
+Filled: 50.0% (50000L/100000L)
+----------
+
+CustomInfo=
+CustomName=Oxygen Tank
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+IMyGasTank
+ AutoRefillBottles=False
+ Capacity=100000
+ FilledRatio=0.5
+ Stockpile=False
+
+HasInventory
+ InventoryCount=1
+
+IMyInventory[0]
+ CurrentMass=0
+ CurrentVolume=0
+ IsFull=False
+ MaxVolume=4
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=0 Max=0.001 PoweredBy=False
+ Oxygen (Oxygen)
+ Current=0 Max=100000 PoweredBy=False
+Provided resources:
+ Current=0 Max=5000
+ O2=5000 H2=5000
+-------------
+Corner LCD Flat Top 5
+MyTextPanel {1FD2CBCA198AAFD} Corner LCD Flat Top 5
+143319951822334717
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeBlockCorner_LCD_Flat_1
+Mass=48.6
+IsBeingHacked =False
+IsWorking =True
+IsFunctional =True
+DisassembleRatio =1
+DisplayNameText =Corner LCD Flat Top 5
+
+Actions:
+OnOff:Toggle block On/Off(On)
+OnOff_On:Toggle block On(On)
+OnOff_Off:Toggle block Off(On)
+ShowOnHUD:Show on HUD On/Off(Off)
+ShowOnHUD_On:Show on HUD On(Off)
+ShowOnHUD_Off:Show on HUD Off(Off)
+IncreaseFontSize:Increase Font Size(1)
+DecreaseFontSize:Decrease Font Size(1)
+IncreaseChangeIntervalSlider:Increase Image change interval(0s)
+DecreaseChangeIntervalSlider:Decrease Image change interval(0s)
+
+Properties:
+OnOff:Boolean (True)
+ShowInTerminal:Boolean (True)
+ShowInInventory:Boolean (True)
+ShowInToolbarConfig:Boolean (True)
+Name:StringBuilder (Corner LCD Flat Top 5)
+ShowOnHUD:Boolean (False)
+Title:StringBuilder (Public title)
+ShowTextOnScreen:Boolean (True)
+Font:Int64 (151057691) Valid Range: 151057691->1147350002
+FontSize:Single (1.739) Valid Range: 0.1->10
+FontColor:Color
+alignment:Int64 (0) Valid Range: 0->2
+BackgroundColor:Color
+ChangeIntervalSlider:Single (0) Valid Range: 0->30
+
+DetailedInfo:
+Type: Corner LCD Flat Top
+Max Required Input: 60 W
+Current Input: 60 W
+----------
+
+CustomInfo=
+CustomName=Corner LCD Flat Top 5
+CustomData=
+CustomNameWithFaction=
+ShowOnHUD=False
+
+IMyFunctionalBlock
+ Enabled=True
+
+No Inventory
+
+Accepted resources:
+ Electricity (Electricity)
+ Current=6E-05 Max=6E-05 PoweredBy=True
+Provided resources:
+ No Resources
+-------------

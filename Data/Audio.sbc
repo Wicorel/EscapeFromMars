@@ -1408,8 +1408,8 @@
         </Wave>
       </Waves>
     </Sound>
-	
-	<Sound>
+
+    <Sound>
       <Id>
         <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
         <SubtypeId>FireEngine</SubtypeId>
@@ -1424,7 +1424,24 @@
         </Wave>
       </Waves>
     </Sound>
-	
-	
-	</Sounds>
+
+
+  <Sound>
+    <Id>
+      <TypeId>MyObjectBuilder_AudioDefinition</TypeId>
+      <SubtypeId>BasicWeaponsUnlocked</SubtypeId>
+    </Id>
+    <MaxDistance>1</MaxDistance>
+    <Volume>0.5</Volume>
+    <Loopable>false</Loopable>
+    <Pitch>0</Pitch>
+    <Waves>
+      <Wave Type="D2">
+        <Start>Audio/BasicWeaponsUnlocked.wav</Start>
+      </Wave>
+    </Waves>
+  </Sound>
+
+
+  </Sounds>
 </Definitions>
