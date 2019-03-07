@@ -280,6 +280,10 @@ SubtyepID=SurvivalKit */
 
 
         }
+        public void AllowUnlockedTechs()
+        {
+            UnlockTechsSilently(0, UnlockedTechs);
+        }
 
         private void NeedsResearch(MyDefinitionId techDef, TechGroup techgroup)
         {

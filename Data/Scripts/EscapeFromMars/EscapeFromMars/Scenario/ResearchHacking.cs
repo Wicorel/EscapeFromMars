@@ -65,7 +65,14 @@ namespace EscapeFromMars
 			}
 		}
 
-		public override void Update30()
+        public override void AllGridsInitialised()
+        {
+            // all grids have been loaded during game load.
+            researchControl.AllowUnlockedTechs();
+        }
+
+
+        public override void Update30()
 		{
 			if (hackingLocations.Count == 0)
 			{
