@@ -97,10 +97,11 @@ namespace Duckroll
 			string prefabName, string initialBeaconName, Vector3D forwards)
 		{
 			var up = -Vector3D.Normalize(naturalGravity);
-			// We need to set neutral owner due to a bug http://forum.keenswh.com/threads/01-157-stable-myprefabmanager-spawnprefab-doesnt-always-set-owner-id.7389238/
 			MyAPIGateway.PrefabManager.SpawnPrefab(new List<IMyCubeGrid>(), prefabName, position, forwards, up,
-				new Vector3(0f), spawningOptions: SpawningOptions.SetNeutralOwner, beaconName: initialBeaconName,
-				ownerId: factionId);
+                new Vector3(0f), spawningOptions: SpawningOptions.RotateFirstCockpitTowardsDirection, beaconName: initialBeaconName,
+                // We need to set neutral owner due to a bug http://forum.keenswh.com/threads/01-157-stable-myprefabmanager-spawnprefab-doesnt-always-set-owner-id.7389238/
+                //  R V14              new Vector3(0f), spawningOptions: SpawningOptions.SetNeutralOwner, beaconName: initialBeaconName,
+                ownerId: factionId);
 		}
 
 		internal static void AddGpsToAllPlayers(string name, string description, Vector3D coords)
