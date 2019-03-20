@@ -30,7 +30,7 @@ namespace EscapeFromMars
 
 			if (HeatLevel < 50) // Mediums start to appear after 10
 			{
-				if (HeatLevel > 97) // Tiny 2% chance of giant delivery!
+				if (d100 > 97) // Tiny 2% chance of giant delivery!
 				{
 					return ShipSize.Large;
 				}

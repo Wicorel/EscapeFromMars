@@ -330,16 +330,35 @@ namespace EscapeFromMars
 		{
 			var slimBlocks = new List<IMySlimBlock>();
 			deliveryShip.GetBlocks(slimBlocks, b => b.FatBlock is IMyCargoContainer);
-			foreach (var slim in slimBlocks)
+//            MyLog.Default.WriteLine("LoadCargo: " + deliveryShip.CustomName);
+//            MyLog.Default.Flush();
+            foreach (var slim in slimBlocks)
 			{
-				var cargoContainer = (IMyCargoContainer) slim.FatBlock;
-				var entity = cargoContainer as MyEntity;
+                var cargoContainer = (IMyCargoContainer) slim.FatBlock;
+//                MyLog.Default.WriteLine("LoadCargo: " + cargoContainer.CustomName);
+//                MyLog.Default.Flush();
+                var entity = cargoContainer as MyEntity;
 				if (entity.HasInventory)
 				{
 					var inventory = entity.GetInventoryBase() as MyInventory;
-					inventory?.AddItems(cargo.AmountPerCargoContainer, cargo.GetObjectBuilder());
-				}
-			}
+                    if (inventory == null) continue;
+
+                    // Added check for V15 since SE V1.189 removed cargo container multiplier
+                    int amount = cargo.AmountPerCargoContainer;
+                    var cargoitem = cargo.GetObjectBuilder();
+                    bool bPlaced = false;
+                    do
+                    {
+                        bPlaced = inventory.AddItems(amount, cargoitem);
+                        if (!bPlaced)
+                        {
+                            //                            MyLog.Default.WriteLine("LoadCargo: Does not fit-" + amount.ToString() + " "+cargo.GetDisplayName());
+                            amount /= 2; // reduce size until it fits
+                        }
+                        if (amount < 3) bPlaced=true; // force to true if it gets too small
+                    } while (!bPlaced);
+                }
+            }
 		}
 
 		private static void SetDestination(IMyCubeGrid grid, Vector3D destination)

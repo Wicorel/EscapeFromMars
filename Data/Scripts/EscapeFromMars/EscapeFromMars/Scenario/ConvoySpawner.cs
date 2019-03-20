@@ -13,16 +13,16 @@ namespace EscapeFromMars
 {
 	internal class ConvoySpawner : ModSystemUpdatable
 	{
-		public static readonly bool DebugConvoys = false;
-        public static readonly bool ForceGroundOnly = false;
-        public static readonly bool ForceAirOnly = false;
+		public static readonly bool DebugConvoys = false; // turn on to force lots of convoy spawns
+        public static readonly bool ForceGroundOnly = false; // turn to force ground-only convoys
+        public static readonly bool ForceAirOnly = false; // uhh.. yeah
 
 		private readonly HeatSystem heatSystem;
 		private readonly QueuedAudioSystem audioSystem;
 		private readonly List<IMyRemoteControl> spawningBases = new List<IMyRemoteControl>();
 		private readonly Random random = new Random();
 		private DateTime nextSpawnTime;
-
+            
 		internal ConvoySpawner(HeatSystem heatSystem, QueuedAudioSystem audioSystem)
 		{
 			this.heatSystem = heatSystem;
