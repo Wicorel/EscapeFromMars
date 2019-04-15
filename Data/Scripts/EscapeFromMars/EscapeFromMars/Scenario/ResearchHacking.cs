@@ -74,7 +74,10 @@ namespace EscapeFromMars
 
         public override void Update30()
 		{
-			if (hackingLocations.Count == 0)
+            //V17.  Try to keep things locked
+            researchControl.KeepTechsLocked();
+
+            if (hackingLocations.Count == 0)
 			{
 				return;
 			}
@@ -128,6 +131,8 @@ namespace EscapeFromMars
 					networkComms.ShowHackingInterruptedOnAllClients();
 				}
 			}
+
+            
 		}
 
 		internal void ShowLocalHackingProgress(int ticks)

@@ -157,7 +157,7 @@ MyWindTurbine {1A92546C67B4AD4} Wind Turbine
 TyepID=MyObjectBuilder_WindTurbine
 SubtyepID=LargeBlockWindTurbine
 */
-        private readonly MyDefinitionId TurbineLarge = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_WindTurbine",
+        private readonly MyDefinitionId WindTurbineLarge = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_WindTurbine",
             "LargeBlockWindTurbine");
 
         /*
@@ -265,12 +265,14 @@ SubtyepID=SurvivalKit */
             NeedsResearch(EngineLarge, TechGroup.GasStorage);
             NeedsResearch(EngineSmall, TechGroup.GasStorage);
 
-            NeedsResearch(TurbineLarge, TechGroup.AtmosphericEngines);
+            NeedsResearch(WindTurbineLarge, TechGroup.AtmosphericEngines);
 
             NeedsResearch(SmallGatlingTurret, TechGroup.BasicWeapons);
             NeedsResearch(SmallRocketLauncherReload, TechGroup.BasicWeapons);
             NeedsResearch(InteriorTurret, TechGroup.BasicWeapons);
             NeedsResearch(LargeGatlingTurret, TechGroup.BasicWeapons);
+            NeedsResearch(largeMissileTurret, TechGroup.BasicWeapons);
+            NeedsResearch(smallMissileTurret, TechGroup.BasicWeapons);
 
             NeedsResearch(SkLarge, TechGroup.Permabanned);
             NeedsResearch(SkSmall, TechGroup.Permabanned);
@@ -296,6 +298,44 @@ SubtyepID=SurvivalKit */
                 techsForGroup.Add(techgroup, techsInGroup);
             }
             techsInGroup.Add(techDef);
+        }
+
+        public void KeepTechsLocked()
+        {
+//            ModLog.Info("KeepTechsLocked()");
+
+            foreach (var techGroup in techsForGroup)
+            {
+                var group = techGroup.Key;
+//                ModLog.Info("KTL: Group=" + group.ToString());
+                if (UnlockedTechs.Contains(group))
+                {
+//                    ModLog.Info(" UNLOCKED");
+                    // OK to unlock
+                    var technologies = techsForGroup[group];
+                    foreach (var technology in technologies)
+                    {
+                        MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); 
+                    }
+                }
+                else
+                {
+//                    ModLog.Info(" LOCKED");
+                    // block should be locked
+                    var technologies = techsForGroup[group];
+                    if (technologies == null)
+                    {
+                        ModLog.Error("No technologies for group: " + techGroup);
+                        continue;
+                    }
+//                    ModLog.Info(" # blocks=" + technologies.Count.ToString());
+                    foreach (var technology in technologies)
+                    {
+                        MyVisualScriptLogicProvider.ResearchListAddItem(technology);
+                    }
+                }
+            }
+
         }
 
 
