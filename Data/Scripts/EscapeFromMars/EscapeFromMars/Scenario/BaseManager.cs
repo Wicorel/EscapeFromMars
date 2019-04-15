@@ -90,7 +90,9 @@ namespace EscapeFromMars
             foreach (var slim in slimBlocks)
             {
                 var textPanel = slim.FatBlock as IMyTextPanel;
-                bool bShow = textPanel.GetValueBool("ShowTextOnScreen");
+                //bool bShow = textPanel.GetValueBool("ShowTextOnScreen");
+                // V 1.190
+                bool bShow=textPanel.ContentType == VRage.Game.GUI.TextPanel.ContentType.TEXT_AND_IMAGE;
                 //                bool bShow = textPanel.ShowOnScreen != VRage.Game.GUI.TextPanel.ShowTextOnScreenFlag.NONE;
                 if (bShow)
                 {
@@ -101,9 +103,8 @@ namespace EscapeFromMars
                      * Saw on Rity's stream that they were NOT showing in all places.
                      * And on EpikTek's https://www.youtube.com/watch?v=CkpGGPZd78k
                      * */
-                    textPanel.SetValue("ShowTextOnScreen", false);
-                    //                     textPanel.SetShowOnScreen(VRage.Game.GUI.TextPanel.ShowTextOnScreenFlag.NONE);
-                    textPanel.SetValue("ShowTextOnScreen", true);
+//                    textPanel.SetValue("ShowTextOnScreen", false);
+//                    textPanel.SetValue("ShowTextOnScreen", true);
                     //                      textPanel.SetShowOnScreen(VRage.Game.GUI.TextPanel.ShowTextOnScreenFlag.PUBLIC);
 
 

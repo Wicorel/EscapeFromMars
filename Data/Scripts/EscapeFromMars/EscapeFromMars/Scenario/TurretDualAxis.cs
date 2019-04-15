@@ -136,10 +136,12 @@ namespace EscapeFromMars
 
         private void StopAllRotors()
 		{
-			azimuthRotor.SetValue("Velocity", 0f);
+//			azimuthRotor.SetValue("Velocity", 0f);
+            azimuthRotor.TargetVelocityRPM = 0f;
 			foreach (var rotor in elevationRotors)
 			{
-				rotor.SetValue("Velocity", 0f);
+                rotor.TargetVelocityRPM = 0f;
+//				rotor.SetValue("Velocity", 0f);
 			}
 		}
 
@@ -191,17 +193,22 @@ namespace EscapeFromMars
 			double azimuthSpeed = 20 * azimuthAngle; //derivitave term is useless as rotors dampen by default
 			double elevationSpeed = 20 * elevationAngle;
 
-			azimuthRotor.SetValue("Velocity", -(float) azimuthSpeed); //negative because we want to cancel the positive angle via our movements
+            azimuthRotor.TargetVelocityRPM = -(float)azimuthSpeed;
+
+//            azimuthRotor.SetValue("Velocity", -(float) azimuthSpeed); //negative because we want to cancel the positive angle via our movements
 
 			foreach (var elevationRotor in elevationRotors)
 			{
 				if (elevationRotor.WorldMatrix.Up == turretSideVec) // This is god-awful but maybe can be improved one day =/
 				{
-					elevationRotor.SetValue("Velocity", -(float) elevationSpeed);
+                    elevationRotor.TargetVelocityRPM = -(float)elevationSpeed;
+
+//                    elevationRotor.SetValue("Velocity", -(float) elevationSpeed);
 				}
 				else
 				{
-					elevationRotor.SetValue("Velocity", (float) elevationSpeed);
+                    elevationRotor.TargetVelocityRPM = (float)elevationSpeed;
+//                    elevationRotor.SetValue("Velocity", (float) elevationSpeed);
 				}
 			}
 		}

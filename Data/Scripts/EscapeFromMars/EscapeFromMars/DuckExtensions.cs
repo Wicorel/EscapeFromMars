@@ -87,7 +87,8 @@ namespace Duckroll
 			{
 				var beacon = (IMyBeacon) slim.FatBlock;
 				beacon.CustomName = name;
-				beacon.SetValue("Radius", range);
+                beacon.Radius = range;
+				//beacon.SetValue("Radius", range);
 			}
 		}
 
@@ -268,8 +269,11 @@ namespace Duckroll
 			foreach (var slim in slimBlocks)
 			{
 				var light = slim.FatBlock as IMyLightingBlock;
-				light.SetValueColor("Color", color);
-				light.SetValue("Blink Interval", blinkInterval);
+//				light.SetValueColor("Color", color);
+//				light.SetValue("Blink Interval", blinkInterval);
+
+                light.Color = color;
+                light.BlinkIntervalSeconds = blinkInterval;
 			}
 		}
 

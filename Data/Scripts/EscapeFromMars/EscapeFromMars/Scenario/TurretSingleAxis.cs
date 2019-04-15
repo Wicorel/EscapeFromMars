@@ -91,7 +91,9 @@ namespace EscapeFromMars
 			Vector3D projOnFrontLeftPlane = projOnFront + projOnLeft;
 			double azimuthAngle = Math.Asin(MathHelper.Clamp(projOnLeft.Length() * DotGetSign(projOnLeft, turretLeftVec) / projOnFrontLeftPlane.Length(), -1, 1));
 			double azimuthSpeed = 40 * azimuthAngle; //derivitave term is useless as rotors dampen by default
-			rotor.SetValue("Velocity", -(float) azimuthSpeed); //negative because we want to cancel the positive angle via our movements
+
+            rotor.TargetVelocityRPM= -(float)azimuthSpeed; //negative because we want to cancel the positive angle via our movements
+//            rotor.SetValue("Velocity", -(float) azimuthSpeed); //negative because we want to cancel the positive angle via our movements
 		}
 
 		private bool DotIsSameDirection( Vector3D a, Vector3D b )
