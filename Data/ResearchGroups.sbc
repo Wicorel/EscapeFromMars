@@ -16,14 +16,7 @@
     </ResearchGroup>
     <ResearchGroup xsi:type="ResearchGroup">
       <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="3" />
-      <Members>
-        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallLight" />
-        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockSmallLight" />
-        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_1corner" />
-        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="LargeBlockLight_2corner" />
-        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_1corner" />
-        <BlockId Type="MyObjectBuilder_InteriorLight" Subtype="SmallBlockLight_2corner" />
-      </Members>
+      <Members />
     </ResearchGroup>
     <ResearchGroup xsi:type="ResearchGroup">
       <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="4" />
@@ -92,31 +85,18 @@
     </ResearchGroup>
     <ResearchGroup xsi:type="ResearchGroup">
       <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="16" />
-      <Members>
-        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpit" />
-        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpitSeat" />
-        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="SmallBlockCockpit" />
-        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="DBSmallBlockFighterCockpit" />
-        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="CockpitOpen" />
-        <BlockId Type="MyObjectBuilder_RemoteControl" Subtype="LargeBlockRemoteControl" />
-        <BlockId Type="MyObjectBuilder_RemoteControl" Subtype="SmallBlockRemoteControl" />
-        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="LargeBlockCockpitIndustrial" />
-        <BlockId Type="MyObjectBuilder_Cockpit" Subtype="SmallBlockCockpitIndustrial" />
-      </Members>
+      <Members />
     </ResearchGroup>
     <ResearchGroup xsi:type="ResearchGroup">
       <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="17" />
-      <Members>
+       <Members>
         <BlockId Type="MyObjectBuilder_SmallMissileLauncher" Subtype="LargeMissileLauncher" />
         <BlockId Type="MyObjectBuilder_SmallMissileLauncher" Subtype="" />
       </Members>
     </ResearchGroup>
     <ResearchGroup xsi:type="ResearchGroup">
       <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="19" />
-      <Members>
-        <BlockId Type="MyObjectBuilder_OxygenGenerator" Subtype="OxygenGeneratorSmall" />
-        <BlockId Type="MyObjectBuilder_OxygenGenerator" Subtype="" />
-      </Members>
+      <Members />
     </ResearchGroup>
     <ResearchGroup xsi:type="ResearchGroup">
       <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="21" />

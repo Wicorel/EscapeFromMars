@@ -74,8 +74,9 @@ namespace EscapeFromMars
 
         public override void Update30()
 		{
+            // V18.  1) doesn't work 2) not needed as I changed researchgroups.sbc to remove cockpit group (16)
             //V17.  Try to keep things locked
-            researchControl.KeepTechsLocked();
+            // researchControl.KeepTechsLocked();
 
             if (hackingLocations.Count == 0)
 			{

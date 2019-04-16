@@ -302,6 +302,8 @@ SubtyepID=SurvivalKit */
 
         public void KeepTechsLocked()
         {
+            // DOES NOT WORK (as of 1.190)
+
 //            ModLog.Info("KeepTechsLocked()");
 
             foreach (var techGroup in techsForGroup)
