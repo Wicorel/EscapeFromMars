@@ -224,10 +224,22 @@ SubtyepID=SurvivalKit */
 
         internal HashSet<TechGroup> UnlockedTechs { get; set; } = new HashSet<TechGroup>();
 
+        // UNTESTED:
+        void FunctionalityChanged(long entityId, long gridid, string entityName, string gridName, string typeid, string subtypeid, bool becameFunctional)
+        {
+            if(subtypeid.Contains("Hydrogen"))
+            { // it's likely a hydrogen tank
+             ModLog.Info(" It looks like a hydrogen tank just got built.");
+                KeepTechsLocked();
+            }
+
+        }
+
         internal void InitResearchRestrictions()
         {
             // SE 1.189 Turn ON any game-set blocks.  We want to control availability
             MyVisualScriptLogicProvider.ResearchListClear();
+//            MyVisualScriptLogicProvider.BlockFunctionalityChanged += FunctionalityChanged;
 
             // TODO: Figure out how to disable game-based progression tree...
 

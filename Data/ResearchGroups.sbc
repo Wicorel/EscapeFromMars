@@ -100,10 +100,6 @@
     </ResearchGroup>
     <ResearchGroup xsi:type="ResearchGroup">
       <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="21" />
-      <Members>
-        <BlockId Type="MyObjectBuilder_OxygenTank" Subtype="LargeHydrogenTank" />
-        <BlockId Type="MyObjectBuilder_OxygenTank" Subtype="SmallHydrogenTank" />
-      </Members>
     </ResearchGroup>
     <ResearchGroup xsi:type="ResearchGroup">
       <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="22" />
