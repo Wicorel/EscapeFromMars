@@ -14,7 +14,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 19;
+        private const int CurrentModVersion = 21;
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7);
@@ -32,7 +32,7 @@ namespace EscapeFromMars
 
 		protected override void InitCommon(IModSystemRegistry modSystemRegistry)
 		{
-			MyAPIGateway.Utilities.ShowNotification("Initialising Escape From Mars build " + CurrentModVersion, 10000, MyFontEnum.DarkBlue);
+			MyAPIGateway.Utilities.ShowNotification("Initialising Escape From Mars build " + CurrentModVersion, 5000, MyFontEnum.DarkBlue);
             ModLog.Info("Initialising Escape From Mars build " + CurrentModVersion);
 
 

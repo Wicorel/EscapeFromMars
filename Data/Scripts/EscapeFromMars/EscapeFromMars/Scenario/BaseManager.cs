@@ -60,7 +60,9 @@ namespace EscapeFromMars
                 foreach (var slim in slimBlocks)
                 {
                     var remoteControl = slim.FatBlock as IMyRemoteControl;
-                    if (remoteControl.IsControlledByFaction("GCORP"))
+                    if (remoteControl.IsControlledByFaction("GCORP") 
+                        && remoteControl.CustomName.Contains("DELIVERY")// AIR_DELIVERY_SPAWNER // GROUND_DELIVERY_SPAWNER //Remote Control
+                        )
                     {
                         var planet = DuckUtils.FindPlanetInGravity(remoteControl.GetPosition());
 
@@ -68,7 +70,6 @@ namespace EscapeFromMars
                         {
                             continue; // Space bases not yet supported.
                         }
-
                         bases.Add(new GCorpBase(remoteControl, ZeroDate, planet, heatSystem, audioSystem));
                         return; // Accepted grid, no need to keep looping
                     }
@@ -382,8 +383,8 @@ namespace EscapeFromMars
             grid.GetBlocks(slimBlocks2, b => b.FatBlock is IMySoundBlock);
             foreach (var slim in slimBlocks2)
             {
-                var soundBlock = slim as IMySoundBlock;
-                if (soundBlock == null) continue; // why do we need this?
+                var soundBlock = slim.FatBlock as IMySoundBlock; // Fixed V21
+//                if (soundBlock == null) continue; // why do we need this?
                 switch (soundBlock.EntityId)
                 {
                     // air base alpha:
