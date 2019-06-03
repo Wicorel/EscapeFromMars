@@ -6,7 +6,8 @@ namespace EscapeFromMars
 {
 	internal class Speaker
 	{
-		internal static readonly Speaker Mabel = new Speaker("Mabel", MyFontEnum.Green);
+        //https://www.youtube.com/watch?v=e4Be2itSVWI
+        internal static readonly Speaker Mabel = new Speaker("Mabel", MyFontEnum.Green);
 		internal static readonly Speaker GCorp = new Speaker("GCorp Transmission", MyFontEnum.Red);
 		internal static readonly Speaker Mech = new Speaker("Experimental Mech", MyFontEnum.Red);
 		internal static readonly Speaker MrEd = new Speaker("MR.ED", MyFontEnum.Blue);
@@ -379,3 +380,18 @@ Some of them may still be in working order.", 13000);
 		}
 	}
 }
+
+/*
+ * 06/01/2019
+WicorelYesterday at 10:07 PM
+Is there a notification when player takes damage?  And one for  player dyeing?  Respawning?
+
+ThraxusYesterday at 10:16 PM
+no direct ones that i see.  can likely just make a MyObjectBuilder_Player or MyObjectBuilder_Identity game logic comp and monitor state / health from there though.
+or,IMyCharacter has a CharacterDied event
+
+
+DigiToday at 5:23 AM
+for damage there's the global damage system MyAPIGateway.Session.DamageSystem, register from there, then in the callback first thing you wanna do is check if it's IMyCharacter
+
+    */
