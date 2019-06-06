@@ -7,6 +7,7 @@ using System.Linq;
 using Duckroll;
 using VRage.Game;
 using Sandbox.Game;
+using SpaceEngineers.Game.ModAPI;
 
 namespace EscapeFromMars
 {
@@ -128,7 +129,7 @@ namespace EscapeFromMars
             AddInterest(medbayID);
             AddInterest(batteryID);
             AddInterest(gasGenID);
-            ModLog.Info("AddedInterest()");
+//            ModLog.Info("AddedInterest()");
 
             AddTimePrompt(1, new TimeSpan(0, 0, 1),
             TurnBlockOff(outgoingID),
@@ -140,7 +141,7 @@ namespace EscapeFromMars
             TurnBlockOff(emergencySuppliesID),
             TurnBlockOff(sparePartsID),
             TurnBlockOff(alarmSoundID),
-            TurnBlockOff(medbayID),
+ //           TurnBlockOff(medbayID), DO NOT TURN OFF.  NEEDED TO SPAWN PLAYERS!!!
             TurnBlockOff(batteryID),
             TurnBlockOff(gasGenID)
                 );
@@ -157,23 +158,24 @@ namespace EscapeFromMars
             AddTimePrompt(11, new TimeSpan(0, 0, 22), TurnBlockOn(medbayID), TurnBlockOn(gasGenID));
 
             AddTimePrompt(12, new TimeSpan(0, 0, 24), PlayAudioClip(AudioClip.MabelUncoveringFiles));
+            // incoming transmission
+            AddTimePrompt(18, new TimeSpan(0, 0, 26), TurnBlockOn(icomingID));
 
             // autolog
             AddTimePrompt(13, new TimeSpan(0, 0, 28), TurnBlockOn(autologID));
 
+            // outgoing transmission
+            AddTimePrompt(19, new TimeSpan(0, 0, 32), TurnBlockOn(outgoingID));
+
             // Friendly Fire
             AddTimePrompt(14, new TimeSpan(0, 0, 35), TurnBlockOn(friendlyFireID));
             // sound block
-            AddTimePrompt(15, new TimeSpan(0, 0, 36), TurnBlockOn(alarmSoundID));
+            AddTimePrompt(15, new TimeSpan(0, 0, 35), TurnBlockOn(alarmSoundID));
 
             // cargo LCD nameplates
             AddTimePrompt(16, new TimeSpan(0, 0, 40), TurnBlockOn(emergencySuppliesID), TurnBlockOn(sparePartsID), TurnBlockOn(toolsLockerID));
 
-            AddTimePrompt(17, new TimeSpan(0, 0, 45), PlayAudioClip(AudioClip.MabelUncoveringFiles));
-            // incoming transmission
-            AddTimePrompt(18, new TimeSpan(0, 0, 50), TurnBlockOn(icomingID));
-            // outgoing transmission
-            AddTimePrompt(19, new TimeSpan(0, 0, 60), TurnBlockOn(outgoingID));
+//            AddTimePrompt(17, new TimeSpan(0, 0, 45), PlayAudioClip(AudioClip.MabelUncoveringFiles));
 
             
             AddTimePrompt(20, new TimeSpan(0, 3, 0),
@@ -364,6 +366,12 @@ namespace EscapeFromMars
                     {
                         IMyFunctionalBlock fb = tb as IMyFunctionalBlock;
                         if (fb != null) fb.Enabled = true;
+                        if(fb is IMySoundBlock)
+                        {
+                            // if it's a sound block, start it playing
+                            var sb = fb as IMySoundBlock;
+                            sb.Play();
+                        }
 //                        ModLog.Info("Found");
                         break; // we found the only one
                     }

@@ -76,8 +76,9 @@ namespace EscapeFromMars
 		}
 
 		internal readonly int AmountPerCargoContainer;
-		private readonly string subtypeName;
-		private readonly int probabilityRangeStart, probabilityRangeEnd; // Start (inclusive) to end (exclusive)
+//		private readonly string subtypeName;
+        public readonly string subtypeName;
+        private readonly int probabilityRangeStart, probabilityRangeEnd; // Start (inclusive) to end (exclusive)
 		private readonly IObjectBuilderFactory objectBuilderFactory;
 
 		CargoType(string subtypeName, int amountPerCargoContainer, int probabilityRangeStart, int probabilityRangeEnd,

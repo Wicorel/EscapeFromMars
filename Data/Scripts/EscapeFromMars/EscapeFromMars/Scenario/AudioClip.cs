@@ -7,12 +7,21 @@ namespace EscapeFromMars
 	internal class Speaker
 	{
         //https://www.youtube.com/watch?v=e4Be2itSVWI
+
+        // Mabel (female): https://translate.google.com/
+        // Convoy (female): Mabel?  or maybe https://www.naturalreaders.com/online/ EnglishUS/Heather
+        // Patrol Suppport (male): maybe http://ttsdemo.com/ Steven(US) or Tom(US)
+        // Miki (Crazy male russian):
+        // Mech: (Robot)
+        // MrEd: (highly procesed computer voice) (male?)
         internal static readonly Speaker Mabel = new Speaker("Mabel", MyFontEnum.Green);
 		internal static readonly Speaker GCorp = new Speaker("GCorp Transmission", MyFontEnum.Red);
 		internal static readonly Speaker Mech = new Speaker("Experimental Mech", MyFontEnum.Red);
 		internal static readonly Speaker MrEd = new Speaker("MR.ED", MyFontEnum.Blue);
 		internal static readonly Speaker Miki = new Speaker("Miki", MyFontEnum.White);
 		internal static readonly Speaker None = new Speaker("None", MyFontEnum.BuildInfo);
+
+// radio sound  https://www.youtube.com/watch?v=YantpouC4Mk
 
 		internal string Name { get; }
 		internal MyFontEnum Font { get; }
@@ -40,10 +49,67 @@ namespace EscapeFromMars
 		internal static readonly AudioClip ConvoyDispatched2 = Create("ConvoyDispatched2", EscapeFromMars.Speaker.GCorp,
 			"*Muffled* Convoy dispatched", 7000);
 
-		internal static readonly AudioClip ConvoyDispatched3 = Create("ConvoyDispatched3", EscapeFromMars.Speaker.GCorp,
-			"*Muffled* Convoy dispatched", 6000);
+        internal static readonly AudioClip ConvoyDispatched3 = Create("ConvoyDispatched3", EscapeFromMars.Speaker.GCorp,
+            "*Muffled* Convoy dispatched", 6000);
 
-		internal static readonly AudioClip ConvoyUnderThreat = Create("ConvoyUnderThreat", EscapeFromMars.Speaker.GCorp,
+
+
+        internal static readonly AudioClip SteelPlateConvoyDispatched = Create("SteelPlateConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Steel Plate Convoy dispatched", 6000);
+        internal static readonly AudioClip MetalGridConvoyDispatched = Create("MetalGridConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Metal Grid Convoy dispatched", 6000);
+
+        internal static readonly AudioClip ConstructionConvoyDispatched = Create("ConstructionConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Construction Convoy dispatched", 6000);
+
+        internal static readonly AudioClip InteriorPlateConvoyDispatched = Create("InteriorPlateConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Interior Plate Convoy dispatched", 6000);
+
+        internal static readonly AudioClip GirderConvoyDispatched = Create("GirderConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Girder Convoy dispatched", 6000);
+
+        internal static readonly AudioClip SmallTubeConvoyDispatched = Create("SmallTubeConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Small Steel Tube Convoy dispatched", 6000);
+        internal static readonly AudioClip LargeTubeConvoyDispatched = Create("LargeTubeConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Large Steel Tube Convoy dispatched", 6000);
+        internal static readonly AudioClip MotorConvoyDispatched = Create("MotorConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Motor Convoy dispatched", 6000);
+        internal static readonly AudioClip DisplayConvoyDispatched = Create("DisplayConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Display Convoy dispatched", 6000);
+
+        internal static readonly AudioClip BulletproofGlassConvoyDispatched = Create("BulletproofGlassConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Bulletproof Glass Convoy dispatched", 6000);
+
+        internal static readonly AudioClip ComputerConvoyDispatched = Create("ComputerConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Computer Convoy dispatched", 6000);
+
+        internal static readonly AudioClip ReactorConvoyDispatched = Create("ReactorConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Reactor Convoy dispatched", 6000);
+
+        internal static readonly AudioClip MedicalConvoyDispatched = Create("MedicalConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Medical Convoy dispatched", 6000);
+
+        internal static readonly AudioClip RadioCommunicationConvoyDispatched = Create("RadioCommunicationConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "RadioCommunication Convoy dispatched", 6000);
+
+        internal static readonly AudioClip ExplosivesConvoyDispatched = Create("ExplosivesConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Explosives Convoy dispatched", 6000);
+
+        internal static readonly AudioClip SolarCellConvoyDispatched = Create("SolarCellConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Solar Cell Convoy dispatched", 6000);
+        internal static readonly AudioClip PowerCellConvoyDispatched = Create("PowerCellConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Power Cell Convoy dispatched", 6000);
+        internal static readonly AudioClip NATO_5p56x45mmConvoyDispatched = Create("NATO56x45mmConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "NATO 56x45mm Convoy dispatched", 6000);
+        internal static readonly AudioClip NATO25x184mmConvoyDispatched = Create("NATO25x184mmConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "NATO 25x184mm Convoy dispatched", 6000);
+        internal static readonly AudioClip Missile200mmConvoyDispatched = Create("Missile200mmConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Missile 200mm Convoy dispatched", 6000);
+        internal static readonly AudioClip UraniumConvoyDispatched = Create("UraniumConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+            "Uranium Convoy dispatched", 6000);
+
+
+        internal static readonly AudioClip ConvoyUnderThreat = Create("ConvoyUnderThreat", EscapeFromMars.Speaker.GCorp,
 			"Convoy under threat! Possible pirate activity", 4000);
 
 		internal static readonly AudioClip DisengagingFromHostile = Create("DisengagingFromHostile",
@@ -62,14 +128,15 @@ namespace EscapeFromMars
 
 		internal static readonly AudioClip GCorpBlockingSignals = Create("GCorpBlockingSignals",									// USED
 			EscapeFromMars.Speaker.Mabel,
-			@"Our adversary has full control of the Martian surface. All of the initial colonists were removed following their
-acquistion of exclusive mining rights. G-Corp is blocking all signals from the planet except their own.",
+			@"Our adversary has full control of the Martian surface. 
+All of the initial colonists were removed following their acquistion of exclusive mining rights. 
+G-Corp is blocking all signals from the planet except their own.",
 			13000);
 
 		internal static readonly AudioClip GCorpFacilitiesHeavilyArmed = Create("GCorpFacilitiesHeavilyArmed",					// USED
 			EscapeFromMars.Speaker.Mabel,
-			@"Scanning shows G-Corp facilities in the area are carefully guarded, approaching one is not recommended
-unless heavily armed yourself",
+			@"Scanning shows G-Corp facilities in the area are carefully guarded, 
+approaching one is not recommended unless heavily armed yourself",
 			8000);
 
 		internal static readonly AudioClip GCorpFacilityThreatened = Create("GCorpFacilityThreatened",
@@ -139,8 +206,9 @@ leading to the creation of a ring around Mars", 10000);
 
 		internal static readonly AudioClip ShuttleDamageReport = Create("ShuttleDamage", EscapeFromMars.Speaker.Mabel,
 		// USED
-			@"Shuttle has taken critical damage. Communications offline.
-Engines not found. Multiple GCorp drones detected nearby",
+			@"Shuttle has taken critical damage. 
+Communications offline. Engines not found. 
+Multiple GCorp drones detected nearby",
 			9000);
 
 		internal static readonly AudioClip ShuttleDatabanks = Create("ShuttleDatabanks", EscapeFromMars.Speaker.Mabel,
@@ -203,17 +271,17 @@ Either way, you would die horribly.", 9000);
 
 		internal static readonly AudioClip FlightResearchCenter = Create("FlightResearchCenter", EscapeFromMars.Speaker
 		.Mabel, // USED
-			@"Corporation records indicate there is a flight research station on Mars with technology blueprints you
-may find useful. Uploading coordinates to suit hud.", 9000);
+			@"Corporation records indicate there is a flight research station on Mars with technology blueprints you may find useful. 
+Uploading coordinates to suit hud.", 9000);
 
 		internal static readonly AudioClip OlympusMons = Create("OlympusMons", EscapeFromMars.Speaker.Mabel,	// USED
-			@"You are approaching Olympus Mons, the largest volcano in the solar system. Volcanoes initially helped to create
-an atmosphere on Mars, until the hot spots fuelling them cooled.", 11000);
+			@"You are approaching Olympus Mons, the largest volcano in the solar system. 
+Volcanoes initially helped to create an atmosphere on Mars, until the hot spots fuelling them cooled.", 11000);
 
 		internal static readonly AudioClip WeaponsResearchFacility = Create("WeaponsResearchFacility",
 		EscapeFromMars.Speaker.Mabel,
-			@"Through data-mining corporation transport paths, I have determined there is an illegal weapons-research facility hidden
-at this location. Uploading to suit hud.", 9000);
+			@"Through data-mining corporation transport paths, I have determined there is an illegal weapons-research facility hidden at this location.
+Uploading to suit hud.", 9000);
 
 		internal static readonly AudioClip GasStorageUnlocked = Create("GasStorageUnlocked", EscapeFromMars.Speaker.Mabel,
 		//USED
@@ -243,8 +311,7 @@ I will relay them to your suit if they seem relevant.", 9000);
 	    internal static readonly AudioClip NotifyOfSatellite = Create("NotifyOfSatellite", EscapeFromMars.Speaker.Mabel,
 	    //USED
 	        @"I have computed the location of the nearest geosynchronous communications satellite.
-If you manage to leave the planet, you should direct your ship there so I can transmit
-the evidence we gathered on the corporation to all public channels.", 14000);
+If you manage to leave the planet, you should direct your ship there so I can transmit the evidence we gathered on the corporation to all public channels.", 14000);
 
 		internal static readonly AudioClip FoundFilesOnNetwork = Create("FoundFilesOnNetwork", EscapeFromMars.Speaker.Mabel,
 			@"While you were fumbling your way through the base, I found hidden files on the computer network.
@@ -267,19 +334,19 @@ Directing output to the nearest display.", 8000);
 Please display your identity badge or exit the building.", 9000);
 
 		internal static readonly AudioClip WelcomeBack = Create("WelcomeBack", EscapeFromMars.Speaker.MrEd,
-			@"Welcome back anonymous re-re-re-searcher! The elevator is ready to take you dow-dow-down
-to the experiment area.", 8000);
+			@"Welcome back anonymous re-re-re-searcher! 
+The elevator is ready to take you dow-dow-down to the experiment area.", 8000);
 
 		internal static readonly AudioClip ExperimentProgress = Create("ExperimentProgress", EscapeFromMars.Speaker.MrEd,
-			@"Experiment completion progress at... 342 percent. Atmosphere is 95% nitrogen, 3% oxygen,
-1% argon, trace amounts of carbon dioxide.", 13000);
+			@"Experiment completion progress at... 342 percent. 
+Atmosphere is 95% nitrogen, 3% oxygen, 1% argon, trace amounts of carbon dioxide.", 13000);
 
 		internal static readonly AudioClip ElevatorHere = Create("ElevatorHere", EscapeFromMars.Speaker.Mabel,
 			"Blueprints show there should be an elevator here. Strange. They must be outdated.", 6000);
 
 		internal static readonly AudioClip ArmorVehicles = Create("ArmorVehicles", EscapeFromMars.Speaker.Mabel,
-			@"You should try to build your vehicles prepared for combat. For especially hostile areas,
-you could use drones instead of risking your own life.", 9000);
+			@"You should try to build your vehicles prepared for combat. 
+For especially hostile areas, you could use drones instead of risking your own life.", 9000);
 
 		internal static readonly AudioClip FaintPowerSignature = Create("FaintPowerSignature", EscapeFromMars.Speaker
 		.Mabel,
@@ -296,12 +363,9 @@ Some of them may still be in working order.", 13000);
 		internal static readonly AudioClip SensorsLostTrack = Create("SensorsLostTrack", EscapeFromMars.Speaker.GCorp,
 			"Sensors lost track of hostile", 2000);
 
-		internal static readonly AudioClip HackingSound = Create("HackingSound", EscapeFromMars.Speaker.None,	"",
-		14000);
+		internal static readonly AudioClip HackingSound = Create("HackingSound", EscapeFromMars.Speaker.None,	"", 14000);
 
-		internal static readonly AudioClip ConnectionLostSound = Create("ConnectionLostSound", EscapeFromMars.Speaker
-		.None,
-		"", 2000);
+		internal static readonly AudioClip ConnectionLostSound = Create("ConnectionLostSound", EscapeFromMars.Speaker.None, "", 2000);
 
 		internal static readonly AudioClip HackFinished = Create("HackFinished", EscapeFromMars.Speaker.None, "", 2000);
 
@@ -314,8 +378,8 @@ Some of them may still be in working order.", 13000);
 		internal static readonly AudioClip GreetingsMartianColonists = Create("GreetingsMartianColonists",
 		EscapeFromMars.Speaker.Miki,
 			@"Greetings Martian Colonist! Miki Scrap is now open for all recycling needs.
-			You have old junk, scrap metal? We give new, better things in return.
-			Just follow antenna signal!", 16000);
+You have old junk, scrap metal? We give new, better things in return.
+Just follow antenna signal!", 16000);
 
 		internal static readonly AudioClip LavaLoop = Create("LavaLoop", EscapeFromMars.Speaker.None,
 			"[Bubbling furnace sounds]", 75000);

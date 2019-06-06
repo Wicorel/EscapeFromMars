@@ -88,8 +88,11 @@ namespace EscapeFromMars
 			if (baseToSpawnAt != null)
 			{
 				SpawnConvoy(baseToSpawnAt);
+                /*
 				audioSystem.PlayAudioRandomChance(0.1, AudioClip.ConvoyDispatched1, AudioClip.ConvoyDispatched2,
 					AudioClip.ConvoyDispatched3);
+                    Moved to NPC Group manager
+                    */
 			}
 		}
 

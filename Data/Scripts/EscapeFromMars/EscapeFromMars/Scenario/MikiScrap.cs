@@ -127,6 +127,7 @@ namespace EscapeFromMars
 
 		private void UpdateFurnaceState()
 		{
+            if (furnaceDoor == null) return;
 			if (furnaceState != FurnaceState.Working && furnaceDoor.Status == DoorStatus.Open)
 			{
 				var grids = FindGridsInsideFurnace();
@@ -178,6 +179,7 @@ namespace EscapeFromMars
 
 		private void SetFurnaceDoorsEnabled(bool powered)
 		{
+  
 			foreach (var door in mikiScrapGrid.GetTerminalBlocksOfType<IMyDoor>("FURNACE_DOOR"))
 			{
 				door.Enabled = powered;
@@ -186,9 +188,9 @@ namespace EscapeFromMars
 					door.OpenDoor();
 				}
 			}
-		}
+        }
 
-		private const double FurnaceSizeSquared = 10.0 * 10.0;
+        private const double FurnaceSizeSquared = 10.0 * 10.0;
 
 		private ICollection<IMyCubeGrid> FindGridsInsideFurnace()
 		{

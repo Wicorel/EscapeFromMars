@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using EscapeFromMars;
+using Sandbox.Game;
 using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
+using VRage.Game;
 
 namespace Duckroll
 {
@@ -79,12 +81,21 @@ namespace Duckroll
                 }
 			}
 
-            // From Discord:
-            //MyVisualScriptLogicProvider.SendChatMessage($"You can now build {MyDefinitionManager.Static.GetCubeBlockDefinition(blockId).DisplayNameText}.", "Research Control", player, "Green");
+            // Added V22
+            //MyAPIGateway.Multiplayer.MultiplayerActive
+            if (MyAPIGateway.Multiplayer.IsServer)
+            {
+                //            MyVisualScriptLogicProvider.SendChatMessage(clip.Subtitle, clip.Speaker, 0, clip.Font);
+                string[] aLines = clip.Subtitle.Split('\n');
+                foreach (var line in aLines)
+                {
+                    MyVisualScriptLogicProvider.SendChatMessage(line, clip.Speaker, 0, clip.Font);
+                }
+            }
             // chat, notifications, billboards... Bad on DS.
             // The following should NOT be done on  DS because nowhere to show it..
             MyAPIGateway.Utilities.ShowNotification(clip.Speaker + ": " + clip.Subtitle, clip.DisappearTimeMs, clip.Font);
-			timeUntilNextAudioSeconds = clip.DisappearTimeMs / 1000 + 2; // Add a little 2 second pause between them
+            timeUntilNextAudioSeconds = clip.DisappearTimeMs / 1000 + 2; // Add a little 2 second pause between them
 		}
 
 		public override void Update60()

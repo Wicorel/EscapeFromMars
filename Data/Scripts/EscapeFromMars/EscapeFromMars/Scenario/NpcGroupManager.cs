@@ -249,6 +249,51 @@ namespace EscapeFromMars
 						var cargoType = CargoType.GenerateRandomCargo(random);
 						LoadCargo(grid, cargoType);
 
+                        if (cargoType.subtypeName == "SteelPlate")
+                            audioSystem.PlayAudioRandomChance(0.1,AudioClip.SteelPlateConvoyDispatched, AudioClip.ConvoyDispatched1);
+                        else if (cargoType.subtypeName == "MetalGrid")
+                            audioSystem.PlayAudioRandomChance(1,AudioClip.MetalGridConvoyDispatched);
+                        else if (cargoType.subtypeName == "Construction")
+                            audioSystem.PlayAudioRandomChance(0.1,AudioClip.ConstructionConvoyDispatched);
+                        else if (cargoType.subtypeName == "InteriorPlate")
+                            audioSystem.PlayAudioRandomChance(0.1,AudioClip.InteriorPlateConvoyDispatched);
+                        else if (cargoType.subtypeName == "Girder")
+                            audioSystem.PlayAudioRandomChance(0.1,AudioClip.GirderConvoyDispatched);
+                        else if (cargoType.subtypeName == "SmallTube")
+                            audioSystem.PlayAudioRandomChance(0.1,AudioClip.SmallTubeConvoyDispatched);
+                        else if (cargoType.subtypeName == "LargeTube")
+                            audioSystem.PlayAudioRandomChance(0.2,AudioClip.LargeTubeConvoyDispatched);
+                        else if (cargoType.subtypeName == "Motor")
+                            audioSystem.PlayAudioRandomChance(0.75,AudioClip.MotorConvoyDispatched);
+                        else if (cargoType.subtypeName == "Display")
+                            audioSystem.PlayAudioRandomChance(0.2,AudioClip.DisplayConvoyDispatched);
+                        else if (cargoType.subtypeName == "BulletproofGlass")
+                            audioSystem.PlayAudioRandomChance(0.3,AudioClip.BulletproofGlassConvoyDispatched);
+                        else if (cargoType.subtypeName == "Computer")
+                            audioSystem.PlayAudioRandomChance(0.2,AudioClip.ComputerConvoyDispatched);
+                        else if (cargoType.subtypeName == "Reactor")
+                            audioSystem.PlayAudioRandomChance(0.75,AudioClip.ReactorConvoyDispatched);
+                        else if (cargoType.subtypeName == "Medical")
+                            audioSystem.PlayAudioRandomChance(0.7,AudioClip.MedicalConvoyDispatched);
+                        else if (cargoType.subtypeName == "RadioCommunication")
+                            audioSystem.PlayAudioRandomChance(0.5,AudioClip.RadioCommunicationConvoyDispatched);
+                        else if (cargoType.subtypeName == "Explosives")
+                            audioSystem.PlayAudioRandomChance(0.5,AudioClip.ExplosivesConvoyDispatched);
+                        else if (cargoType.subtypeName == "SolarCell")
+                            audioSystem.PlayAudioRandomChance(0.5,AudioClip.SolarCellConvoyDispatched);
+                        else if (cargoType.subtypeName == "PowerCell")
+                            audioSystem.PlayAudioRandomChance(0.75,AudioClip.PowerCellConvoyDispatched);
+                        else if (cargoType.subtypeName == "NATO_5p56x45mm")
+                            audioSystem.PlayAudioRandomChance(0.5,AudioClip.NATO_5p56x45mmConvoyDispatched);
+                        else if (cargoType.subtypeName == "NATO_25x184mm")
+                            audioSystem.PlayAudioRandomChance(0.5,AudioClip.NATO25x184mmConvoyDispatched);
+                        else if (cargoType.subtypeName == "Missile200mm")
+                            audioSystem.PlayAudioRandomChance(0.5,AudioClip.Missile200mmConvoyDispatched);
+                        else if (cargoType.subtypeName == "Uranium")
+                            audioSystem.PlayAudioRandomChance(1,AudioClip.UraniumConvoyDispatched);
+                        else  // we don't know what it is..
+                             audioSystem.PlayAudioRandomChance(0.1, AudioClip.ConvoyDispatched1, AudioClip.ConvoyDispatched2, AudioClip.ConvoyDispatched3);
+
                         string sPrefix = "T";
                         if (unitType == UnitType.Air) sPrefix += "A";
                         else sPrefix += "G";

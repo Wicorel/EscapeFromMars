@@ -368,6 +368,7 @@ namespace Duckroll
 		public static T GetTerminalBlockMatchingName<T>(this IMyCubeGrid grid, string name) where T : IMyTerminalBlock
 		{
 			var slimBlocks = new List<IMySlimBlock>();
+            if (grid == null) return default(T);
 			grid.GetBlocks(slimBlocks, b => b.FatBlock is T);
 			foreach (var slim in slimBlocks)
 			{
@@ -377,8 +378,9 @@ namespace Duckroll
 					return terminalBlock;
 				}
 			}
+            ModLog.Info("Can't find terminal block matching name: " + name);
 
-			throw new InvalidOperationException("Can't find terminal block matching name: " + name);
+            return default(T);// throw new InvalidOperationException("Can't find terminal block matching name: " + name);
 		}
 
 		public static List<T> GetTerminalBlocksOfType<T>(this IMyCubeGrid grid) where T : IMyTerminalBlock

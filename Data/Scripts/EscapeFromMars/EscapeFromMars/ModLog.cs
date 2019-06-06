@@ -16,7 +16,7 @@ namespace Duckroll
 		public static bool DebugMode = false;
 
 		public const string ModName = "EscapeFromMars";
-		public const int WorkshopId = 873852597;
+		public const int WorkshopId = 1301917772; //https://steamcommunity.com/sharedfiles/filedetails/?id=1301917772
 		public const string LogFile = "EFM.log";
 
 		private static System.IO.TextWriter _writer;
