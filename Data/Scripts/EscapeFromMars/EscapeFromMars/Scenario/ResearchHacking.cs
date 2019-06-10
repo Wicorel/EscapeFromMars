@@ -5,6 +5,8 @@ using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.ModAPI;
 using VRageMath;
+using Draygo.API;
+using System.Text;
 
 namespace EscapeFromMars
 {
@@ -16,30 +18,52 @@ namespace EscapeFromMars
 //            SeTextColor + "CONNECTION LOST");
 
             // Change for Version 10: Move more to center to avoid chromatic aberation in 1.186 in the edges
-        private HUDTextAPI.HUDMessage hackBar = new HUDTextAPI.HUDMessage(100, 30, new Vector2D(-0.5, 0.5), "");
-        private readonly HUDTextAPI.HUDMessage hackInterrupted = new HUDTextAPI.HUDMessage(100, 30, new Vector2D(-0.5, 0.5),
-			SeTextColor +"CONNECTION LOST");
+//        private HUDTextAPI.HUDMessage hackBar = new HUDTextAPI.HUDMessage(100, 30, new Vector2D(-0.5, 0.5), "");
+//        private readonly HUDTextAPI.HUDMessage hackInterrupted = new HUDTextAPI.HUDMessage(100, 30, new Vector2D(-0.5, 0.5),
+//			SeTextColor +"CONNECTION LOST");
 
-		private const int HackingRangeSquared = 5*5; // 5 meters
+        // For EFM 23: (finally) update to TextHudAPI V2.
+        HudAPIv2 TextAPI;
+        HudAPIv2.HUDMessage hackBarV2;
+        HudAPIv2.HUDMessage hackInterruptedV2;
+
+        private const int HackingRangeSquared = 5*5; // 5 meters
 		private const int HackingBarTicks = 26;
 		private readonly ResearchControl researchControl;
-		private readonly HUDTextAPI hudTextApi;
+//		private readonly HUDTextAPI hudTextApi;
 		private readonly NetworkComms networkComms;
 		private readonly InterruptingAudioSystem audioSystem = new InterruptingAudioSystem();
 		private readonly List<HackingLocation> hackingLocations = new List<HackingLocation>();
 		private bool wasHackingLastUpdate;
 		private int hackInterruptCooldown = 6;
 
-		internal ResearchHacking(ResearchControl researchControl, HUDTextAPI hudTextApi, NetworkComms networkComms)
+		internal ResearchHacking(ResearchControl researchControl, HudAPIv2 hudTextApi, NetworkComms networkComms)
 		{
-			hackBar.options |= HUDTextAPI.Options.HideHud;
-			hackInterrupted.options |= HUDTextAPI.Options.HideHud;
-			this.researchControl = researchControl;
-			this.hudTextApi = hudTextApi;
-			this.networkComms = networkComms;
-		}
+            this.researchControl = researchControl;
 
-		internal void InitHackingLocations()
+            /*
+            // V1
+            hackBar.options |= HUDTextAPI.Options.HideHud;
+			hackInterrupted.options |= HUDTextAPI.Options.HideHud;
+			this.hudTextApi = hudTextApi;
+            */
+
+            //V2
+            TextAPI = hudTextApi;
+
+            this.networkComms = networkComms;
+
+        }
+        void textHudCallback()
+        {
+            StringBuilder sb = new StringBuilder(SeTextColor + "CONNECTION LOST");
+            hackInterruptedV2 = new HudAPIv2.HUDMessage(sb, new Vector2D(-0.5, 0.5));
+
+            sb.Clear();
+            hackBarV2 = new HudAPIv2.HUDMessage(sb, new Vector2D(-0.5, 0.5));
+        }
+
+        internal void InitHackingLocations()
 		{
 			AddHackingLocation(TechGroup.AtmosphericEngines, new Vector3D(1854774.5,-2005846.88,1325410.5));
 			AddHackingLocation(TechGroup.GasStorage, new Vector3D(1869167.75,-2004920.12,1316376.38));
@@ -71,6 +95,11 @@ namespace EscapeFromMars
             researchControl.AllowUnlockedTechs();
         }
 
+        public new void Close()
+        {
+            if (TextAPI != null)
+                TextAPI.Close();
+        }
 
         public override void Update30()
 		{
@@ -98,6 +127,11 @@ namespace EscapeFromMars
 
 					if (distSq <= HackingRangeSquared)
 					{
+                        if (!wasHackingLastUpdate)
+                        {
+                            hackInterruptCooldown = 6;// reset
+                            InitHudMesages(true);
+                        }
 						wasHackingLastUpdate = true;
 						hack.CompletionTicks++;
 						ShowLocalHackingProgress(hack.CompletionTicks);
@@ -121,6 +155,7 @@ namespace EscapeFromMars
 				if (hackInterruptCooldown == 0)
 				{
 					ShowLocalHackingInterruptStopped();
+                    hackInterruptedV2.Visible = false;
 					wasHackingLastUpdate = false;
 					hackInterruptCooldown = 6;
 					networkComms.ShowHackingInterruptStoppedOnAllClients();
@@ -136,9 +171,57 @@ namespace EscapeFromMars
             
 		}
 
-		internal void ShowLocalHackingProgress(int ticks)
+        StringBuilder sbInterruptedMessage;
+        StringBuilder sbHackBarMessage;
+
+        internal void InitHudMesages(bool bForce = false)
+        {
+            if (TextAPI == null) return;
+            if (TextAPI.Heartbeat)
+            {
+//                ModLog.Info("Have Heartbeat");
+
+                if (hackInterruptedV2 == null || bForce )
+                {
+//                    ModLog.Info("Creating Interrupted HUD");
+                    sbInterruptedMessage = new StringBuilder(SeTextColor + "CONNECTION LOST");
+                    hackInterruptedV2 = new HudAPIv2.HUDMessage(sbInterruptedMessage, new Vector2D(-0.5, 0.5));
+                    if (hackInterruptedV2 != null)
+                    {
+                        hackInterruptedV2.Message = sbInterruptedMessage;
+                        hackInterruptedV2.Scale = 2;
+                        hackInterruptedV2.Options = HudAPIv2.Options.Shadowing;
+                        hackInterruptedV2.Options |= HudAPIv2.Options.HideHud;
+                        //                        hackInterruptedV2.TimeToLive = 45;
+                        hackInterruptedV2.Visible = false;
+
+                    }
+//                    else ModLog.Info("Could not create Interrupted HUD");
+                }
+                if (hackBarV2 == null || bForce)
+                {
+//                    ModLog.Info("Creating Hacking HUD");
+                    if(sbHackBarMessage==null) sbHackBarMessage = new StringBuilder("Initial Hack Bar");
+                    hackBarV2 = new HudAPIv2.HUDMessage(sbHackBarMessage, new Vector2D(-0.5, 0.5));
+                    if (hackBarV2 != null)
+                    {
+                        hackBarV2.Message = sbHackBarMessage;
+                        hackBarV2.Scale = 2;
+                        hackBarV2.Options = HudAPIv2.Options.Shadowing;
+                        hackBarV2.Options |= HudAPIv2.Options.HideHud;
+                        hackBarV2.Visible = false;
+//                        hackBarV2.TimeToLive = 45;
+                    }
+//                    else ModLog.Info("Could not create Hacking HUD");
+                }
+            }
+//            else ModLog.Info("NO TextHud HEARTBEAT");
+        }
+
+        internal void ShowLocalHackingProgress(int ticks)
 		{
-			audioSystem.EnsurePlaying(AudioClip.HackingSound);
+
+            audioSystem.EnsurePlaying(AudioClip.HackingSound);
 			var hackbarStr = SeTextColor + "Hack in progress: ";
 			var percent = ticks * 100 / HackingBarTicks;
 			hackbarStr += percent + "%\n\n";
@@ -146,32 +229,54 @@ namespace EscapeFromMars
 			{
 				hackbarStr += "|";
 			}
+            if (sbHackBarMessage == null)
+            {
+                sbHackBarMessage = new StringBuilder(hackbarStr);
+            }
+            else
+            {
+                sbHackBarMessage.Clear();
+                sbHackBarMessage.Append(hackbarStr);
+            }
 
-			hackBar.message = hackbarStr;
-			SendToHud(hackBar);
-		}
+            InitHudMesages();
+            hackInterruptedV2.Visible = false;
+            hackBarV2.Visible = true;
+//            hackInterruptedV2 = null;
 
-		internal void ShowLocalHackingSuccess()
+        }
+
+        internal void ShowLocalHackingSuccess()
 		{
+            hackBarV2.Visible = false;
+            hackInterruptedV2.Visible = false;
 			audioSystem.EnsurePlaying(AudioClip.HackFinished);
 		}
 
 		internal void ShowLocalHackingInterruptStopped()
 		{
 			audioSystem.Stop();
-		}
+            hackBarV2.Visible = false;
+            hackInterruptedV2.Visible = false;
+        }
 
-		internal void ShowLocalHackingInterrupted()
+        internal void ShowLocalHackingInterrupted()
 		{
+            InitHudMesages();
 			audioSystem.EnsurePlaying(AudioClip.ConnectionLostSound);
-			SendToHud(hackInterrupted);
-		}
 
-		private void SendToHud(HUDTextAPI.HUDMessage hudMessage)
-		{
-			if (hudTextApi.Heartbeat)
+            hackBarV2.Visible = false;
+            hackInterruptedV2.Visible = true;
+        }
+
+        //		private void SendToHud(HUDTextAPI.HUDMessage hudMessage)
+        private void SendToHud(HudAPIv2.HUDMessage hudMessage)
+        {
+            if (TextAPI.Heartbeat)
+// V1			if (hudTextApi.Heartbeat)
 			{
-				hudTextApi.Send(hudMessage);
+
+//				hudTextApi.Send(hudMessage);
 			}
 			else
 			{

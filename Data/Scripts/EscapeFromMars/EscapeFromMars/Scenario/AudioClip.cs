@@ -206,8 +206,7 @@ leading to the creation of a ring around Mars", 10000);
 
 		internal static readonly AudioClip ShuttleDamageReport = Create("ShuttleDamage", EscapeFromMars.Speaker.Mabel,
 		// USED
-			@"Shuttle has taken critical damage. 
-Communications offline. Engines not found. 
+			@"Shuttle has taken critical damage. Communications offline. Engines not found. 
 Multiple GCorp drones detected nearby",
 			9000);
 
