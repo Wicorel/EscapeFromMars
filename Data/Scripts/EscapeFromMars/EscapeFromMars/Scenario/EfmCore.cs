@@ -7,6 +7,8 @@ using Sandbox.Game;
 using VRage.Game.Entity;
 using VRage.ModAPI;
 using VRageMath;
+using VRage.Game.ModAPI;
+using Draygo.API;
 
 namespace EscapeFromMars
 {
@@ -14,7 +16,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 22;
+        private const int CurrentModVersion = 23;
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7);
@@ -24,8 +26,11 @@ namespace EscapeFromMars
 		private ResearchControl researchControl;
 		private MissionSystem missionSystem;
 		private ConvoySpawner convoySpawner;
-		private HUDTextAPI hudTextApi;
-		private ResearchHacking researchHacking;
+        //		private HUDTextAPI hudTextApi;
+        // For EFM 23: (finally) update to TextHudAPI V2.
+        private HudAPIv2 TextAPI;
+
+        private ResearchHacking researchHacking;
 		private int modBuildWhenGameStarted;
 		private NpcGroupManager npcGroupManager;
 		private BaseManager baseManager;
@@ -36,9 +41,21 @@ namespace EscapeFromMars
 
             MyAPIGateway.Utilities.ShowNotification(sInit, 5000, MyFontEnum.DarkBlue);
             ModLog.Info(sInit);
-            MyVisualScriptLogicProvider.SendChatMessage(sInit, "Wicorel", 0, MyFontEnum.DarkBlue);
 
+            if (MyAPIGateway.Session.IsServer)
+                MyVisualScriptLogicProvider.SendChatMessage(sInit, "Wicorel", 0, MyFontEnum.DarkBlue);
 
+            /*
+            // TESTING: (they seem to be the same)
+            if (MyAPIGateway.Session.IsServer)
+                ModLog.Info("MyAPIGateway.Session.IsServer.IsServer");
+            else
+                ModLog.Info("MyAPIGateway.Session.NOT Server");
+            if (MyAPIGateway.Multiplayer.IsServer)
+                ModLog.Info("MyAPIGateway.Multiplayer.IsServer");
+            else
+                ModLog.Info("MyAPIGateway.Multiplayer.NOT Server");
+                */
             bool bResearch = Session.SessionSettings.EnableResearch;
 
             // This works to change the setting.
@@ -49,16 +66,18 @@ namespace EscapeFromMars
 //                MyAPIGateway.Utilities.ShowNotification("Save, then Exit. Edit world /Advanced settings and Enable progression", 50000, MyFontEnum.Red);
                 ModLog.Info("Research was not turned on");
             }
-            hudTextApi = new HUDTextAPI(11873852597);
-			if (modBuildWhenGameStarted > 4)
+            //            hudTextApi = new HUDTextAPI(11873852597);
+            TextAPI = new HudAPIv2();
+            if (modBuildWhenGameStarted > 4)
 			{
 				DuckUtils.PutPlayerIntoFaction("CRASH");
             }
             researchControl = new ResearchControl(audioSystem);
 			researchControl.InitResearchRestrictions();
-			researchHacking = new ResearchHacking(researchControl, hudTextApi, networkComms);
-			networkComms.Init(audioSystem, researchControl, researchHacking);
-			modSystemRegistry.AddCloseableModSystem(hudTextApi);
+//			researchHacking = new ResearchHacking(researchControl, hudTextApi, networkComms);
+            researchHacking = new ResearchHacking(researchControl, TextAPI, networkComms);
+            networkComms.Init(audioSystem, researchControl, researchHacking);
+//V2 does not need this			modSystemRegistry.AddCloseableModSystem(hudTextApi);
 			modSystemRegistry.AddCloseableModSystem(networkComms);
 			modSystemRegistry.AddUpatableModSystem(audioSystem);
 		}
