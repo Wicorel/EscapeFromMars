@@ -73,7 +73,6 @@
   <ItemGroup>
     <Compile Include="AbstractCore.cs" />
     <Compile Include="AudioRelay.cs" />
-    <Compile Include="HudAPIv2.cs" />
     <Compile Include="ModSystemCloseable.cs" />
     <Compile Include="DuckExtensions.cs" />
     <Compile Include="DuckUtils.cs" />
