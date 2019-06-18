@@ -8,8 +8,8 @@ namespace EscapeFromMars
 	{
         //https://www.youtube.com/watch?v=e4Be2itSVWI
 
-        // Mabel (female): https://translate.google.com/
-        // Convoy (female): Mabel?  or maybe https://www.naturalreaders.com/online/ EnglishUS/Heather
+        // Mabel (female): https://translate.google.com/  Echo delay 0.05 Decay 0.5
+        // Convoy (female): Mabel?  or maybe https://www.naturalreaders.com/online/ EnglishUS/Heather  
         // Patrol Suppport (male): maybe http://ttsdemo.com/ Steven(US) or Tom(US)
         // Miki (Crazy male russian):
         // Mech: (Robot)
@@ -257,8 +257,7 @@ However, be aware that they may increase security if too many of their shipments
 
         // V12
         internal static readonly AudioClip BasicWeaponsUnlocked = Create("BasicWeaponsUnlocked", EscapeFromMars.Speaker.Mabel,
-        // USED
-        "Searching data files. Basic Weapon technology unlocked!", 5000);
+        "Searching files. Basic Weapon technology unlocked!", 5000);
 
         internal static readonly AudioClip DistressBeaconSilly = Create("DistressBeaconSilly", EscapeFromMars.Speaker.Mabel,
 			// USED
