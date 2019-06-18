@@ -60,7 +60,8 @@ namespace Duckroll
 			foreach (var slim in slimBlocks)
 			{
 				var block = slim.FatBlock as IMyTimerBlock;
-				block.GetActionWithName("Start").Apply(block);
+                block.StartCountdown();
+//				block.GetActionWithName("Start").Apply(block);
 			}
 		}
 
@@ -75,7 +76,8 @@ namespace Duckroll
 			foreach (var slim in slimBlocks)
 			{
 				var block = slim.FatBlock as IMyWarhead;
-				block.GetActionWithName("Detonate").Apply(block);
+                block.Detonate();
+//				block.GetActionWithName("Detonate").Apply(block);
 			}
 		}
 
@@ -147,7 +149,8 @@ namespace Duckroll
 			foreach (var slim in slimBlocks)
 			{
 				var soundBlock = (IMySoundBlock) slim.FatBlock;
-				soundBlock.ApplyAction("PlaySound");
+                soundBlock.Play();
+//				soundBlock.ApplyAction("PlaySound");
 			}
 		}
 
@@ -195,7 +198,8 @@ namespace Duckroll
 			foreach (var slim in slimBlocks)
 			{
 				var block = slim.FatBlock as IMyTimerBlock;
-				block.GetActionWithName("Stop").Apply(block);
+                block.StopCountdown();
+//				block.GetActionWithName("Stop").Apply(block);
 			}
 		}
 
