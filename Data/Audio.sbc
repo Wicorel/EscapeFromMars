@@ -1437,7 +1437,7 @@
     <Pitch>0</Pitch>
     <Waves>
       <Wave Type="D2">
-        <Start>Audio/BasicWeaponsUnlocked.wav</Start>
+        <Start>Audio/BasicWeaponsUnlocked.xwm</Start>
       </Wave>
     </Waves>
   </Sound>
