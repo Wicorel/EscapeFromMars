@@ -155,7 +155,7 @@ namespace EscapeFromMars
 				if (hackInterruptCooldown == 0)
 				{
 					ShowLocalHackingInterruptStopped();
-                    hackInterruptedV2.Visible = false;
+                    if (hackInterruptedV2 != null) hackInterruptedV2.Visible = false;
 					wasHackingLastUpdate = false;
 					hackInterruptCooldown = 6;
 					networkComms.ShowHackingInterruptStoppedOnAllClients();
@@ -176,7 +176,11 @@ namespace EscapeFromMars
 
         internal void InitHudMesages(bool bForce = false)
         {
-            if (TextAPI == null) return;
+            if (TextAPI == null)
+            {
+                ModLog.Error("Text HUD API not loaded");
+                return;
+            }
             if (TextAPI.Heartbeat)
             {
 //                ModLog.Info("Have Heartbeat");
@@ -196,7 +200,7 @@ namespace EscapeFromMars
                         hackInterruptedV2.Visible = false;
 
                     }
-//                    else ModLog.Info("Could not create Interrupted HUD");
+                    else ModLog.Info("Could not create Interrupted HUD");
                 }
                 if (hackBarV2 == null || bForce)
                 {
@@ -212,10 +216,10 @@ namespace EscapeFromMars
                         hackBarV2.Visible = false;
 //                        hackBarV2.TimeToLive = 45;
                     }
-//                    else ModLog.Info("Could not create Hacking HUD");
+                    else ModLog.Info("Could not create Hacking HUD");
                 }
             }
-//            else ModLog.Info("NO TextHud HEARTBEAT");
+            else ModLog.Info("NO TextHud HEARTBEAT");
         }
 
         internal void ShowLocalHackingProgress(int ticks)
@@ -240,24 +244,23 @@ namespace EscapeFromMars
             }
 
             InitHudMesages();
-            hackInterruptedV2.Visible = false;
-            hackBarV2.Visible = true;
-//            hackInterruptedV2 = null;
+            if(hackInterruptedV2 != null) hackInterruptedV2.Visible = false;
+            if (hackBarV2 != null) hackBarV2.Visible = true;
 
         }
 
         internal void ShowLocalHackingSuccess()
 		{
-            hackBarV2.Visible = false;
-            hackInterruptedV2.Visible = false;
+            if(hackBarV2!=null) hackBarV2.Visible = false;
+            if (hackInterruptedV2 != null) hackInterruptedV2.Visible = false;
 			audioSystem.EnsurePlaying(AudioClip.HackFinished);
 		}
 
 		internal void ShowLocalHackingInterruptStopped()
 		{
 			audioSystem.Stop();
-            hackBarV2.Visible = false;
-            hackInterruptedV2.Visible = false;
+            if (hackBarV2 != null) hackBarV2.Visible = false;
+            if (hackInterruptedV2 != null) hackInterruptedV2.Visible = false;
         }
 
         internal void ShowLocalHackingInterrupted()
@@ -265,8 +268,8 @@ namespace EscapeFromMars
             InitHudMesages();
 			audioSystem.EnsurePlaying(AudioClip.ConnectionLostSound);
 
-            hackBarV2.Visible = false;
-            hackInterruptedV2.Visible = true;
+            if (hackBarV2 != null) hackBarV2.Visible = false;
+            if (hackInterruptedV2 != null) hackInterruptedV2.Visible = true;
         }
 
         //		private void SendToHud(HUDTextAPI.HUDMessage hudMessage)
