@@ -283,8 +283,8 @@ SubtyepID=SurvivalKit */
             NeedsResearch(SmallRocketLauncherReload, TechGroup.BasicWeapons);
             NeedsResearch(InteriorTurret, TechGroup.BasicWeapons);
             NeedsResearch(LargeGatlingTurret, TechGroup.BasicWeapons);
-            NeedsResearch(largeMissileTurret, TechGroup.BasicWeapons);
-            NeedsResearch(smallMissileTurret, TechGroup.BasicWeapons);
+//            NeedsResearch(largeMissileTurret, TechGroup.BasicWeapons);
+//            NeedsResearch(smallMissileTurret, TechGroup.BasicWeapons);
 
             NeedsResearch(SkLarge, TechGroup.Permabanned);
             NeedsResearch(SkSmall, TechGroup.Permabanned);

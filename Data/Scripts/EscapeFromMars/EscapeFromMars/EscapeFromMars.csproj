@@ -97,7 +97,6 @@
     <Compile Include="Scenario\EfmCore.cs" />
     <Compile Include="Scenario\GCorpBase.cs" />
     <Compile Include="Scenario\HeatSystem.cs" />
-    <Compile Include="Scenario\HUDTextAPI.cs" />
     <Compile Include="Scenario\MikiScrapManager.cs" />
     <Compile Include="Scenario\MissionSystem.cs" />
     <Compile Include="Scenario\NetworkComms.cs" />

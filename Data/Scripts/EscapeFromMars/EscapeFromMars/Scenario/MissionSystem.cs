@@ -142,6 +142,7 @@ namespace EscapeFromMars
             TurnBlockOff(sparePartsID),
             TurnBlockOff(alarmSoundID),
  //           TurnBlockOff(medbayID), DO NOT TURN OFF.  NEEDED TO SPAWN PLAYERS!!!
+            TurnBlockOn(medbayID),
             TurnBlockOff(batteryID),
             TurnBlockOff(gasGenID)
                 );

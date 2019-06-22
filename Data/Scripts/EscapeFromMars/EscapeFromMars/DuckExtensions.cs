@@ -527,6 +527,7 @@ namespace Duckroll
 			{
 				return false;
 			}
+            // TODO: checks ownership by founder and not members
 			return block.OwnerId == faction.FounderId;
 		}
 	}
