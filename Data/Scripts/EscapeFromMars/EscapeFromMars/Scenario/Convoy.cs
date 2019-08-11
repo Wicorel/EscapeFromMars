@@ -101,7 +101,8 @@ namespace EscapeFromMars
 				InitiateDisbandProtocols();
 			}
 			else if ((GroupState == NpcGroupState.Travelling || GroupState == NpcGroupState.InCombat)
-                     && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 200.0*200) // increase to 200 to allow for variations in height.
+                     && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 300.0 * 300) // increase to 300 to allow for variations in height. V26
+//                     && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 200.0*200) // increase to 200 to allow for variations in height.
 //                     && Vector3D.Distance(Destination, leader.GetPosition()) < 100.0)
             {
                 ArrivalObserver.GroupArrivedIntact();
