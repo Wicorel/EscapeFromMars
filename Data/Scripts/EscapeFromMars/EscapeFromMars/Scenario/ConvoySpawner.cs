@@ -53,7 +53,15 @@ namespace EscapeFromMars
 			}
 		}
 
-		internal void RestoreSpawnTimeFromSave(long savedTime)
+        public override void AllGridsInitialised()
+        {
+            // log to remind that they are on..
+            if (DebugConvoys) ModLog.Info("Convoy Debug is ON");
+            if (ForceAirOnly) ModLog.Info(" Force Air only is ON");
+            if (ForceGroundOnly) ModLog.Info(" Force Ground only is ON");
+        }
+
+        internal void RestoreSpawnTimeFromSave(long savedTime)
 		{
 			nextSpawnTime = DebugConvoys ?  MyAPIGateway.Session.GameDateTime 
 				: DateTime.FromBinary(savedTime);
