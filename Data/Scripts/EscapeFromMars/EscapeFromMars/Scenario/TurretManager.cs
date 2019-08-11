@@ -16,33 +16,47 @@ namespace EscapeFromMars
                 // change in SE 1.186.  Small grids in voxels are no longer 'static'
 //				return;
 			}
-			
-			//if (grid.IsAliveAndGCorpControlled()) ?? do we need this for turrets?
+            //if (grid.IsAliveAndGCorpControlled()) ?? do we need this for turrets?
 
-			var azimuthRotors = FindRotorsWithSubgrid(grid, "TURRET_ROTOR");
-			if (azimuthRotors.Count > 0)
+            var azimuthRotors = FindRotorsWithSubgrid(grid, "TURRET_ROTOR");
+            if (azimuthRotors.Count > 0)
 			{
-				var azimuthRotor = azimuthRotors[0];
+//                ModLog.Info("Found Turret Rotor on: " + grid.CustomName);
+                var azimuthRotor = azimuthRotors[0];
 				var subGrid = azimuthRotor.TopGrid;
 				var remoteControl = FindFirstRemoteControl(subGrid);
-				if (remoteControl != null && remoteControl.IsControlledByFaction("GCORP"))
+				if (remoteControl != null 
+                    // TESTING: TURN THIS BACK ON!
+                    && remoteControl.IsControlledByFaction("GCORP")
+                    )
 				{
 					var elevationRotors = FindRotorsWithSubgrid(azimuthRotor.TopGrid, "TURRET_ROTOR_ELEVATION");
 					var weapons = new List<IMyUserControllableGun>();
 					foreach (var elevationRotor in elevationRotors)
 					{
-						weapons.AddList(elevationRotor.TopGrid.FindNonTurretWeapons());
+// Broken/removed SE 1.192.006                        weapons.AddList(elevationRotor.TopGrid.FindNonTurretWeapons());
+                        var subGuns = elevationRotor.TopGrid.FindNonTurretWeapons();
+                        foreach (var gun in subGuns)
+                        {
+                            weapons.Add(gun);
+                        }
 					}
 
 					if (elevationRotors.Count == 0 || weapons.Count == 0)
 					{
-						turrets.Add(new TurretSingleAxis(remoteControl, subGrid, azimuthRotor));
+//                        ModLog.Info(" Found Horz Turret Rotor on: " + grid.CustomName);
+                        turrets.Add(new TurretSingleAxis(remoteControl, subGrid, azimuthRotor));
 					}
 					else
 					{
-						turrets.Add(new TurretDualAxis(remoteControl, subGrid, azimuthRotor, elevationRotors, weapons));
+//                        ModLog.Info("Found Dual Turret Rotor on: " + grid.CustomName);
+                        turrets.Add(new TurretDualAxis(remoteControl, subGrid, azimuthRotor, elevationRotors, weapons));
 					}
 				}
+                else
+                {
+//                    ModLog.Info(" No remote Control found; ignoring. " + grid.CustomName);
+                }
 			}
 		}
 
