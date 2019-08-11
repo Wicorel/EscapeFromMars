@@ -19,9 +19,9 @@ namespace Duckroll
 		private bool init;
 		private int updateCount;
 		private MachineType machineType;
-		private readonly UpdateableListImpl modProxy = new UpdateableListImpl();
+        private readonly UpdateableListImpl modProxy = new UpdateableListImpl();
 
-		public override void UpdateBeforeSimulation()
+        public override void UpdateBeforeSimulation()
 		{
 			try
 			{
@@ -33,7 +33,8 @@ namespace Duckroll
 //                    (MyAPIGateway.Multiplayer.IsServer && MyAPIGateway.Utilities.IsDedicated)
 
                     machineType = MyAPIGateway.Multiplayer.IsServer ? MachineType.Host : MachineType.Client;
-					InitCommon(modProxy);
+                    MyAPIGateway.Entities.OnEntityAdd += OnEntityAdd;
+                    InitCommon(modProxy);
 					if (machineType == MachineType.Host)
 					{
 						InitHostPreLoading();
@@ -50,7 +51,11 @@ namespace Duckroll
 
 				modProxy.Update1();
 
-				if (updateCount % 30 == 0)
+                if (updateCount % UpdatesUntilInitAttempted == 0)
+                {
+                    dequeueAddedEntities();
+                }
+                if (updateCount % 30 == 0)
 				{
 					modProxy.Update30();
 				}
@@ -96,6 +101,7 @@ namespace Duckroll
 		{
 			try
 			{
+                Close();
 				init = false;
 				modProxy.Shutdown();
 			}
@@ -154,9 +160,55 @@ namespace Duckroll
 
 		public abstract void LoadPreviousGame(T saveData);
 
-		public abstract void StartedNewGame();
+        public abstract void StartedNewGame();
+        public virtual void Close()
+        {
+            MyAPIGateway.Entities.OnEntityAdd -= OnEntityAdd;
+        }
 
-		internal class UpdateableListImpl : IModSystemRegistry
+        public void GridInit(IMyCubeGrid grid)
+        {
+            modProxy.GridInit(grid);
+        }
+        List<IMyEntity> queueAddedEntities = new List<IMyEntity>();
+
+        private void dequeueAddedEntities()
+        {
+            foreach (var entity in queueAddedEntities)
+            {
+                if (entity is IMyCubeGrid)
+                {
+                    var grid = entity as IMyCubeGrid;
+                    //                ModLog.Info("Added Grid:" + grid.CustomName);
+                    if (grid.Physics != null)
+                    {
+                        //                    ModLog.Info(" Has Physics");
+                        GridInit(grid);
+                    }
+                    else
+                    {
+                        // it's a projection or a paste in progress
+                        //                    ModLog.Info(" NO Physics!");
+                    }
+                }
+                else if (entity is IMyPlayer)
+                {
+                    IMyPlayer player = (IMyPlayer)entity;
+                    ModLog.Info("Added Player:" + player.DisplayName);
+
+                }
+            }
+            queueAddedEntities.Clear();
+        }
+
+        private void OnEntityAdd(IMyEntity entity)
+        {
+            // enqueue it..
+            queueAddedEntities.Add(entity);
+        }
+
+        //        internal
+        class UpdateableListImpl : IModSystemRegistry
 		{
 			private readonly List<ModSystemRapidUpdatable> rapidUpdatables = new List<ModSystemRapidUpdatable>();
 			private readonly List<ModSystemUpdatable> updatables = new List<ModSystemUpdatable>();
@@ -179,18 +231,28 @@ namespace Duckroll
 				updatables.Add(modSystemRapidUpdatable);
 				rapidUpdatables.Add(modSystemRapidUpdatable);
 			}
+            public void GridInit(IMyCubeGrid grid)
+            {
+                foreach (var modSystemUpdatable in updatables)
+                {
+                    modSystemUpdatable.GridInitialising(grid);
+                }
+            }
 
-			public void InitModSystems()
+            public void InitModSystems()
 			{
 				var ents = new HashSet<IMyEntity>();
 				MyAPIGateway.Entities.GetEntities(ents, e => e is IMyCubeGrid);
 				foreach (var myEntity in ents)
 				{
 					var grid = (IMyCubeGrid) myEntity;
+                    GridInit(grid);
+                    /*
 					foreach (var modSystemUpdatable in updatables)
 					{
 						modSystemUpdatable.GridInitialising(grid);
 					}
+                    */
 				}
 
 				foreach (var modSystemUpdatable in updatables)
