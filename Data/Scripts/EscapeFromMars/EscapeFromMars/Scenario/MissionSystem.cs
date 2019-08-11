@@ -8,6 +8,9 @@ using Duckroll;
 using VRage.Game;
 using Sandbox.Game;
 using SpaceEngineers.Game.ModAPI;
+using VRage.ObjectBuilders;
+using VRage.Game.Entity;
+using Sandbox.Common.ObjectBuilders.Definitions;
 
 namespace EscapeFromMars
 {
@@ -58,11 +61,14 @@ namespace EscapeFromMars
 
         private readonly HashSet<long> desiredEntityIDs;
 
+        private Version gameVersion;
+
          List<IMyTerminalBlock> cachedTerminalBlocks = new List<IMyTerminalBlock>();
 
-		internal MissionSystem(long missionStartTimeBinary, HashSet<int> alreadyExecutedPrompts,
+		internal MissionSystem(Version gameVersion, long missionStartTimeBinary, HashSet<int> alreadyExecutedPrompts,
 			QueuedAudioSystem audioSystem, ResearchControl researchControl)
 		{
+            this.gameVersion = gameVersion;
 			this.audioSystem = audioSystem;
 			this.researchControl = researchControl;
 			missionStartTime = DateTime.FromBinary(missionStartTimeBinary);
@@ -349,7 +355,7 @@ namespace EscapeFromMars
                         var panel = tb as IMyTextPanel;
                         if (panel!=null)
                         {
-                            panel.WritePublicText(text);
+                            panel.WriteText(text);
                         }
                         break; // we found the only one
                     }
@@ -389,9 +395,12 @@ namespace EscapeFromMars
                 {
                     if (tb.EntityId == blockID)
                     {
-                        IMyFunctionalBlock fb =tb as IMyFunctionalBlock;
-                        if(fb!=null) fb.Enabled = false;
-//                        ModLog.Info("Found");
+                        if (tb is IMyFunctionalBlock)
+                        {
+                            var fb = tb as IMyFunctionalBlock;
+                            fb.Enabled = false;
+                        }
+                        //                        ModLog.Info("Found");
                         break; // we found the only one
                     }
                 }
@@ -495,19 +504,50 @@ namespace EscapeFromMars
 //            ModLog.Info("GridInit:"+grid.EntityId.ToString());
 //            ModLog.Info(desiredEntityIDs.Count + " Desired Blocks");
             var slimBlocks = new List<IMySlimBlock>();
-            grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyTerminalBlock);
-            /*
+
             if (grid.EntityId == 92770753627258475) // crash ship
             {
+                grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyCargoContainer);
+
                 ModLog.Info("Found Crash Ship");
-                ModLog.Info(desiredEntityIDs.Count + " Desired Blocks");
-                foreach (var l in desiredEntityIDs)
+
+                /* SE 1.192
+                var medkit = MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_ConsumableItem>("Medkit");
+                var powerkit = MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_ConsumableItem>("Powerkit");
+                var datapad = MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_Datapad>("Datapad");
+                datapad.Data = "Wico Test\nGPS:Crash Site:1868092.62:-2003480.62:1316653.75:";
+                datapad.Name = "Wico Name Test";
+
+                var spacecredit= MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_PhysicalObject>("SpaceCredit");
+
+                foreach (var slim in slimBlocks)
                 {
-                    ModLog.Info(l.ToString());
+                    IMyTerminalBlock tb = slim.FatBlock as IMyTerminalBlock;
+                    if (tb == null) continue;
+                    if (tb.EntityId == 115310750474309501) // Emergency Supplies
+                    {
+                        var cargoContainer = (IMyCargoContainer)slim.FatBlock;
+                        //                MyLog.Default.WriteLine("LoadCargo: " + cargoContainer.CustomName);
+                        //                MyLog.Default.Flush();
+                        var entity = cargoContainer as MyEntity;
+                        if (entity.HasInventory)
+                        {
+
+                            MyInventory inventory = entity.GetInventoryBase() as MyInventory;
+                            if (inventory == null) continue;
+
+                            PlaceItemIntoCargo(inventory, medkit, 15);
+                            PlaceItemIntoCargo(inventory, powerkit, 15);
+                            PlaceItemIntoCargo(inventory, datapad, 1);
+                            PlaceItemIntoCargo(inventory, spacecredit, 100);
+
+                        }
+                    }
                 }
-                ModLog.Info(slimBlocks.Count + "  Slim Blocks");
+                */
             }
-            */
+
+            grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyTerminalBlock);
             foreach (var slim in slimBlocks)
             {
                 IMyTerminalBlock tb = slim.FatBlock as IMyTerminalBlock;
@@ -539,6 +579,22 @@ namespace EscapeFromMars
                     }
                 }
             }
+        }
+        void PlaceItemIntoCargo(MyInventory inventory, MyObjectBuilder_Base cargoitem, int amount)
+        {
+            if (inventory == null) return;
+            bool bPlaced = false;
+            do
+            {
+                bPlaced = inventory.AddItems(amount, cargoitem);
+                if (!bPlaced)
+                {
+                    //                            MyLog.Default.WriteLine("LoadCargo: Does not fit-" + amount.ToString() + " "+cargo.GetDisplayName());
+                    amount /= 2; // reduce size until it fits
+                }
+                if (amount < 3) bPlaced = true; // force to true if it gets too small
+            } while (!bPlaced);
+
         }
     }
 
