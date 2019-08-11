@@ -24,7 +24,6 @@ namespace EscapeFromMars
 		private readonly IMyMotorStator azimuthRotor;
 		private readonly List<IMyMotorStator> elevationRotors;
 		private readonly List<IMyUserControllableGun> weapons;
-//		private readonly Vector3D position; // Turrets like this don't move
 		private IMyPlayer playerTarget;
 		private int timeSincePlayerSeen;
 		private bool spoken;
@@ -37,18 +36,20 @@ namespace EscapeFromMars
 			this.azimuthRotor = azimuthRotor;
 			this.elevationRotors = elevationRotors;
 			this.weapons = weapons;
-            // move this fix to overally sound block fixup
-//            bodyGrid.SetSoundBlocks("Mech Intruders Must Be Destroyed"); // fix missing sound on sound block on mech
-//			position = bodyGrid.GetPosition();
 		}
 
 		public void Update60()
 		{
 			if (!remoteControl.IsControlledByFaction("GCORP"))
 			{
-				return; // No point bothering to remove from the list, it will disappear next time the game reloads
+//				return; // No point bothering to remove from the list, it will disappear next time the game reloads
 			}
-
+            /* 
+            TODO:
+            refill weapon inventory (if designated?)
+            sequence shooting when multiple on same sub-grid
+            appropriate sequencing for missile launchers
+            */
 			playerTarget = DuckUtils.GetNearestPlayerToPosition(bodyGrid.GetPosition(), Range);
 			if (playerTarget != null)
 			{
@@ -124,24 +125,20 @@ namespace EscapeFromMars
 
 			if (!remoteControl.IsControlledByFaction("GCORP"))
 			{
-				return; // No point bothering to remove from the list, it will disappear next time the game reloads
+//				return; // No point bothering to remove from the list, it will disappear next time the game reloads
 			}
 
 
-//            TurnToFacePosition(playerTarget.GetPosition());
+//            TurnToFacePosition(playerTarget.GetPosition()); This aimed at player head, not center of mass..
             TurnToFacePosition(playerTarget.Character.WorldAABB.Center);
-
-
         }
 
         private void StopAllRotors()
 		{
-//			azimuthRotor.SetValue("Velocity", 0f);
             azimuthRotor.TargetVelocityRPM = 0f;
 			foreach (var rotor in elevationRotors)
 			{
                 rotor.TargetVelocityRPM = 0f;
-//				rotor.SetValue("Velocity", 0f);
 			}
 		}
 
