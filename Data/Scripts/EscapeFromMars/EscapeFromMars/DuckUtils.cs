@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
+using VRage.Game;
 using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRage.Utils;
@@ -71,8 +72,43 @@ namespace Duckroll
 			return result;
 		}
 
-		//We could use MyGamePruningStructure.GetClosestPlanet but it is not recommended
-		internal static MyPlanet FindPlanetInGravity(Vector3D vector3D)
+        /// <summary>
+		/// Gets the nearest player to a position, given a maximum distance they can be away from it.
+		/// Those further than the maximum are ignored. returns number of players within maximum
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="maxDistanceMeters"></param>
+        /// <param name="nPlayers"></param>
+        /// <returns></returns>
+        internal static IMyPlayer GetNearestPlayerToPosition(Vector3D position, double maxDistanceMeters, out int nPlayers)
+        {
+            var maxDistanceSq = maxDistanceMeters * maxDistanceMeters;
+            var players = new List<IMyPlayer>();
+            MyAPIGateway.Players.GetPlayers(players);
+            var closestDistSq = double.MaxValue;
+            IMyPlayer result = null;
+
+            nPlayers = 0;
+            foreach (var player in players)
+            {
+                var controlled = player.Controller.ControlledEntity;
+                if (controlled == null) continue;
+                var distSq = Vector3D.DistanceSquared(position, controlled.Entity.GetPosition());
+                if (distSq < maxDistanceSq)
+                {
+                    nPlayers++;
+                    if (distSq < closestDistSq)// && distSq < maxDistanceSq)
+                    {
+                        closestDistSq = distSq;
+                        result = player;
+                    }
+                }
+            }
+            return result;
+        }
+
+        //We could use MyGamePruningStructure.GetClosestPlanet but it is not recommended
+        internal static MyPlanet FindPlanetInGravity(Vector3D vector3D)
 		{
 			var planets = new HashSet<IMyEntity>();
 			MyAPIGateway.Entities.GetEntities(planets, x => x is MyPlanet);
@@ -130,13 +166,56 @@ namespace Duckroll
 			return false;
 		}
 
-		internal static bool IsPlayerUnderCover(IMyPlayer player)
+        internal static bool IsPlayerUnderground(IMyPlayer player)
+        {
+            var planet = FindPlanetInGravity(player.GetPosition());
+            if (planet == null)
+            {
+                return false;
+            }
+            var surface = planet.GetClosestSurfacePointGlobal(player.GetPosition());
+            var playerPos = player.GetPosition();
+            var belowSurface = Vector3D.Distance(playerPos, surface);
+
+            var playerCenterSq = Vector3D.DistanceSquared(playerPos, planet.PositionComp.WorldAABB.Center);
+            var surfaceCenterSq=Vector3D.DistanceSquared(surface, planet.PositionComp.WorldAABB.Center);
+            if (surfaceCenterSq < playerCenterSq || belowSurface<0.1) //(player above surface)
+                return false;
+
+            // else player is below the OLD surface...  but it may have been mined/destroyed.
+//            ModLog.Info("BelowSurface=" + belowSurface);
+
+            var playerNaturalGravity = planet.GetGravityAtPoint(player.GetPosition());
+            var vng = playerNaturalGravity;
+            vng.Normalize();
+
+            var upAbovePlayer = player.GetPosition() + vng * -(belowSurface +.5);
+
+//            	var vector4 = Color.Yellow.ToVector4();
+//            	MySimpleObjectDraw.DrawLine(player.GetPosition(), upAbovePlayer, MyStringId.GetOrCompute("Square"), ref vector4, 0.04f);
+
+            IHitInfo hitInfo;
+            if (MyAPIGateway.Physics.CastRay(upAbovePlayer, player.GetPosition(), out hitInfo))
+            {
+                var entity = hitInfo.HitEntity;
+                if (entity == null)
+                {
+                    return false;
+                }
+//                ModLog.Info("Entity=" + entity.ToString());
+                return !(entity is IMyCharacter);
+            }
+            return false;
+        }
+
+        internal static bool IsPlayerUnderCover(IMyPlayer player)
 		{
 			var planet = FindPlanetInGravity(player.GetPosition());
 			if (planet == null)
 			{
 				return false;
 			}
+//            var surface=planet.GetClosestSurfacePointGlobal(player.GetPosition());
 			var playerNaturalGravity = planet.GetGravityAtPoint(player.GetPosition());
 			var upAbovePlayer = player.GetPosition() + playerNaturalGravity * -5.0f;
 			//	var vector4 = Color.Yellow.ToVector4();
@@ -169,12 +248,17 @@ namespace Duckroll
 				ModLog.Error("Can't find faction: " + tag2);
 				return;
 			}
-
 			MyAPIGateway.Session.Factions.SendPeaceRequest(faction1.FactionId, faction2.FactionId);
 			MyAPIGateway.Session.Factions.AcceptPeace(faction2.FactionId, faction1.FactionId);
-		}
 
-		internal static void PutPlayerIntoFaction(string tag)
+            /*
+            // V 1.192
+            MyAPIGateway.Session.Factions.SetReputation(faction1.FactionId, faction2.FactionId, 500);
+            MyAPIGateway.Session.Factions.SetReputation(faction2.FactionId, faction1.FactionId, 501);
+            */
+        }
+
+        internal static void PutPlayerIntoFaction(string tag)
 		{
 			var faction = MyAPIGateway.Session.Factions.TryGetFactionByTag(tag);
 			if (faction == null)
