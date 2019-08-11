@@ -12,14 +12,21 @@ namespace EscapeFromMars
 		private readonly Random random = new Random();
 		public int HeatLevel { get; set; }
 
-		internal HeatSystem(int initialHeat)
+        // V26
+        public int HeatDifficulty { get; set; }
+        public bool MultiplayerScaling { get; set; }
+
+		internal HeatSystem(int initialHeat, int initialDifficulty)
 		{
 			HeatLevel = initialHeat;
+            HeatDifficulty = initialDifficulty;
 		}
 
 		internal ShipSize GenerateCargoShipSize()
 		{
 			NewShipGroupLaunched();
+
+            // TODO: remove hardcoding and make data driven.
 
 			if (HeatLevel < 10) // Very early game, make them all small
 			{
@@ -56,6 +63,7 @@ namespace EscapeFromMars
 		}
 
 		// Contract: Should return a list of SMALLEST SIZE FIRST. The list should be mutable if it is not the empty list.
+        // TODO: make this not hardcoded so it can be more finely controlled based on conditions such as difficulty settings, # players, faction info, etc.
 		internal IList<ShipSize> GenerateEscortSpecs()
 		{
 			var d100 = random.Next(0, 100); // Random between 0 and 99
@@ -150,14 +158,26 @@ namespace EscapeFromMars
 
 		private void NewShipGroupLaunched()
 		{
-			HeatLevel++;
-			ModLog.DebugInfo("Heat Level: " + HeatLevel);
+            HeatLevel = HeatLevel + 1 * HeatDifficulty;
+            ModLog.DebugInfo("Ships Launched: Heat Level: " + HeatLevel);
 		}
 
 		public void GroupArrivedIntact()
 		{
-			HeatLevel--;
-			ModLog.DebugInfo("Heat Level: " + HeatLevel);
+            HeatLevel = HeatLevel - 1 * HeatDifficulty;
+            ModLog.DebugInfo("Ships Arrived: Heat Level: " + HeatLevel);
 		}
+        public void BackupDisabled()
+        {
+            HeatLevel = HeatLevel + 1 * HeatDifficulty;
+            ModLog.DebugInfo("Backup Disabled: Heat Level: " + HeatLevel);
+ //           ModLog.Info("Backup Disabled: Heat Level: " + HeatLevel);
+        }
+
+        public void BaseCaptured()
+        { 
+            // a base was captured by players..  increase heat
+            HeatLevel = HeatLevel + 5 * HeatDifficulty;
+        }
 	}
 }
