@@ -144,9 +144,15 @@ namespace EscapeFromMars
 			research.UnlockTechForJoiningPlayer(playerId);
 			if (!RegisteredPlayers.Contains(playerId))
 			{
+                //V26 fix no player in DS
+                ulong steamID = 0;
+                if(MyAPIGateway.Session.Player!=null)
+                {
+                    steamID = MyAPIGateway.Session.Player.SteamUserId;
+                }
 				var msgBytes = Encoding.UTF8.GetBytes(MyAPIGateway.Utilities.SerializeToXML(new Message
 				{
-					SenderSteamId = MyAPIGateway.Session.Player.SteamUserId,
+					SenderSteamId = steamID,
 					MessageType = MessageType.ClearToolbar,
 					PlayerId = playerId
 				}));
@@ -207,9 +213,17 @@ namespace EscapeFromMars
 		{
 			var players = new List<IMyPlayer>();
 			MyAPIGateway.Multiplayer.Players.GetPlayers(players);
-			var me = MyAPIGateway.Session.Player.IdentityId;
-			message.SenderSteamId = MyAPIGateway.Session.Player.SteamUserId;
-			foreach (var player in players)
+
+            // V26.  Add checks for no local player
+            ulong steamID = 0;
+            long me = 0;
+            if(MyAPIGateway.Session.Player!=null)
+            {
+                steamID= MyAPIGateway.Session.Player.SteamUserId;
+                me = MyAPIGateway.Session.Player.IdentityId;
+            }
+            message.SenderSteamId = steamID;
+    		foreach (var player in players)
 			{
 				if (player.IdentityId == me)
 				{
@@ -221,6 +235,10 @@ namespace EscapeFromMars
 					var msgBytes = Encoding.UTF8.GetBytes(MyAPIGateway.Utilities.SerializeToXML(message));
 					MyAPIGateway.Multiplayer.SendMessageTo(ModId, msgBytes, steamId);
 				}
+                else
+                {
+                    ModLog.Info("Found player with no steam ID:"+ player.DisplayName);
+                }
 			}
 		}
 
