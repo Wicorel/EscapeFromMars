@@ -9,6 +9,8 @@ namespace EscapeFromMars
 {
     internal class ResearchControl
     {
+        readonly bool bNewResearch = true;
+
         private readonly MyDefinitionId refinery = MyVisualScriptLogicProvider.GetDefinitionId("Refinery", "LargeRefinery");
 
         private readonly MyDefinitionId blastFurnace =
@@ -206,11 +208,53 @@ SubtyepID=OxygenGeneratorSmall
 
         /*
         Survival kit
-MySurvivalKit {12577CF2964CA4D} Survival kit
-TyepID=MyObjectBuilder_SurvivalKit
-SubtyepID=SurvivalKit */
+        MySurvivalKit {12577CF2964CA4D} Survival kit
+        TyepID=MyObjectBuilder_SurvivalKit
+        SubtyepID=SurvivalKit */
         private readonly MyDefinitionId SkSmall = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SurvivalKit",
             "SurvivalKit");
+
+
+        // Economy.  V1.192
+        /*Safe Zone
+        MySafeZoneBlock {120C2D4D0123A2C} Safe Zone
+        81279012572379692
+        TyepID=MyObjectBuilder_SafeZoneBlock
+        SubtyepID=SafeZoneBlock
+        */
+        private readonly MyDefinitionId SafeZoneBlock = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SafeZoneBlock",
+            "SafeZoneBlock");
+
+        /*Store
+        MyStoreBlock {1C6D182A68027E6} Store
+        128019998496008166
+        TyepID=MyObjectBuilder_StoreBlock
+        SubtyepID=StoreBlock
+*/
+        private readonly MyDefinitionId StoreBlock = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_StoreBlock",
+            "StoreBlock");
+        /*SContracts
+        MyContractBlock {1A49A2924080102} Contracts
+        118388991707316482
+        TyepID=MyObjectBuilder_ContractBlock
+        SubtyepID=ContractBlock
+        */
+        private readonly MyDefinitionId ContractBlock = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_ContractBlock",
+            "ContractBlock");
+
+        /*TyepID=MyObjectBuilder_VendingMachine
+        SubtyepID=VendingMachine
+        */
+        private readonly MyDefinitionId VendingMachine = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_VendingMachine", "VendingMachine");
+
+        /*TyepID=MyObjectBuilder_StoreBlock
+        SubtyepID=AtmBlock
+        */
+        private readonly MyDefinitionId AtmBlock = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_StoreBlock", "AtmBlock");
+
+
 
         private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
         new Dictionary<TechGroup, HashSet<MyDefinitionId>>();
@@ -238,10 +282,14 @@ SubtyepID=SurvivalKit */
         internal void InitResearchRestrictions()
         {
             // SE 1.189 Turn ON any game-set blocks.  We want to control availability
-            MyVisualScriptLogicProvider.ResearchListClear();
+            if (bNewResearch)
+            {
+                MyVisualScriptLogicProvider.ResearchListClear();
+            }
 //            MyVisualScriptLogicProvider.BlockFunctionalityChanged += FunctionalityChanged;
 
             // TODO: Figure out how to disable game-based progression tree...
+            // A: you can't.  combo of editting researchgroups.sbc and MOD API
 
             NeedsResearch(refinery, TechGroup.Permabanned);
             NeedsResearch(blastFurnace, TechGroup.Permabanned);
@@ -290,10 +338,17 @@ SubtyepID=SurvivalKit */
             NeedsResearch(SkSmall, TechGroup.Permabanned);
             NeedsResearch(BasicAssembler, TechGroup.Permabanned);
 
-            //          NeedsResearch(SmallBattery, TechGroup.GasStorage);
+            var gameVersion = MyAPIGateway.Session.Version;
 
-
+            // V26.  For SE 1.192
+            if ((gameVersion.Major == 1 && gameVersion.Minor >= 192) || gameVersion.Major > 1)
+            {
+                NeedsResearch(SafeZoneBlock, TechGroup.Permabanned);
+                NeedsResearch(StoreBlock, TechGroup.Permabanned);
+                NeedsResearch(ContractBlock, TechGroup.Permabanned);
+            }
         }
+
         public void AllowUnlockedTechs()
         {
             UnlockTechsSilently(0, UnlockedTechs);
@@ -301,6 +356,9 @@ SubtyepID=SurvivalKit */
 
         private void NeedsResearch(MyDefinitionId techDef, TechGroup techgroup)
         {
+
+            if (techDef == null) return;
+
             MyVisualScriptLogicProvider.ResearchListAddItem(techDef);
 
             HashSet<MyDefinitionId> techsInGroup;
@@ -314,8 +372,6 @@ SubtyepID=SurvivalKit */
 
         public void KeepTechsLocked()
         {
-            // DOES NOT WORK (as of 1.190)
-
 //            ModLog.Info("KeepTechsLocked()");
 
             foreach (var techGroup in techsForGroup)
@@ -372,8 +428,10 @@ SubtyepID=SurvivalKit */
             {
                 foreach (var technology in technologies)
                 {
-                    MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
-                    //MyVisualScriptLogicProvider.PlayerResearchUnlock(player.IdentityId, technology);
+                    if (bNewResearch)
+                        MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
+                    else
+                        MyVisualScriptLogicProvider.PlayerResearchUnlock(player.IdentityId, technology);
                 }
             }
             UnlockedTechs.Add(techGroup);
@@ -417,9 +475,11 @@ SubtyepID=SurvivalKit */
                 foreach (var technology in technologies)
                 {
 
-                    // unknown: does this work for ALL players?
-                    MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
-                    //MyVisualScriptLogicProvider.PlayerResearchUnlock(playerId, technology);
+                    if (bNewResearch)
+                        // unknown: does this work for ALL players?
+                        MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
+                    else
+                        MyVisualScriptLogicProvider.PlayerResearchUnlock(playerId, technology);
                 }
             }
         }
@@ -438,15 +498,13 @@ SubtyepID=SurvivalKit */
 
                 foreach (var technology in technologies)
                 {
-                    MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
- //                   MyVisualScriptLogicProvider.PlayerResearchUnlock(playerId, technology);
+                    if (bNewResearch)
+                        MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
+                    else
+                        MyVisualScriptLogicProvider.PlayerResearchUnlock(playerId, technology);
                 }
             }
         }
     }
 }
-
-
-
-
 
