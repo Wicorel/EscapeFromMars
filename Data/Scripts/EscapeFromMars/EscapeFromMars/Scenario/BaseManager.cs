@@ -33,6 +33,8 @@ namespace EscapeFromMars
 
 		public override void Update60()
 		{
+            // TODO: what if ALL bases are taken out?
+            // TODO: what if the air base (convoy target) is taken out?  what happens to existing convoys? What about new convoys?
 			foreach (var gCorpBase in bases)
 			{
                 //TODO: spread out these updates across bases?
@@ -85,6 +87,22 @@ namespace EscapeFromMars
         /// <param name="grid"></param>
         void BlocksFixup(IMyCubeGrid grid)
         {
+
+            // fix up the beacon blocks  // V26
+            var slimBlocksB = new List<IMySlimBlock>();
+            grid.GetBlocks(slimBlocksB, b => b.FatBlock is IMyBeacon);
+            foreach (var slim in slimBlocksB)
+            {
+                var beacon = slim.FatBlock as IMyBeacon;
+                if(beacon.CustomName.Contains("CLEANCE"))
+                { 
+                    // beacon in HQ has spelling error
+                    string sName = beacon.CustomName;
+                    ModLog.Info("Fixing Beacon Text:" + sName);
+                    beacon.CustomName = sName.Replace("CLEANCE", "CLEARANCE");
+                }
+            }
+
             // fix up the text panel blocks
             var slimBlocks = new List<IMySlimBlock>();
             grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyTextPanel);
@@ -97,6 +115,8 @@ namespace EscapeFromMars
                 //                bool bShow = textPanel.ShowOnScreen != VRage.Game.GUI.TextPanel.ShowTextOnScreenFlag.NONE;
                 if (bShow)
                 {
+                    // We've already set this up once before (or world was created post 1.189
+
                     /* Try to fix text not showing on text panels
                      * 
                      * (on further testing, panels are showing.. maybe Keen fixed this themselves?)
@@ -132,18 +152,48 @@ namespace EscapeFromMars
                          */
                     }
                 }
-                else
+// V26                else
                 {
                     var strings = new List<string>();
                     textPanel.GetSelectedImages(strings);
-
+                    textPanel.TextPadding = 0; //V26
                     if (strings.Count < 1)
                     {
                         // note: better method would be use use .CustomData of the textpanels.
                         // Using this EntityID method to be backward compatible with player's existing worlds.
                         switch (textPanel.EntityId)
                         {
+                            //            long buildGuideID = 80461927256500036;
 
+                            case 80461927256500036: // Crash ship build info screen
+                                /* "old" text
+Mabel: Loading survival guide...
+
+> Recommend searching cargo
+   and disassembling shuttle for 
+   rover parts
+> Recommend configuration:
+    - Six wheels
+    - Friction 10%
+    - Damping 30%
+    - Strength ~5% 
+               (Depends on load)
+    - Speed Limit 100km/h
+*/
+                                textPanel.WriteText("Mabel: Loading survival guide..."+
+"\n"+
+"\n> Recommend searching cargo"+
+"\n   and disassembling shuttle for"+
+"\n   rover parts"+
+"\n> Recommend configuration:"+
+"\n    -Six wheels"+
+"\n    - Friction 60%"+
+"\n    - *Strength 10%" +
+"\n    - *Power 50%" +
+"\n    - Speed Limit 50km/h" +
+"\n  * =Depends on load"
+);
+                                break;
                             // MIKI FIXUP
                             case 81986956045310309:
                                 textPanel.AddImageToSelection("MikiScrap");
@@ -492,6 +542,7 @@ namespace EscapeFromMars
             }
 
 
+
         }
 
         public override void AllGridsInitialised()
@@ -518,8 +569,31 @@ namespace EscapeFromMars
 			}
 			return null;
 		}
+        internal GCorpBase FindBaseNear(Vector3D position)
+        {
+            GCorpBase nearestBase = null;
+            var closestDistance = double.MaxValue;
+            foreach (var gCorpBase in bases)
+            {
+                var distSquared = Vector3D.DistanceSquared(gCorpBase.RemoteControl.GetPosition(), position);
+                if (distSquared < closestDistance)
+                {
+                    closestDistance = distSquared;
+                    nearestBase = gCorpBase;
+                }
+            }
+            return nearestBase;
+        }
 
-		internal List<GCorpBaseSaveData> GetSaveData()
+        internal void ClearBaseBackupRequests()
+        {
+            foreach (var gCorpBase in bases)
+            {
+                gCorpBase.ClearBackup();
+            }
+        }
+
+        internal List<GCorpBaseSaveData> GetSaveData()
 		{
 			var gcorpBaseDatas = new List<GCorpBaseSaveData>();
 			foreach (var gCorpBase in bases)
@@ -528,5 +602,17 @@ namespace EscapeFromMars
 			}
 			return gcorpBaseDatas;
 		}
-	}
+
+        public string BaseInfo()
+        {
+            string str = "";
+            int count = bases.Count;
+            str += "#Bases=" + count;
+            foreach(var gcorpbase in bases)
+            {
+                str += "\n " + gcorpbase.RemoteControl.CustomName;
+            }
+            return str;
+        }
+    }
 }
