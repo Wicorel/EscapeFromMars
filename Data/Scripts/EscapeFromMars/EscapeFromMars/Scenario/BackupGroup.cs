@@ -15,13 +15,14 @@ namespace EscapeFromMars
 		private readonly QueuedAudioSystem audioSystem;
 		private const string InterceptingBeaconSuffix = " *PURSUING TARGET*";
 		private const string ReturningToBase = " *RETURNING TO BASE*";
-
+        HeatSystem heat;
 		internal BackupGroup(NpcGroupState initialState, Vector3D destination, IMyCubeGrid leader,
-			NpcGroupArrivalObserver npcGroupArrivalObserver, QueuedAudioSystem audioSystem, DateTime groupSpawnTime)
-			: base(leader.EntityId, initialState, destination, NpcGroupType.Backup, groupSpawnTime, npcGroupArrivalObserver)
+			HeatSystem heatSystem, QueuedAudioSystem audioSystem, DateTime groupSpawnTime)
+			: base(leader.EntityId, initialState, destination, NpcGroupType.Backup, groupSpawnTime, heatSystem)
 		{
 			this.leader = leader;
 			this.audioSystem = audioSystem;
+            this.heat = heatSystem;
 		}
 
 		internal override bool IsJoinable(UnitType unitType)
@@ -43,7 +44,7 @@ namespace EscapeFromMars
 				return;
 			}
 
-			if (GroupState == NpcGroupState.Travelling && Vector3D.Distance(Destination, leader.GetPosition()) < 40.0)
+			if (GroupState == NpcGroupState.Travelling && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 40.0*40.0)
 			{
 				GroupState = NpcGroupState.Disbanding;
 			}
@@ -51,7 +52,7 @@ namespace EscapeFromMars
 			if (GroupState == NpcGroupState.Disbanding)
 			{
 				var isArmed = leader.HasUsableGun();
-				if (AttemptDespawn(leader))
+				if (AttemptDespawn(leader,200)) //V26
 				{
 					leader = null;
 					GroupState = NpcGroupState.Disbanded;
@@ -72,6 +73,8 @@ namespace EscapeFromMars
 				leader.AppendToFirstBeaconName(InterceptingBeaconSuffix);
 				audioSystem.PlayAudio(AudioClip.TargetFoundDronesAttack, AudioClip.TargetIdentifiedUnitsConverge);
 			}
+            // todo: if no player nearby go searching for player vehicles near base/convoy
+            // todo: if can't target player after a delay (or player under cover?), search for player vehicles near current location
 
 			if (GroupState == NpcGroupState.InCombat)
 			{
@@ -80,6 +83,8 @@ namespace EscapeFromMars
 					GroupState = NpcGroupState.Disbanding;
 					leader.SendToPosition(Destination);
 					audioSystem.PlayAudio(AudioClip.DroneDisarmed);
+                    // disbanding, but for backups we want to extra penalize for killing unit
+                    heat.BackupDisabled();
 				}
 				else
 				{
@@ -95,7 +100,14 @@ namespace EscapeFromMars
 					}
 					else
 					{
-						leader.SendToPosition(player.GetPosition(), 2);
+                        float heightModifier = 15; // Change from 2 pre V26
+
+                        // Added V26
+                        if (DuckUtils.IsPlayerUnderCover(player))
+                        {
+                            heightModifier = 300;
+                        }
+						leader.SendToPosition(player.GetPosition(), heightModifier);
 					}
 				}
 			}
