@@ -30,6 +30,8 @@
       <AcceptHumans>true</AcceptHumans>
       <AutoAcceptMember>true</AutoAcceptMember>
       <EnableFriendlyFire>true</EnableFriendlyFire>
+        <CustomColor x="0" y="0" z="0" />
+        <IconColor x="1" y="1" z="1" />
     </Faction>
 
     <Faction Tag="GCORP" Founder="Galactic Corporation">
@@ -39,6 +41,9 @@
       </Id>
       <DisplayName>Galactic Corporation</DisplayName>
       <IsDefault>true</IsDefault>
+        <CustomColor x="1" y="1" z="1" />
+        <IconColor x="0" y="0" z="0" />
+        <FactionIcon>Textures\Models\gcorp_logo.dds</FactionIcon>
     </Faction>
 	
 	 <Faction Tag="MIKI" Founder="Miki Scrap">
@@ -52,6 +57,9 @@
       <AutoAcceptMember>false</AutoAcceptMember>
       <EnableFriendlyFire>false</EnableFriendlyFire>
 	  <DefaultRelation>Neutral</DefaultRelation>
+        <CustomColor x="1" y="1" z="1" />
+        <IconColor x="0" y="0" z="0" />
+        <FactionIcon>Textures\Models\MikiScrap.dds</FactionIcon>
     </Faction>
 	
   </Factions>
