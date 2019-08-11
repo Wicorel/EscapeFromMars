@@ -297,7 +297,10 @@ namespace Duckroll
 				remoteControl.ClearWaypoints();
 				if (heightModifier > 0)
 				{
-					targetPosition = targetPosition + remoteControl.GetNaturalGravity() * -heightModifier;
+                    Vector3D vng = remoteControl.GetNaturalGravity();
+                    vng.Normalize();
+
+                    targetPosition = targetPosition +  vng* -heightModifier;
 				}
 				remoteControl.AddWaypoint(targetPosition, "Target");
 				remoteControl.SetAutoPilotEnabled(true);
