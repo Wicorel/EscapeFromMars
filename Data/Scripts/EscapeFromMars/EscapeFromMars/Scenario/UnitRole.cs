@@ -2,6 +2,6 @@
 {
 	public enum UnitRole
 	{
-		Delivery, Escort, Backup
+		Delivery, Escort, Backup, Bomb
 	}
 }
