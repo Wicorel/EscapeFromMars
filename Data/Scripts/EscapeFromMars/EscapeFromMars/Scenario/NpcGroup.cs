@@ -28,6 +28,13 @@ namespace EscapeFromMars
 			return GroupState == NpcGroupState.Disbanded;
 		}
 
+        public string NpcgroupInfo(NpcGroupType groupType)
+        {
+            string str = "";
+            if(groupType<0 || this.groupType==groupType)
+                str += "\n Type=" + groupType.ToString() + " State="+GroupState.ToString();
+            return str;
+        }
 		/// <summary>
 		/// Tells the group to try and disband if they are not already doing so. If disbanded in this manner,
 		/// they are treated as arriving safely so that players aren't blamed for groups that bugged out and
@@ -50,16 +57,20 @@ namespace EscapeFromMars
 
 		internal abstract Vector3D GetPosition();
 
-		protected static bool AttemptDespawn(IMyCubeGrid grid)
+		protected static bool AttemptDespawn(IMyCubeGrid grid, Int32 minplayerdistance=1750)
 		{
 			if (!grid.IsControlledByFaction("GCORP"))
 			{
 				return true; // If we are not GCorp don't try to despawn, we may be wreckage or player hijacked
 			}
 
-			if (!DuckUtils.IsAnyPlayerNearPosition(grid.GetPosition(), 1750))
-			{
-				grid.CloseAll();
+            // if player is 'near' base, then disabled drones near the base won't be despawned
+            //			if (!DuckUtils.IsAnyPlayerNearPosition(grid.GetPosition(), 1750))
+
+            // V26
+            if (!DuckUtils.IsAnyPlayerNearPosition(grid.GetPosition(), minplayerdistance))
+            {
+                grid.CloseAll();
 				return true;
 			}
 
@@ -114,7 +125,8 @@ namespace EscapeFromMars
 
 	public enum NpcGroupType
 	{
-		Convoy,
+        All=-1,
+		Convoy=0,
 		Backup
 	}
 }
