@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sandbox.Common.ObjectBuilders.Definitions;
+using System;
 using System.Collections.Generic;
 using VRage;
 using VRage.Game;
@@ -14,7 +15,13 @@ namespace EscapeFromMars
 		private static readonly IObjectBuilderFactory AmmoType = new AmmoObjectBuilder();
 		private static readonly IObjectBuilderFactory IngotType = new IngotObjectBuilder();
 
-		private static void AddComponent(string subtypeName, int amountPerCargoContainer, int probability)
+        /* SE 1.192
+        private static readonly IObjectBuilderFactory DatapadType = new DatapadObjectBuilder();
+        private static readonly IObjectBuilderFactory ConsumableType = new ConsumableObjectBuilder();
+        private static readonly IObjectBuilderFactory CreditType = new CreditObjectBuilder();
+        private static readonly IObjectBuilderFactory PackageType = new PackageObjectBuilder();
+        */
+        private static void AddComponent(string subtypeName, int amountPerCargoContainer, int probability)
 		{
 			Add(subtypeName, amountPerCargoContainer, probability, ComponentType);
 		}
@@ -24,12 +31,25 @@ namespace EscapeFromMars
 			Add(subtypeName, amountPerCargoContainer, probability, AmmoType);
 		}
 
-		private static void AddIngot(string subtypeName, int amountPerCargoContainer, int probability)
-		{
-			Add(subtypeName, amountPerCargoContainer, probability, IngotType);
-		}
-
-		private static void Add(string subtypeName, int amountPerCargoContainer, int probability,
+        private static void AddIngot(string subtypeName, int amountPerCargoContainer, int probability)
+        {
+            Add(subtypeName, amountPerCargoContainer, probability, IngotType);
+        }
+        /* SE 1.192
+        private static void AddDatapad(string subtypeName, int amountPerCargoContainer, int probability)
+        {
+            Add(subtypeName, amountPerCargoContainer, probability, DatapadType);
+        }
+        private static void AddConsumable(string subtypeName, int amountPerCargoContainer, int probability)
+        {
+            Add(subtypeName, amountPerCargoContainer, probability, ConsumableType);
+        }
+        private static void AddPackage(string subtypeName, int amountPerCargoContainer, int probability)
+        {
+            Add(subtypeName, amountPerCargoContainer, probability, PackageType);
+        }
+        */
+        private static void Add(string subtypeName, int amountPerCargoContainer, int probability,
 			IObjectBuilderFactory objectBuilderFactory)
 		{
 			var startRange = _totalProbability;
@@ -39,6 +59,9 @@ namespace EscapeFromMars
 
 		static CargoType()
 		{
+            // these should be base/faction specific
+
+            // Also would be nice to have changing list as game goes on.. and maybe based on difficulty and heatlevel
 			AddComponent("SteelPlate", 500, 2);
 			AddComponent("MetalGrid", 300, 4);
 			AddComponent("Construction", 350, 5);
@@ -62,7 +85,16 @@ namespace EscapeFromMars
 			AddIngot("Uranium", 15, 3);
 		}
 
-		internal static CargoType GenerateRandomCargo(Random random)
+        internal static void AllowEconomyItems()
+        {
+            // SE 1.192
+            /*
+            AddConsumable("Medkit", 500, 2);
+            AddConsumable("Powerkit", 500, 2);
+            */
+        }
+
+        internal static CargoType GenerateRandomCargo(Random random)
 		{
 			var randomNumber = random.Next(_totalProbability);
 			foreach (var cargo in AllTypes)
@@ -168,5 +200,40 @@ namespace EscapeFromMars
 				return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_Ingot>(subtypeName);
 			}
 		}
-	}
+        /* SE V1.192
+        private class DatapadObjectBuilder : IObjectBuilderFactory
+        {
+            // DataPad/Datapad
+            public MyObjectBuilder_PhysicalObject GetObjectBuilder(string subtypeName)
+            {
+                return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_Datapad>(subtypeName);
+            }
+        }
+        private class ConsumableObjectBuilder : IObjectBuilderFactory
+        {
+            // ConsumableItem/Medkit
+            // ConsumableItem/Powerkit
+            public MyObjectBuilder_PhysicalObject GetObjectBuilder(string subtypeName)
+            {
+                return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_ConsumableItem>(subtypeName);
+            }
+        }
+        private class CreditObjectBuilder : IObjectBuilderFactory
+        {
+            // PhysicalObject/SpaceCredit
+            public MyObjectBuilder_PhysicalObject GetObjectBuilder(string subtypeName)
+            {
+                return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_PhysicalObject>(subtypeName);
+            }
+        }
+        private class PackageObjectBuilder : IObjectBuilderFactory
+        {
+            // Package/Package
+            public MyObjectBuilder_PhysicalObject GetObjectBuilder(string subtypeName)
+            {
+                return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_Package>(subtypeName);
+            }
+        }
+        */
+    }
 }
