@@ -16,7 +16,9 @@ namespace EscapeFromMars
 		private const string CargoGround = CargoRole + "_GROUND";
 		private const string BackupAir = Unitialised + "_BACKUP_AIR";
 
-		private static readonly PrefabGrid LightAirTransport = new PrefabGrid("Envoy", UnitType.Air, UnitRole.Delivery);
+        private const string Bomb = Unitialised + "_BOMB";
+
+        private static readonly PrefabGrid LightAirTransport = new PrefabGrid("Envoy", UnitType.Air, UnitRole.Delivery);
 
 		private static readonly PrefabGrid MediumAirTransport = new PrefabGrid("Medium GCorp Transport", UnitType.Air,
 			UnitRole.Delivery);
@@ -54,11 +56,14 @@ namespace EscapeFromMars
 
 		private static readonly PrefabGrid RocketAirBackup = new PrefabGrid("Medium GCorp Missile Flyer", UnitType.Air, UnitRole.Backup);
 
+        //V26
+        private static readonly PrefabGrid BombDefense = new PrefabGrid("GCorp Large Bomb", UnitType.Air, UnitRole.Bomb);
 
-		// Define more prefabs here...
+
+        // Define more prefabs here...
 
 
-		internal string PrefabName { get; }
+        internal string PrefabName { get; }
 		internal UnitType UnitType { get; }
 		internal UnitRole UnitRole { get; }
 		internal string InitialBeaconName { get; }
@@ -81,6 +86,8 @@ namespace EscapeFromMars
 					return unitType == UnitType.Air ? EscortAir : EscortGround;
 				case UnitRole.Backup:
 					return BackupAir; // Currently all backup is air, ground is tricky to place at random
+                case UnitRole.Bomb: // V26
+                    return Bomb;
 				default:
 					throw new ArgumentException(unitRole + " not recognised!");
 			}
@@ -100,6 +107,11 @@ namespace EscapeFromMars
 					throw new ArgumentException(size + " air backup not found!");
 			}
 		}
+
+        internal static PrefabGrid GetBomb()
+        {
+            return BombDefense;
+        }
 
 		internal static PrefabGrid GetAirTransport(ShipSize size)
 		{
@@ -190,12 +202,24 @@ namespace EscapeFromMars
 				{
 					return new RoleAndUnitType {UnitRole = UnitRole.Delivery, UnitType = UnitType.Ground};
 				}
-				if (beaconName.Contains(BackupAir))
-				{
-					return new RoleAndUnitType {UnitRole = UnitRole.Backup, UnitType = UnitType.Air};
-				}
-			}
-			return null; // Not one of ours perhaps?
+                if (beaconName.Contains(BackupAir))
+                {
+                    return new RoleAndUnitType { UnitRole = UnitRole.Backup, UnitType = UnitType.Air };
+                }
+                //V26
+                if (beaconName.Contains(Bomb))
+                {
+                    return new RoleAndUnitType { UnitRole = UnitRole.Bomb, UnitType = UnitType.Air };
+                }
+
+            }
+            grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyWarhead);
+            if (slimBlocks.Count>0)
+            {
+                // if it has warheads (and no beacon defining else) assume it's a bomb
+                return new RoleAndUnitType { UnitRole = UnitRole.Bomb, UnitType = UnitType.Air };
+            }
+            return null; // Not one of ours perhaps?
 		}
 	}
 }
