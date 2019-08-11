@@ -1,0 +1,142 @@
+// Crash Ship
+
+
+// Small Cargo Container 2 = Emergency Supplies
+// Small Cargo Container 4 = Tools Locker
+// Small Cargo Container 3 = Spare Parts Storage
+
+Landing Gear
+MyLandingGear {1ABDE0D77A556F1} Landing Gear
+120433964478715633
+TyepID=MyObjectBuilder_LandingGear
+SubtyepID=LargeBlockLandingGear
+-------------
+Shuttle Medbay
+MyMedicalRoom {11BE65B98D0D126} Shuttle Medbay
+79910699489349926
+TyepID=MyObjectBuilder_MedicalRoom
+SubtyepID=LargeMedicalRoom
+Flight Seat 2
+MyCockpit {107E54C7CE2413C} Flight Seat 2
+74280035550380348
+TyepID=MyObjectBuilder_Cockpit
+SubtyepID=CockpitOpen
+-------------
+Small Cargo Container 2
+MyCargoContainer {199AA8440CE0F7D} Small Cargo Container 2
+115310750474309501
+TyepID=MyObjectBuilder_CargoContainer
+SubtyepID=LargeBlockSmallContainer
+-------------
+Battery 2
+MyBatteryBlock {1C96A802402B285} Battery 2
+128751162949284485
+TyepID=MyObjectBuilder_BatteryBlock
+SubtyepID=LargeBlockBatteryBlock
+-------------
+Oxygen Generator 2
+MyGasGenerator {105CE908A03593E} Oxygen Generator 2
+73692089107568958
+TyepID=MyObjectBuilder_OxygenGenerator
+SubtyepID=
+-------------
+LCD Panel
+MyTextPanel {1B0AC77EBD2A4BC} LCD Panel
+121786820996539580
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeLCDPanel
+-------------
+LCD Panel 2
+MyTextPanel {1C8F65CA5FDFC10} LCD Panel 2
+128623467162369040
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeLCDPanel
+-------------
+LCD Panel 3
+MyTextPanel {11B71101FB0D708} LCD Panel 3
+79781732474214152
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeLCDPanel
+-------------
+LCD Panel 4
+MyTextPanel {1FB6E0408626190} LCD Panel 4
+142828776791892368
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeLCDPanel
+-------------
+Corner LCD Flat Bottom 5
+MyTextPanel {1881E648E248775} Corner LCD Flat Bottom 5
+110371608100898677
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeBlockCorner_LCD_Flat_2
+-------------
+Small Cargo Container 3
+MyCargoContainer {11D01F7DA7D4D93} Small Cargo Container 3
+80222532396731795
+TyepID=MyObjectBuilder_CargoContainer
+SubtyepID=LargeBlockSmallContainer
+-------------
+Small Cargo Container 4
+MyCargoContainer {1E5E584229B6F7A} Small Cargo Container 4
+136767719383723898
+TyepID=MyObjectBuilder_CargoContainer
+SubtyepID=LargeBlockSmallContainer
+Interior Light 4
+MyInteriorLight {13E143A098070AA} Interior Light 4
+89531282094059690
+TyepID=MyObjectBuilder_InteriorLight
+SubtyepID=SmallLight
+-------------
+Passenger Seat 4
+MyCockpit {1A978FD77BC4E01} Passenger Seat 4
+119759895132917249
+TyepID=MyObjectBuilder_Cockpit
+SubtyepID=PassengerSeatLarge
+-------------
+Passenger Seat 2
+MyCockpit {1E7611E7EDC598F} Passenger Seat 2
+137185097263372687
+TyepID=MyObjectBuilder_Cockpit
+SubtyepID=PassengerSeatLarge
+-------------
+Passenger Seat 2
+MyCockpit {12C01754BE848A6} Passenger Seat 2
+84444096309512358
+TyepID=MyObjectBuilder_Cockpit
+SubtyepID=PassengerSeatLarge
+-------------
+Passenger Seat 5
+MyCockpit {16077FD87C254A2} Passenger Seat 5
+99211122590241954
+TyepID=MyObjectBuilder_Cockpit
+SubtyepID=PassengerSeatLarge
+-------------
+LCD Panel Rover
+MyTextPanel {11DDBB250112744} LCD Panel Rover
+80461927256500036
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeLCDPanel
+-------------
+Sound Block
+MySoundBlock {1924F7682B71B64} Sound Block
+113240311055457124
+TyepID=MyObjectBuilder_SoundBlock
+SubtyepID=LargeBlockSoundBlock
+-------------
+Corner LCD Flat Top 2
+MyTextPanel {1351B2181ED992F} Corner LCD Flat Top 2
+87005598531295535
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeBlockCorner_LCD_Flat_1
+-------------
+Oxygen Tank
+MyGasTank {114F215B81D7591} Oxygen Tank
+77953268669314449
+TyepID=MyObjectBuilder_OxygenTank
+SubtyepID=
+-------------
+Corner LCD Flat Top 5
+MyTextPanel {1FD2CBCA198AAFD} Corner LCD Flat Top 5
+143319951822334717
+TyepID=MyObjectBuilder_TextPanel
+SubtyepID=LargeBlockCorner_LCD_Flat_1
