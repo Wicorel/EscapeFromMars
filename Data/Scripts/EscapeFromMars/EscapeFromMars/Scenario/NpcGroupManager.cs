@@ -128,7 +128,7 @@ namespace EscapeFromMars
 //                        ModLog.Info(" Setting groundConvoyDestinationPosition:" + remoteControl.GetPosition().ToString());
                         groundConvoyDestinationPosition = remoteControl.GetPosition() + remoteControl.GetNaturalGravity() * -0.3f;
                         //                      // 3M above for Ground Destination
-                        ModLog.Info(" Gravity:" + remoteControl.GetNaturalGravity());
+//                        ModLog.Info(" Gravity:" + remoteControl.GetNaturalGravity());
 //                        ModLog.Info(" Set groundConvoyDestinationPosition:" + groundConvoyDestinationPosition.ToString());
                     }
                     else
@@ -227,6 +227,7 @@ namespace EscapeFromMars
 
 		private void GiveOrdersToUnassignedShips()
 		{
+            bool bFoundBackup = false;
 			while (unitialisedNewGrids.Count > 0)
 			{
 				var grid = unitialisedNewGrids.Dequeue();
@@ -238,6 +239,8 @@ namespace EscapeFromMars
 				var roleAndUnitType = PrefabGrid.GetRoleAndUnitType(grid);
 				if (roleAndUnitType == null)
 				{
+                    // V26 debug
+                    ModLog.Info("Discarding grid because no role found");
 					continue;
 				}
 
@@ -333,6 +336,12 @@ namespace EscapeFromMars
 						break;
 					case UnitRole.Backup:
 						var gCorpBase = baseManager.FindBaseWantingBackup();
+                        // V26
+                        bFoundBackup = true;
+
+                        if (gCorpBase == null)
+                            gCorpBase = baseManager.FindBaseNear(grid.GetPosition());
+
 						if (gCorpBase == null)
 						{
 							ModLog.Error("Backup ship spawned but can't find the base that asked for it!");
@@ -347,10 +356,30 @@ namespace EscapeFromMars
 						//damageSensor.RegisterDamageObserver(grid.EntityId, backupGroup);
 						npcGroups.Add(backupGroup);
 						break;
+                    case UnitRole.Bomb:
+                        bool hasSensors = false;
+                        var slimBlocks = new List<IMySlimBlock>();
+                        grid.GetBlocks(slimBlocks, b => b.FatBlock is IMySensorBlock);
+                        if (slimBlocks.Count > 0) hasSensors = true;
+
+
+                        grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyWarhead);
+                        foreach (var slim in slimBlocks)
+                        {
+                            var wh = slim.FatBlock as IMyWarhead;
+                            wh.IsArmed = true;
+                            if(!hasSensors) // if no sensors, start the countdown
+                            {
+                                ModLog.Info("BOMB: no sensors: Starting timer");
+                                wh.StartCountdown();
+                            }
+                        }
+                        break;
 					default:
 						continue;
 				}
 			}
+            if(bFoundBackup)  baseManager.ClearBaseBackupRequests();
 		}
 
 		private Convoy RegisterConvoy(IMyCubeGrid leaderGrid, NpcGroupState npcGroupState, UnitType unitType,
@@ -388,7 +417,7 @@ namespace EscapeFromMars
 					var inventory = entity.GetInventoryBase() as MyInventory;
                     if (inventory == null) continue;
 
-                    // Added check for V15 since SE V1.189 removed cargo container multiplier
+                    // for V15: Added check  since SE V1.189 removed cargo container multiplier
                     int amount = cargo.AmountPerCargoContainer;
                     var cargoitem = cargo.GetObjectBuilder();
                     bool bPlaced = false;
@@ -406,6 +435,7 @@ namespace EscapeFromMars
             }
 		}
 
+        
 		private static void SetDestination(IMyCubeGrid grid, Vector3D destination)
 		{
 			var slimBlocks = new List<IMySlimBlock>();
@@ -426,7 +456,7 @@ namespace EscapeFromMars
 //                block.CustomName = "NAV: C STARTED_DELIVERY; S 80; D 80 ; W " + destination.X + ":" + destination.Y +
                                    ":" + destination.Z;
 
-                ModLog.Info("Set Waypoint to: " + block.CustomName);
+//                ModLog.Info("Set Waypoint to: " + block.CustomName);
                 /*
                 MyLog.Default.WriteLine("Set Waypoint to: " + block.CustomName);
                 MyLog.Default.Flush();
@@ -453,5 +483,16 @@ namespace EscapeFromMars
 		{
 			MyAPIGateway.Entities.OnEntityAdd -= NewEntityEvent;
 		}
+
+        public string NpcGroupInfo(NpcGroupType groupType)
+        {
+            string str = "";
+            str+="# of NPCs="+npcGroups.Count;
+            foreach (var npc in npcGroups)
+            {
+                str += npc.NpcgroupInfo(groupType);
+            }
+            return str;
+        }
 	}
 }
