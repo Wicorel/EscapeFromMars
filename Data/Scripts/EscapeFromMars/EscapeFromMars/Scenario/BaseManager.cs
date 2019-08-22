@@ -88,6 +88,15 @@ namespace EscapeFromMars
         void BlocksFixup(IMyCubeGrid grid)
         {
 
+            // fix up the LCD blocks with show on hud // V27
+            var slimBlocksT = new List<IMySlimBlock>();
+            grid.GetBlocks(slimBlocksT, b => b.FatBlock is IMyTextPanel);
+            foreach (var slim in slimBlocksT)
+            {
+                var textPanel = slim.FatBlock as IMyTextPanel;
+                textPanel.ShowOnHUD = false;
+            }
+
             // fix up the beacon blocks  // V26
             var slimBlocksB = new List<IMySlimBlock>();
             grid.GetBlocks(slimBlocksB, b => b.FatBlock is IMyBeacon);

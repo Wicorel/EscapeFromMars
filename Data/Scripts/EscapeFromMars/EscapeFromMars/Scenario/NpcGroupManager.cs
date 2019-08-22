@@ -142,10 +142,12 @@ namespace EscapeFromMars
 
         private void OfferPotentialNpcShip(IMyCubeGrid grid)
 		{
+//            ModLog.Info("Potentential NPC:" + grid.CustomName);
 			NpcGroupSaveData npcGroupSaveData;
 			if (restoredNpcGroupData.TryGetValue(grid.EntityId, out npcGroupSaveData))
 			{
-				if (npcGroupSaveData.NpcGroupType == NpcGroupType.Backup)
+//                ModLog.Info(" Potentential NPC: Found in restored NPC Group data:" + npcGroupSaveData.NpcGroupType.ToString() + " Type="+ npcGroupSaveData.LeaderUnitType.ToString());
+                if (npcGroupSaveData.NpcGroupType == NpcGroupType.Backup)
 				{
 					npcGroups.Add(new BackupGroup(npcGroupSaveData.State, npcGroupSaveData.GroupDestination,
 						grid, heatSystem, audioSystem, DateTime.FromBinary(npcGroupSaveData.SpawnTime)));
@@ -159,7 +161,8 @@ namespace EscapeFromMars
 			}
 			else
 			{
-				possibleEscorts.Add(grid);
+//                ModLog.Info(" Potentential NPC: NOT in restored NPC Group data:" + grid.CustomName);
+                possibleEscorts.Add(grid);
 			}
 		}
 

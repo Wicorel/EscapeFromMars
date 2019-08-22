@@ -15,12 +15,12 @@ namespace EscapeFromMars
 		private static readonly IObjectBuilderFactory AmmoType = new AmmoObjectBuilder();
 		private static readonly IObjectBuilderFactory IngotType = new IngotObjectBuilder();
 
-        /* SE 1.192
+        /* SE 1.192 */
         private static readonly IObjectBuilderFactory DatapadType = new DatapadObjectBuilder();
         private static readonly IObjectBuilderFactory ConsumableType = new ConsumableObjectBuilder();
         private static readonly IObjectBuilderFactory CreditType = new CreditObjectBuilder();
         private static readonly IObjectBuilderFactory PackageType = new PackageObjectBuilder();
-        */
+        /* */
         private static void AddComponent(string subtypeName, int amountPerCargoContainer, int probability)
 		{
 			Add(subtypeName, amountPerCargoContainer, probability, ComponentType);
@@ -35,7 +35,7 @@ namespace EscapeFromMars
         {
             Add(subtypeName, amountPerCargoContainer, probability, IngotType);
         }
-        /* SE 1.192
+        /* SE 1.192 */
         private static void AddDatapad(string subtypeName, int amountPerCargoContainer, int probability)
         {
             Add(subtypeName, amountPerCargoContainer, probability, DatapadType);
@@ -48,7 +48,7 @@ namespace EscapeFromMars
         {
             Add(subtypeName, amountPerCargoContainer, probability, PackageType);
         }
-        */
+        /* */
         private static void Add(string subtypeName, int amountPerCargoContainer, int probability,
 			IObjectBuilderFactory objectBuilderFactory)
 		{
@@ -88,10 +88,8 @@ namespace EscapeFromMars
         internal static void AllowEconomyItems()
         {
             // SE 1.192
-            /*
             AddConsumable("Medkit", 500, 2);
             AddConsumable("Powerkit", 500, 2);
-            */
         }
 
         internal static CargoType GenerateRandomCargo(Random random)
@@ -200,7 +198,7 @@ namespace EscapeFromMars
 				return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_Ingot>(subtypeName);
 			}
 		}
-        /* SE V1.192
+        /* SE V1.192 */
         private class DatapadObjectBuilder : IObjectBuilderFactory
         {
             // DataPad/Datapad
@@ -234,6 +232,6 @@ namespace EscapeFromMars
                 return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_Package>(subtypeName);
             }
         }
-        */
+        /**/
     }
 }

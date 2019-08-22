@@ -62,22 +62,26 @@ namespace EscapeFromMars
         private readonly HashSet<long> desiredEntityIDs;
 
         private Version gameVersion;
+        private int modBuildWhenLastSaved;
 
          List<IMyTerminalBlock> cachedTerminalBlocks = new List<IMyTerminalBlock>();
 
-		internal MissionSystem(Version gameVersion, long missionStartTimeBinary, HashSet<int> alreadyExecutedPrompts,
+		internal MissionSystem(int modBuildWhenLastSaved, Version gameVersion, long missionStartTimeBinary, HashSet<int> alreadyExecutedPrompts,
 			QueuedAudioSystem audioSystem, ResearchControl researchControl)
 		{
             this.gameVersion = gameVersion;
 			this.audioSystem = audioSystem;
 			this.researchControl = researchControl;
+            this.modBuildWhenLastSaved = modBuildWhenLastSaved; //V27
+
 			missionStartTime = DateTime.FromBinary(missionStartTimeBinary);
 			excludedIDs = alreadyExecutedPrompts;
             desiredEntityIDs = new HashSet<long>();
             GeneratePrompts();
 			timeBasedPrompts.Sort((x, y) => -x.TriggerTime.CompareTo(y.TriggerTime));
 
-            ModLog.Info("Start Time = " + missionStartTime.ToString());
+//            ModLog.Info("Start Time = " + missionStartTime.ToString());
+            ModLog.Info("Current Mission Length: " + (MyAPIGateway.Session.GameDateTime - missionStartTime).ToString(@"hh\:mm\:ss")); //V27
         }
 
         internal long GetMissionStartTimeBinary()
@@ -504,21 +508,23 @@ namespace EscapeFromMars
 //            ModLog.Info("GridInit:"+grid.EntityId.ToString());
 //            ModLog.Info(desiredEntityIDs.Count + " Desired Blocks");
             var slimBlocks = new List<IMySlimBlock>();
-
-            if (grid.EntityId == 92770753627258475) // crash ship
+            if (grid.EntityId == 92770753627258475 // crash ship
+                && modBuildWhenLastSaved<27 // we haven't done this already
+                )
             {
                 grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyCargoContainer);
 
-                ModLog.Info("Found Crash Ship");
+//                ModLog.Info("Found Crash Ship on initial load"+modBuildWhenLastSaved);
 
-                /* SE 1.192
+                /* SE 1.192 */
                 var medkit = MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_ConsumableItem>("Medkit");
                 var powerkit = MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_ConsumableItem>("Powerkit");
+                /*
                 var datapad = MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_Datapad>("Datapad");
                 datapad.Data = "Wico Test\nGPS:Crash Site:1868092.62:-2003480.62:1316653.75:";
                 datapad.Name = "Wico Name Test";
-
-                var spacecredit= MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_PhysicalObject>("SpaceCredit");
+                */
+                var spacecredit = MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_PhysicalObject>("SpaceCredit");
 
                 foreach (var slim in slimBlocks)
                 {
@@ -536,15 +542,15 @@ namespace EscapeFromMars
                             MyInventory inventory = entity.GetInventoryBase() as MyInventory;
                             if (inventory == null) continue;
 
-                            PlaceItemIntoCargo(inventory, medkit, 15);
-                            PlaceItemIntoCargo(inventory, powerkit, 15);
-                            PlaceItemIntoCargo(inventory, datapad, 1);
-                            PlaceItemIntoCargo(inventory, spacecredit, 100);
+                            DuckUtils.PlaceItemIntoCargo(inventory, medkit, 15);
+                            DuckUtils.PlaceItemIntoCargo(inventory, powerkit, 15);
+                            //                            PlaceItemIntoCargo(inventory, datapad, 1);
+                            DuckUtils.PlaceItemIntoCargo(inventory, spacecredit, 100);
 
                         }
                     }
                 }
-                */
+                /* */
             }
 
             grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyTerminalBlock);
@@ -579,22 +585,6 @@ namespace EscapeFromMars
                     }
                 }
             }
-        }
-        void PlaceItemIntoCargo(MyInventory inventory, MyObjectBuilder_Base cargoitem, int amount)
-        {
-            if (inventory == null) return;
-            bool bPlaced = false;
-            do
-            {
-                bPlaced = inventory.AddItems(amount, cargoitem);
-                if (!bPlaced)
-                {
-                    //                            MyLog.Default.WriteLine("LoadCargo: Does not fit-" + amount.ToString() + " "+cargo.GetDisplayName());
-                    amount /= 2; // reduce size until it fits
-                }
-                if (amount < 3) bPlaced = true; // force to true if it gets too small
-            } while (!bPlaced);
-
         }
     }
 

@@ -10,6 +10,7 @@ using VRageMath;
 using VRage.Game.ModAPI;
 using Draygo.API;
 using System;
+using VRage.ObjectBuilders;
 
 namespace EscapeFromMars
 {
@@ -17,7 +18,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 26;
+        private const int CurrentModVersion = 27;
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -79,7 +80,7 @@ namespace EscapeFromMars
             // This works to change the setting.
             Session.SessionSettings.EnableResearch = true;
 
-//            Session.SessionSettings.EnableBountyContracts = false; // SE V1.192
+            Session.SessionSettings.EnableBountyContracts = false; // SE V1.192
 
             if ((gameVersion.Major == 1 && gameVersion.Minor >= 192 ) || gameVersion.Major>1)
             {
@@ -105,6 +106,18 @@ namespace EscapeFromMars
 			modSystemRegistry.AddUpatableModSystem(audioSystem);
 
             MyAPIGateway.Utilities.MessageEntered += MessageEntered;
+
+        }
+
+        // called when grid is created in-game (NOT on load)
+        public override void GridInit(IMyCubeGrid grid)
+        {
+           
+            base.GridInit(grid);
+//            ModLog.Info("EFMCore: GridInit:" + grid.CustomName);
+
+            var slimBlocks = new List<IMySlimBlock>();
+
 
         }
 
@@ -266,7 +279,12 @@ namespace EscapeFromMars
             researchHacking.InitHackingLocations(); // Uses research restrictions and save data
 			DuckUtils.MakePeaceBetweenFactions("MIKI", "CRASH");
 			DuckUtils.MakePeaceBetweenFactions("MIKI", "GCORP");
-			audioSystem.AudioRelay = networkComms;
+
+            //V27 for SE 1.192
+            DuckUtils.RemoveFaction("SPRT");
+            DuckUtils.SetAllPlayerReputation("MIKI", 0);
+
+            audioSystem.AudioRelay = networkComms;
 			networkComms.StartWipeHostToolbar();
 			modSystemRegistry.AddRapidUpdatableModSystem(turretManager);
 			modSystemRegistry.AddUpatableModSystem(researchHacking);
@@ -331,8 +349,6 @@ namespace EscapeFromMars
 			researchControl.UnlockedTechs = saveData.UnlockedTechs;
 			npcGroupManager.LoadSaveData(saveData.NpcGroupSaveDatas);
 			convoySpawner.RestoreSpawnTimeFromSave(saveData.NextSpawnTime);
-			missionSystem = new MissionSystem(gameVersion, saveData.MissionStartTimeBinary, saveData.ExcludedMissionPrompts,
-				audioSystem, researchControl);
 			researchHacking.RestoreSaveData(saveData.HackingData);
 			modBuildWhenGameStarted = saveData.BuildWhenGameStarted;
 			baseManager.LoadSaveData(saveData.GCorpBaseSaveDatas);
@@ -345,11 +361,15 @@ namespace EscapeFromMars
             if (heatSystem.HeatDifficulty < 1) heatSystem.HeatDifficulty = 1;
 
             heatSystem.MultiplayerScaling = saveData.MultiplayerScaling;
-		}
 
-		public override void StartedNewGame()
+            // Move to the end so other saved info is already loadedf
+            missionSystem = new MissionSystem(modBuildWhenLastSaved, gameVersion, saveData.MissionStartTimeBinary, saveData.ExcludedMissionPrompts,
+                audioSystem, researchControl);
+        }
+
+        public override void StartedNewGame()
 		{
-			missionSystem = new MissionSystem(gameVersion, MyAPIGateway.Session.GameDateTime.ToBinary(), new HashSet<int>(),
+			missionSystem = new MissionSystem(modBuildWhenLastSaved,gameVersion, MyAPIGateway.Session.GameDateTime.ToBinary(), new HashSet<int>(),
 				audioSystem, researchControl);
 			modBuildWhenGameStarted = CurrentModVersion;
 		}

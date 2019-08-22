@@ -346,6 +346,10 @@ SubtyepID=OxygenGeneratorSmall
                 NeedsResearch(SafeZoneBlock, TechGroup.Permabanned);
                 NeedsResearch(StoreBlock, TechGroup.Permabanned);
                 NeedsResearch(ContractBlock, TechGroup.Permabanned);
+
+                // V27 SE 1.192 Economy DLC
+                NeedsResearch(VendingMachine, TechGroup.Permabanned);
+                NeedsResearch(AtmBlock, TechGroup.Permabanned);
             }
         }
 

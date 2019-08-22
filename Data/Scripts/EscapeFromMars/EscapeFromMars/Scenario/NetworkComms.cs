@@ -142,6 +142,10 @@ namespace EscapeFromMars
 		{
 			var playerId = message.PlayerId;
 			research.UnlockTechForJoiningPlayer(playerId);
+
+            //V27 for SE 1.192
+            DuckUtils.SetPlayerReputation(playerId, "MIKI", 0);
+
 			if (!RegisteredPlayers.Contains(playerId))
 			{
                 //V26 fix no player in DS

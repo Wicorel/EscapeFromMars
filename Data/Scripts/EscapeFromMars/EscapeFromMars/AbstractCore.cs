@@ -166,8 +166,10 @@ namespace Duckroll
             MyAPIGateway.Entities.OnEntityAdd -= OnEntityAdd;
         }
 
-        public void GridInit(IMyCubeGrid grid)
+        public virtual void GridInit(IMyCubeGrid grid)
         {
+            // Called when a grid is created when in the game
+//            ModLog.Info("AC:Base: GridInit:" + grid.CustomName);
             modProxy.GridInit(grid);
         }
         List<IMyEntity> queueAddedEntities = new List<IMyEntity>();
@@ -231,8 +233,10 @@ namespace Duckroll
 				updatables.Add(modSystemRapidUpdatable);
 				rapidUpdatables.Add(modSystemRapidUpdatable);
 			}
-            public void GridInit(IMyCubeGrid grid)
+            public virtual void GridInit(IMyCubeGrid grid)
             {
+                // Called on ALL grid inits
+ //               ModLog.Info("UIL: Base: GridInit:" + grid.CustomName);
                 foreach (var modSystemUpdatable in updatables)
                 {
                     modSystemUpdatable.GridInitialising(grid);

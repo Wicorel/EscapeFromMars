@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Sandbox.Game;
 using Sandbox.Game.Entities;
 using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.ModAPI;
 using VRage.ModAPI;
+using VRage.ObjectBuilders;
 using VRage.Utils;
 using VRageMath;
 
@@ -251,13 +253,78 @@ namespace Duckroll
 			MyAPIGateway.Session.Factions.SendPeaceRequest(faction1.FactionId, faction2.FactionId);
 			MyAPIGateway.Session.Factions.AcceptPeace(faction2.FactionId, faction1.FactionId);
 
-            /*
-            // V 1.192
-            MyAPIGateway.Session.Factions.SetReputation(faction1.FactionId, faction2.FactionId, 500);
-            MyAPIGateway.Session.Factions.SetReputation(faction2.FactionId, faction1.FactionId, 501);
-            */
+//            MyAPIGateway.Session.Factions.DeclareWar(faction2.FactionId, faction1.FactionId);
+
         }
 
+        internal static void DeclareWarBetweenFactions(string tag, string tag2)
+        {
+            var faction1 = MyAPIGateway.Session.Factions.TryGetFactionByTag(tag);
+            if (faction1 == null)
+            {
+                ModLog.Error("Can't find faction: " + tag);
+                return;
+            }
+
+            var faction2 = MyAPIGateway.Session.Factions.TryGetFactionByTag(tag2);
+            if (faction2 == null)
+            {
+                ModLog.Error("Can't find faction: " + tag2);
+                return;
+            }
+
+            MyAPIGateway.Session.Factions.DeclareWar(faction2.FactionId, faction1.FactionId);
+        }
+
+
+        internal static void RemoveFaction(string tag)
+        {
+            var faction1 = MyAPIGateway.Session.Factions.TryGetFactionByTag(tag);
+            if (faction1 == null)
+            {
+//                ModLog.Error("Can't find faction: " + tag);
+                return;
+            }
+
+            MyAPIGateway.Session.Factions.RemoveFaction(faction1.FactionId);
+        }
+
+
+
+
+        internal static void SetPlayerReputation(long playerID, string toFactionTag, int reputation)
+        {
+            var faction1 = MyAPIGateway.Session.Factions.TryGetFactionByTag(toFactionTag);
+            if (faction1 == null)
+            {
+                ModLog.Error("Can't find faction: " + toFactionTag);
+                return;
+            }
+            MyAPIGateway.Session.Factions.SetReputationBetweenPlayerAndFaction(playerID, faction1.FactionId, reputation);
+        }
+
+        internal static void SetAllPlayerReputation(string toFactionTag, int reputation)
+        {
+            var faction2 = MyAPIGateway.Session.Factions.TryGetFactionByTag(toFactionTag);
+            if (faction2 == null)
+            {
+                ModLog.Error("Can't find faction: " + toFactionTag);
+                return;
+            }
+
+            var players = new List<IMyPlayer>();
+            MyAPIGateway.Players.GetPlayers(players);
+
+            foreach (var player in players)
+            {
+                MyAPIGateway.Session.Factions.SetReputationBetweenPlayerAndFaction(player.IdentityId, faction2.FactionId, reputation);
+            }
+        }
+
+        /// <summary>
+        /// Puts LOCAL player into faction.  Safe to call even if no local player
+        /// </summary>
+        /// <param name="tag"></param>
         internal static void PutPlayerIntoFaction(string tag)
 		{
 			var faction = MyAPIGateway.Session.Factions.TryGetFactionByTag(tag);
@@ -276,7 +343,23 @@ namespace Duckroll
 			MyAPIGateway.Session.Factions.SendJoinRequest(faction.FactionId, player.IdentityId);
 			MyAPIGateway.Session.Factions.AcceptJoin(faction.FactionId, player.IdentityId);
 		}
-		
-	}
-	
+
+        internal static void PlaceItemIntoCargo(MyInventory inventory, MyObjectBuilder_Base cargoitem, int amount)
+        {
+            if (inventory == null) return;
+            bool bPlaced = false;
+            do
+            {
+                bPlaced = inventory.AddItems(amount, cargoitem);
+                if (!bPlaced)
+                {
+                    //                            MyLog.Default.WriteLine("LoadCargo: Does not fit-" + amount.ToString() + " "+cargo.GetDisplayName());
+                    amount /= 2; // reduce size until it fits
+                }
+                if (amount < 3) bPlaced = true; // force to true if it gets too small
+            } while (!bPlaced);
+        }
+
+    }
+
 }
