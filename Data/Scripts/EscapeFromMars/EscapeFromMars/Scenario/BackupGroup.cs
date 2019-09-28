@@ -43,6 +43,7 @@ namespace EscapeFromMars
 				GroupState = NpcGroupState.Disbanded;
 				return;
 			}
+//            ModLog.Info("Backup:" + leader.EntityId.ToString() + " " + GroupState.ToString());
 
 			if (GroupState == NpcGroupState.Travelling && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 40.0*40.0)
 			{

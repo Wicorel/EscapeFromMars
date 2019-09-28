@@ -254,6 +254,25 @@ SubtyepID=OxygenGeneratorSmall
         private readonly MyDefinitionId AtmBlock = MyVisualScriptLogicProvider.GetDefinitionId(
             "MyObjectBuilder_StoreBlock", "AtmBlock");
 
+        //V1.193
+        /*TyepID=MyObjectBuilder_VendingMachine
+        SubtyepID=FoodDispenser
+        */
+        private readonly MyDefinitionId FoodDispenser = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_VendingMachine", "FoodDispenser");
+
+        /*TyepID=MyObjectBuilder_Cockpit
+SubtyepID=OpenCockpitSmall
+*/
+        private readonly MyDefinitionId OpenCockpitSmall = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Cockpit", "OpenCockpitSmall");
+
+        /*TyepID=MyObjectBuilder_Cockpit
+SubtyepID=OpenCockpitLarge
+*/
+        private readonly MyDefinitionId OpenCockpitLarge = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Cockpit", "OpenCockpitLarge");
+
 
 
         private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
@@ -281,15 +300,16 @@ SubtyepID=OxygenGeneratorSmall
 
         internal void InitResearchRestrictions()
         {
-            // SE 1.189 Turn ON any game-set blocks.  We want to control availability
             if (bNewResearch)
             {
                 MyVisualScriptLogicProvider.ResearchListClear();
+                MyVisualScriptLogicProvider.ResearchListWhitelist(false); // set it to be 'black list'
             }
-//            MyVisualScriptLogicProvider.BlockFunctionalityChanged += FunctionalityChanged;
 
             // TODO: Figure out how to disable game-based progression tree...
             // A: you can't.  combo of editting researchgroups.sbc and MOD API
+
+            //            MyVisualScriptLogicProvider.BlockFunctionalityChanged += FunctionalityChanged;
 
             NeedsResearch(refinery, TechGroup.Permabanned);
             NeedsResearch(blastFurnace, TechGroup.Permabanned);
@@ -355,6 +375,8 @@ SubtyepID=OxygenGeneratorSmall
 
         public void AllowUnlockedTechs()
         {
+//            ModLog.Info("AllowUnlockTechs():" + UnlockedTechs.Count.ToString() + " unlocked groups");
+
             UnlockTechsSilently(0, UnlockedTechs);
         }
 
@@ -389,7 +411,7 @@ SubtyepID=OxygenGeneratorSmall
                     var technologies = techsForGroup[group];
                     foreach (var technology in technologies)
                     {
-                        MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); 
+                        MyVisualScriptLogicProvider.ResearchListRemoveItem(technology);
                     }
                 }
                 else
@@ -417,6 +439,7 @@ SubtyepID=OxygenGeneratorSmall
         {
             if (UnlockedTechs.Contains(techGroup))
             {
+//                ModLog.Info("UTGFAP():" + UnlockedTechs.Count.ToString() + " unlocked groups. Already contains TechGroup:"+techGroup.ToString());
                 return; // Already unlocked
             }
 
@@ -433,9 +456,14 @@ SubtyepID=OxygenGeneratorSmall
                 foreach (var technology in technologies)
                 {
                     if (bNewResearch)
+                    {
                         MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
+                    }
                     else
+                    {
+//                        ModLog.Info("Old research Method: Unlock for player:" + player.IdentityId.ToString() + " tech=" + technology.ToString());
                         MyVisualScriptLogicProvider.PlayerResearchUnlock(player.IdentityId, technology);
+                    }
                 }
             }
             UnlockedTechs.Add(techGroup);
@@ -478,16 +506,16 @@ SubtyepID=OxygenGeneratorSmall
 
                 foreach (var technology in technologies)
                 {
-
                     if (bNewResearch)
                         // unknown: does this work for ALL players?
                         MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
                     else
+                    {
                         MyVisualScriptLogicProvider.PlayerResearchUnlock(playerId, technology);
+                    }
                 }
             }
         }
-
 
         public void UnlockTechForJoiningPlayer(long playerId)
         {

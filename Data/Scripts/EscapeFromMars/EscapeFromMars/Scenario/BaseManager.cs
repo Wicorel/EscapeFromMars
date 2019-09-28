@@ -88,6 +88,14 @@ namespace EscapeFromMars
         void BlocksFixup(IMyCubeGrid grid)
         {
 
+            // fix up the Gatling blocks to have max range //V28
+            var slimBlocksG = new List<IMySlimBlock>();
+            grid.GetBlocks(slimBlocksG, b => b.FatBlock is IMyLargeGatlingTurret);
+            foreach (var slim in slimBlocksG)
+            {
+                var gatling = slim.FatBlock as IMyLargeGatlingTurret;
+ //              gatling.Range get only :(
+            }
             // fix up the LCD blocks with show on hud // V27
             var slimBlocksT = new List<IMySlimBlock>();
             grid.GetBlocks(slimBlocksT, b => b.FatBlock is IMyTextPanel);

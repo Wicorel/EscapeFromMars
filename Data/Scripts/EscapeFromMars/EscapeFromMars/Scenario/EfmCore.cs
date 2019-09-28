@@ -18,7 +18,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 27;
+        private const int CurrentModVersion = 28;
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -303,8 +303,10 @@ namespace EscapeFromMars
 			if (player != null)
 			{
 				networkComms.NotifyServerClientJoined(player);
-			}
-		}
+
+                DuckUtils.PutPlayerIntoFaction("CRASH"); // V28
+            }
+        }
 
 		private const string SaveFileName = "EFM-SaveData.xml";
 

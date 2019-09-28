@@ -129,7 +129,7 @@ namespace EscapeFromMars
 		internal static readonly AudioClip GCorpBlockingSignals = Create("GCorpBlockingSignals",									// USED
 			EscapeFromMars.Speaker.Mabel,
 			@"Our adversary has full control of the Martian surface. 
-All of the initial colonists were removed following their acquistion of exclusive mining rights. 
+All of the initial colonists were ""removed"" following their acquistion of exclusive mining rights. 
 G-Corp is blocking all signals from the planet except their own.",
 			13000);
 
