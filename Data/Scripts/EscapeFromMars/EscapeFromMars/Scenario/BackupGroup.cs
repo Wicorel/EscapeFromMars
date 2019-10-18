@@ -45,10 +45,14 @@ namespace EscapeFromMars
 			}
 //            ModLog.Info("Backup:" + leader.EntityId.ToString() + " " + GroupState.ToString());
 
-			if (GroupState == NpcGroupState.Travelling && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 40.0*40.0)
+			if ( ( GroupState == NpcGroupState.Travelling || GroupState==NpcGroupState.ReturningForRepairs )
+                && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 40.0*40.0)
 			{
+                // it arrives at destination.  and nothing... get rid of it.
+//                ModLog.Info(" Backup arrived at base/target and nothing found.  Disbanding");
 				GroupState = NpcGroupState.Disbanding;
 			}
+
 
 			if (GroupState == NpcGroupState.Disbanding)
 			{
@@ -65,11 +69,12 @@ namespace EscapeFromMars
 				return;
 			}
 
-			if (DuckUtils.IsAnyPlayerNearPosition(leader.GetPosition(), 1000) &&
+            if (DuckUtils.IsAnyPlayerNearPosition(leader.GetPosition(), 2000) && //V29 1000->2000  Backups were getting disbanded when player between 1000 and max spawn distance.
 			    (GroupState == NpcGroupState.Travelling || GroupState == NpcGroupState.Disbanding))
 			{
-				GroupState = NpcGroupState.InCombat;
-				leader.SetLightingColors(Color.Red);
+                GroupState = NpcGroupState.InCombat;
+//                ModLog.Info("Backup:" + leader.EntityId.ToString() + " Found Target:" + GroupState.ToString());
+                leader.SetLightingColors(Color.Red);
 				leader.RemoveFromFirstBeaconName(ReturningToBase);
 				leader.AppendToFirstBeaconName(InterceptingBeaconSuffix);
 				audioSystem.PlayAudio(AudioClip.TargetFoundDronesAttack, AudioClip.TargetIdentifiedUnitsConverge);
@@ -81,19 +86,26 @@ namespace EscapeFromMars
 			{
 				if (!leader.HasUsableGun())
 				{
-					GroupState = NpcGroupState.Disbanding;
-					leader.SendToPosition(Destination);
+//                    GroupState = NpcGroupState.Disbanding;
+                    GroupState = NpcGroupState.ReturningForRepairs; //V29
+//                    ModLog.Info("Backup:" + leader.EntityId.ToString() + " No Gun." + GroupState.ToString());
+                    leader.SetLightingColors(GcorpBlue);
+                    leader.RemoveFromFirstBeaconName(" Investigating Backup Call"); // match text in NpcGroupManager
+                    leader.RemoveFromFirstBeaconName(InterceptingBeaconSuffix);
+                    leader.AppendToFirstBeaconName(ReturningToBase);
+                    leader.SendToPosition(Destination);
 					audioSystem.PlayAudio(AudioClip.DroneDisarmed);
                     // disbanding, but for backups we want to extra penalize for killing unit
                     heat.BackupDisabled();
 				}
 				else
 				{
-					var player = DuckUtils.GetNearestPlayerToPosition(leader.GetPosition(), 1250);
+					var player = DuckUtils.GetNearestPlayerToPosition(leader.GetPosition(), 2000); //V29 1250->2000
 					if (player == null)
 					{
 						GroupState = NpcGroupState.Disbanding; // Return to normal, cowardly players have run off or died
-						leader.SetLightingColors(GcorpBlue);
+//                        ModLog.Info("Backup:" + leader.EntityId.ToString() + " No Players in range after Combat mode." + GroupState.ToString());
+                        leader.SetLightingColors(GcorpBlue);
 						leader.RemoveFromFirstBeaconName(InterceptingBeaconSuffix);
 						leader.AppendToFirstBeaconName(ReturningToBase);
 						leader.SendToPosition(Destination);

@@ -13,8 +13,8 @@ namespace EscapeFromMars
 
 		internal long GroupLeaderId { get; }
 		private readonly NpcGroupType groupType;
-		protected NpcGroupState GroupState { get; set; }
-		protected Vector3D Destination { get; }
+        public NpcGroupState GroupState { get; set; }
+        public Vector3D Destination { get; }
 		internal DateTime GroupSpawnTime { get; }
 		protected readonly NpcGroupArrivalObserver ArrivalObserver;
 
@@ -120,7 +120,8 @@ namespace EscapeFromMars
 		Travelling,
 		InCombat,
 		Disbanding,
-		Disbanded
+		Disbanded,
+        ReturningForRepairs //V29
 	}
 
 	public enum NpcGroupType

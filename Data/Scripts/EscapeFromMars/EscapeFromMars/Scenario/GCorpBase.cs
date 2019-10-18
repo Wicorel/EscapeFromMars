@@ -12,7 +12,8 @@ namespace EscapeFromMars
 	internal class GCorpBase
 	{
         // TODO: Change this to be lower/higher depending on difficulty & # of players
-		private static readonly TimeSpan BackupTimeDelay = new TimeSpan(0, 5, 0);
+		private static //readonly 
+            TimeSpan BackupTimeDelay = new TimeSpan(0, 5, 0);
         // set to true to turn off all backups
 		public static readonly bool DebugStopBackupGroups = false;
 
@@ -108,7 +109,7 @@ namespace EscapeFromMars
                         var controlled = aplayer.Controller.ControlledEntity;
                         if (controlled == null) continue;
                         var distSq = Vector3D.DistanceSquared(RemoteControl.GetPosition(), controlled.Entity.GetPosition());
-                        if (distSq < 100)
+                        if (distSq < 100*100) //V29
                         {
                             if (DuckUtils.IsPlayerUnderCover(aplayer))
                             { // player is under cover 'near' the base..
@@ -193,11 +194,13 @@ namespace EscapeFromMars
 		{
 			var playerPos = player.GetPosition();
 			var playerNaturalGravity = marsPlanet.GetGravityAtPoint(playerPos);
-			var perpendicularDistance = MyUtils.GetRandomPerpendicularVector(ref playerNaturalGravity) * 400; //4km away
+			var perpendicularDistance = MyUtils.GetRandomPerpendicularVector(ref playerNaturalGravity) * 400; //4km away NOTE: since mars NG is not 1.0, it's NOT 4km
 			var locationToSpawnPatrol = playerPos + perpendicularDistance + playerNaturalGravity * -200f; // 2km up
 			var naturalGravityAtSpawn = marsPlanet.GetGravityAtPoint(locationToSpawnPatrol);
 
 			var spawnLocation = MyAPIGateway.Entities.FindFreePlace(locationToSpawnPatrol, 10, 20, 5, 10);
+
+//            ModLog.Info("Spawning helper patrol. perpD=" + perpendicularDistance.ToString("N2"));
 
 			if (spawnLocation.HasValue)
 			{
@@ -264,9 +267,18 @@ namespace EscapeFromMars
 		{
 			lastBackupRespondTime = DateTime.FromBinary(saveData.LastBackupTimeBinary);
 		}
-	}
 
-	public class GCorpBaseSaveData
+        public static void SetNormalBackupDelay()
+        {
+            BackupTimeDelay= new TimeSpan(0, 5, 0);
+        }
+        public static void SetFastBackupDelay()
+        {
+            BackupTimeDelay = new TimeSpan(0, 2, 0);
+        }
+    }
+
+    public class GCorpBaseSaveData
 	{
 		public long BaseId { get; set; }
 		public long LastBackupTimeBinary { get; set; }

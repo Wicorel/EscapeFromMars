@@ -353,7 +353,11 @@ namespace EscapeFromMars
 						}
 						var backupPosition = gCorpBase.GetBackupPosition();
 						grid.SendToPosition(backupPosition);
-						grid.SetAllBeaconNames("M" + random.Next(10000, 99999) + " Investigating Backup Call", 20000f);
+                        // backup debug
+                        string sBeacon = "M" + random.Next(10000, 99999) + " Investigating Backup Call";
+//                        ModLog.Info("Backup Found:" + sBeacon);
+//                        ModLog.Info(" Destination=" + backupPosition.ToString());
+						grid.SetAllBeaconNames(sBeacon, 20000f);
 						var backupGroup = new BackupGroup(NpcGroupState.Travelling, backupPosition, grid,
 							heatSystem, audioSystem, MyAPIGateway.Session.GameDateTime);
 						//damageSensor.RegisterDamageObserver(grid.EntityId, backupGroup);
@@ -479,6 +483,11 @@ namespace EscapeFromMars
 					                  + convoyExpiryTime, npcGroup.GetPosition());
 					npcGroup.Expire();
 				}
+                if(npcGroup.GroupState==NpcGroupState.Travelling)
+                {
+
+                }
+
 			}
 		}
 
@@ -490,7 +499,7 @@ namespace EscapeFromMars
         public string NpcGroupInfo(NpcGroupType groupType)
         {
             string str = "";
-            str+="# of NPCs="+npcGroups.Count;
+            str+="total # of NPCs="+npcGroups.Count;
             foreach (var npc in npcGroups)
             {
                 str += npc.NpcgroupInfo(groupType);

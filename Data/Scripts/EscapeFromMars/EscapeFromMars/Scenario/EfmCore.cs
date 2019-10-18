@@ -18,7 +18,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 28;
+        private const int CurrentModVersion = 29;
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -182,6 +182,14 @@ namespace EscapeFromMars
                 {
                     heatSystem.HeatDifficulty = iParam;
                     MyVisualScriptLogicProvider.SendChatMessage("Difficulty set to "+heatSystem.HeatDifficulty.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
+                    if(heatSystem.HeatDifficulty>3)
+                    {
+                        GCorpBase.SetFastBackupDelay();
+                    }
+                    else
+                    {
+                        GCorpBase.SetNormalBackupDelay();
+                    }
                 }
                 else
                 {
@@ -361,6 +369,14 @@ namespace EscapeFromMars
 
             heatSystem.HeatDifficulty = saveData.HeatDifficultySetting;
             if (heatSystem.HeatDifficulty < 1) heatSystem.HeatDifficulty = 1;
+            if (heatSystem.HeatDifficulty > 3)
+            {
+                GCorpBase.SetFastBackupDelay();
+            }
+            else
+            {
+                GCorpBase.SetNormalBackupDelay();
+            }
 
             heatSystem.MultiplayerScaling = saveData.MultiplayerScaling;
 
