@@ -242,6 +242,7 @@ SubtyepID=OxygenGeneratorSmall
         private readonly MyDefinitionId ContractBlock = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_ContractBlock",
             "ContractBlock");
 
+
         /*TyepID=MyObjectBuilder_VendingMachine
         SubtyepID=VendingMachine
         */
@@ -255,13 +256,15 @@ SubtyepID=OxygenGeneratorSmall
             "MyObjectBuilder_StoreBlock", "AtmBlock");
 
         //V1.193
+
+
         /*TyepID=MyObjectBuilder_VendingMachine
         SubtyepID=FoodDispenser
         */
         private readonly MyDefinitionId FoodDispenser = MyVisualScriptLogicProvider.GetDefinitionId(
             "MyObjectBuilder_VendingMachine", "FoodDispenser");
 
-        /*TyepID=MyObjectBuilder_Cockpit
+        /*TyepID=MyObjectBuilder_Cockpit    
 SubtyepID=OpenCockpitSmall
 */
         private readonly MyDefinitionId OpenCockpitSmall = MyVisualScriptLogicProvider.GetDefinitionId(
@@ -273,6 +276,41 @@ SubtyepID=OpenCockpitLarge
         private readonly MyDefinitionId OpenCockpitLarge = MyVisualScriptLogicProvider.GetDefinitionId(
             "MyObjectBuilder_Cockpit", "OpenCockpitLarge");
 
+        /*TyepID=MyObjectBuilder_TextPanel
+SubtyepID=TransparentLCDSmall*/
+        private readonly MyDefinitionId TransparentLCDSmall = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_TextPanel", "TransparentLCDSmall");
+
+        /*TyepID=MyObjectBuilder_ReflectorLight
+SubtyepID=RotatingLightSmall*/
+        private readonly MyDefinitionId RotatingLightSmall = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_ReflectorLight", "RotatingLightSmall");
+
+
+        /*TyepID=MyObjectBuilder_LCDPanelsBlock
+SubtyepID=LabEquipment*/
+        private readonly MyDefinitionId LabEquipment = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_LCDPanelsBlock", "LabEquipment");
+
+        /*TyepID=MyObjectBuilder_TextPanel
+SubtyepID=TransparentLCDLarge*/
+        private readonly MyDefinitionId TransparentLCDLarge = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_TextPanel", "TransparentLCDLarge");
+
+        /*TyepID=MyObjectBuilder_ReflectorLight
+SubtyepID=RotatingLightLarge*/
+        private readonly MyDefinitionId RotatingLightLarge = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_ReflectorLight", "RotatingLightLarge");
+
+        /*TyepID=MyObjectBuilder_LCDPanelsBlock
+SubtyepID=MedicalStation*/
+        private readonly MyDefinitionId MedicalStation = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_LCDPanelsBlock", "MedicalStation");
+
+        /*TyepID=MyObjectBuilder_Jukebox
+SubtyepID=Jukebox*/
+        private readonly MyDefinitionId Jukebox = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Jukebox", "Jukebox");
 
 
         private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
@@ -370,6 +408,11 @@ SubtyepID=OpenCockpitLarge
                 // V27 SE 1.192 Economy DLC
                 NeedsResearch(VendingMachine, TechGroup.Permabanned);
                 NeedsResearch(AtmBlock, TechGroup.Permabanned);
+            }
+            //   For SE 1.193
+            if ((gameVersion.Major == 1 && gameVersion.Minor >= 193) || gameVersion.Major > 1)
+            {
+                NeedsResearch(FoodDispenser, TechGroup.Permabanned);
             }
         }
 
