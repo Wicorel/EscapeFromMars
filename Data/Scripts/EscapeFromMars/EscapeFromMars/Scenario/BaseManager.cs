@@ -211,6 +211,18 @@ Mabel: Loading survival guide...
 "\n  * =Depends on load"
 );
                                 break;
+
+                            /*
+                            ((Ice Mine Entrance))
+Static Grid 1300:141864706275857195
+{ X: 1869175.27852051 Y: -2004745.97266307 Z: 1316375.91819424}
+                            -----TEXTPANELS
+74525033656413945:1:+LCD Panel 2
+| Galactic Corporation Logo
+*/
+                            case 74525033656413945:
+                                textPanel.AddImageToSelection("Galactic Corporation Logo");
+                                break;
                             // MIKI FIXUP
                             case 81986956045310309:
                                 textPanel.AddImageToSelection("MikiScrap");
