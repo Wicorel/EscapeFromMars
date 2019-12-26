@@ -9,6 +9,7 @@ using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
 using VRage.Utils;
+using VRage.Game;
 
 namespace EscapeFromMars
 {
@@ -31,13 +32,21 @@ namespace EscapeFromMars
 		readonly Dictionary<long, Convoy> restoredConvoys = new Dictionary<long, Convoy>();
 		readonly List<IMyCubeGrid> possibleEscorts = new List<IMyCubeGrid>();
 
-		internal NpcGroupManager(HeatSystem heatSystem, QueuedAudioSystem audioSystem, BaseManager baseManager,
+        //v31 
+        private int modBuildWhenLastSaved;
+        private const string EscortName = "Convoy Escort";
+        private bool bOldRemovals = false;
+        private static float ConvoySpeed = 10f; // needs to be 10f for release
+
+        internal NpcGroupManager(int modBuildWhenSaved, HeatSystem heatSystem, QueuedAudioSystem audioSystem, BaseManager baseManager,
 			ConvoySpawner convoySpawner)
 		{
 			this.heatSystem = heatSystem;
 			this.audioSystem = audioSystem;
 			this.baseManager = baseManager;
 			this.convoySpawner = convoySpawner;
+            modBuildWhenLastSaved = modBuildWhenSaved;
+
 			MyAPIGateway.Entities.OnEntityAdd += NewEntityEvent;
 		}
 
@@ -51,12 +60,16 @@ namespace EscapeFromMars
 			unitialisedNewGrids.Enqueue(grid);
 		}
 
+        public bool bInitialInit=true;
+
 		public override void GridInitialising(IMyCubeGrid grid)
 		{
 			if (!grid.IsControlledByFaction("GCORP"))
 			{
 				return;
 			}
+
+//            if (!bInitialInit) return;
 
 			if (grid.IsStatic)
 			{
@@ -90,6 +103,11 @@ namespace EscapeFromMars
 			// We don't need these afer finishing restores
 			restoredNpcGroupData.Clear();
 			restoredEscortAssignments.Clear();
+            if(bInitialInit && bOldRemovals)
+            {
+                MyVisualScriptLogicProvider.SendChatMessage("NOTE: old convoys removed", "Wicorel", 0, MyFontEnum.DarkBlue);
+            }
+            bInitialInit = false; // we've already done it.
 		}
 
 		private void OfferPotentialDestination(IMyCubeGrid grid)
@@ -141,30 +159,69 @@ namespace EscapeFromMars
         }
 
         private void OfferPotentialNpcShip(IMyCubeGrid grid)
-		{
-//            ModLog.Info("Potentential NPC:" + grid.CustomName);
-			NpcGroupSaveData npcGroupSaveData;
-			if (restoredNpcGroupData.TryGetValue(grid.EntityId, out npcGroupSaveData))
-			{
-//                ModLog.Info(" Potentential NPC: Found in restored NPC Group data:" + npcGroupSaveData.NpcGroupType.ToString() + " Type="+ npcGroupSaveData.LeaderUnitType.ToString());
+        {
+            //            ModLog.Info("Potentential NPC:" + grid.CustomName);
+            NpcGroupSaveData npcGroupSaveData;
+            if (restoredNpcGroupData.TryGetValue(grid.EntityId, out npcGroupSaveData))
+            {
+                //                ModLog.Info(" Potentential NPC: Found in restored NPC Group data:" + npcGroupSaveData.NpcGroupType.ToString() + " Type="+ npcGroupSaveData.LeaderUnitType.ToString());
                 if (npcGroupSaveData.NpcGroupType == NpcGroupType.Backup)
-				{
-					npcGroups.Add(new BackupGroup(npcGroupSaveData.State, npcGroupSaveData.GroupDestination,
-						grid, heatSystem, audioSystem, DateTime.FromBinary(npcGroupSaveData.SpawnTime)));
-				}
-				else // Must be convoy
-				{
-					restoredConvoys.Add(grid.EntityId,
-						RegisterConvoy(grid, npcGroupSaveData.State, npcGroupSaveData.LeaderUnitType,
-							npcGroupSaveData.GroupDestination, DateTime.FromBinary(npcGroupSaveData.SpawnTime)));
-				}
-			}
-			else
-			{
-//                ModLog.Info(" Potentential NPC: NOT in restored NPC Group data:" + grid.CustomName);
-                possibleEscorts.Add(grid);
-			}
-		}
+                {
+                    npcGroups.Add(new BackupGroup(npcGroupSaveData.State, npcGroupSaveData.GroupDestination,
+                        grid, heatSystem, audioSystem, DateTime.FromBinary(npcGroupSaveData.SpawnTime)));
+                }
+                else // Must be convoy
+                {
+                    if (modBuildWhenLastSaved > 30 || !bInitialInit)
+                    {
+                        restoredConvoys.Add(grid.EntityId,
+                            RegisterConvoy(grid, npcGroupSaveData.State, npcGroupSaveData.LeaderUnitType,
+                                npcGroupSaveData.GroupDestination, DateTime.FromBinary(npcGroupSaveData.SpawnTime)));
+                    }
+                    else
+                    {
+                        // else old drones with scripts that don't work on 1.193.100
+
+                        if (grid.IsControlledByFaction("GCORP")) // see npcgroup.AttemptDespawn()
+                        {
+                            ModLog.Info("Removing dead drone Grid:" + grid.CustomName);
+                            bOldRemovals = true;
+                            grid.CloseAll();
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                //                ModLog.Info(" Potentential NPC: NOT in restored NPC Group data:" + grid.CustomName);
+                if (modBuildWhenLastSaved > 30 || !bInitialInit)
+                {
+                    possibleEscorts.Add(grid);
+                }
+                else
+                {
+                    // Need better discernment to not delete placed G-Corp grids like G-Corp AP Turret and GCorp Experimental Mech
+                    if (grid.IsControlledByFaction("GCORP")) // see npcgroup.AttemptDespawn()
+                    {
+                        var slimBlocks = new List<IMySlimBlock>();
+                        grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyBeacon);
+                        foreach (var slim in slimBlocks)
+                        {
+                            var fb = slim.FatBlock as IMyBeacon;
+                            if(fb.CustomName.Contains(EscortName))
+                            {
+                                ModLog.Info("Removing dead escort drone Grid:" + grid.CustomName);
+                                bOldRemovals = true;
+                                grid.CloseAll();
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
 
 		internal NpcGroup FindNearestJoinableNpcGroup(Vector3D position, UnitType unitType)
 		{
@@ -211,9 +268,28 @@ namespace EscapeFromMars
 		{
 			UpdateGroups(); // Disband or update existing, active groups
 			GiveOrdersToUnassignedShips(); // Find ships that have been spawned but not set in a direction / mission
+            RemoveInactiveGroups();
 		}
 
-		private void UpdateGroups()
+        private void RemoveInactiveGroups()
+        {
+            foreach (var group in npcGroups)
+            {
+                if(group.GroupState==NpcGroupState.Inactive)
+                {
+                    // should be hidden in Convoy class, but need access to convoySpawner class to respawn.
+                    if (group.groupType == NpcGroupType.Convoy)
+                    {
+                        MyVisualScriptLogicProvider.SendChatMessage("Convoy Recalled", EscapeFromMars.Speaker.GCorp.Name, 0, EscapeFromMars.Speaker.GCorp.Font);
+
+                        convoySpawner.SpawnConvoy(); // spawn a replacement one.
+                        group.GroupState = NpcGroupState.Disbanding;
+                    }
+                }
+            }
+        }
+
+        private void UpdateGroups()
 		{
 			foreach (var group in npcGroups.Reverse<NpcGroup>()) // Go backwards so we can remove part way through if needed
 			{
@@ -305,7 +381,7 @@ namespace EscapeFromMars
                         else sPrefix += "G";
 
                         grid.SetAllBeaconNames(sPrefix + random.Next(10000, 99999) + " - " + cargoType.GetDisplayName() + " Shipment",
-							20000f);
+							200f); // V31 set short until initialize check timeout
 						var destination = unitType == UnitType.Air ? airConvoyDestinationPosition : groundConvoyDestinationPosition;
 
 //                        ModLog.Info("Air Destination=" + airConvoyDestinationPosition.ToString());
@@ -329,7 +405,7 @@ namespace EscapeFromMars
 						}
 						else
 						{
-							grid.SetAllBeaconNames("E" + random.Next(10000, 99999) + " - Convoy Escort", 20000f);
+							grid.SetAllBeaconNames("E" + random.Next(10000, 99999) + " - " + EscortName, 2500f); // V31 shorten escort beacon range to decrease hud spam
 							var nearestPlanet = DuckUtils.FindPlanetInGravity(grid.GetPosition());
 							if (nearestPlanet != null)
 							{
@@ -389,6 +465,7 @@ namespace EscapeFromMars
             if(bFoundBackup)  baseManager.ClearBaseBackupRequests();
 		}
 
+        // really should have a ConvoyManager to encapsulate these details...
 		private Convoy RegisterConvoy(IMyCubeGrid leaderGrid, NpcGroupState npcGroupState, UnitType unitType,
 			Vector3D destination, DateTime spawnTime)
 		{
@@ -442,37 +519,105 @@ namespace EscapeFromMars
             }
 		}
 
-        
+
 		private static void SetDestination(IMyCubeGrid grid, Vector3D destination)
 		{
-			var slimBlocks = new List<IMySlimBlock>();
-			grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyGyro);
-			foreach (var slim in slimBlocks)
-			{
-				var block = slim.FatBlock as IMyGyro;
-                // using STARTED_DELIVERY as a way to find our grids! For autopilot it's a harmless comment.
-                // NOTE: comment is not correct: it's not used as a way to find our grids
+            bool bOldNav = false; // true=old way of NAV, false= new way
+            // old= set gyro customname to NAV:
+            // new = run PB directly with argument
 
-                // C <comment>
-                // S <max speed>
-                // D <arrival distance>
-                // W x:y:z
-                // W <GPS> 
-                // set destination
-                block.CustomName = "NAV: C STARTED_DELIVERY; S 10; D 80 ; W " + destination.X + ":" + destination.Y +
-//                block.CustomName = "NAV: C STARTED_DELIVERY; S 80; D 80 ; W " + destination.X + ":" + destination.Y +
-                                   ":" + destination.Z;
+            bool bKeenAutopilot = false; // force using keen autopilot
 
-//                ModLog.Info("Set Waypoint to: " + block.CustomName);
-                /*
-                MyLog.Default.WriteLine("Set Waypoint to: " + block.CustomName);
-                MyLog.Default.Flush();
-                */
-                break; // We only need to set up one gyro, it may have more
-			}
-		}
+            if (ConvoySpeed != 10f)
+                ModLog.Info("Using test convoy speed of " + ConvoySpeed.ToString());
 
-		public override void Update1200()
+            var slimBlocks = new List<IMySlimBlock>();
+
+            grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyProgrammableBlock);
+            IMyProgrammableBlock NavPB = null;
+
+            foreach (var slim in slimBlocks)
+            {
+                //                var block = slim.FatBlock as IMyGyro;
+                var block = slim.FatBlock as IMyProgrammableBlock;
+                //                    ModLog.Info(" Found PB:" + block.CustomName);
+                if (block.CustomName.Contains("NAV"))
+                {
+                    if (block.CustomData.Contains("Assembly not found."))
+                    {
+                        ModLog.Info("NAV computer not compiling:" + grid.CustomName);
+                        continue;
+                    }
+                    NavPB = block as IMyProgrammableBlock;
+                }
+            }
+            //            ModLog.Info("Set Destinatiion of:" + grid.CustomName);
+
+            // C <comment>
+            // S <max speed>
+            // D <arrival distance>
+            // W x:y:z
+            // W <GPS> 
+            // set destination
+            //                block.CustomName = "NAV: C STARTED_DELIVERY; S 80; D 80 ; W " + destination.X + ":" + destination.Y + ":" + destination.Z;
+            //                ModLog.Info("Set Waypoint to: " + block.CustomName);
+            string sCommand = "S "+ConvoySpeed.ToString("0")+"; D 80; W " + destination.X + ":" + destination.Y + ":" + destination.Z;
+
+
+            if (!bOldNav && !bKeenAutopilot && NavPB!=null)
+            { // new way & not override keen autopilot and we found working nav pb
+                // V31 Change to calling Nav module directly
+                NavPB.Run(sCommand);
+                bKeenAutopilot = false;
+            }
+            else if(!bKeenAutopilot && NavPB!=null)
+            { // old way and we found working nav PB
+                bool bFound = false;
+
+                slimBlocks.Clear();
+                grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyGyro);
+                foreach (var slim in slimBlocks)
+                {
+                    var block = slim.FatBlock as IMyGyro;
+                    // using STARTED_DELIVERY as a way to find our grids! For autopilot it's a harmless comment.
+                    // NOTE: comment is not correct: it's not used as a way to find our grids
+
+                    // C <comment>
+                    // S <max speed>
+                    // D <arrival distance>
+                    // W x:y:z
+                    // W <GPS> 
+                    // set destination
+
+                    block.CustomName = "NAV: " + sCommand;// C STARTED_DELIVERY; S 80; D 80 ; W " + destination.X + ":" + destination.Y + ":" + destination.Z;
+                    ModLog.Info("oldnav. Setting Destination for:" + grid.CustomName + " to:" + block.CustomName);
+                    //                ModLog.Info("Set Waypoint to: " + block.CustomName);
+                    bFound = true;
+                    break;
+                }
+                if (!bFound)
+                {
+                    ModLog.Info("No Gyro Found! Defaulting to Keen Autopilot. " + grid.CustomName);
+                    bKeenAutopilot = true;
+                }
+
+            }
+            if (bKeenAutopilot || NavPB==null)
+            { // force keen autopilot or didn't find working nav pb
+                grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyRemoteControl);
+                foreach (var slim in slimBlocks)
+                {
+                    var remoteControl = slim.FatBlock as IMyRemoteControl;
+                    remoteControl.ClearWaypoints();
+                    remoteControl.AddWaypoint(destination, "Target");
+                    remoteControl.SpeedLimit = ConvoySpeed;
+                    remoteControl.SetAutoPilotEnabled(true);
+                }
+                // throw exception if no remote found? (change to Inactive state...)
+            }
+        }
+
+        public override void Update1200()
 		{
 			var currentTime = MyAPIGateway.Session.GameDateTime;
 			foreach (var npcGroup in npcGroups)
