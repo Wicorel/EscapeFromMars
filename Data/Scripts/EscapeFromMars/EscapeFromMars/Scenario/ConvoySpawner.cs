@@ -14,7 +14,7 @@ namespace EscapeFromMars
 	internal class ConvoySpawner : ModSystemUpdatable
 	{
 		public static readonly bool DebugConvoys = false; // turn on to force lots of convoy spawns
-        public static readonly bool ForceGroundOnly = false; // turn to force ground-only convoys
+        public static readonly bool ForceGroundOnly = false; // turn on to force ground-only convoys
         public static readonly bool ForceAirOnly = false; // uhh.. yeah
 
 		private readonly HeatSystem heatSystem;
