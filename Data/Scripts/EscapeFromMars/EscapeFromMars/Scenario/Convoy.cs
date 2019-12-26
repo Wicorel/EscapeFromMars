@@ -17,8 +17,9 @@ namespace EscapeFromMars
 
 		protected static readonly IList<EscortPosition> AllEscortPositions =
 			new List<EscortPosition>(DuckUtils.GetEnumValues<EscortPosition>()).AsReadOnly();
+        private readonly TimeSpan convoyInitiateTime = new TimeSpan(0, 0, 5);
 
-		internal static readonly IList<EscortPosition> AirEscortPositions = new List<EscortPosition>
+        internal static readonly IList<EscortPosition> AirEscortPositions = new List<EscortPosition>
 		{
 			EscortPosition.AboveLeft,
 			EscortPosition.AboveRight,
@@ -105,6 +106,16 @@ namespace EscapeFromMars
 //                     && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 200.0*200) // increase to 200 to allow for variations in height.
 //                     && Vector3D.Distance(Destination, leader.GetPosition()) < 100.0)
             {
+                string sBeacons = "";
+                var slimBlocks2 = new List<IMySlimBlock>();
+                leader.GetBlocks(slimBlocks2, b => b.FatBlock is IMyBeacon);
+                foreach (var slim2 in slimBlocks2)
+                {
+                    var beacon = slim2.FatBlock as IMyBeacon;
+                    sBeacons += beacon.CustomName;
+                }
+
+                ModLog.Info("Group Arrived at destination: " + leader.CustomName+ " " +sBeacons);
                 ArrivalObserver.GroupArrivedIntact();
 				audioSystem.PlayAudioRandomChance(0.1, AudioClip.ConvoyArrivedSafely);
 				GroupState = NpcGroupState.Disbanding;
@@ -112,7 +123,92 @@ namespace EscapeFromMars
 			    ResetBeaconNames();
 			}
 
-			if (GroupState == NpcGroupState.Disbanding)
+            // ModLogs are for DEBUG nav script
+//            ModLog.Info("Convoy update:" + leader.CustomName+" ID:"+leader.EntityId.ToString() + " State:"+GroupState.ToString());
+            if((GroupState == NpcGroupState.Travelling))
+            {
+                var currentTime = MyAPIGateway.Session.GameDateTime;
+                if (GroupSpawnTime + convoyInitiateTime < currentTime)
+                {
+                    leader.SetAllBeaconNames(null, 20000f);
+                }
+                bool bKeenAutopilotActive = false;
+                var slimBlocks = new List<IMySlimBlock>();
+                leader.GetBlocks(slimBlocks, b => b.FatBlock is IMyRemoteControl);
+                IMyRemoteControl remoteControl = null;
+                foreach (var slim in slimBlocks)
+                {
+                    remoteControl = slim.FatBlock as IMyRemoteControl;
+                    bKeenAutopilotActive = remoteControl.IsAutoPilotEnabled;
+//                    ModLog.Info("Keen Autopilot:" + bKeenAutopilotActive.ToString());
+                    break;
+                }
+
+                slimBlocks.Clear();
+                leader.GetBlocks(slimBlocks, b => b.FatBlock is IMyProgrammableBlock);
+                foreach (var slim in slimBlocks)
+                {
+                    var block = slim.FatBlock as IMyProgrammableBlock;
+                    if (block == null) continue;
+
+                    if (block.CustomName.Contains("NAV"))
+                    {
+                        if (!bKeenAutopilotActive 
+                            && GroupSpawnTime + convoyInitiateTime < currentTime // delay check for mode change.
+                            )
+                        { 
+                            if (//!bKeenAutopilotActive && 
+                                block.DetailedInfo.Contains("mode=0") || block.DetailedInfo.Contains("mode=-1"))
+                            {
+                                if(remoteControl==null)
+                                {
+                                    // nothing left to do.  Remove it (and try again)
+                                    GroupState = NpcGroupState.Inactive; // this will cause NpcGroupManager to spawn a new convoy to replace this one.
+                                    return;
+                                }
+                                // force it to use Keen Autopilot
+                                remoteControl.ClearWaypoints();
+                                remoteControl.AddWaypoint(Destination, "Target");
+                                remoteControl.SpeedLimit = 10;
+                                remoteControl.SetAutoPilotEnabled(true);
+
+                                /*
+                                 // debug output
+                                var slimBlocks2 = new List<IMySlimBlock>();
+                                leader.GetBlocks(slimBlocks2, b => b.FatBlock is IMyBeacon);
+                                string sBeacons = "";
+                                foreach(var slim2 in slimBlocks2)
+                                {
+                                    var beacon = slim2.FatBlock as IMyBeacon;
+                                    sBeacons += beacon.CustomName;
+                                }
+
+                                // it didn't get the command!
+                                //                                GroupState = NpcGroupState.Inactive; // this will cause NpcGroupManager to spawn a new convoy to replace this one.
+                                ModLog.Info("Autopilot recovery because leader NAV not in correct mode: "+ sBeacons);
+                                */
+                            }
+                            break;
+                        }
+//                        ModLog.Info("PB:"+block.CustomName+"\n"+"DetailedInfo=:\n" + block.DetailedInfo);
+                    }
+                }
+
+                // Following is just debug info
+                /*
+                leader.GetBlocks(slimBlocks, b => b.FatBlock is IMyGyro);
+                foreach (var slim in slimBlocks)
+                {
+                    var block = slim.FatBlock as IMyGyro;
+                    if (block!=null && block.CustomName.Contains("NAV"))
+                    {
+                        ModLog.Info("G:"+block.CustomName + "\n");
+                    }
+                }
+                */
+            }
+
+            if (GroupState == NpcGroupState.Disbanding)
 			{
 				AttemptDespawning();
 				return;
