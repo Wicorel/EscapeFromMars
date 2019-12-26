@@ -36,7 +36,7 @@ namespace Duckroll
 			return new Vector3D(gravityProvider.GetWorldGravity(vector3D));
 		}
 
-		///  Closes this grid and all it's subgrids (may include things docked on connectors!)
+		///  Closes this grid and all its subgrids (may include things docked on connectors!)
 		public static void CloseAll(this IMyCubeGrid grid)
 		{
 			var slimBlocks = new List<IMySlimBlock>();
@@ -83,13 +83,13 @@ namespace Duckroll
 
 		public static void SetAllBeaconNames(this IMyCubeGrid grid, string name, float range)
 		{
-			var slimBlocks = new List<IMySlimBlock>(8);
+			var slimBlocks = new List<IMySlimBlock>(2);
 			grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyBeacon);
 			foreach (var slim in slimBlocks)
 			{
 				var beacon = (IMyBeacon) slim.FatBlock;
-				beacon.CustomName = name;
-                beacon.Radius = range;
+				if(!String.IsNullOrEmpty(name)) beacon.CustomName = name;
+                if(beacon.Radius!=range) beacon.Radius = range;
 				//beacon.SetValue("Radius", range);
 			}
 		}
