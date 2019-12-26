@@ -18,7 +18,9 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 30;
+        private const int CurrentModVersion = 31;
+
+        //V 31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -276,7 +278,7 @@ namespace EscapeFromMars
 			mikiScrapManager = new MikiScrapManager(audioSystem);
 			baseManager = new BaseManager(heatSystem, audioSystem);
 			convoySpawner = new ConvoySpawner(heatSystem, audioSystem);
-			npcGroupManager = new NpcGroupManager(heatSystem, audioSystem, baseManager, convoySpawner);
+			npcGroupManager = new NpcGroupManager(modBuildWhenLastSaved, heatSystem, audioSystem, baseManager, convoySpawner);
 		}
 		
         // after loading of saved data
