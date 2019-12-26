@@ -12,7 +12,7 @@ namespace EscapeFromMars
 		protected static readonly Color GcorpBlue = new Color(55, 69, 255);
 
 		internal long GroupLeaderId { get; }
-		private readonly NpcGroupType groupType;
+		public readonly NpcGroupType groupType;
         public NpcGroupState GroupState { get; set; }
         public Vector3D Destination { get; }
 		internal DateTime GroupSpawnTime { get; }
@@ -122,6 +122,7 @@ namespace EscapeFromMars
 		Disbanding,
 		Disbanded,
         ReturningForRepairs //V29
+        ,Inactive // V31
 	}
 
 	public enum NpcGroupType
