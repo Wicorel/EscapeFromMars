@@ -18,7 +18,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 31;
+        private const int CurrentModVersion = 32;
 
         //V 31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
 
@@ -278,14 +278,17 @@ namespace EscapeFromMars
 			mikiScrapManager = new MikiScrapManager(audioSystem);
 			baseManager = new BaseManager(heatSystem, audioSystem);
 			convoySpawner = new ConvoySpawner(heatSystem, audioSystem);
-			npcGroupManager = new NpcGroupManager(modBuildWhenLastSaved, heatSystem, audioSystem, baseManager, convoySpawner);
-		}
-		
+            npcGroupManager = new NpcGroupManager(modBuildWhenLastSaved, heatSystem, audioSystem, baseManager, convoySpawner);
+        }
+
         // after loading of saved data
-		protected override void InitHostPostLoading(IModSystemRegistry modSystemRegistry)
+        protected override void InitHostPostLoading(IModSystemRegistry modSystemRegistry)
 		{
             ModLog.Info("Original world was loaded by Version:" + modBuildWhenGameStarted.ToString());
             ModLog.Info("Loaded world was saved by Version:" + modBuildWhenLastSaved.ToString());
+
+            npcGroupManager.SetBuildWhenSaved(modBuildWhenLastSaved);
+
             researchHacking.InitHackingLocations(); // Uses research restrictions and save data
 			DuckUtils.MakePeaceBetweenFactions("MIKI", "CRASH");
 			DuckUtils.MakePeaceBetweenFactions("MIKI", "GCORP");

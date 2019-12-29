@@ -50,6 +50,11 @@ namespace EscapeFromMars
 			MyAPIGateway.Entities.OnEntityAdd += NewEntityEvent;
 		}
 
+        public void SetBuildWhenSaved(int setto)
+        {
+            modBuildWhenLastSaved = setto;
+        }
+
 		// We have to listen for new entities because they are not returned by the spawning code.
 		// The faction of the blocks also isn't set by this point, neither is the beacon name, so there's nothing much 
 		// we can do other than queue it up to check next update
@@ -184,6 +189,7 @@ namespace EscapeFromMars
 
                         if (grid.IsControlledByFaction("GCORP")) // see npcgroup.AttemptDespawn()
                         {
+                            ModLog.Info("save build#:" + modBuildWhenLastSaved.ToString() + " Initial=" + bInitialInit.ToString());
                             ModLog.Info("Removing dead drone Grid:" + grid.CustomName);
                             bOldRemovals = true;
                             grid.CloseAll();
