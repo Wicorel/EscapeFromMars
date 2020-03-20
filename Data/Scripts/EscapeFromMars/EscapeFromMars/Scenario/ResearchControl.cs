@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Duckroll;
 using Sandbox.Game;
+using Sandbox.Game.SessionComponents;
 using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.ModAPI;
@@ -313,6 +314,19 @@ SubtyepID=Jukebox*/
             "MyObjectBuilder_Jukebox", "Jukebox");
 
 
+        // V1.194
+        /* TyepID=MyObjectBuilder_OxygenTank
+SubtyepID=LargeHydrogenTankSmall */
+        private readonly MyDefinitionId LargeHydrogenTankSmall = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_OxygenTank", "LargeHydrogenTankSmall");
+
+        /* TyepID=MyObjectBuilder_OxygenTank
+SubtyepID=SmallHydrogenTankSmall
+*/
+        private readonly MyDefinitionId SmallHydrogenTankSmall = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_OxygenTank", "SmallHydrogenTankSmall");
+
+
         private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
         new Dictionary<TechGroup, HashSet<MyDefinitionId>>();
 
@@ -338,6 +352,9 @@ SubtyepID=Jukebox*/
 
         internal void InitResearchRestrictions()
         {
+            // 1.194            MySectorWeatherComponent wc;
+            //            WeatherType wt;
+ 
             if (bNewResearch)
             {
                 MyVisualScriptLogicProvider.ResearchListClear();
@@ -379,6 +396,10 @@ SubtyepID=Jukebox*/
             NeedsResearch(oxygenTankSmall, TechGroup.GasStorage);
             NeedsResearch(hydrogenTankLarge, TechGroup.GasStorage);
             NeedsResearch(hydrogenTankSmall, TechGroup.GasStorage);
+
+            //SE 1.194 V33
+            NeedsResearch(LargeHydrogenTankSmall, TechGroup.GasStorage);
+            NeedsResearch(SmallHydrogenTankSmall, TechGroup.GasStorage);
 
             NeedsResearch(EngineLarge, TechGroup.GasStorage);
             NeedsResearch(EngineSmall, TechGroup.GasStorage);
