@@ -181,6 +181,26 @@ namespace EscapeFromMars
                         switch (textPanel.EntityId)
                         {
                             //            long buildGuideID = 80461927256500036;
+                            case 110371608100898677: //TOOLS LOCKER
+                                textPanel.FontSize = 5;
+                                textPanel.Alignment = VRage.Game.GUI.TextPanel.TextAlignment.CENTER;
+                                textPanel.TextPadding = 20f; // 20%
+                                textPanel.WriteText("TOOLS LOCKER"); // remove left padding from text
+                                break;
+
+                            case 143319951822334717: //143319951822334717:TEXT!                                SPARE PARTS STORAGE
+                                textPanel.FontSize = 5;
+                                textPanel.Alignment = VRage.Game.GUI.TextPanel.TextAlignment.CENTER;
+                                textPanel.TextPadding = 20f; // 20%
+//                                textPanel.WriteText("SPARE PARTS STORAGE");
+                                break;
+
+                            case 87005598531295535: //87005598531295535TEXT!EMERGENCY SUPPLIES
+                                textPanel.FontSize = 5;
+                                textPanel.Alignment = VRage.Game.GUI.TextPanel.TextAlignment.CENTER;
+                                textPanel.TextPadding = 20f; // 20%
+                                break;
+
 
                             case 80461927256500036: // Crash ship build info screen
                                 /* "old" text
