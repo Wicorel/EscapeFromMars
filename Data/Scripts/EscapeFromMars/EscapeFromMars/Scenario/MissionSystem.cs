@@ -125,8 +125,6 @@ namespace EscapeFromMars
             long sparePartsID = 143319951822334717;
             long alarmSoundID = 113240311055457124;
 
-
-
             AddInterest(outgoingID);
             AddInterest(icomingID);
             AddInterest(friendlyFireID);
@@ -152,7 +150,7 @@ namespace EscapeFromMars
             TurnBlockOff(sparePartsID),
             TurnBlockOff(alarmSoundID),
  //           TurnBlockOff(medbayID), DO NOT TURN OFF.  NEEDED TO SPAWN PLAYERS!!!
-            TurnBlockOn(medbayID),
+//            TurnBlockOn(medbayID),
             TurnBlockOff(batteryID),
             TurnBlockOff(gasGenID)
                 );
