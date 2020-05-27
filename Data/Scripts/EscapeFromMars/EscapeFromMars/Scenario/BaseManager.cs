@@ -87,6 +87,17 @@ namespace EscapeFromMars
         /// <param name="grid"></param>
         void BlocksFixup(IMyCubeGrid grid)
         {
+            long medbayID = 79910699489349926;
+            var slimBlocksMed = new List<IMySlimBlock>();
+            grid.GetBlocks(slimBlocksMed, b => b.FatBlock is IMyMedicalRoom);
+            foreach(var slim in slimBlocksMed)
+            {
+                var medbay = slim.FatBlock as IMyMedicalRoom;
+                if(medbay.EntityId==medbayID)
+                {
+                    medbay.Enabled = true;
+                }
+            }
 
             // fix up the Gatling blocks to have max range //V28
             var slimBlocksG = new List<IMySlimBlock>();
