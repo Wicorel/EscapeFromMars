@@ -11,6 +11,9 @@ using VRage.Game.ModAPI;
 using Draygo.API;
 using System;
 using VRage.ObjectBuilders;
+using Sandbox.Game.Localization;
+using VRage.Utils;
+using SISK.LoadLocalization;
 
 namespace EscapeFromMars
 {
@@ -18,10 +21,11 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 33;
+        private const int CurrentModVersion = 34;
 
         //V 31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
         // V33 SE 1.194
+        // V34 SE 1.195
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -34,6 +38,8 @@ namespace EscapeFromMars
         //		private HUDTextAPI hudTextApi;
         // For EFM 23: (finally) update to TextHudAPI V2.
         private HudAPIv2 TextAPI;
+
+        private readonly Mod localization = new Mod();
 
         private ResearchHacking researchHacking;
 		private int modBuildWhenGameStarted;
@@ -54,6 +60,14 @@ namespace EscapeFromMars
 
             MyAPIGateway.Utilities.ShowNotification(sInit, 5000, MyFontEnum.DarkBlue);
             ModLog.Info(sInit);
+//            var gamelanguage = MySpaceTexts.ToolTipOptionsGame_Language;
+            var gamelanguage=MyAPIGateway.Session.Config.Language;
+            ModLog.Info("Game Language="+ gamelanguage.ToString());
+
+            var idString1=MyStringId.TryGet("String1");
+            var String1=VRage.MyTexts.Get(idString1);
+            ModLog.Info("idString1=" + idString1);
+            ModLog.Info("String1=" + String1);
 
             if (MyAPIGateway.Session.IsServer)
                 MyVisualScriptLogicProvider.SendChatMessage(sInit, "Wicorel", 0, MyFontEnum.DarkBlue);
