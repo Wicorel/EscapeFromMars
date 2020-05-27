@@ -83,74 +83,74 @@ SubtyepID=SmallGatlingTurret*/
         private readonly MyDefinitionId ionThrusterSmallShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
                     "SmallBlockSmallThrust");
 
-                private readonly MyDefinitionId ionThrusterSmallShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "SmallBlockLargeThrust");
+        private readonly MyDefinitionId ionThrusterSmallShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "SmallBlockLargeThrust");
 
-                private readonly MyDefinitionId ionThrusterLargeShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "LargeBlockSmallThrust");
+        private readonly MyDefinitionId ionThrusterLargeShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "LargeBlockSmallThrust");
 
-                private readonly MyDefinitionId ionThrusterLargeShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "LargeBlockLargeThrust");
+        private readonly MyDefinitionId ionThrusterLargeShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "LargeBlockLargeThrust");
 
-                private readonly MyDefinitionId hydroThrusterSmallShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "SmallBlockSmallHydrogenThrust");
+        private readonly MyDefinitionId hydroThrusterSmallShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "SmallBlockSmallHydrogenThrust");
 
-                private readonly MyDefinitionId hydroThrusterSmallShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "SmallBlockLargeHydrogenThrust");
+        private readonly MyDefinitionId hydroThrusterSmallShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "SmallBlockLargeHydrogenThrust");
 
-                private readonly MyDefinitionId hydroThrusterLargeShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "LargeBlockSmallHydrogenThrust");
+        private readonly MyDefinitionId hydroThrusterLargeShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "LargeBlockSmallHydrogenThrust");
 
-                private readonly MyDefinitionId hydroThrusterLargeShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "LargeBlockLargeHydrogenThrust");
+        private readonly MyDefinitionId hydroThrusterLargeShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "LargeBlockLargeHydrogenThrust");
 
-                private readonly MyDefinitionId atmoThrusterSmallShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "SmallBlockSmallAtmosphericThrust");
+        private readonly MyDefinitionId atmoThrusterSmallShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "SmallBlockSmallAtmosphericThrust");
 
-                private readonly MyDefinitionId atmoThrusterSmallShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "SmallBlockLargeAtmosphericThrust");
+        private readonly MyDefinitionId atmoThrusterSmallShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "SmallBlockLargeAtmosphericThrust");
 
-                private readonly MyDefinitionId atmoThrusterLargeShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "LargeBlockSmallAtmosphericThrust");
+        private readonly MyDefinitionId atmoThrusterLargeShipSmall = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "LargeBlockSmallAtmosphericThrust");
 
-                private readonly MyDefinitionId atmoThrusterLargeShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
-                    "LargeBlockLargeAtmosphericThrust");
+        private readonly MyDefinitionId atmoThrusterLargeShipLarge = MyVisualScriptLogicProvider.GetDefinitionId("Thrust",
+            "LargeBlockLargeAtmosphericThrust");
 
-                private readonly MyDefinitionId oxygenFarm = MyVisualScriptLogicProvider.GetDefinitionId("OxygenFarm",
-                    "LargeBlockOxygenFarm");
+        private readonly MyDefinitionId oxygenFarm = MyVisualScriptLogicProvider.GetDefinitionId("OxygenFarm",
+            "LargeBlockOxygenFarm");
 
-                // MyObjectBuilder_OxygenGenerator
-                //        private readonly MyDefinitionId oxygenGeneratorLarge = MyVisualScriptLogicProvider.GetDefinitionId("OxygenGenerator",            null);
-                private readonly MyDefinitionId oxygenGeneratorLarge = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_OxygenGenerator",
-                    null);
+        // MyObjectBuilder_OxygenGenerator
+        //        private readonly MyDefinitionId oxygenGeneratorLarge = MyVisualScriptLogicProvider.GetDefinitionId("OxygenGenerator",            null);
+        private readonly MyDefinitionId oxygenGeneratorLarge = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_OxygenGenerator",
+            null);
 
-                //        private readonly MyDefinitionId oxygenGeneratorSmall = MyVisualScriptLogicProvider.GetDefinitionId("OxygenGenerator", "OxygenGeneratorSmall");
-                private readonly MyDefinitionId oxygenGeneratorSmall = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_OxygenGenerator", "OxygenGeneratorSmall");
+        //        private readonly MyDefinitionId oxygenGeneratorSmall = MyVisualScriptLogicProvider.GetDefinitionId("OxygenGenerator", "OxygenGeneratorSmall");
+        private readonly MyDefinitionId oxygenGeneratorSmall = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_OxygenGenerator", "OxygenGeneratorSmall");
 
-                private readonly MyDefinitionId oxygenTankLarge = MyVisualScriptLogicProvider.GetDefinitionId("OxygenTank",
-                    null);
+        private readonly MyDefinitionId oxygenTankLarge = MyVisualScriptLogicProvider.GetDefinitionId("OxygenTank",
+            null);
 
-                private readonly MyDefinitionId oxygenTankSmall = MyVisualScriptLogicProvider.GetDefinitionId("OxygenTank",
-                    "OxygenTankSmall");
+        private readonly MyDefinitionId oxygenTankSmall = MyVisualScriptLogicProvider.GetDefinitionId("OxygenTank",
+            "OxygenTankSmall");
 
-                private readonly MyDefinitionId hydrogenTankLarge = MyVisualScriptLogicProvider.GetDefinitionId("OxygenTank",
-                    "LargeHydrogenTank");
+        private readonly MyDefinitionId hydrogenTankLarge = MyVisualScriptLogicProvider.GetDefinitionId("OxygenTank",
+            "LargeHydrogenTank");
 
-                private readonly MyDefinitionId hydrogenTankSmall = MyVisualScriptLogicProvider.GetDefinitionId("OxygenTank",
-                    "SmallHydrogenTank");
+        private readonly MyDefinitionId hydrogenTankSmall = MyVisualScriptLogicProvider.GetDefinitionId("OxygenTank",
+            "SmallHydrogenTank");
 
-                private readonly MyDefinitionId projectorLarge = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Projector",
-                    "LargeProjector");
+        private readonly MyDefinitionId projectorLarge = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Projector",
+            "LargeProjector");
 
-                private readonly MyDefinitionId projectorSmall = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Projector",
-                    "SmallProjector");
+        private readonly MyDefinitionId projectorSmall = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Projector",
+            "SmallProjector");
 
-                /*
-                 * Hydrogen Engine
-        MyHydrogenEngine {1CB79D5F7945883} Hydrogen Engine
-        TyepID=MyObjectBuilder_HydrogenEngine
-        SubtyepID=LargeHydrogenEngine
-        */
+        /*
+         * Hydrogen Engine
+MyHydrogenEngine {1CB79D5F7945883} Hydrogen Engine
+TyepID=MyObjectBuilder_HydrogenEngine
+SubtyepID=LargeHydrogenEngine
+*/
         private readonly MyDefinitionId EngineLarge = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_HydrogenEngine",
             "LargeHydrogenEngine");
 
@@ -327,6 +327,160 @@ SubtyepID=SmallHydrogenTankSmall
             "MyObjectBuilder_OxygenTank", "SmallHydrogenTankSmall");
 
 
+        // V1.195
+        /* SG 
+         * Sc-fi sliding door
+         * TyepID=MyObjectBuilder_Door
+        SubtyepID=SmallSideDoor
+        */
+        private readonly MyDefinitionId SmallSideDoor = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Door", "SmallSideDoor");
+        /* SG medium hinge
+         * TyepID=MyObjectBuilder_MotorAdvancedStator
+        SubtyepID = MediumHinge
+        */
+        private readonly MyDefinitionId MediumHinge = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_MotorAdvancedStator", "MediumHinge");
+
+
+        /* SG Small hinge
+         * TyepID=MyObjectBuilder_MotorAdvancedStator
+        SubtyepID=SmallHinge
+        */
+        private readonly MyDefinitionId SmallHinge = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_MotorAdvancedStator", "SmallHinge");
+
+        /* Small hinge head
+         * TyepID=MyObjectBuilder_MotorStator
+        SubtyepID=SmallStator
+        */
+        private readonly MyDefinitionId SmallStator = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_MotorStator", "SmallStator");
+
+        // Sparks of the Future DLC
+
+        /* SG
+         * Sci-Fi Ion Thruster
+        TyepID=MyObjectBuilder_Thrust
+        SubtyepID=SmallBlockSmallThrustSciFi
+        */
+        private readonly MyDefinitionId SmallBlockSmallThrustSciFi = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Thrust", "SmallBlockSmallThrustSciFi");
+
+
+        /* SG
+         * Sci-Fi Large Ion Thruster
+        TyepID=MyObjectBuilder_Thrust
+        SubtyepID=SmallBlockLargeThrustSciFi
+        */
+        private readonly MyDefinitionId SmallBlockLargeThrustSciFi = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Thrust", "SmallBlockLargeThrustSciFi");
+
+        /* SG
+         * Sci-Fi Atmospheric Thruster
+        TyepID=MyObjectBuilder_Thrust
+        SubtyepID=SmallBlockSmallAtmosphericThrustSciFi
+        */
+        private readonly MyDefinitionId SmallBlockSmallAtmosphericThrustSciFi = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Thrust", "SmallBlockSmallAtmosphericThrustSciFi");
+
+        /*
+         * SG
+         * Sci-Fi Large Atmospheric Thruster
+        TyepID=MyObjectBuilder_Thrust
+        SubtyepID=SmallBlockLargeAtmosphericThrustSciFi
+        */
+        private readonly MyDefinitionId SmallBlockLargeAtmosphericThrustSciFi = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Thrust", "SmallBlockLargeAtmosphericThrustSciFi");
+
+
+        /* LG
+         * Hinge
+        TyepID=MyObjectBuilder_MotorAdvancedStator
+        SubtyepID=LargeHinge
+        */
+        private readonly MyDefinitionId LargeHinge = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_MotorAdvancedStator", "LargeHinge");
+
+
+        /* LG
+         * Sci-Fi Terminal Panel
+        TyepID=MyObjectBuilder_TerminalBlock
+        SubtyepID=LargeBlockSciFiTerminal
+        */
+        private readonly MyDefinitionId LargeBlockSciFiTerminal = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_TerminalBlock", "LargeBlockSciFiTerminal");
+
+        /* LG
+         * Sci-Fi One-Button Terminal
+        TyepID=MyObjectBuilder_ButtonPanel
+        SubtyepID=LargeSciFiButtonTerminal
+        */
+        private readonly MyDefinitionId LargeSciFiButtonTerminal = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_ButtonPanel", "LargeSciFiButtonTerminal");
+
+        /* LG
+         * Sci-Fi Four-Button Panel
+        TyepID=MyObjectBuilder_ButtonPanel
+        SubtyepID=LargeSciFiButtonPanel
+        (4 surfaces)
+        */
+        private readonly MyDefinitionId LargeSciFiButtonPanel = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_ButtonPanel", "LargeSciFiButtonPanel");
+
+        /* LG
+         * Sci-Fi Large Ion Thruster
+        TyepID=MyObjectBuilder_Thrust
+        SubtyepID=LargeBlockLargeThrustSciFi
+        */
+        private readonly MyDefinitionId LargeBlockLargeThrustSciFi = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Thrust", "LargeBlockLargeThrustSciFi");
+
+
+        /* LG 
+         * Sci-Fi Ion Thruster
+        TyepID=MyObjectBuilder_Thrust
+        SubtyepID=LargeBlockSmallThrustSciFi
+        */
+        private readonly MyDefinitionId LargeBlockSmallThrustSciFi = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Thrust", "LargeBlockSmallThrustSciFi");
+
+
+        /* LG
+         * Sci-Fi Large Atmospheric Thruster
+        TyepID=MyObjectBuilder_Thrust
+        SubtyepID=LargeBlockLargeAtmosphericThrustSciFi
+        */
+        private readonly MyDefinitionId LargeBlockLargeAtmosphericThrustSciFi = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Thrust", "LargeBlockLargeAtmosphericThrustSciFi");
+
+        /* LG
+         * Sci-Fi Atmospheric Thruster
+        TyepID=MyObjectBuilder_Thrust
+        SubtyepID=LargeBlockSmallAtmosphericThrustSciFi
+        */
+        private readonly MyDefinitionId LargeBlockSmallAtmosphericThrustSciFi = MyVisualScriptLogicProvider.GetDefinitionId(
+            "MyObjectBuilder_Thrust", "LargeBlockSmallAtmosphericThrustSciFi");
+
+
+        /* LG
+         * Sci-Fi LCD Panel 3x3
+        TyepID=MyObjectBuilder_TextPanel
+        SubtyepID=LargeLCDPanel3x3
+        */
+
+        /* LG
+         * Sci-Fi LCD Panel 5x3
+        TyepID=MyObjectBuilder_TextPanel
+        SubtyepID=LargeLCDPanel5x3
+        */
+
+        /* LG
+         * Sci-Fi LCD Panel 5x5
+        TyepID=MyObjectBuilder_TextPanel
+        SubtyepID=LargeLCDPanel5x5
+        */
+
         private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
         new Dictionary<TechGroup, HashSet<MyDefinitionId>>();
 
@@ -342,9 +496,9 @@ SubtyepID=SmallHydrogenTankSmall
         // UNTESTED:
         void FunctionalityChanged(long entityId, long gridid, string entityName, string gridName, string typeid, string subtypeid, bool becameFunctional)
         {
-            if(subtypeid.Contains("Hydrogen"))
+            if (subtypeid.Contains("Hydrogen"))
             { // it's likely a hydrogen tank
-             ModLog.Info(" It looks like a hydrogen tank just got built.");
+                ModLog.Info(" It looks like a hydrogen tank just got built.");
                 KeepTechsLocked();
             }
 
@@ -354,7 +508,7 @@ SubtyepID=SmallHydrogenTankSmall
         {
             // 1.194            MySectorWeatherComponent wc;
             //            WeatherType wt;
- 
+
             if (bNewResearch)
             {
                 MyVisualScriptLogicProvider.ResearchListClear();
@@ -389,6 +543,7 @@ SubtyepID=SmallHydrogenTankSmall
             NeedsResearch(atmoThrusterSmallShipLarge, TechGroup.AtmosphericEngines);
             NeedsResearch(atmoThrusterLargeShipSmall, TechGroup.AtmosphericEngines);
             NeedsResearch(atmoThrusterLargeShipLarge, TechGroup.AtmosphericEngines);
+
             NeedsResearch(oxygenFarm, TechGroup.OxygenFarm);
             NeedsResearch(oxygenGeneratorLarge, TechGroup.OxygenGenerators);
             NeedsResearch(oxygenGeneratorSmall, TechGroup.OxygenGenerators);
@@ -410,14 +565,29 @@ SubtyepID=SmallHydrogenTankSmall
             NeedsResearch(SmallRocketLauncherReload, TechGroup.BasicWeapons);
             NeedsResearch(InteriorTurret, TechGroup.BasicWeapons);
             NeedsResearch(LargeGatlingTurret, TechGroup.BasicWeapons);
-//            NeedsResearch(largeMissileTurret, TechGroup.BasicWeapons);
-//            NeedsResearch(smallMissileTurret, TechGroup.BasicWeapons);
+            //            NeedsResearch(largeMissileTurret, TechGroup.BasicWeapons);
+            //            NeedsResearch(smallMissileTurret, TechGroup.BasicWeapons);
 
             NeedsResearch(SkLarge, TechGroup.Permabanned);
             NeedsResearch(SkSmall, TechGroup.Permabanned);
             NeedsResearch(BasicAssembler, TechGroup.Permabanned);
 
+
             var gameVersion = MyAPIGateway.Session.Version;
+
+            if ((gameVersion.Major == 1 && gameVersion.Minor >= 195) || gameVersion.Major > 1)
+            {
+                // V1.195 DLC
+                NeedsResearch(SmallBlockSmallAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
+                NeedsResearch(SmallBlockLargeAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
+                NeedsResearch(LargeBlockSmallAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
+                NeedsResearch(LargeBlockLargeAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
+
+                NeedsResearch(SmallBlockSmallThrustSciFi, TechGroup.Permabanned);
+                NeedsResearch(SmallBlockLargeThrustSciFi, TechGroup.Permabanned);
+                NeedsResearch(LargeBlockSmallThrustSciFi, TechGroup.Permabanned);
+                NeedsResearch(LargeBlockLargeThrustSciFi, TechGroup.Permabanned);
+            }
 
             // V26.  For SE 1.192
             if ((gameVersion.Major == 1 && gameVersion.Minor >= 192) || gameVersion.Major > 1)
@@ -439,15 +609,18 @@ SubtyepID=SmallHydrogenTankSmall
 
         public void AllowUnlockedTechs()
         {
-//            ModLog.Info("AllowUnlockTechs():" + UnlockedTechs.Count.ToString() + " unlocked groups");
+            //            ModLog.Info("AllowUnlockTechs():" + UnlockedTechs.Count.ToString() + " unlocked groups");
 
             UnlockTechsSilently(0, UnlockedTechs);
         }
 
         private void NeedsResearch(MyDefinitionId techDef, TechGroup techgroup)
         {
-
-            if (techDef == null) return;
+            if (techDef == null)
+            {
+                ModLog.Info("Request for NULL techDef");
+                return;
+            }
 
             MyVisualScriptLogicProvider.ResearchListAddItem(techDef);
 
@@ -462,15 +635,15 @@ SubtyepID=SmallHydrogenTankSmall
 
         public void KeepTechsLocked()
         {
-//            ModLog.Info("KeepTechsLocked()");
+            //            ModLog.Info("KeepTechsLocked()");
 
             foreach (var techGroup in techsForGroup)
             {
                 var group = techGroup.Key;
-//                ModLog.Info("KTL: Group=" + group.ToString());
+                //                ModLog.Info("KTL: Group=" + group.ToString());
                 if (UnlockedTechs.Contains(group))
                 {
-//                    ModLog.Info(" UNLOCKED");
+                    //                    ModLog.Info(" UNLOCKED");
                     // OK to unlock
                     var technologies = techsForGroup[group];
                     foreach (var technology in technologies)
@@ -480,7 +653,7 @@ SubtyepID=SmallHydrogenTankSmall
                 }
                 else
                 {
-//                    ModLog.Info(" LOCKED");
+                    //                    ModLog.Info(" LOCKED");
                     // block should be locked
                     var technologies = techsForGroup[group];
                     if (technologies == null)
@@ -488,7 +661,7 @@ SubtyepID=SmallHydrogenTankSmall
                         ModLog.Error("No technologies for group: " + techGroup);
                         continue;
                     }
-//                    ModLog.Info(" # blocks=" + technologies.Count.ToString());
+                    //                    ModLog.Info(" # blocks=" + technologies.Count.ToString());
                     foreach (var technology in technologies)
                     {
                         MyVisualScriptLogicProvider.ResearchListAddItem(technology);
@@ -503,7 +676,7 @@ SubtyepID=SmallHydrogenTankSmall
         {
             if (UnlockedTechs.Contains(techGroup))
             {
-//                ModLog.Info("UTGFAP():" + UnlockedTechs.Count.ToString() + " unlocked groups. Already contains TechGroup:"+techGroup.ToString());
+                //                ModLog.Info("UTGFAP():" + UnlockedTechs.Count.ToString() + " unlocked groups. Already contains TechGroup:"+techGroup.ToString());
                 return; // Already unlocked
             }
 
@@ -525,7 +698,7 @@ SubtyepID=SmallHydrogenTankSmall
                     }
                     else
                     {
-//                        ModLog.Info("Old research Method: Unlock for player:" + player.IdentityId.ToString() + " tech=" + technology.ToString());
+                        //                        ModLog.Info("Old research Method: Unlock for player:" + player.IdentityId.ToString() + " tech=" + technology.ToString());
                         MyVisualScriptLogicProvider.PlayerResearchUnlock(player.IdentityId, technology);
                     }
                 }
