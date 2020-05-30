@@ -117,8 +117,116 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="String1" xml:space="preserve">
-    <value>LString1</value>
-    <comment>Test String</comment>
+  <data name="AreaExtremelyDangerous" xml:space="preserve">
+    <value>This area is extremely dangerous</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="CommunicationsSatellite" xml:space="preserve">
+    <value>Communications Satellite</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="ConnectionLost" xml:space="preserve">
+    <value>Connection Lost</value>
+    <comment>ResearchHacking</comment>
+  </data>
+  <data name="ConvoyRecalled" xml:space="preserve">
+    <value>Convoy Recalled</value>
+    <comment>NpcGroupManager</comment>
+  </data>
+  <data name="EscortName" xml:space="preserve">
+    <value>Convoy Escort</value>
+    <comment>NpcGroupManager</comment>
+  </data>
+  <data name="FacilityNotOnAnyOfficalMap" xml:space="preserve">
+    <value>This facility was not on any official maps</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="FlightResearchStation" xml:space="preserve">
+    <value>Flight Research Station</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="FurnaceStateLoadedUp" xml:space="preserve">
+    <value>\n   Close doors\n    to activate\n      furnace</value>
+    <comment>MikiScrap</comment>
+  </data>
+  <data name="FurnaceStateWaiting" xml:space="preserve">
+    <value>Drop\n     unwanted\n  vehicles and\n   large items\n  into furnace</value>
+    <comment>MikiScrap</comment>
+  </data>
+  <data name="FurnaceStateWorking" xml:space="preserve">
+    <value>! Caution !\n   Furnace is\n      active\n\n      Extreme\n  temperatures</value>
+    <comment>MikiScrap</comment>
+  </data>
+  <data name="GCorpFlightResearchStation" xml:space="preserve">
+    <value>GCorp Flight Research Station</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="GCorpHeadquarters" xml:space="preserve">
+    <value>G-Corp Headquarters</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="GCorpHiddenFileContents" xml:space="preserve">
+    <value>GCorp hidden file contents</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="GCorpIceMine" xml:space="preserve">
+    <value>GCorp Ice Mine</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="HackInProgress" xml:space="preserve">
+    <value>Hack in progress:</value>
+    <comment>ResearchHacking</comment>
+  </data>
+  <data name="HiddenFilesFoundByMabel" xml:space="preserve">
+    <value>Hidden files found by Mabel</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="HiddenSiteofMRE" xml:space="preserve">
+    <value>Hidden site of Mars Research Expeditions terraforming poject</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="IllegalGCorpResearchFacility" xml:space="preserve">
+    <value>Illegal GCorp Research Facility</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="Init" xml:space="preserve">
+    <value>Initialising Escape From Mars build</value>
+    <comment>EfmCore.cs</comment>
+  </data>
+  <data name="InterceptingBeaconSuffix" xml:space="preserve">
+    <value> *PURSUING TARGET*</value>
+    <comment>BackupGroup Needs initial space</comment>
+  </data>
+  <data name="InvestigatingBackupCall" xml:space="preserve">
+    <value> Investigating Backup Call</value>
+    <comment>BackupGroup Needs initial space</comment>
+  </data>
+  <data name="MarsCommunicationsSatellite" xml:space="preserve">
+    <value>Mars Communications Satellite</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="MarsIceMininigFacility" xml:space="preserve">
+    <value>Mars ice mining facility</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="MREExperimentSite" xml:space="preserve">
+    <value>MRE Experiment Site</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="ReturningToBase" xml:space="preserve">
+    <value> *RETURNING TO BASE*</value>
+    <comment>BackupGroup Needs initial space</comment>
+  </data>
+  <data name="SecretWeaponResearchFacility" xml:space="preserve">
+    <value>Secret Weapon Research Facility</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="SuspiciousStorageFacility" xml:space="preserve">
+    <value>Suspicious Storage Facility</value>
+    <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="TranslationBy" xml:space="preserve">
+    <value />
+    <comment>Who did the translation? If non whitespace it will display after init string.  Put "Translated By" as part of text. EfmCore.cs</comment>
   </data>
 </root>

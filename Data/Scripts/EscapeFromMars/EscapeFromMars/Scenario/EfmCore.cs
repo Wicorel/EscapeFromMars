@@ -21,11 +21,12 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 34;
+        private const int CurrentModVersion = 35;
 
         //V 31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
         // V33 SE 1.194
         // V34 SE 1.195
+        // V35 MyTexts for localization
 
 		private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -56,7 +57,14 @@ namespace EscapeFromMars
 
         protected override void InitCommon(IModSystemRegistry modSystemRegistry)
 		{
-            string sInit = "Initialising Escape From Mars build " + CurrentModVersion;
+            var stringIdInit= MyStringId.TryGet("Init");
+            string sInit = VRage.MyTexts.Get(stringIdInit).ToString() + " "+ CurrentModVersion;
+
+            var TranslationByID= MyStringId.TryGet("TranslationBy");
+            string sTranslationBy = VRage.MyTexts.Get(TranslationByID).ToString();
+            if (!string.IsNullOrWhiteSpace(sTranslationBy))
+                sInit += "\n  " + sTranslationBy;
+            //            string sInit = "Initialising Escape From Mars build " + CurrentModVersion;
 
             MyAPIGateway.Utilities.ShowNotification(sInit, 5000, MyFontEnum.DarkBlue);
             ModLog.Info(sInit);
@@ -64,10 +72,12 @@ namespace EscapeFromMars
             var gamelanguage=MyAPIGateway.Session.Config.Language;
             ModLog.Info("Game Language="+ gamelanguage.ToString());
 
+            /*
             var idString1=MyStringId.TryGet("String1");
             var String1=VRage.MyTexts.Get(idString1);
             ModLog.Info("idString1=" + idString1);
             ModLog.Info("String1=" + String1);
+            */
 
             if (MyAPIGateway.Session.IsServer)
                 MyVisualScriptLogicProvider.SendChatMessage(sInit, "Wicorel", 0, MyFontEnum.DarkBlue);

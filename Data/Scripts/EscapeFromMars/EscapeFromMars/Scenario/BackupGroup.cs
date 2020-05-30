@@ -6,6 +6,7 @@ using Sandbox.ModAPI;
 using VRage.Game.ModAPI;
 using VRageMath;
 using Duckroll;
+using VRage.Utils;
 
 namespace EscapeFromMars
 {
@@ -13,8 +14,10 @@ namespace EscapeFromMars
 	{
 		private IMyCubeGrid leader;
 		private readonly QueuedAudioSystem audioSystem;
-		private const string InterceptingBeaconSuffix = " *PURSUING TARGET*";
-		private const string ReturningToBase = " *RETURNING TO BASE*";
+		private string InterceptingBeaconSuffix = " *PURSUING TARGET*"; // loaded from mytexts
+        private string ReturningToBase = " *RETURNING TO BASE*"; // loaded from mytexts
+        private string InvestigatingBackupCall = " Investigating Backup Call"; // loaded from mytexts
+
         HeatSystem heat;
 		internal BackupGroup(NpcGroupState initialState, Vector3D destination, IMyCubeGrid leader,
 			HeatSystem heatSystem, QueuedAudioSystem audioSystem, DateTime groupSpawnTime)
@@ -23,9 +26,19 @@ namespace EscapeFromMars
 			this.leader = leader;
 			this.audioSystem = audioSystem;
             this.heat = heatSystem;
-		}
 
-		internal override bool IsJoinable(UnitType unitType)
+            var InterceptingBeaconSuffixID = MyStringId.TryGet("InterceptingBeaconSuffix");
+            InterceptingBeaconSuffix = VRage.MyTexts.Get(InterceptingBeaconSuffixID).ToString();
+
+            var ReturningToBaseID = MyStringId.TryGet("ReturningToBase");
+            ReturningToBase = VRage.MyTexts.Get(ReturningToBaseID).ToString();
+
+            var InvestigatingBackupCallID = MyStringId.TryGet("InvestigatingBackupCall");
+            InvestigatingBackupCall = VRage.MyTexts.Get(InvestigatingBackupCallID).ToString();
+
+        }
+
+        internal override bool IsJoinable(UnitType unitType)
 		{
 			return false; // For now only 1 ship
 		}
@@ -90,7 +103,7 @@ namespace EscapeFromMars
                     GroupState = NpcGroupState.ReturningForRepairs; //V29
 //                    ModLog.Info("Backup:" + leader.EntityId.ToString() + " No Gun." + GroupState.ToString());
                     leader.SetLightingColors(GcorpBlue);
-                    leader.RemoveFromFirstBeaconName(" Investigating Backup Call"); // match text in NpcGroupManager
+                    leader.RemoveFromFirstBeaconName(InvestigatingBackupCall); // match text in NpcGroupManager
                     leader.RemoveFromFirstBeaconName(InterceptingBeaconSuffix);
                     leader.AppendToFirstBeaconName(ReturningToBase);
                     leader.SendToPosition(Destination);

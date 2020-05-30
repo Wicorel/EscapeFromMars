@@ -7,6 +7,7 @@ using VRage.Game.ModAPI;
 using VRageMath;
 using Draygo.API;
 using System.Text;
+using VRage.Utils;
 
 namespace EscapeFromMars
 {
@@ -37,6 +38,9 @@ namespace EscapeFromMars
 		private bool wasHackingLastUpdate;
 		private int hackInterruptCooldown = 6;
 
+        private MyStringId ConnectionLostID;
+        private MyStringId HackInProgressID;
+
 		internal ResearchHacking(ResearchControl researchControl, HudAPIv2 hudTextApi, NetworkComms networkComms)
 		{
             this.researchControl = researchControl;
@@ -53,10 +57,16 @@ namespace EscapeFromMars
 
             this.networkComms = networkComms;
 
+            ConnectionLostID = MyStringId.TryGet("ConnectionLost");
+
+            HackInProgressID = MyStringId.TryGet("HackInProgress");
+            //            string sInit = VRage.MyTexts.Get(stringIdInit).ToString() + " " + CurrentModVersion;
+
         }
         void textHudCallback()
         {
-            StringBuilder sb = new StringBuilder(SeTextColor + "CONNECTION LOST");
+            StringBuilder sb = new StringBuilder(SeTextColor + VRage.MyTexts.Get(ConnectionLostID));
+//            StringBuilder sb = new StringBuilder(SeTextColor + "CONNECTION LOST");
             hackInterruptedV2 = new HudAPIv2.HUDMessage(sb, new Vector2D(-0.5, 0.5));
 
             sb.Clear();
@@ -187,8 +197,8 @@ namespace EscapeFromMars
 
                 if (hackInterruptedV2 == null || bForce )
                 {
-//                    ModLog.Info("Creating Interrupted HUD");
-                    sbInterruptedMessage = new StringBuilder(SeTextColor + "CONNECTION LOST");
+                    //                    ModLog.Info("Creating Interrupted HUD");
+                    sbInterruptedMessage = new StringBuilder(SeTextColor + VRage.MyTexts.Get(ConnectionLostID));
                     hackInterruptedV2 = new HudAPIv2.HUDMessage(sbInterruptedMessage, new Vector2D(-0.5, 0.5));
                     if (hackInterruptedV2 != null)
                     {
@@ -226,7 +236,7 @@ namespace EscapeFromMars
 		{
 
             audioSystem.EnsurePlaying(AudioClip.HackingSound);
-			var hackbarStr = SeTextColor + "Hack in progress: ";
+			var hackbarStr = SeTextColor + VRage.MyTexts.Get(HackInProgressID) +" ";
 			var percent = ticks * 100 / HackingBarTicks;
 			hackbarStr += percent + "%\n\n";
 			for (var i = 0; i < ticks; i++)

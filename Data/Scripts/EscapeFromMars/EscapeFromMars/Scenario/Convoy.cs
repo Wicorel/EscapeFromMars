@@ -7,15 +7,16 @@ using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRageMath;
 using Duckroll;
+using VRage.Utils;
 
 namespace EscapeFromMars
 {
 	internal abstract class Convoy : NpcGroup
 	{
-		private const string InterceptingBeaconSuffix = " *INTERCEPTING*";
-		private const string FleeingBeaconSuffix = " *FLEEING*";
+		private string InterceptingBeaconSuffix = " *INTERCEPTING*"; // loaded from mytexts
+		private string FleeingBeaconSuffix = " *FLEEING*"; // loaded from mytexts
 
-		protected static readonly IList<EscortPosition> AllEscortPositions =
+        protected static readonly IList<EscortPosition> AllEscortPositions =
 			new List<EscortPosition>(DuckUtils.GetEnumValues<EscortPosition>()).AsReadOnly();
         private readonly TimeSpan convoyInitiateTime = new TimeSpan(0, 0, 5);
 
@@ -45,9 +46,12 @@ namespace EscapeFromMars
 		{
 			this.audioSystem = audioSystem;
 			this.leader = leader;
-		}
 
-		internal override void JoinAsEscort(IMyCubeGrid escortApplicant, UnitType unitType, MyPlanet marsPlanet)
+            InterceptingBeaconSuffix = VRage.MyTexts.Get(MyStringId.TryGet("InterceptingBeaconSuffix")).ToString();
+            FleeingBeaconSuffix = VRage.MyTexts.Get(MyStringId.TryGet("FleeingBeaconSuffix")).ToString();
+        }
+
+        internal override void JoinAsEscort(IMyCubeGrid escortApplicant, UnitType unitType, MyPlanet marsPlanet)
 		{
 			var applicantPosition = escortApplicant.GetPosition();
 			var gravity = marsPlanet.GetGravityAtPoint(applicantPosition);

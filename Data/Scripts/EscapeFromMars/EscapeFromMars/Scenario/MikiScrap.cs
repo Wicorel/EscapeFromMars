@@ -12,6 +12,7 @@ using VRage.ModAPI;
 using VRage.ObjectBuilders;
 using VRageMath;
 using Duckroll;
+using VRage.Utils;
 
 namespace EscapeFromMars
 {
@@ -276,24 +277,15 @@ namespace EscapeFromMars
 			switch (state)
 			{
 				case FurnaceState.Waiting:
-					return @"      Drop
-     unwanted
-  vehicles and
-   large items
-  into furnace";
+                    return VRage.MyTexts.Get(MyStringId.TryGet("FurnaceStateWaiting")).ToString();
+                    //return @"      Drop\n     unwanted\n  vehicles and\n   large items\n  into furnace";
 				case FurnaceState.LoadedUp:
-					return @"
-   Close doors
-    to activate
-      furnace";
-				case FurnaceState.Working:
-					return @"  ! Caution !
-   Furnace is
-      active
-
-      Extreme
-  temperatures";
-				case FurnaceState.Off:
+                    return VRage.MyTexts.Get(MyStringId.TryGet("FurnaceStateLoadedUp")).ToString();
+                //return @"\n   Close doors\n    to activate\n      furnace";
+                case FurnaceState.Working:
+                    return VRage.MyTexts.Get(MyStringId.TryGet("FurnaceStateWorking")).ToString();
+                //return @"  ! Caution !\n   Furnace is\n      active\n\n      Extreme\n  temperatures";
+                case FurnaceState.Off:
 					throw new ArgumentException("Furnace should never change to state: " + state);
 				default:
 					throw new ArgumentException("Uncoped for state: " + state);
@@ -304,7 +296,7 @@ namespace EscapeFromMars
 		{
 			foreach (var lcd in furnaceLcds)
 			{
-				lcd.WritePublicText(txt);
+				lcd.WriteText(txt);
 			}
 		}
 	}

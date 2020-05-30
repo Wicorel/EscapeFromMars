@@ -34,9 +34,12 @@ namespace EscapeFromMars
 
         //v31 
         private int modBuildWhenLastSaved;
-        private const string EscortName = "Convoy Escort";
+        private string EscortName = "Convoy Escort"; // loaded from mytexts
         private bool bOldRemovals = false;
         private static float ConvoySpeed = 10f; // needs to be 10f for release
+
+        private string InvestigatingBackupCall = " Investigating Backup Call"; // loaded from mytexts
+        private string ConvoyRecalled = "Convoy Recalled"; // loaded my mytexts
 
         internal NpcGroupManager(int modBuildWhenSaved, HeatSystem heatSystem, QueuedAudioSystem audioSystem, BaseManager baseManager,
 			ConvoySpawner convoySpawner)
@@ -48,7 +51,15 @@ namespace EscapeFromMars
             modBuildWhenLastSaved = modBuildWhenSaved;
 
 			MyAPIGateway.Entities.OnEntityAdd += NewEntityEvent;
-		}
+
+            EscortName = VRage.MyTexts.Get(MyStringId.TryGet("EscortName")).ToString();
+
+            var InvestigatingBackupCallID = MyStringId.TryGet("InvestigatingBackupCall");
+            InvestigatingBackupCall = VRage.MyTexts.Get(InvestigatingBackupCallID).ToString();
+
+            ConvoyRecalled = VRage.MyTexts.Get(MyStringId.TryGet("ConvoyRecalled")).ToString();
+
+        }
 
         public void SetBuildWhenSaved(int setto)
         {
@@ -286,7 +297,7 @@ namespace EscapeFromMars
                     // should be hidden in Convoy class, but need access to convoySpawner class to respawn.
                     if (group.groupType == NpcGroupType.Convoy)
                     {
-                        MyVisualScriptLogicProvider.SendChatMessage("Convoy Recalled", EscapeFromMars.Speaker.GCorp.Name, 0, EscapeFromMars.Speaker.GCorp.Font);
+                        MyVisualScriptLogicProvider.SendChatMessage(ConvoyRecalled, EscapeFromMars.Speaker.GCorp.Name, 0, EscapeFromMars.Speaker.GCorp.Font);
 
                         convoySpawner.SpawnConvoy(); // spawn a replacement one.
                         group.GroupState = NpcGroupState.Disbanding;
@@ -436,7 +447,7 @@ namespace EscapeFromMars
 						var backupPosition = gCorpBase.GetBackupPosition();
 						grid.SendToPosition(backupPosition);
                         // backup debug
-                        string sBeacon = "M" + random.Next(10000, 99999) + " Investigating Backup Call";
+                        string sBeacon = "M" + random.Next(10000, 99999) + InvestigatingBackupCall;
 //                        ModLog.Info("Backup Found:" + sBeacon);
 //                        ModLog.Info(" Destination=" + backupPosition.ToString());
 						grid.SetAllBeaconNames(sBeacon, 20000f);
