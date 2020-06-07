@@ -274,16 +274,26 @@ namespace EscapeFromMars
 
 		private string GetTextForState(FurnaceState state)
 		{
+            string str;
 			switch (state)
 			{
 				case FurnaceState.Waiting:
-                    return VRage.MyTexts.Get(MyStringId.TryGet("FurnaceStateWaiting")).ToString();
+                    // we found replacement string in MyTexts.
+                    str = VRage.MyTexts.Get(MyStringId.TryGet("FurnaceStateWaiting")).ToString();
+                    str = str.Replace("\\n", "\n");
+                    return str;
                     //return @"      Drop\n     unwanted\n  vehicles and\n   large items\n  into furnace";
 				case FurnaceState.LoadedUp:
-                    return VRage.MyTexts.Get(MyStringId.TryGet("FurnaceStateLoadedUp")).ToString();
+                    // we found replacement string in MyTexts.
+                    str = VRage.MyTexts.Get(MyStringId.TryGet("FurnaceStateLoadedUp")).ToString();
+                    str = str.Replace("\\n", "\n");
+                    return str;
                 //return @"\n   Close doors\n    to activate\n      furnace";
                 case FurnaceState.Working:
-                    return VRage.MyTexts.Get(MyStringId.TryGet("FurnaceStateWorking")).ToString();
+                    // we found replacement string in MyTexts.
+                    str = VRage.MyTexts.Get(MyStringId.TryGet("FurnaceStateWorking")).ToString();
+                    str = str.Replace("\\n", "\n");
+                    return str;
                 //return @"  ! Caution !\n   Furnace is\n      active\n\n      Extreme\n  temperatures";
                 case FurnaceState.Off:
 					throw new ArgumentException("Furnace should never change to state: " + state);

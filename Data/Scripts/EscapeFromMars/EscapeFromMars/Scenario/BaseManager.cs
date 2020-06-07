@@ -10,6 +10,7 @@ using SpaceEngineers.Game.ModAPI;
 using VRage.Game;
 using VRage.Game.Entity;
 using VRage.Game.ModAPI;
+using VRage.Utils;
 using VRageMath;
 
 namespace EscapeFromMars
@@ -25,7 +26,9 @@ namespace EscapeFromMars
 
 		private static readonly DateTime ZeroDate = new DateTime(1970, 1, 1);
 
-		internal BaseManager(HeatSystem heatSystem, QueuedAudioSystem audioSystem)
+        bool bDumpLocalization = true;
+
+        internal BaseManager(HeatSystem heatSystem, QueuedAudioSystem audioSystem)
 		{
 			this.heatSystem = heatSystem;
 			this.audioSystem = audioSystem;
@@ -87,6 +90,16 @@ namespace EscapeFromMars
         /// <param name="grid"></param>
         void BlocksFixup(IMyCubeGrid grid)
         {
+            if (bDumpLocalization)
+            {
+                ModLog.Info("Grid:" + grid.CustomName + "\n ID=" + grid.EntityId.ToString());
+                Vector3D gridPos = grid.GetPosition();
+                ModLog.Info(" GPS:" + grid.CustomName + ":" + gridPos.X.ToString("0.00") + ":" + gridPos.Y.ToString("0.00") + ":" + gridPos.Z.ToString("0.00") + ":");
+            }
+            bool bMiki = false;
+            if (grid.EntityId == 135216604045890710)
+                bMiki = true;
+
             long medbayID = 79910699489349926;
             var slimBlocksMed = new List<IMySlimBlock>();
             grid.GetBlocks(slimBlocksMed, b => b.FatBlock is IMyMedicalRoom);
@@ -119,6 +132,10 @@ namespace EscapeFromMars
             // fix up the beacon blocks  // V26
             var slimBlocksB = new List<IMySlimBlock>();
             grid.GetBlocks(slimBlocksB, b => b.FatBlock is IMyBeacon);
+
+
+            if (bDumpLocalization) ModLog.Info("BEACON");
+
             foreach (var slim in slimBlocksB)
             {
                 var beacon = slim.FatBlock as IMyBeacon;
@@ -128,12 +145,28 @@ namespace EscapeFromMars
                     string sName = beacon.CustomName;
                     ModLog.Info("Fixing Beacon Text:" + sName);
                     beacon.CustomName = sName.Replace("CLEANCE", "CLEARANCE");
+
+
                 }
+                if (bDumpLocalization) ModLog.Info(" B" + beacon.EntityId.ToString()+" :"+ beacon.CustomName);
+
             }
+
+            if (bDumpLocalization) ModLog.Info("Antenna");
+            var slimBlocksA = new List<IMySlimBlock>();
+            grid.GetBlocks(slimBlocksA, b => b.FatBlock is IMyRadioAntenna);
+
+            foreach (var slim in slimBlocksA)
+            {
+                var antenna = slim.FatBlock as IMyRadioAntenna;
+                if (bDumpLocalization) ModLog.Info(" A" + antenna.EntityId.ToString()+ " : "+ antenna.CustomName);
+            }
+
 
             // fix up the text panel blocks
             var slimBlocks = new List<IMySlimBlock>();
             grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyTextPanel);
+            if (bDumpLocalization) ModLog.Info("TEXT PANEL");
             foreach (var slim in slimBlocks)
             {
                 var textPanel = slim.FatBlock as IMyTextPanel;
@@ -143,48 +176,60 @@ namespace EscapeFromMars
                 //                bool bShow = textPanel.ShowOnScreen != VRage.Game.GUI.TextPanel.ShowTextOnScreenFlag.NONE;
                 if (bShow)
                 {
-                    // We've already set this up once before (or world was created post 1.189
-
-                    /* Try to fix text not showing on text panels
-                     * 
-                     * (on further testing, panels are showing.. maybe Keen fixed this themselves?)
-                     * 
-                     * Saw on Rity's stream that they were NOT showing in all places.
-                     * And on EpikTek's https://www.youtube.com/watch?v=CkpGGPZd78k
-                     * */
-//                    textPanel.SetValue("ShowTextOnScreen", false);
-//                    textPanel.SetValue("ShowTextOnScreen", true);
-                    //                      textPanel.SetShowOnScreen(VRage.Game.GUI.TextPanel.ShowTextOnScreenFlag.PUBLIC);
-
-
-                    // Could set text of text panels here to be language specific
-  //                  switch (textPanel.EntityId)
+                    if (bDumpLocalization)
                     {
-                        //Crashed Shuttle:92770753627258475
-                        //{ X: 1868088.00058876 Y: -2003485.99356789 Z: 1316645.85240929}
-                        /* Example of setting text:
-                        case 121786820996539580: //TEXT!
-                            textPanel.WritePublicText(
-                                "OUTGOING TRANSMISSION\n"
-                               + "ERROR: FAILED TO SEND\n"
-                            + "\n"
-                            + "M,\n"
-                            + "I'm going to Mars to talk to\n"
-                            + "he CEO about what that\n"
-                            + "weasel Bhaskar has been up to.\n"
-                            + "I think we can trust him.\n"
-                            + "                                \n"
-                            + "-T\n"
-                            );
-                            break;
-                         */
+                        string txt = textPanel.GetText();
+                        if (!string.IsNullOrWhiteSpace(txt))
+                        {
+                            ModLog.Info(" T" + textPanel.EntityId.ToString());
+                            ModLog.Info(txt);
+
+                        }
                     }
+                    //V36: Get screen translations.
+                    MyStringId textID;
+                    if (MyStringId.TryGet("T"+textPanel.EntityId.ToString(), out textID))
+                    {
+                        // we found replacement string in MyTexts.
+                        string str = VRage.MyTexts.Get(textID).ToString();
+                        str = str.Replace("\\n", "\n");
+                        textPanel.WriteText(str);
+                    }
+                    if (MyStringId.TryGet("T" + textPanel.EntityId.ToString() + "_size", out textID))
+                    {
+                        // we found size setting
+                        float size = textPanel.FontSize;
+                        string str = VRage.MyTexts.Get(textID).ToString();
+                        if (float.TryParse(str, out size))
+                            textPanel.FontSize = size;
+                    }
+                    if (MyStringId.TryGet("T" + textPanel.EntityId.ToString() + "_padding", out textID))
+                    {
+                        // we found size setting
+                        float size = textPanel.FontSize;
+                        string str = VRage.MyTexts.Get(textID).ToString();
+                        if (float.TryParse(str, out size))
+                            textPanel.TextPadding = size;
+                    }
+                    if (MyStringId.TryGet("T" + textPanel.EntityId.ToString() + "_alignment", out textID))
+                    {
+                        // we found alignment setting
+                        string str = VRage.MyTexts.Get(textID).ToString();
+                        if (str == "center")
+                            textPanel.Alignment = VRage.Game.GUI.TextPanel.TextAlignment.CENTER;
+                        else if(str=="left")
+                            textPanel.Alignment = VRage.Game.GUI.TextPanel.TextAlignment.LEFT;
+                        else if (str == "right")
+                            textPanel.Alignment = VRage.Game.GUI.TextPanel.TextAlignment.RIGHT;
+                    }
+
+
                 }
-// V26                else
+                // V26                else
                 {
                     var strings = new List<string>();
                     textPanel.GetSelectedImages(strings);
-                    textPanel.TextPadding = 0; //V26
+//                    textPanel.TextPadding = 0; //V26
                     if (strings.Count < 1)
                     {
                         // note: better method would be use use .CustomData of the textpanels.
@@ -193,54 +238,62 @@ namespace EscapeFromMars
                         {
                             //            long buildGuideID = 80461927256500036;
                             case 110371608100898677: //TOOLS LOCKER
-                                textPanel.FontSize = 5;
-                                textPanel.Alignment = VRage.Game.GUI.TextPanel.TextAlignment.CENTER;
-                                textPanel.TextPadding = 20f; // 20%
-                                textPanel.WriteText("TOOLS LOCKER"); // remove left padding from text
+//                                textPanel.FontSize = 5;
+//                                textPanel.Alignment = VRage.Game.GUI.TextPanel.TextAlignment.CENTER;
+//                                if (textPanel.GetText().Length < 20)
+//                                    textPanel.TextPadding = 20f; // 20%
+//                                else textPanel.TextPadding = 1f;
                                 break;
 
                             case 143319951822334717: //143319951822334717:TEXT!                                SPARE PARTS STORAGE
-                                textPanel.FontSize = 5;
+//                                textPanel.FontSize = 5;
+/*
                                 textPanel.Alignment = VRage.Game.GUI.TextPanel.TextAlignment.CENTER;
-                                textPanel.TextPadding = 20f; // 20%
-//                                textPanel.WriteText("SPARE PARTS STORAGE");
+                                if(textPanel.GetText().Length<20)
+                                    textPanel.TextPadding = 20f; // 20%
+                                else textPanel.TextPadding = 1f;
+                                */
                                 break;
 
                             case 87005598531295535: //87005598531295535TEXT!EMERGENCY SUPPLIES
-                                textPanel.FontSize = 5;
+                                /*
+/                                textPanel.FontSize = 5;
                                 textPanel.Alignment = VRage.Game.GUI.TextPanel.TextAlignment.CENTER;
                                 textPanel.TextPadding = 20f; // 20%
+                                */
                                 break;
 
 
                             case 80461927256500036: // Crash ship build info screen
-                                /* "old" text
-Mabel: Loading survival guide...
+                                                    /* "old" text
+                    Mabel: Loading survival guide...
 
-> Recommend searching cargo
-   and disassembling shuttle for 
-   rover parts
-> Recommend configuration:
-    - Six wheels
-    - Friction 10%
-    - Damping 30%
-    - Strength ~5% 
-               (Depends on load)
-    - Speed Limit 100km/h
-*/
-                                textPanel.WriteText("Mabel: Loading survival guide..."+
-"\n"+
-"\n> Recommend searching cargo"+
-"\n   and disassembling shuttle for"+
-"\n   rover parts"+
-"\n> Recommend configuration:"+
-"\n    -Six wheels"+
-"\n    - Friction 60%"+
-"\n    - *Strength 10%" +
-"\n    - *Power 50%" +
-"\n    - Speed Limit 50km/h" +
-"\n  * =Depends on load"
-);
+                    > Recommend searching cargo
+                       and disassembling shuttle for 
+                       rover parts
+                    > Recommend configuration:
+                        - Six wheels
+                        - Friction 10%
+                        - Damping 30%
+                        - Strength ~5% 
+                                   (Depends on load)
+                        - Speed Limit 100km/h
+                    */
+                                                    /*
+                                                                                    textPanel.WriteText("Mabel: Loading survival guide..."+
+                                                    "\n"+
+                                                    "\n> Recommend searching cargo"+
+                                                    "\n   and disassembling shuttle for"+
+                                                    "\n   rover parts"+
+                                                    "\n> Recommend configuration:"+
+                                                    "\n    -Six wheels"+
+                                                    "\n    - Friction 60%"+
+                                                    "\n    - *Strength 10%" +
+                                                    "\n    - *Power 50%" +
+                                                    "\n    - Speed Limit 50km/h" +
+                                                    "\n  * =Depends on load"
+                                                    );
+                                                    */
                                 break;
 
                             /*
@@ -486,30 +539,84 @@ Static Grid 1300:141864706275857195
                         }
                     }
                 }
+                if(bMiki)
+                {
+                    if(
+                        textPanel.CustomName == "LCD Panel 10" // (there are two)
+                        || textPanel.CustomName == "LCD Panel 5"
+                        || textPanel.CustomName == "LCD Panel 6"
+                        || textPanel.CustomName == "LCD Panel 7"
+                        || textPanel.CustomName == "LCD Panel 9"
+                        || textPanel.CustomName == "LCD Panel 13"
+                        || textPanel.CustomName == "LCD Panel 14"
+                        || textPanel.CustomName == "LCD Panel 15"
+                        )
+                    {
+                        textPanel.ContentType = VRage.Game.GUI.TextPanel.ContentType.TEXT_AND_IMAGE;
+                        var strings = new List<string>();
+                        textPanel.GetSelectedImages(strings);
+                        //                    textPanel.TextPadding = 0; //V26
+                        if (strings.Count < 1)
+                        { // nothing is currently listed
+                            textPanel.AddImageToSelection("MikiScrap");
+                        }
+                    }
+                }
             }
 
             // fix up the sound blocks
             var slimBlocks2 = new List<IMySlimBlock>();
             grid.GetBlocks(slimBlocks2, b => b.FatBlock is IMySoundBlock);
+            MyStringId soundblockID;
+
             foreach (var slim in slimBlocks2)
             {
                 var soundBlock = slim.FatBlock as IMySoundBlock; // Fixed V21
-//                if (soundBlock == null) continue; // why do we need this?
+                if(bDumpLocalization)
+                {
+                    ModLog.Info(" S" + soundBlock.EntityId.ToString());
+                    ModLog.Info("  " + soundBlock.SelectedSound.ToString());
+                }
+                //                if (soundBlock == null) continue; // why do we need this?
                 switch (soundBlock.EntityId)
                 {
                     // air base alpha:
                     case 116378614635193269:
-                        soundBlock.SelectedSound = "WelcomeToGcorp";
+                        if (MyStringId.TryGet("WelcomeToGcorp", out soundblockID))
+                        {
+                            soundBlock.SelectedSound = VRage.MyTexts.Get(soundblockID).ToString();
+                        }
+                        else
+                            soundBlock.SelectedSound = "WelcomeToGcorp";
                         break;
-
+                        /*
+                    case XXXX:
+                        if (MyStringId.TryGet("IntruderDetectedGCorp", out soundblockID))
+                        {
+                            soundBlock.SelectedSound = VRage.MyTexts.Get(soundblockID).ToString();
+                        }
+                        else
+                            soundBlock.SelectedSound = "IntruderDetectedGCorp";
+                        break;
+                        */
                     // ice mine entrance
                     case 101979433782763108:
-                        soundBlock.SelectedSound = "NotAuthorisedDeployDefences";
+                        if (MyStringId.TryGet("NotAuthorisedDeployDefences", out soundblockID))
+                        {
+                            soundBlock.SelectedSound = VRage.MyTexts.Get(soundblockID).ToString();
+                        }
+                        else
+                            soundBlock.SelectedSound = "NotAuthorisedDeployDefences";
                         break;
 
                     // ice mine shaft botom
                     case 106640376870960334:
-                        soundBlock.SelectedSound = "MineClosed";
+                        if (MyStringId.TryGet("MineClosed", out soundblockID))
+                        {
+                            soundBlock.SelectedSound = VRage.MyTexts.Get(soundblockID).ToString();
+                        }
+                        else
+                            soundBlock.SelectedSound = "MineClosed";
                         break;
 
                     //((Upper Ice Mine Meeting Room))
@@ -566,18 +673,33 @@ Static Grid 1300:141864706275857195
                         soundBlock.SelectedSound = "AirplaneSound";
                         break;
                     case 90629854631902381:
-                        soundBlock.SelectedSound = "FlightResearchExhibition";
+                        if (MyStringId.TryGet("FlightResearchExhibition", out soundblockID))
+                        {
+                            soundBlock.SelectedSound = VRage.MyTexts.Get(soundblockID).ToString();
+                        }
+                        else
+                            soundBlock.SelectedSound = "FlightResearchExhibition";
                         break;
 
                     // air base beta
                     case 130193226083241264:
-                        soundBlock.SelectedSound = "WelcomeToGcorp";
+                        if (MyStringId.TryGet("WelcomeToGcorp", out soundblockID))
+                        {
+                            soundBlock.SelectedSound = VRage.MyTexts.Get(soundblockID).ToString();
+                        }
+                        else
+                            soundBlock.SelectedSound = "WelcomeToGcorp";
                         break;
 
                     // mech
                     case 82762879450865423:
                         //            bodyGrid.SetSoundBlocks("Mech Intruders Must Be Destroyed"); // fix missing sound on sound block on mech
-                        soundBlock.SelectedSound = "IntruderRobot";
+                        if (MyStringId.TryGet("IntruderRobot", out soundblockID))
+                        {
+                            soundBlock.SelectedSound = VRage.MyTexts.Get(soundblockID).ToString();
+                        }
+                        else
+                            soundBlock.SelectedSound = "IntruderRobot";
                         break;
 
                     // HQ
@@ -585,7 +707,12 @@ Static Grid 1300:141864706275857195
                         soundBlock.SelectedSound = "SoundBlockAlert1";
                         break;
                     case 82604291774017685:
-                        soundBlock.SelectedSound = "WelcomeToGcorp";
+                        if (MyStringId.TryGet("WelcomeToGcorp", out soundblockID))
+                        {
+                            soundBlock.SelectedSound = VRage.MyTexts.Get(soundblockID).ToString();
+                        }
+                        else
+                            soundBlock.SelectedSound = "WelcomeToGcorp";
                         break;
 
                     // MIKI
@@ -596,13 +723,8 @@ Static Grid 1300:141864706275857195
                     case 140249950038454545:
                         soundBlock.SelectedSound = "LavaLoop";
                         break;
-
-
                 }
             }
-
-
-
         }
 
         public override void AllGridsInitialised()

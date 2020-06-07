@@ -1,0 +1,40 @@
+
+Text Localization
+
+Copy MyTexts.resx.  This contains the English version of all the text.  This file MUST be in the Data/localization directory.
+Rename the file for your language and (optional) locale.  Note that SE does not support all languages and locale.  See the Keen directory for what is supported.
+File naming MUST match the SE conventions to be loaded correctly.  See the pt_BR for an example.  Also see the Keen directory for examples.
+
+Change the values for the localized text
+
+For Names ending in _file: 
+change the value to the name of the localized audio file. To make things easier, append your language (and optional locale) codes to the end of the name (see audio.sbc localization information).  This name must match the name in the localized audio_lang.sbc (or the default english name for things like sound effects)
+
+For Names ending in _subtitle: this is the text to use as the subtitle for the named audio message.
+
+For all other entries:
+Edit the second column only (value) to have the localized text.
+
+simply named entries are used in the MOD code
+
+Txxx are translations for Text panels in the world
+Bxxx are translations for Beacons in the world
+Axxx are translations for Antenna in the world
+(xxx is the EntityID of the block)
+
+Audio localization
+You will need to record audio of the translated text. These audio files should be placed (for convenience) into a directory under Audio. 
+
+Copy all the English files into a subdirectory under Audio/ directory.  By convention, name the directory using the language_locale
+Some of the audio files are sound effects and do not need to be localized. These should not be copied to avoid bloating the MOD size.
+
+
+You can only change the existing entries in MyTexts; any added names will not be used.
+
+Copy Data/Audio.sbc into Data/Localization  Rename the file to append your language (and optional Locale)
+See Data/Audio.sbc for the english version.  For convention, please add _lang[_locale] to the end of the sound names (see pt_BR for an example).  These names must be matched to the _file Names in localized MyTexts
+
+
+
+
+

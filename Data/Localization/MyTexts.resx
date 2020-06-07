@@ -117,33 +117,220 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccidentallyFoundFlightResearchCenter_file" xml:space="preserve">
+    <value>AccidentallyFoundFlightResearchCenter</value>
+  </data>
+  <data name="AccidentallyFoundFlightResearchCenter_subtitle" xml:space="preserve">
+    <value>This appears to be a lightly defended research center. It could contain valuable research for building your own flying craft.</value>
+  </data>
+  <data name="AllTechUnlocked_file" xml:space="preserve">
+    <value>AllTechUnlocked</value>
+  </data>
+  <data name="AllTechUnlocked_subtitle" xml:space="preserve">
+    <value>All technologies unlocked.</value>
+  </data>
   <data name="AreaExtremelyDangerous" xml:space="preserve">
     <value>This area is extremely dangerous</value>
     <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="ArmorVehicles_file" xml:space="preserve">
+    <value>ArmorVehicles</value>
+  </data>
+  <data name="ArmorVehicles_subtitle" xml:space="preserve">
+    <value>You should try to build your vehicles prepared for combat.\nFor especially hostile areas, you could use drones instead of risking your own life.</value>
+  </data>
+  <data name="BasicWeaponsUnlocked_file" xml:space="preserve">
+    <value>BasicWeaponsUnlocked</value>
+  </data>
+  <data name="BasicWeaponsUnlocked_subtitle" xml:space="preserve">
+    <value>Searching files. Basic Weapon technology unlocked!</value>
+  </data>
+  <data name="BestCustomer_file" xml:space="preserve">
+    <value>BestCustomer</value>
+  </data>
+  <data name="BestCustomer_subtitle" xml:space="preserve">
+    <value>You are best customer all year! ... Only customer all year.</value>
+  </data>
+  <data name="BulletproofGlassConvoyDispatched_file" xml:space="preserve">
+    <value>BulletproofGlassConvoyDispatched</value>
+  </data>
+  <data name="BulletproofGlassConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Bulletproof Glass Convoy dispatched</value>
+  </data>
+  <data name="Cavern_file" xml:space="preserve">
+    <value>Cavern</value>
+    <comment>audioclip</comment>
+  </data>
+  <data name="Cavern_subtitle" xml:space="preserve">
+    <value />
+    <comment>audioclip</comment>
   </data>
   <data name="CommunicationsSatellite" xml:space="preserve">
     <value>Communications Satellite</value>
     <comment>MissionSystem (gps)</comment>
   </data>
+  <data name="ComputerConvoyDispatched_file" xml:space="preserve">
+    <value>ComputerConvoyDispatched</value>
+  </data>
+  <data name="ComputerConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Computer Convoy dispatched</value>
+  </data>
   <data name="ConnectionLost" xml:space="preserve">
     <value>Connection Lost</value>
     <comment>ResearchHacking</comment>
+  </data>
+  <data name="ConnectionLostSound_file" xml:space="preserve">
+    <value>ConnectionLostSound</value>
+  </data>
+  <data name="ConnectionLostSound_subtitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ConstructionConvoyDispatched_file" xml:space="preserve">
+    <value>ConstructionConvoyDispatched</value>
+  </data>
+  <data name="ConstructionConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Construction Convoy dispatched</value>
+  </data>
+  <data name="ConvoyArrivedSafely_file" xml:space="preserve">
+    <value>ConvoyArrivedSafely</value>
+    <comment>audioclip</comment>
+  </data>
+  <data name="ConvoyArrivedSafely_subtitle" xml:space="preserve">
+    <value>*Muffled* Convoy arrived safely</value>
+    <comment>audioclip</comment>
+  </data>
+  <data name="ConvoyDispatched1_file" xml:space="preserve">
+    <value>ConvoyDispatched1</value>
+  </data>
+  <data name="ConvoyDispatched1_subtitle" xml:space="preserve">
+    <value>*Muffled* Convoy arrived safely</value>
+  </data>
+  <data name="ConvoyDispatched2_file" xml:space="preserve">
+    <value>ConvoyDispatched2</value>
+  </data>
+  <data name="ConvoyDispatched2_subtitle" xml:space="preserve">
+    <value>*Muffled* Convoy arrived safely</value>
+  </data>
+  <data name="ConvoyDispatched3_file" xml:space="preserve">
+    <value>ConvoyDispatched3</value>
+  </data>
+  <data name="ConvoyDispatched3_subtitle" xml:space="preserve">
+    <value>*Muffled* Convoy arrived safely</value>
   </data>
   <data name="ConvoyRecalled" xml:space="preserve">
     <value>Convoy Recalled</value>
     <comment>NpcGroupManager</comment>
   </data>
+  <data name="ConvoyUnderThreat_file" xml:space="preserve">
+    <value>ConvoyUnderThreat</value>
+  </data>
+  <data name="ConvoyUnderThreat_subtitle" xml:space="preserve">
+    <value>Convoy under threat! Possible pirate activity</value>
+  </data>
+  <data name="DisengagingFromHostile_file" xml:space="preserve">
+    <value>DisengagingFromHostile</value>
+  </data>
+  <data name="DisengagingFromHostile_subtitle" xml:space="preserve">
+    <value>Disengaging from hostile</value>
+  </data>
+  <data name="DisplayConvoyDispatched_file" xml:space="preserve">
+    <value>DisplayConvoyDispatched</value>
+  </data>
+  <data name="DisplayConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Display Convoy dispatched</value>
+  </data>
+  <data name="DistressBeaconSilly_file" xml:space="preserve">
+    <value>DistressBeaconSilly</value>
+  </data>
+  <data name="DistressBeaconSilly_subtitle" xml:space="preserve">
+    <value>I am picking up a corporation distress beacon nearby. Be careful. It may be a trap, or pirates.\nEither way, you would die horribly.</value>
+  </data>
+  <data name="DontBreatheIn_file" xml:space="preserve">
+    <value>DontBreatheIn</value>
+  </data>
+  <data name="DontBreatheIn_subtitle" xml:space="preserve">
+    <value>Best not to ... breathe in fumes when we melt this.</value>
+  </data>
+  <data name="DroneDisarmed_file" xml:space="preserve">
+    <value>DroneDisarmed</value>
+  </data>
+  <data name="DroneDisarmed_subtitle" xml:space="preserve">
+    <value>Drone disarmed and returning for repairs</value>
+  </data>
+  <data name="ElevatorHere_file" xml:space="preserve">
+    <value>ElevatorHere</value>
+  </data>
+  <data name="ElevatorHere_subtitle" xml:space="preserve">
+    <value>Blueprints show there should be an elevator here. Strange. They must be outdated.</value>
+  </data>
+  <data name="EndCredits_file" xml:space="preserve">
+    <value>... Transmitting data on all frequencies...\n[Scenario is complete. It is recommended to remove the EscapeFromMars Mod if you want to carry on playing]</value>
+  </data>
+  <data name="EnemyDetectedMovingToIntercept_file" xml:space="preserve">
+    <value>EnemyDetectedMovingToIntercept</value>
+  </data>
+  <data name="EnemyDetectedMovingToIntercept_subtitle" xml:space="preserve">
+    <value>Enemy detected, moving to intercept</value>
+  </data>
+  <data name="EscapedMars_file" xml:space="preserve">
+    <value>EscapedMars</value>
+  </data>
+  <data name="EscapedMars_subtitle" xml:space="preserve">
+    <value>We have successfully escaped the Martian gravity well. No pursuit detected.</value>
+  </data>
   <data name="EscortName" xml:space="preserve">
     <value>Convoy Escort</value>
     <comment>NpcGroupManager</comment>
+  </data>
+  <data name="ExperimentProgress_file" xml:space="preserve">
+    <value>ExperimentProgress</value>
+  </data>
+  <data name="ExperimentProgress_subtitle" xml:space="preserve">
+    <value>Experiment completion progress at... 342 percent.\nAtmosphere is 95% nitrogen, 3% oxygen, 1% argon, trace amounts of carbon dioxide.</value>
+  </data>
+  <data name="ExplosivesConvoyDispatched_file" xml:space="preserve">
+    <value>ExplosivesConvoyDispatched</value>
+  </data>
+  <data name="ExplosivesConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Explosives Convoy dispatched</value>
+  </data>
+  <data name="ExplosivesNearby_file" xml:space="preserve">
+    <value>ExplosivesNearby</value>
+  </data>
+  <data name="ExplosivesNearby_subtitle" xml:space="preserve">
+    <value>I am detecting explosive compounds nearby.</value>
+  </data>
+  <data name="FacilityDetectedHostile_file" xml:space="preserve">
+    <value>FacilityDetectedHostile</value>
+  </data>
+  <data name="FacilityDetectedHostile_subtitle" xml:space="preserve">
+    <value>Facility scanners have picked up a hostile. Dispatch nearby patrols to location.</value>
   </data>
   <data name="FacilityNotOnAnyOfficalMap" xml:space="preserve">
     <value>This facility was not on any official maps</value>
     <comment>MissionSystem (gps)</comment>
   </data>
+  <data name="FaintPowerSignature_file" xml:space="preserve">
+    <value>FaintPowerSignature</value>
+  </data>
+  <data name="FaintPowerSignature_subtitle" xml:space="preserve">
+    <value>I am detecting a faint power signature...</value>
+  </data>
+  <data name="FlightResearchCenter_file" xml:space="preserve">
+    <value>FlightResearchCenter</value>
+  </data>
+  <data name="FlightResearchCenter_subtitle" xml:space="preserve">
+    <value>Corporation records indicate there is a flight research station on Mars with technology blueprints you may find useful.\nUploading coordinates to suit hud.</value>
+  </data>
   <data name="FlightResearchStation" xml:space="preserve">
     <value>Flight Research Station</value>
     <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="FoundFilesOnNetwork_file" xml:space="preserve">
+    <value>FoundFilesOnNetwork</value>
+  </data>
+  <data name="FoundFilesOnNetwork_subtitle" xml:space="preserve">
+    <value>While you were fumbling your way through the base, I found hidden files on the computer network.\nDirecting output to the nearest display.</value>
   </data>
   <data name="FurnaceStateLoadedUp" xml:space="preserve">
     <value>\n   Close doors\n    to activate\n      furnace</value>
@@ -156,6 +343,30 @@
   <data name="FurnaceStateWorking" xml:space="preserve">
     <value>! Caution !\n   Furnace is\n      active\n\n      Extreme\n  temperatures</value>
     <comment>MikiScrap</comment>
+  </data>
+  <data name="GasStorageUnlocked_file" xml:space="preserve">
+    <value>GasStorageUnlocked</value>
+  </data>
+  <data name="GasStorageUnlocked_subtitle" xml:space="preserve">
+    <value>Searching G-Corp data files. Gas storage technology unlocked.</value>
+  </data>
+  <data name="GCorpBlockingSignals_file" xml:space="preserve">
+    <value>GCorpBlockingSignals</value>
+  </data>
+  <data name="GCorpBlockingSignals_subtitle" xml:space="preserve">
+    <value>Our adversary has full control of the Martian surface.\nAll of the initial colonists were ""removed"" following their acquistion of exclusive mining rights.\nG-Corp is blocking all signals from the planet except their own.</value>
+  </data>
+  <data name="GCorpFacilitiesHeavilyArmed_file" xml:space="preserve">
+    <value>GCorpFacilitiesHeavilyArmed</value>
+  </data>
+  <data name="GCorpFacilitiesHeavilyArmed_subtitle" xml:space="preserve">
+    <value>Scanning shows G-Corp facilities in the area are carefully guarded,\napproaching one is not recommended unless heavily armed yourself</value>
+  </data>
+  <data name="GCorpFacilityThreatened_file" xml:space="preserve">
+    <value>GCorpFacilityThreatened</value>
+  </data>
+  <data name="GCorpFacilityThreatened_subtitle" xml:space="preserve">
+    <value>G-Corp facility threatened, dispatching additional drones</value>
   </data>
   <data name="GCorpFlightResearchStation" xml:space="preserve">
     <value>GCorp Flight Research Station</value>
@@ -173,6 +384,36 @@
     <value>GCorp Ice Mine</value>
     <comment>MissionSystem (gps)</comment>
   </data>
+  <data name="GCorpTowerScan_file" xml:space="preserve">
+    <value>GCorpTowerScan</value>
+  </data>
+  <data name="GCorpTowerScan_subtitle" xml:space="preserve">
+    <value>I am detecting unusual readings inside the G-Corp headquarters tower.\nIt may be a way to leave the planet, however safer options may exist [This area is extremely dangerous]</value>
+  </data>
+  <data name="GirderConvoyDispatched_file" xml:space="preserve">
+    <value>GirderConvoyDispatched</value>
+  </data>
+  <data name="GirderConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Girder Convoy dispatched</value>
+  </data>
+  <data name="GreetingsMartianColonists_file" xml:space="preserve">
+    <value>GreetingsMartianColonists</value>
+  </data>
+  <data name="GreetingsMartianColonists_subtitle" xml:space="preserve">
+    <value>Greetings Martian Colonist! Miki Scrap is now open for all recycling needs.\nYou have old junk, scrap metal? We give new, better things in return.\nJust follow antenna signal!</value>
+  </data>
+  <data name="HackFinished_file" xml:space="preserve">
+    <value>HackFinished</value>
+  </data>
+  <data name="HackFinished_subtitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="HackingSound_file" xml:space="preserve">
+    <value>HackingSound</value>
+  </data>
+  <data name="HackingSound_subtitle" xml:space="preserve">
+    <value />
+  </data>
   <data name="HackInProgress" xml:space="preserve">
     <value>Hack in progress:</value>
     <comment>ResearchHacking</comment>
@@ -184,6 +425,24 @@
   <data name="HiddenSiteofMRE" xml:space="preserve">
     <value>Hidden site of Mars Research Expeditions terraforming poject</value>
     <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="HostileDisappeared_file" xml:space="preserve">
+    <value>HostileDisappeared</value>
+  </data>
+  <data name="HostileDisappeared_subtitle" xml:space="preserve">
+    <value>Hostile has disappeared from scanners. Resume patrol</value>
+  </data>
+  <data name="HostileStillPresent_file" xml:space="preserve">
+    <value>HostileStillPresent</value>
+  </data>
+  <data name="HostileStillPresent_subtitle" xml:space="preserve">
+    <value>Hostile still present. Requesting reinforcements immediately</value>
+  </data>
+  <data name="IceMineFoundByAccident_file" xml:space="preserve">
+    <value>IceMineFoundByAccident</value>
+  </data>
+  <data name="IceMineFoundByAccident_subtitle" xml:space="preserve">
+    <value>You have located a disused corporation ice mining facility. This will be a valuable resource for oxygen generation.</value>
   </data>
   <data name="IllegalGCorpResearchFacility" xml:space="preserve">
     <value>Illegal GCorp Research Facility</value>
@@ -197,36 +456,1024 @@
     <value> *PURSUING TARGET*</value>
     <comment>BackupGroup Needs initial space</comment>
   </data>
+  <data name="InterceptingTransmissions_file" xml:space="preserve">
+    <value>InterceptingTransmissions</value>
+  </data>
+  <data name="InterceptingTransmissions_subtitle" xml:space="preserve">
+    <value>I have diverted 18 percent of my processing power to intercepting and decoding G Corp transmissions.\nI will relay them to your suit if they seem relevant.</value>
+  </data>
+  <data name="InteriorPlateConvoyDispatched_file" xml:space="preserve">
+    <value>InteriorPlateConvoyDispatched</value>
+  </data>
+  <data name="InteriorPlateConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Interior Plate Convoy dispatched</value>
+  </data>
+  <data name="IntruderRobot_file" xml:space="preserve">
+    <value>IntruderRobot</value>
+  </data>
+  <data name="IntruderRobot_subtitle" xml:space="preserve">
+    <value>Intruder!</value>
+  </data>
+  <data name="IntrudersMustBeDestroyedRobot_file" xml:space="preserve">
+    <value>IntrudersMustBeDestroyedRobot</value>
+  </data>
+  <data name="IntrudersMustBeDestroyedRobot_subtitle" xml:space="preserve">
+    <value>Intruders must be destroyed</value>
+  </data>
   <data name="InvestigatingBackupCall" xml:space="preserve">
     <value> Investigating Backup Call</value>
     <comment>BackupGroup Needs initial space</comment>
+  </data>
+  <data name="LargeTubeConvoyDispatched_file" xml:space="preserve">
+    <value>LargeTubeConvoyDispatched</value>
+  </data>
+  <data name="LargeTubeConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Large Steel Tube Convoy dispatched</value>
+  </data>
+  <data name="LavaLoop_file" xml:space="preserve">
+    <value>LavaLoop</value>
+  </data>
+  <data name="LavaLoop_subtitle" xml:space="preserve">
+    <value>[Bubbling furnace sounds]</value>
+  </data>
+  <data name="LocatedIceMine_file" xml:space="preserve">
+    <value>LocatedIceMine</value>
+  </data>
+  <data name="LocatedIceMine_subtitle" xml:space="preserve">
+    <value>Scanning for source of Oxygen. Located GCorp controlled ice mine.\nUploading coordinates to suit HUD.</value>
+  </data>
+  <data name="MabelPowerUpClipped_file" xml:space="preserve">
+    <value>PowerUpClipped</value>
+  </data>
+  <data name="MabelPowerUpClipped_subtitle" xml:space="preserve">
+    <value>Powering Up Systems</value>
+  </data>
+  <data name="MabelUncoveringFiles_file" xml:space="preserve">
+    <value>MabelUncoveringFiles</value>
+  </data>
+  <data name="MabelUncoveringFiles_subtitle" xml:space="preserve">
+    <value>Decrypting Computer files</value>
   </data>
   <data name="MarsCommunicationsSatellite" xml:space="preserve">
     <value>Mars Communications Satellite</value>
     <comment>MissionSystem (gps)</comment>
   </data>
+  <data name="MarsGCorpOperationsExplained_file" xml:space="preserve">
+    <value>MarsGCorpOperationsExplained</value>
+  </data>
+  <data name="MarsGCorpOperationsExplained_subtitle" xml:space="preserve">
+    <value>Mars is littered with G-Corp facilities and operations. They have exclusive access to the planet's surface since the
+ colonists were relocated. Magnesium, aluminium, titanium, iron, and chromium make up the majority of their exports.</value>
+  </data>
   <data name="MarsIceMininigFacility" xml:space="preserve">
     <value>Mars ice mining facility</value>
     <comment>MissionSystem (gps)</comment>
+  </data>
+  <data name="MedicalConvoyDispatched_file" xml:space="preserve">
+    <value>MedicalConvoyDispatched</value>
+  </data>
+  <data name="MedicalConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Medical Convoy dispatched</value>
+  </data>
+  <data name="MetalGridConvoyDispatched_file" xml:space="preserve">
+    <value>MetalGridConvoyDispatched</value>
+  </data>
+  <data name="MetalGridConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Metal Grid Convoy dispatched</value>
+  </data>
+  <data name="MilitaryPatrolInitiated_file" xml:space="preserve">
+    <value>MilitaryPatrolInitiated</value>
+  </data>
+  <data name="MilitaryPatrolInitiated_subtitle" xml:space="preserve">
+    <value>Military patrol initiated, searching for hostiles</value>
+  </data>
+  <data name="Missile200mmConvoyDispatched_file" xml:space="preserve">
+    <value>Missile200mmConvoyDispatched</value>
+  </data>
+  <data name="Missile200mmConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Missile 200mm Convoy dispatched</value>
+  </data>
+  <data name="MotorConvoyDispatched_file" xml:space="preserve">
+    <value>MotorConvoyDispatched</value>
+  </data>
+  <data name="MotorConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Motor Convoy dispatched</value>
+  </data>
+  <data name="MreDefunded_file" xml:space="preserve">
+    <value>MreDefunded</value>
+  </data>
+  <data name="MreDefunded_subtitle" xml:space="preserve">
+    <value>The Mars Research Expedition was defunded after their terraforming projects on mars failed.\nHowever, they also ran several emergency medical facilities around the planet.\nSome of them may still be in working order.</value>
   </data>
   <data name="MREExperimentSite" xml:space="preserve">
     <value>MRE Experiment Site</value>
     <comment>MissionSystem (gps)</comment>
   </data>
+  <data name="NATO25x184mmConvoyDispatched_file" xml:space="preserve">
+    <value>NATO25x184mmConvoyDispatched</value>
+  </data>
+  <data name="NATO25x184mmConvoyDispatched_subtitle" xml:space="preserve">
+    <value>NATO 25x184mm Convoy dispatched</value>
+  </data>
+  <data name="NATO_5p56x45mmConvoyDispatched_file" xml:space="preserve">
+    <value>NATO_5p56x45mmConvoyDispatched</value>
+  </data>
+  <data name="NATO_5p56x45mmConvoyDispatched_subtitle" xml:space="preserve">
+    <value>NATO 56x45mm Convoy dispatched</value>
+  </data>
+  <data name="NewMikiScrapsOpen_file" xml:space="preserve">
+    <value>NewMikiScrapsOpen</value>
+  </data>
+  <data name="NewMikiScrapsOpen_subtitle" xml:space="preserve">
+    <value>New Miki Scraps open all the time! Look for us on other planets ... or we come look for you.</value>
+  </data>
+  <data name="NotifyOfSatellite_file" xml:space="preserve">
+    <value>NotifyOfSatellite</value>
+  </data>
+  <data name="NotifyOfSatellite_subtitle" xml:space="preserve">
+    <value>I have computed the location of the nearest geosynchronous communications satellite.\nIf you manage to leave the planet, you should direct your ship there so I can transmit the evidence we gathered on the corporation to all public channels.</value>
+  </data>
+  <data name="OhDear_file" xml:space="preserve">
+    <value>OhDear</value>
+  </data>
+  <data name="OhDear_subtitle" xml:space="preserve">
+    <value>Oh dear, you are not supposed to be in here. This is Mars Research Expedition property.\nPlease display your identity badge or exit the building.</value>
+  </data>
+  <data name="OldFreighterFound_file" xml:space="preserve">
+    <value>OldFreighterFound</value>
+  </data>
+  <data name="OldFreighterFound_subtitle" xml:space="preserve">
+    <value>Scans show an ancient Iguana class freighter. None of its systems are active.\nRepairing it will take some time, but it may also be your only way to leave Mars safely</value>
+  </data>
+  <data name="OlympusMons_file" xml:space="preserve">
+    <value>OlympusMons</value>
+  </data>
+  <data name="OlympusMons_subtitle" xml:space="preserve">
+    <value>You are approaching Olympus Mons, the largest volcano in the solar system.\nVolcanoes initially helped to create an atmosphere on Mars, until the hot spots fuelling them cooled.</value>
+  </data>
+  <data name="OxygenFarmUnlocked_file" xml:space="preserve">
+    <value>OxygenFarmUnlocked</value>
+  </data>
+  <data name="OxygenFarmUnlocked_subtitle" xml:space="preserve">
+    <value>Searching data files. Oxygen Farm technology unlocked!</value>
+  </data>
+  <data name="OxygenGeneratorUnlocked_file" xml:space="preserve">
+    <value>OxygenGeneratorUnlocked</value>
+  </data>
+  <data name="OxygenGeneratorUnlocked_subtitle" xml:space="preserve">
+    <value>Searching G-Corp data files. Oxygen generator technology unlocked!</value>
+  </data>
+  <data name="PartOfBuilding_file" xml:space="preserve">
+    <value>PartOfBuilding</value>
+  </data>
+  <data name="PartOfBuilding_subtitle" xml:space="preserve">
+    <value>What is that, part of building!? Get it out of here!</value>
+  </data>
+  <data name="PowerCellConvoyDispatched_file" xml:space="preserve">
+    <value>PowerCellConvoyDispatched</value>
+  </data>
+  <data name="PowerCellConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Power Cell Convoy dispatched</value>
+  </data>
+  <data name="PowerSignatureBehindWall_file" xml:space="preserve">
+    <value>PowerSignatureBehindWall</value>
+  </data>
+  <data name="PowerSignatureBehindWall_subtitle" xml:space="preserve">
+    <value>There is a power signature coming from behind one of the walls.</value>
+  </data>
+  <data name="PowerUpClipped_file" xml:space="preserve">
+    <value>PowerUpClipped</value>
+  </data>
+  <data name="PowerUpClipped_subtitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PursuitEvaded_file" xml:space="preserve">
+    <value>PursuitEvaded</value>
+  </data>
+  <data name="PursuitEvaded_subtitle" xml:space="preserve">
+    <value>Pursuit evaded, resuming standard course and heading</value>
+  </data>
+  <data name="RadioCommunicationConvoyDispatched_file" xml:space="preserve">
+    <value>RadioCommunicationConvoyDispatched</value>
+  </data>
+  <data name="RadioCommunicationConvoyDispatched_subtitle" xml:space="preserve">
+    <value>RadioCommunication Convoy dispatched</value>
+  </data>
+  <data name="ReactorConvoyDispatched_file" xml:space="preserve">
+    <value>ReactorConvoyDispatched</value>
+  </data>
+  <data name="ReactorConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Reactor Convoy dispatched</value>
+  </data>
   <data name="ReturningToBase" xml:space="preserve">
     <value> *RETURNING TO BASE*</value>
     <comment>BackupGroup Needs initial space</comment>
+  </data>
+  <data name="RingAroundMars_file" xml:space="preserve">
+    <value>RingAroundMars</value>
+  </data>
+  <data name="RingAroundMars_subtitle" xml:space="preserve">
+    <value>By my calculations, in 27.6 million years Phobos will be torn apart by gravitational forces,\nleading to the creation of a ring around Mars</value>
   </data>
   <data name="SecretWeaponResearchFacility" xml:space="preserve">
     <value>Secret Weapon Research Facility</value>
     <comment>MissionSystem (gps)</comment>
   </data>
+  <data name="SensorsLostTrack_file" xml:space="preserve">
+    <value>SensorsLostTrack</value>
+  </data>
+  <data name="SensorsLostTrack_subtitle" xml:space="preserve">
+    <value>Sensors lost track of hostile</value>
+  </data>
+  <data name="ShuttleDamageReport_file" xml:space="preserve">
+    <value>ShuttleDamage</value>
+  </data>
+  <data name="ShuttleDamageReport_subtitle" xml:space="preserve">
+    <value>Shuttle has taken critical damage. Communications offline. Engines not found.\nMultiple GCorp drones detected nearby</value>
+  </data>
+  <data name="ShuttleDatabanks_subtitle" xml:space="preserve">
+    <value>Shuttle data-banks do not contain construction blueprints for atmospheric or hydrogen based propulsion.\nRecommend investigating G-Corp computer storage</value>
+  </data>
+  <data name="ShuttleDatabanks_file" xml:space="preserve">
+    <value>ShuttleDatabanks</value>
+  </data>
+  <data name="SmallTubeConvoyDispatched_file" xml:space="preserve">
+    <value>SmallTubeConvoyDispatched</value>
+  </data>
+  <data name="SmallTubeConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Small Steel Tube Convoy dispatched</value>
+  </data>
+  <data name="SolarCellConvoyDispatched_file" xml:space="preserve">
+    <value>SolarCellConvoyDispatched</value>
+  </data>
+  <data name="SolarCellConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Solar Cell Convoy dispatched</value>
+  </data>
+  <data name="SteelPlateConvoyDispatched_file" xml:space="preserve">
+    <value>SteelPlateConvoyDispatched</value>
+  </data>
+  <data name="SteelPlateConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Steel Plate Convoy dispatched</value>
+  </data>
+  <data name="SuggestPiracy_file" xml:space="preserve">
+    <value>SuggestPiracy</value>
+  </data>
+  <data name="SuggestPiracy_subtitle" xml:space="preserve">
+    <value>I have calculated the optimal method to acquire resources is by intercepting G-Corp cargo transports.\nHowever, be aware that they may increase security if too many of their shipments go missing</value>
+  </data>
   <data name="SuspiciousStorageFacility" xml:space="preserve">
     <value>Suspicious Storage Facility</value>
     <comment>MissionSystem (gps)</comment>
   </data>
+  <data name="TargetFleeingPursuit_file" xml:space="preserve">
+    <value>TargetFleeingPursuit</value>
+  </data>
+  <data name="TargetFleeingPursuit_subtitle" xml:space="preserve">
+    <value>Target fleeing pursuit, drones return to base</value>
+  </data>
+  <data name="TargetFoundDronesAttack_file" xml:space="preserve">
+    <value>TargetFoundDronesAttack</value>
+  </data>
+  <data name="TargetFoundDronesAttack_subtitle" xml:space="preserve">
+    <value>Target found, all drones attack!</value>
+  </data>
+  <data name="TargetIdentifiedUnitsConverge_file" xml:space="preserve">
+    <value>TargetIdentifiedUnitsConverge</value>
+  </data>
+  <data name="TargetIdentifiedUnitsConverge_subtitle" xml:space="preserve">
+    <value>Target identified, all units converge!</value>
+  </data>
+  <data name="TargetLost_file" xml:space="preserve">
+    <value>TargetLost</value>
+  </data>
+  <data name="TargetLost_subtitle" xml:space="preserve">
+    <value>Target lost, return to positions</value>
+  </data>
+  <data name="TellAllFriends_file" xml:space="preserve">
+    <value>TellAllFriends</value>
+  </data>
+  <data name="TellAllFriends_subtitle" xml:space="preserve">
+    <value>Remember, tell all colonist friends about Miki Scrap!</value>
+  </data>
+  <data name="ThisIsGoodScrap_file" xml:space="preserve">
+    <value>ThisIsGoodScrap</value>
+  </data>
+  <data name="ThisIsGoodScrap_subtitle" xml:space="preserve">
+    <value>This is good scrap! We melt down for you.</value>
+  </data>
+  <data name="TiredOfGrindingCrap_file" xml:space="preserve">
+    <value>TiredOfGrindingCrap</value>
+  </data>
+  <data name="TiredOfGrindingCrap_subtitle" xml:space="preserve">
+    <value>Tired of grinding crap? We can do that! Miki Scrap.</value>
+  </data>
   <data name="TranslationBy" xml:space="preserve">
     <value />
     <comment>Who did the translation? If non whitespace it will display after init string.  Put "Translated By" as part of text. EfmCore.cs</comment>
+  </data>
+  <data name="TurretsAtTheMine_file" xml:space="preserve">
+    <value>TurretsAtTheMine</value>
+  </data>
+  <data name="TurretsAtTheMine_subtitle" xml:space="preserve">
+    <value>Detecting active computers around the mine. Be cautious of G-Corp  security turrets</value>
+  </data>
+  <data name="UnknownHostileOnScanners_file" xml:space="preserve">
+    <value>UnknownHostileOnScanners</value>
+  </data>
+  <data name="UnknownHostileOnScanners_subtitle" xml:space="preserve">
+    <value>Unknown hostile showing up on scanners. Engaging</value>
+  </data>
+  <data name="UnlockAtmospherics_file" xml:space="preserve">
+    <value>UnlockAtmospherics</value>
+  </data>
+  <data name="UnlockAtmospherics_subtitle" xml:space="preserve">
+    <value>Searching G-Corp data files. Atmospheric thruster technology unlocked!</value>
+  </data>
+  <data name="UnlockedMissiles_file" xml:space="preserve">
+    <value>UnlockedMissiles</value>
+  </data>
+  <data name="UnlockedMissiles_subtitle" xml:space="preserve">
+    <value>Searching G-Corp data files. Missile technology unlocked!</value>
+  </data>
+  <data name="UraniumConvoyDispatched_file" xml:space="preserve">
+    <value>UraniumConvoyDispatched</value>
+  </data>
+  <data name="UraniumConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Uranium Convoy dispatched</value>
+  </data>
+  <data name="WeaponsFacilityFoundByAccident_file" xml:space="preserve">
+    <value>WeaponsFacilityFoundByAccident</value>
+  </data>
+  <data name="WeaponsFacilityFoundByAccident_subtitle" xml:space="preserve">
+    <value>This storage facility is not on any official maps. I recommend investigating it thoroughly.</value>
+  </data>
+  <data name="WeaponsResearchFacility_file" xml:space="preserve">
+    <value>WeaponsResearchFacility</value>
+  </data>
+  <data name="WeaponsResearchFacility_subtitle" xml:space="preserve">
+    <value>Through data-mining corporation transport paths, I have determined there is an illegal weapons-research facility hidden at this location.\nUploading to suit hud.</value>
+  </data>
+  <data name="WeCrushDown_file" xml:space="preserve">
+    <value>WeCrushDown</value>
+  </data>
+  <data name="WeCrushDown_subtitle" xml:space="preserve">
+    <value>We crush down to little cubes for you!</value>
+  </data>
+  <data name="WelcomeBack_file" xml:space="preserve">
+    <value>WelcomeBack</value>
+  </data>
+  <data name="WelcomeBack_subtitle" xml:space="preserve">
+    <value>Welcome back anonymous re-re-re-searcher!\nThe elevator is ready to take you dow-dow-down to the experiment area.</value>
+  </data>
+  <data name="WelcomeMikiScrap_file" xml:space="preserve">
+    <value>WelcomeMikiScrap</value>
+  </data>
+  <data name="WelcomeMikiScrap_subtitle" xml:space="preserve">
+    <value>Welcome to Miki Scrap!</value>
+  </data>
+  <data name="WhereDoYouGetScrapMetal_file" xml:space="preserve">
+    <value>WhereDoYouGetScrapMetal</value>
+  </data>
+  <data name="WhereDoYouGetScrapMetal_subtitle" xml:space="preserve">
+    <value>Where do you get all this scrap metal!? I've never seen so much!</value>
+  </data>
+  <data name="WhereIsThatFrom_file" xml:space="preserve">
+    <value>WhereIsThatFrom</value>
+  </data>
+  <data name="WhereIsThatFrom_subtitle" xml:space="preserve">
+    <value>Where is that from? Nevermind! We make disappear for you.</value>
+  </data>
+  <data name="T100199375462012403" xml:space="preserve">
+    <value>MEDBAY \n &lt;---------| \n\n    ENGINEERING \n            |-----------&gt;</value>
+    <comment>HQ Rocket</comment>
+  </data>
+  <data name="T100805083727067672" xml:space="preserve">
+    <value>Pitman,\n\nDo NOT even think of using that\nexperimental jump drive to hide\nthe freighter in the cavern. If you\nget the calculations off, you could\ndamage both it and the experiment.\n\nVierra\n\n-----------------\n\nGOD DAMNIT PITMAN</value>
+    <comment>MRE Hidden Base</comment>
+  </data>
+  <data name="T101085728829590847" xml:space="preserve">
+    <value>Sir,\n\nThe agent has finished his task. He\nsabotaged their database and\nemergency beacon, so it will be\nhard for even the MRE to find the site.\nI have attached the coordinates.\n\nSmythe\n\n======================\n\nCoordinate data recovered and\nadded to your suit HUD - Mabel</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="T101174654334777857" xml:space="preserve">
+    <value>X5011 THRUSTER\n\n    THE FASTEST ENGINE OF\n    IT'S TIME, HAD TO BE\n    RECALLED DUE TO\n    ACCIDENTS ON MARS\n    IN 2085\n\n    NICKNAMED THE CLANGER</value>
+    <comment>GCorp Flight Research Center</comment>
+  </data>
+  <data name="T101419842949782053" xml:space="preserve">
+    <value>Hey guys!\n\nRemember it's movie night tonight\nat the beach! I found an old classic\nTV show, it was the best sci-fi \nof it's time!\nApparently they only made one\nseason and a movie\nbecause they were\nworried it would make all the\nother TV shows look bad.\n\n~~~ Milly ~~~</value>
+    <comment>MRE Hidden Base</comment>
+  </data>
+  <data name="T101437493495586418" xml:space="preserve">
+    <value>SCRAP METAL \n    RECYCLING</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T103510832821425962" xml:space="preserve">
+    <value>MAINFRAME ACCESS</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="T105777410721323302" xml:space="preserve">
+    <value>HOVER BAY 1</value>
+    <comment>Ground Base Gamma</comment>
+  </data>
+  <data name="T108450012927909707" xml:space="preserve">
+    <value>ROTATE\n Reverse</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T108488677170964366" xml:space="preserve">
+    <value>RESEARCH STAFF ONLY</value>
+    <comment>GCorp Flight Research Center</comment>
+  </data>
+  <data name="T108740138683771799" xml:space="preserve">
+    <value>Warning: Suspicious activity\n  detected in sector 15!</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="T108840172688336316" xml:space="preserve">
+    <value>VEHICLES AND OILY \n    WASTE\n\n    CONSTRUCTION AND\n    DEMOLITION DEBRIS\n\n    ELECTRONIC AND\n\n    MECHANICAL EQUIPMENT\n\n    DEACTIVATED DRONES\n    AND MECHS</value>
+    <comment>VEHICLES AND OILY \n    WASTE\n\n    CONSTRUCTION AND\n    DEMOLITION DEBRIS\n\n    ELECTRONIC AND\n\n    MECHANICAL EQUIPMENT\n\n    DEACTIVATED DRONES\n    AND MECHS</comment>
+  </data>
+  <data name="T109969046554135449" xml:space="preserve">
+    <value>NURSE JESSICA</value>
+    <comment>MRE MedBay 1</comment>
+  </data>
+  <data name="T110371608100898677" xml:space="preserve">
+    <value>TOOLS LOCKER</value>
+    <comment>Crashed Shuttle</comment>
+  </data>
+  <data name="T110853790184710627" xml:space="preserve">
+    <value>RELEASE</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T111924674388302700" xml:space="preserve">
+    <value>Drop\n     unwanted\n  vehicles and\n   large items\n  into furnace\n</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T112112793066134801" xml:space="preserve">
+    <value>ROTATE\nStart/Stop</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T112650211190598054" xml:space="preserve">
+    <value>RADIO TOWER</value>
+    <comment>Ground base Alpha</comment>
+  </data>
+  <data name="T112721174565728932" xml:space="preserve">
+    <value>Drop\n     unwanted\n  vehicles and\n   large items\n  into furnace\n</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T114123195861242522" xml:space="preserve">
+    <value>REACTOR CORE</value>
+    <comment>MRE Hidden Base</comment>
+  </data>
+  <data name="T115445256264180919" xml:space="preserve">
+    <value>CRANE\nLower/Lift</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T117087962786183236" xml:space="preserve">
+    <value>DR H.P. BRAINCASE</value>
+    <comment>MRE MedBay 1</comment>
+  </data>
+  <data name="T117856802065242608" xml:space="preserve">
+    <value>BRUCE,\n\n    STOP TRYING TO MAKE THE\n    BLOODY OLD DRONES WORK\n    AND FIX THAT THIRD HANGAR\n    INSTEAD!\n\n    THEY AIN'T GONNA WORK\n    AGAIN.\n\n    EVER.</value>
+    <comment>tablet @ Wrecked Drone</comment>
+  </data>
+  <data name="T118405294099572669" xml:space="preserve">
+    <value>X509 THRUSTER\n    - STILL IN USE ON\n    SOME OLDER CRAFT\n    - CHEAP TO PRODUCE\n    - WAS POPULAR FROM\n    2070-2078\n    - MOST SOLD THRUSTER\n    FOR 70 YEARS</value>
+    <comment>GCorp Flight Research Center</comment>
+  </data>
+  <data name="T118563652526806529" xml:space="preserve">
+    <value>Shipment never arrived:\n  Computers for Mainframe</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="T118625769002601328" xml:space="preserve">
+    <value>DR G.T.L PHOERA</value>
+    <comment>MRE MedBay 2</comment>
+  </data>
+  <data name="T119027964533267043" xml:space="preserve">
+    <value>Status Report\n\nPower\nReactors:                                                     0W / 15 MW\n
+[''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''']   0.0%\nBatteries:                                (IN 0W / OUT 576.4 kW)\n  Stored:                                              12 MWh / 12 MWh\n[|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||] 100.0%\n  Output:                                           576.4 kW / 48 MW\n[|'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''']    1.2%\n  Input:                                                         0W / 48 MW\n[''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''']   0.0%\nTotal Output:                                    576.4 kW / 63 MW\n[''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''']   0.9%\n
+Hydrogen Tanks                                             100.00%\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]\nOxygen Tanks                                                100.00%\n[||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||]</value>
+    <comment>HQ Rocket</comment>
+  </data>
+  <data name="T119396907696605251" xml:space="preserve">
+    <value>VIEWING THEATER</value>
+    <comment>GCorp Flight Research Center</comment>
+  </data>
+  <data name="T121786820996539580" xml:space="preserve">
+    <value>OUTGOING TRANSMISSION\n    ERROR: FAILED TO SEND\n\n    M,\n\n    I'm going to Mars to talk to\n    the CEO about what that \n    weasel Bhaskar has been up to.\n \n I think we can trust him.\n\n    - T</value>
+    <comment>Crashed Shuttle</comment>
+  </data>
+  <data name="T123167881858177673" xml:space="preserve">
+    <value>OUT OF\n\n     ORDER</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T123209375839748933" xml:space="preserve">
+    <value>CUSTOMER\n\n      CONTROL\n\n        STATION</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T123983074205720301" xml:space="preserve">
+    <value>NO ENTRY\n\n    MINE IS SHUT DOWN\n    UNTIL FURTHER NOTICE</value>
+    <comment>Ice Mine Entrace</comment>
+  </data>
+  <data name="T124418170114666546" xml:space="preserve">
+    <value>AUTHORISED TECHNICIANS ONLY</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="T125988292358464782" xml:space="preserve">
+    <value>RESEARCH STORAGE</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="T126919499981361977" xml:space="preserve">
+    <value>JIM\n\n    YOUR SHIP IS AT THE OLD DOCKYARD\n\n    MEET ME THERE IF YOU WANT TO GET\n    OFF THIS RUSTBALL\n\n    EARL</value>
+    <comment>Jim's House by MRE MedBay 1</comment>
+  </data>
+  <data name="T128143755055297004" xml:space="preserve">
+    <value>LIGHTS</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T128623467162369040" xml:space="preserve">
+    <value>INCOMING TRANSMISSION...
+
+    T,
+
+    Those shipments you asked 
+    me to check were NOT solar 
+    cells. Crates were packed 
+    with guns, like they're trying 
+    to start a small war.
+
+    -M</value>
+    <comment>Crashed Shuttle</comment>
+  </data>
+  <data name="T128768918300188309" xml:space="preserve">
+    <value>Smythe,\n\nThe board has voted to take\nexceptional measures to\nprotect our assets on Mars.\nYour agent has clearance to\nmodify the air filtering systems\nto flood the biodome with\nexcess nitrogen while all the\nscientists are inside.\n\nMake it look like an accident.\nManagement</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="T130862794454016677" xml:space="preserve">
+    <value>Sir,\n\nThe auctions have been\ndelayed because the sellers\nhave realised land prices on\nthe planet are shooting up.\nThose scientists promising to\nbuild habitable domes and\nterraform the planet are setting\noff a frenzy of activity. We can\nonly expect more colonists and\nrival bidders in the months to come.\n\nSmythe</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="T132977230724001624" xml:space="preserve">
+    <value>EMERGENCY DISTRESS\n            BEACON</value>
+    <comment>MRE Hidden Base</comment>
+  </data>
+  <data name="T134621564384224681" xml:space="preserve">
+    <value>POWER AT 0%\n\n    PREPARING FOR NEXT TEST...\n\n    STAND BY MODE</value>
+    <comment>GCorp Flight Research Center</comment>
+  </data>
+  <data name="T134675554373261627" xml:space="preserve">
+    <value>NO CONTACTS FOUND</value>
+    <comment>Jim's House by MRE MedBay 1</comment>
+  </data>
+  <data name="T136093371177096394" xml:space="preserve">
+    <value>Sir,\n\nI have disturbing reports from our\nagent inside that a group of MRE\nscientists have had significant\nsuccess with a contained biodome.\nThey landed an Iguana class freighter 
+today with soil nutrient supplies and\nhydrolysis reactors to expand the\nscale of their work. They haven't\ngone public yet, but when they do it\nwill drive up land costs exponentially.\n\nSmythe</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="T139455670524903855" xml:space="preserve">
+    <value>USE CONTROL STATION\n    TO ADJUST DISPENSER\n    POSITION\n\n    USE RELEASE COMMAND\n    WHEN READY TO RECIEVE \n    GOODS\n\n    DISABLE RELEASE AFTER\n    FOR NEXT CUSTOMER!</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="T140053056838285883" xml:space="preserve">
+    <value>BRIDGE\n            |-----------&gt;</value>
+    <comment>HQ Rocket</comment>
+  </data>
+  <data name="T142327787680059637" xml:space="preserve">
+    <value>NURSE REXXAR</value>
+    <comment>MRE MedBay 2</comment>
+  </data>
+  <data name="T142625361712416552" xml:space="preserve">
+    <value>DANGER - BLASTING EXPLOSIVES</value>
+    <comment>MRE Hidden Base</comment>
+  </data>
+  <data name="T142669794308472999" xml:space="preserve">
+    <value>Shipment never arrived:\n  Computers for Mainframe</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="T142828776791892368" xml:space="preserve">
+    <value>AUTO-LOG\n\n    DETACHING FROM JUMPER-TRAM\n\n    COURSE SET TO MARS\n\n    FRIENDLY SHIP DETECTED\n\n    HAILING GCORP KRATOS</value>
+    <comment>Crashed Shuttle</comment>
+  </data>
+  <data name="T142991621661418713" xml:space="preserve">
+    <value>STAFF ONLY</value>
+    <comment>GCorp Flight Research Center</comment>
+  </data>
+  <data name="T143319951822334717" xml:space="preserve">
+    <value>SPARE PARTS STORAGE</value>
+    <comment>Crashed Shuttle</comment>
+  </data>
+  <data name="T73042641872560299" xml:space="preserve">
+    <value>OBSOLETE X501 THRUSTER\n\n    HAS SINCE BEEN\n    REPLACED WITH\n    SMALLER MODELS AND\n    LIGHTER CRAFT THAT ARE\n    MORE ENERGY EFFICIENT</value>
+    <comment>GCorp Flight Research Center</comment>
+  </data>
+  <data name="T76722197005722112" xml:space="preserve">
+    <value>Maintainence \n        Only</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="T77156731804052289" xml:space="preserve">
+    <value>Scanning for unregistered\n  lifeforms.\n\n  Terminate non-GCorp\n  personnel in Sector 10</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="T79781732474214152" xml:space="preserve">
+    <value>REGISTERING FRIENDLY FIRE\n\n    TRANSMITTING CODES\n\n    NO RESPONSE\n\n    ATTEMPTING LANDING\n</value>
+    <comment>Crashed Shuttle</comment>
+  </data>
+  <data name="T79948364085004862" xml:space="preserve">
+    <value>Andre,\n\n    Word is the mine is shutting down,\n    they don't need no more O2 cuz \n    the machines don't need it yeah?\n\n    Fuckin corp sees us as needless \n    expense now. Where else we gonna\n    find jobs on this hell rock?\n\n    Mick</value>
+    <comment>Ice Mine Tablet</comment>
+  </data>
+  <data name="T80461927256500036" xml:space="preserve">
+    <value>Mabel: Loading survival guide...\n\n&gt; Recommend searching cargo\n   and disassembling shuttle for\n   rover parts\n&gt; Recommend configuration:\n    -Six wheels\n    - Friction 60%\n    - *Strength 10%\n    - *Power 50%\n    - Speed Limit 50km/h\n  * =Depends on load</value>
+    <comment>Crashed Shuttle</comment>
+  </data>
+  <data name="T80579136508264863" xml:space="preserve">
+    <value>Request:\n  Additional Combat Drones\n  Mars HQ\n  Mars Outposts</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="T81985176766745915" xml:space="preserve">
+    <value>SYSTEM STATUS\n\n  45 SYSTEM TESTS FAILING\n  LIFE SUPPORT: NEGATIVE\n  AIR CONTROL SYSTEMS AT 23%\n\n  CONCLUSION:\n  HUMAN REPAIR NEEDED\n\n  ESTIMATED TIME:\n  5 DAYS</value>
+    <comment>MRE Hidden Base</comment>
+  </data>
+  <data name="T82130275158280452" xml:space="preserve">
+    <value>JIM\n\n    WHERE'S MY PLATINUM YOU\n    SKUNK?\n\n    CUTTER</value>
+    <comment>Jim's House by MRE MedBay 1</comment>
+  </data>
+  <data name="T83845427523798018" xml:space="preserve">
+    <value>LEVEL 8 CLEARANCE ONLY</value>
+    <comment>weapons research</comment>
+  </data>
+  <data name="T84842282397051154" xml:space="preserve">
+    <value>ENGINEERING ACCESS    ONLY\n\n\n\n\n    GCORP</value>
+    <comment>HQ Rocket</comment>
+  </data>
+  <data name="T84893899376328615" xml:space="preserve">
+    <value>CONTROL ROOM</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="T85372231632250420" xml:space="preserve">
+    <value>TECHNICIANS ONLY</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="T85441312020805004" xml:space="preserve">
+    <value>TODO\n\n    CHANGE OIL\n    CHECK TIRES\n    FIX SOLAR PANELS ON ROOF</value>
+    <comment>Mars Garage</comment>
+  </data>
+  <data name="T85854553194821606" xml:space="preserve">
+    <value>SAFETY NOTICE\n\n    MIND YOUR HEAD\n\n    GCORP</value>
+    <comment>HQ Rocket</comment>
+  </data>
+  <data name="T86019926591513346" xml:space="preserve">
+    <value>Alston,\n\n    Arrange the meeting for the evening\n    when the other miners are home.\n\n    If the foreman gives you trouble, we \n    left you something under your chair \n    to deal with him. The automation \n    initiative must go ahead.\n\n    - HQ</value>
+    <comment>Ice Mine Meeting room tablet</comment>
+  </data>
+  <data name="T86219020590604754" xml:space="preserve">
+    <value>New directive:\n  Increase transport escorts</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="T86242283427338241" xml:space="preserve">
+    <value>Nurse,\n\n We have a patient with\n serious radiation burns,\n please see to him as soon\n as you get in. \n=======================\n\n DON'T WORRY DOCTOR,\n\n I FIX, I FIX - Nurse R</value>
+    <comment>Tablet @ MedBay2</comment>
+  </data>
+  <data name="T86380250472251270" xml:space="preserve">
+    <value>RESEARCH CENTER\nAND EXHIBITION HALL</value>
+    <comment>GCorp Flight Research Center</comment>
+  </data>
+  <data name="T87005598531295535" xml:space="preserve">
+    <value>EMERGENCY SUPPLIES</value>
+    <comment>Crashed Shuttle</comment>
+  </data>
+  <data name="T87367419229874157" xml:space="preserve">
+    <value>COMPUTER SYSTEMS</value>
+    <comment>MRE Hidden Base</comment>
+  </data>
+  <data name="T87971351737406178" xml:space="preserve">
+    <value>STORAGE FACILITY MA-384</value>
+    <comment>weapons research</comment>
+  </data>
+  <data name="T88608941859622846" xml:space="preserve">
+    <value>SCIENCE LEVEL 8 REQUIRED</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="T89121948394092071" xml:space="preserve">
+    <value>Initialising MRED (Mars Research \nExpedition Database)\n\nAI Systems online...\n\nDistress Beacon   CRITICAL ERROR\nAir Processing      MINOR ERROR\nReactor                 CRITICAL ERROR\nVocal Systems     MINOR ERROR\nBackup Power      ACTIVE</value>
+    <comment>MRE Hidden Base</comment>
+  </data>
+  <data name="T91069750493456357" xml:space="preserve">
+    <value>SECURITY OFFICE</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="T91522547712251695" xml:space="preserve">
+    <value>FLIGHT SIMULATOR</value>
+    <comment>GCorp Flight Research Center</comment>
+  </data>
+  <data name="T93302907874761586" xml:space="preserve">
+    <value>Smythe,\n\nOur news organisations have been\nset to discrediting the scientists\nand suggesting their projects are\nhoaxes and pyramid schemes to\nmake themselves rich. People\nshould have forgotten the climate\nchange scandals of the 20s by now.\nWe think it could gain traction with\nour right wing audience and Earth\nFirst parties.\n\nManagement</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="T93442238558464001" xml:space="preserve">
+    <value>RADIO TOWER</value>
+    <comment>Ground Base Gamma</comment>
+  </data>
+  <data name="T94269895163860597" xml:space="preserve">
+    <value>MEDICAL SCANNER\n\n    STATUS: READY\n\n    PATIENT: NOT FOUND</value>
+    <comment>HQ Rocket</comment>
+  </data>
+  <data name="T96403258546369540" xml:space="preserve">
+    <value>Extender\n   On/Off</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="A106886072118273256" xml:space="preserve">
+    <value>Mars Communications Satellite</value>
+    <comment>Mars Communications Satellite</comment>
+  </data>
+  <data name="A107985154416944207" xml:space="preserve">
+    <value>Open for business!</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="A118354650868624012" xml:space="preserve">
+    <value>DO NOT APPROACH WITHOUT CLEARANCE</value>
+    <comment>GCorp Air Base</comment>
+  </data>
+  <data name="A121291155732609779" xml:space="preserve">
+    <value>GCorp Shuttle</value>
+    <comment>GCorp Space Transport</comment>
+  </data>
+  <data name="A130875671283281685" xml:space="preserve">
+    <value>DO NOT APPROACH WITHOUT CLEARANCE</value>
+    <comment>GCorp Air Base</comment>
+  </data>
+  <data name="A135868073768940823" xml:space="preserve">
+    <value>DO NOT APPROACH WITHOUT CLEARANCE</value>
+    <comment>GCorp Ground Base</comment>
+  </data>
+  <data name="A138196704256894211" xml:space="preserve">
+    <value>Opportunity</value>
+    <comment>Do Not Translate</comment>
+  </data>
+  <data name="A141897391738952466" xml:space="preserve">
+    <value>Dozer</value>
+  </data>
+  <data name="A142063182641634049" xml:space="preserve">
+    <value>DO NOT APPROACH WITHOUT CLEARANCE</value>
+    <comment>GCorp Ground Base</comment>
+  </data>
+  <data name="A77742705396161669" xml:space="preserve">
+    <value>Antenna</value>
+    <comment>Greenhouse</comment>
+  </data>
+  <data name="A79652980528020843" xml:space="preserve">
+    <value>Antenna 3</value>
+    <comment>MRE Emergency Medical Station</comment>
+  </data>
+  <data name="A82218275108474455" xml:space="preserve">
+    <value>drill sampler</value>
+  </data>
+  <data name="A83618452962628276" xml:space="preserve">
+    <value>DO NOT APPROACH WITHOUT CLEARANCE</value>
+    <comment>GCorp Ground Base</comment>
+  </data>
+  <data name="A88963939448436160" xml:space="preserve">
+    <value>Antenna</value>
+    <comment>Ruined Refuling Station</comment>
+  </data>
+  <data name="B100494991635628735" xml:space="preserve">
+    <value>Beacon</value>
+    <comment>Iguana Class Freighter</comment>
+  </data>
+  <data name="B103943960949187538" xml:space="preserve">
+    <value>Organics Not Welcome</value>
+    <comment>Mars Communications Satellite</comment>
+  </data>
+  <data name="B107999816899487659" xml:space="preserve">
+    <value>Hover Bay</value>
+    <comment>GCorp Ground Base</comment>
+  </data>
+  <data name="B113950794489030815" xml:space="preserve">
+    <value>Z389 MOBILE SAM</value>
+    <comment>GCorp Mobile SAM</comment>
+  </data>
+  <data name="B114327741329818984" xml:space="preserve">
+    <value>GCorp Headquarters [ACQUIRE CLEARANCE TO APPROACH]</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="B117771267643808106" xml:space="preserve">
+    <value>Z389 MOBILE SAM</value>
+    <comment>GCorp Mobile SAM</comment>
+  </data>
+  <data name="B118343776708375126" xml:space="preserve">
+    <value>GCorp Shuttle</value>
+    <comment>GCorp Space Transport</comment>
+  </data>
+  <data name="B124990157844224053" xml:space="preserve">
+    <value>Beacon</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="B131177215470147492" xml:space="preserve">
+    <value>MALFUNCTION: ERROR #4494</value>
+    <comment>Shuttle Wreckage #1</comment>
+  </data>
+  <data name="B135742555627672015" xml:space="preserve">
+    <value>Transport Z846</value>
+    <comment>GCorp Mobile SAM</comment>
+  </data>
+  <data name="B136127254211416530" xml:space="preserve">
+    <value>Air Research Facility</value>
+    <comment>Signal Station</comment>
+  </data>
+  <data name="B136388408526692347" xml:space="preserve">
+    <value>Distress Signal</value>
+    <comment>Ruined GCorp Vehicle</comment>
+  </data>
+  <data name="B73619126108173423" xml:space="preserve">
+    <value>Old Combat Drone</value>
+    <comment>Old GCorp Drone</comment>
+  </data>
+  <data name="B77857318468023915" xml:space="preserve">
+    <value>Hover Bay</value>
+    <comment>GCorp Ground Base</comment>
+  </data>
+  <data name="B78739418076383698" xml:space="preserve">
+    <value>Old Combat Drone</value>
+    <comment>Old GCorp Drone</comment>
+  </data>
+  <data name="B80024983798728336" xml:space="preserve">
+    <value>Beacon</value>
+    <comment>Large GCorp Transport</comment>
+  </data>
+  <data name="B80444307603259850" xml:space="preserve">
+    <value>Hover Bay</value>
+    <comment>GCorp Ground Base</comment>
+  </data>
+  <data name="B80939640883825173" xml:space="preserve">
+    <value>Old Combat Drone</value>
+    <comment>Old GCorp Drone</comment>
+  </data>
+  <data name="B82332328645507954" xml:space="preserve">
+    <value>MRE Emergency Medical Station</value>
+    <comment>MRE Emergency Medical Station</comment>
+  </data>
+  <data name="B86634524592378143" xml:space="preserve">
+    <value>Beacon</value>
+  </data>
+  <data name="B94591751483871371" xml:space="preserve">
+    <value>Z389 MOBILE SAM</value>
+    <comment>GCorp Mobile SAM</comment>
+  </data>
+  <data name="FlightResearchExhibition" xml:space="preserve">
+    <value>FlightResearchExhibition</value>
+    <comment>soundblock sound. replace value with localized audio</comment>
+  </data>
+  <data name="IntruderDetectedGCorp" xml:space="preserve">
+    <value>IntruderDetectedGCorp</value>
+    <comment>soundblock sound. replace value with localized audio</comment>
+  </data>
+  <data name="MineClosed" xml:space="preserve">
+    <value>MineClosed</value>
+    <comment>soundblock sound. replace value with localized audio</comment>
+  </data>
+  <data name="NotAuthorisedDeployDefences" xml:space="preserve">
+    <value>NotAuthorisedDeployDefences</value>
+    <comment>soundblock sound. replace value with localized audio</comment>
+  </data>
+  <data name="T105777410721323302_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T106394285460413007" xml:space="preserve">
+    <value>Extender
+  Reverse</value>
+    <comment>'Hercules' Piston Crane (Vanilla)</comment>
+  </data>
+  <data name="T110371608100898677_alignment" xml:space="preserve">
+    <value>center</value>
+  </data>
+  <data name="T110371608100898677_padding" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="T110371608100898677_size" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="T119396907696605251_alignment" xml:space="preserve">
+    <value>center</value>
+  </data>
+  <data name="T119396907696605251_size" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="T127352732953182807" xml:space="preserve">
+    <value>Whip Memorial
+
+Souvenir Shop</value>
+    <comment>GCorp Flight Research Center</comment>
+  </data>
+  <data name="T127352732953182807_size" xml:space="preserve">
+    <value>2.585</value>
+  </data>
+  <data name="T128623467162369040_size" xml:space="preserve">
+    <value>1.3</value>
+    <comment>font size</comment>
+  </data>
+  <data name="T135823840195019440" xml:space="preserve">
+    <value>ERROR 0x40EF
+
+    MARS BROADCASTING SERVICE
+    IS OFFLINE</value>
+    <comment>Abandoned Mars Shack</comment>
+  </data>
+  <data name="T137035464895120237" xml:space="preserve">
+    <value>My battery is low
+and it's getting dark</value>
+    <comment>Opportunity</comment>
+  </data>
+  <data name="T139455670524903855_size" xml:space="preserve">
+    <value>1.471</value>
+    <comment>Miki dispenser LCD</comment>
+  </data>
+  <data name="T142991621661418713_alignment" xml:space="preserve">
+    <value>center</value>
+  </data>
+  <data name="T142991621661418713_size" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="T143319951822334717_alignment" xml:space="preserve">
+    <value>center</value>
+  </data>
+  <data name="T143319951822334717_padding" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="T143319951822334717_size" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="T72618230494179514" xml:space="preserve">
+    <value>RADIO TOWER</value>
+    <comment>GCorp Ground Base</comment>
+  </data>
+  <data name="T72618230494179514_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T78975817285695063" xml:space="preserve">
+    <value>Smythe, 
+ 
+The board wants to know when 
+we can acquire deeds on the 
+land around the other uranium 
+deposits. The information is 
+going to become common 
+knowledge any time now, one of 
+those colonists is sure to stumble
+onto one of them and set off a 
+gold rush. 
+ 
+Management</value>
+    <comment>GCorp Bunker</comment>
+  </data>
+  <data name="T80461927256500036_size" xml:space="preserve">
+    <value>1.3</value>
+    <comment>font size</comment>
+  </data>
+  <data name="T86380250472251270_alignment" xml:space="preserve">
+    <value>center</value>
+  </data>
+  <data name="T86380250472251270_size" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="T87005598531295535_alignment" xml:space="preserve">
+    <value>center</value>
+  </data>
+  <data name="T87005598531295535_padding" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="T87005598531295535_size" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="T87971351737406178_alignment" xml:space="preserve">
+    <value>center</value>
+  </data>
+  <data name="T87971351737406178_size" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="T91069750493456357_padding" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="T91069750493456357_size" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="T97547981527537368" xml:space="preserve">
+    <value>HOVER BAY 1</value>
+    <comment>GCorp Ground Base</comment>
+  </data>
+  <data name="T97547981527537368_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T97815012978320797" xml:space="preserve">
+    <value>HOVER BAY 1</value>
+    <comment>GCorp Ground Base</comment>
+  </data>
+  <data name="T97815012978320797_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="WelcomeToGcorp" xml:space="preserve">
+    <value>WelcomeToGcorp</value>
+    <comment>soundblock sound. replace value with localized audio</comment>
   </data>
 </root>
