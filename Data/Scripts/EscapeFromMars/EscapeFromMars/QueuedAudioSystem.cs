@@ -90,7 +90,8 @@ namespace Duckroll
                 string[] aLines = clip.Subtitle.Split('\n');
                 foreach (var line in aLines)
                 {
-                    MyVisualScriptLogicProvider.SendChatMessage(line, clip.Speaker, 0, clip.Font);
+                    if(!string.IsNullOrEmpty(line))
+                        MyVisualScriptLogicProvider.SendChatMessage(line, clip.Speaker, 0, clip.Font);
                 }
             }
             // chat, notifications, billboards... Bad on DS.
