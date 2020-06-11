@@ -100,7 +100,7 @@ namespace EscapeFromMars
             "Solar Cell Convoy dispatched", 6000);
         internal static readonly AudioClip PowerCellConvoyDispatched = Create("PowerCellConvoyDispatched", "PowerCellConvoyDispatched", EscapeFromMars.Speaker.GCorp,
             "Power Cell Convoy dispatched", 6000);
-        internal static readonly AudioClip NATO_5p56x45mmConvoyDispatched = Create("NATO_5p56x45mmConvoyDispatched", "NATO56x45mmConvoyDispatched", EscapeFromMars.Speaker.GCorp,
+        internal static readonly AudioClip NATO_5p56x45mmConvoyDispatched = Create("NATO56x45mmConvoyDispatched", "NATO56x45mmConvoyDispatched", EscapeFromMars.Speaker.GCorp,
             "NATO 56x45mm Convoy dispatched", 6000);
         internal static readonly AudioClip NATO25x184mmConvoyDispatched = Create("NATO25x184mmConvoyDispatched", "NATO25x184mmConvoyDispatched", EscapeFromMars.Speaker.GCorp,
             "NATO 25x184mm Convoy dispatched", 6000);
