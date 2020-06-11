@@ -263,7 +263,7 @@
   <data name="ElevatorHere_subtitle" xml:space="preserve">
     <value>Blueprints show there should be an elevator here. Strange. They must be outdated.</value>
   </data>
-  <data name="EndCredits_file" xml:space="preserve">
+  <data name="EndCredits_subtitle" xml:space="preserve">
     <value>... Transmitting data on all frequencies...\n[Scenario is complete. It is recommended to remove the EscapeFromMars Mod if you want to carry on playing]</value>
   </data>
   <data name="EnemyDetectedMovingToIntercept_file" xml:space="preserve">
@@ -575,10 +575,10 @@
   <data name="NATO25x184mmConvoyDispatched_subtitle" xml:space="preserve">
     <value>NATO 25x184mm Convoy dispatched</value>
   </data>
-  <data name="NATO_5p56x45mmConvoyDispatched_file" xml:space="preserve">
-    <value>NATO_5p56x45mmConvoyDispatched</value>
+  <data name="NATO56x45mmConvoyDispatched_file" xml:space="preserve">
+    <value>NATO56x45mmConvoyDispatched</value>
   </data>
-  <data name="NATO_5p56x45mmConvoyDispatched_subtitle" xml:space="preserve">
+  <data name="NATO56x45mmConvoyDispatched_subtitle" xml:space="preserve">
     <value>NATO 56x45mm Convoy dispatched</value>
   </data>
   <data name="NewMikiScrapsOpen_file" xml:space="preserve">
@@ -1475,5 +1475,8 @@ Management</value>
   <data name="WelcomeToGcorp" xml:space="preserve">
     <value>WelcomeToGcorp</value>
     <comment>soundblock sound. replace value with localized audio</comment>
+  </data>
+  <data name="EndCredits_file" xml:space="preserve">
+    <value>EndCredits</value>
   </data>
 </root>

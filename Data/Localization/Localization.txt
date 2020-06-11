@@ -22,6 +22,16 @@ Bxxx are translations for Beacons in the world
 Axxx are translations for Antenna in the world
 (xxx is the EntityID of the block)
 
+
+For Text panels: 
+Txxx Text. You can force a new line with \n or by embedding a newline
+
+Optional additional settings:
+Txxx_size 	sets the size of the font
+Txxx_alignment 	sets the alignment of the textpanel. options are left, right, center
+Txxx_padding 	sets the padding of the text panel
+
+
 Audio localization
 You will need to record audio of the translated text. These audio files should be placed (for convenience) into a directory under Audio. 
 

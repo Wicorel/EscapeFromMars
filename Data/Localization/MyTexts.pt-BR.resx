@@ -131,7 +131,7 @@ Enviando as coordenadas para o seu HUD.</value>
     <value>Todas as tecnologias desbloqueadas.</value>
   </data>
   <data name="AreaExtremelyDangerous" xml:space="preserve">
-    <value>Esta área é extremamente perigosa</value>
+    <value>Esta área é extremamente perigosa.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="ArmorVehicles_file" xml:space="preserve">
@@ -157,7 +157,7 @@ Para áreas especialmente hostis, você pode usar drones em vez de arriscar sua 
     <value>BulletproofGlassConvoyDispatched_pt_BR</value>
   </data>
   <data name="BulletproofGlassConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Vidro à Prova de Balas despachado</value>
+    <value>Comboio de Vidro à Prova de Balas despachado.</value>
   </data>
   <data name="Cavern_file" xml:space="preserve">
     <value>Cavern</value>
@@ -175,7 +175,7 @@ Para áreas especialmente hostis, você pode usar drones em vez de arriscar sua 
     <value>ComputerConvoyDispatched_pt_BR</value>
   </data>
   <data name="ComputerConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Computadores despachado</value>
+    <value>Comboio de Computadores despachado.</value>
   </data>
   <data name="ConnectionLost" xml:space="preserve">
     <value>CONEXÃO PERDIDA</value>
@@ -191,33 +191,33 @@ Para áreas especialmente hostis, você pode usar drones em vez de arriscar sua 
     <value>ConstructionConvoyDispatched_pt_BR</value>
   </data>
   <data name="ConstructionConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Blocos de Construção enviado</value>
+    <value>Comboio de Blocos de Construção enviado.</value>
   </data>
   <data name="ConvoyArrivedSafely_file" xml:space="preserve">
     <value>ConvoyArrivedSafely_pt_BR</value>
     <comment>audioclip</comment>
   </data>
   <data name="ConvoyArrivedSafely_subtitle" xml:space="preserve">
-    <value>*Muffled* O comboio chegou em segurança</value>
+    <value>*Muffled* O comboio chegou em segurança.</value>
     <comment>audioclip</comment>
   </data>
   <data name="ConvoyDispatched1_file" xml:space="preserve">
     <value>ConvoyDispatched1_pt_BR</value>
   </data>
   <data name="ConvoyDispatched1_subtitle" xml:space="preserve">
-    <value>*Muffled* O comboio foi enviado</value>
+    <value>*Muffled* O comboio foi enviado.</value>
   </data>
   <data name="ConvoyDispatched2_file" xml:space="preserve">
     <value>ConvoyDispatched2_pt_BR</value>
   </data>
   <data name="ConvoyDispatched2_subtitle" xml:space="preserve">
-    <value>*Muffled* O comboio foi enviado</value>
+    <value>*Muffled* O comboio foi enviado.</value>
   </data>
   <data name="ConvoyDispatched3_file" xml:space="preserve">
     <value>ConvoyDispatched3_pt_BR</value>
   </data>
   <data name="ConvoyDispatched3_subtitle" xml:space="preserve">
-    <value>*Muffled* O comboio foi enviado</value>
+    <value>*Muffled* O comboio foi enviado.</value>
   </data>
   <data name="ConvoyRecalled" xml:space="preserve">
     <value>Convoy Recalled</value>
@@ -227,7 +227,7 @@ Para áreas especialmente hostis, você pode usar drones em vez de arriscar sua 
     <value>ConvoyUnderThreat_pt_BR</value>
   </data>
   <data name="ConvoyUnderThreat_subtitle" xml:space="preserve">
-    <value>Comboio sob ameaça! Possível atividade pirata</value>
+    <value>Comboio sob ameaça! Possível atividade pirata.</value>
   </data>
   <data name="DisengagingFromHostile_file" xml:space="preserve">
     <value>DisengagingFromHostile_pt_BR</value>
@@ -239,10 +239,10 @@ Para áreas especialmente hostis, você pode usar drones em vez de arriscar sua 
     <value>DisplayConvoyDispatched_pt_BR</value>
   </data>
   <data name="DisplayConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Telas despachado</value>
+    <value>Comboio de Telas despachado.</value>
   </data>
   <data name="DistressBeaconSilly_file" xml:space="preserve">
-    <value>DistressBeaconSilly</value>
+    <value>DistressBeaconSilly_pt_BR</value>
   </data>
   <data name="DistressBeaconSilly_subtitle" xml:space="preserve">
     <value>Estou captando um pedido de socorro corporativo nas proximidades. Seja cuidadoso. Pode ser uma armadilha ou piratas.
@@ -266,7 +266,7 @@ Se for o caso, você morreria horrivelmente.</value>
   <data name="ElevatorHere_subtitle" xml:space="preserve">
     <value>As plantas mostram que deveria haver um elevador aqui. Estranho. Elas devem estar desatualizadas.</value>
   </data>
-  <data name="EndCredits" xml:space="preserve">
+  <data name="EndCredits_subtitle" xml:space="preserve">
     <value>...Transmitindo dados em todas as frequências...
 [O cenário está completo. É recomendável remover o Mod EscapeFromMars se você quiser continuar jogando]</value>
   </data>
@@ -297,7 +297,7 @@ A atmosfera é de 95% de nitrogênio, 3% de oxigênio, 1% de argônio, pequenas 
     <value>ExplosivesConvoyDispatched_pt_BR</value>
   </data>
   <data name="ExplosivesConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Explosivos despachado</value>
+    <value>Comboio de Explosivos despachado.</value>
   </data>
   <data name="ExplosivesNearby_file" xml:space="preserve">
     <value>ExplosivesNearby_pt_BR</value>
@@ -309,10 +309,10 @@ A atmosfera é de 95% de nitrogênio, 3% de oxigênio, 1% de argônio, pequenas 
     <value>FacilityDetectedHostile_pt_BR</value>
   </data>
   <data name="FacilityDetectedHostile_subtitle" xml:space="preserve">
-    <value>Os sensores das instalações detectaram intrusos. Enviar patrulhas próximas para a localização</value>
+    <value>Os sensores das instalações detectaram intrusos. Enviar patrulhas próximas para a localização.</value>
   </data>
   <data name="FacilityNotOnAnyOfficalMap" xml:space="preserve">
-    <value>Centro de Pesquisas ilegais da GCorp</value>
+    <value>Centro de Pesquisas ilegais da GCorp.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="FaintPowerSignature_file" xml:space="preserve">
@@ -329,7 +329,7 @@ A atmosfera é de 95% de nitrogênio, 3% de oxigênio, 1% de argônio, pequenas 
 Enviando as coordenadas para o seu HUD.</value>
   </data>
   <data name="FlightResearchStation" xml:space="preserve">
-    <value>Estação de Pesquisa de Voo</value>
+    <value>Estação de Pesquisa de Voo.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="FoundFilesOnNetwork_file" xml:space="preserve">
@@ -340,20 +340,19 @@ Enviando as coordenadas para o seu HUD.</value>
 Direcionando dados para a tela mais próxima.</value>
   </data>
   <data name="FurnaceStateLoadedUp" xml:space="preserve">
-    <value>\nFeche as portas\n
-    e ative\n
-      o forno</value>
+    <value>\nFeche o Forno\n
+   Para Ativar
+ O Desmanche</value>
     <comment>MikiScrap</comment>
   </data>
   <data name="FurnaceStateWaiting" xml:space="preserve">
-    <value>\nSoltar\n
- veículos\nindesejados e
- grandes\nitens no forno</value>
+    <value>    Deposite\n
+    Veículos\n  Sucateados
+     e outros\nItens no Forno.</value>
     <comment>MikiScrap</comment>
   </data>
   <data name="FurnaceStateWorking" xml:space="preserve">
-    <value>! Cuidado !\n\nForno em\natividade\n\n   Extremas\n
-   Temperaturas</value>
+    <value>    ! Cuidado !\n    Forno em\n    atividade\n\n     Extremas\n Temperaturas</value>
     <comment>MikiScrap</comment>
   </data>
   <data name="GasStorageUnlocked_file" xml:space="preserve">
@@ -375,42 +374,42 @@ A G-Corp está bloqueando todos os sinais do planeta, exceto os deles.</value>
   </data>
   <data name="GCorpFacilitiesHeavilyArmed_subtitle" xml:space="preserve">
     <value>O escaneamento mostra que as instalações da G-Corp na área são cuidadosamente vigiadas,
-se aproximar de uma não é recomendado, a menos que você esteja bem armado</value>
+se aproximar de uma não é recomendado, a menos que você esteja bem armado.</value>
   </data>
   <data name="GCorpFacilityThreatened_file" xml:space="preserve">
     <value>GCorpFacilityThreatened_pt_BR</value>
   </data>
   <data name="GCorpFacilityThreatened_subtitle" xml:space="preserve">
-    <value>Instalação da G-Corp ameaçada, enviando drones adicionais</value>
+    <value>Instalação da G-Corp ameaçada, enviando drones adicionais.</value>
   </data>
   <data name="GCorpFlightResearchStation" xml:space="preserve">
-    <value>GCorp Estação de Pesquisa de Voo</value>
+    <value>GCorp Estação de Pesquisa de Voo.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="GCorpHeadquarters" xml:space="preserve">
-    <value>G-Corp Quartel General</value>
+    <value>G-Corp Quartel General.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="GCorpHiddenFileContents" xml:space="preserve">
-    <value>Conteúdo do arquivo oculto do GCorp</value>
+    <value>Conteúdo do arquivo oculto do GCorp.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="GCorpIceMine" xml:space="preserve">
-    <value>GCorp Mina de Gelo</value>
+    <value>GCorp Mina de Gelo.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="GCorpTowerScan_file" xml:space="preserve">
-    <value>GCorpTowerScan</value>
+    <value>GCorpTowerScan_pt_BR</value>
   </data>
   <data name="GCorpTowerScan_subtitle" xml:space="preserve">
     <value>Estou detectando leituras incomuns dentro da torre da sede da G-Corp.
-Pode ser uma maneira de deixar o planeta, no entanto, opções mais seguras podem existir [Esta área é extremamente perigosa]</value>
+Pode ser uma maneira de deixar o planeta, no entanto, opções mais seguras podem existir [Esta área é extremamente perigosa].</value>
   </data>
   <data name="GirderConvoyDispatched_file" xml:space="preserve">
     <value>GirderConvoyDispatched_pt_BR</value>
   </data>
   <data name="GirderConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Vigas enviado</value>
+    <value>Comboio de Vigas enviado.</value>
   </data>
   <data name="GreetingsMartianColonists_file" xml:space="preserve">
     <value>GreetingsMartianColonists_pt_BR</value>
@@ -435,15 +434,15 @@ Basta seguir o sinal da antena!</value>
     <value />
   </data>
   <data name="HackInProgress" xml:space="preserve">
-    <value>Hack em progresso</value>
+    <value>Hack em progresso.</value>
     <comment>ResearchHacking</comment>
   </data>
   <data name="HiddenFilesFoundByMabel" xml:space="preserve">
-    <value>Arquivos ocultos encontrados pela ONI</value>
+    <value>Arquivos ocultos encontrados pela ONI.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="HiddenSiteofMRE" xml:space="preserve">
-    <value>Local oculto do projeto de terraformação da Expedição de Pesquisa de Marte</value>
+    <value>Local oculto do projeto de terraformação da Expedição de Pesquisa de Marte.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="HostileDisappeared_file" xml:space="preserve">
@@ -465,11 +464,11 @@ Basta seguir o sinal da antena!</value>
     <value>Você localizou uma instalação de mineração de gelo corporativa abandonada. Este será um recurso valioso para a geração de oxigênio.</value>
   </data>
   <data name="IllegalGCorpResearchFacility" xml:space="preserve">
-    <value>Illegal GCorp Research Facility</value>
+    <value>Centro de Pesquisa ilegal da GCorp.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="Init" xml:space="preserve">
-    <value>Inicializando a compilação Escape From Mars</value>
+    <value>Inicializando a compilação Escape From Mars.</value>
     <comment>EfmCore.cs</comment>
   </data>
   <data name="InterceptingBeaconSuffix" xml:space="preserve">
@@ -487,7 +486,7 @@ Vou envia-los para você, se eles parecerem relevantes.</value>
     <value>InteriorPlateConvoyDispatched_pt_BR</value>
   </data>
   <data name="InteriorPlateConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Chapas de Interior enviado</value>
+    <value>Comboio de Chapas de Interior enviado.</value>
   </data>
   <data name="IntruderRobot_file" xml:space="preserve">
     <value>IntruderRobot_pt_BR</value>
@@ -499,17 +498,17 @@ Vou envia-los para você, se eles parecerem relevantes.</value>
     <value>IntrudersMustBeDestroyedRobot_pt_BR</value>
   </data>
   <data name="IntrudersMustBeDestroyedRobot_subtitle" xml:space="preserve">
-    <value>Os invasores devem ser destruídos</value>
+    <value>Os invasores devem ser destruídos.</value>
   </data>
   <data name="InvestigatingBackupCall" xml:space="preserve">
-    <value> Investigando um pedido de ajuda</value>
+    <value> Investigando um pedido de ajuda.</value>
     <comment>BackupGroup Needs initial space</comment>
   </data>
   <data name="LargeTubeConvoyDispatched_file" xml:space="preserve">
     <value>LargeTubeConvoyDispatched_pt_BR</value>
   </data>
   <data name="LargeTubeConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Tubos Grandes de Aço enviado</value>
+    <value>Comboio de Tubos Grandes de Aço enviado.</value>
   </data>
   <data name="LavaLoop_file" xml:space="preserve">
     <value>LavaLoop_pt_BR</value>
@@ -529,16 +528,16 @@ Vou envia-los para você, se eles parecerem relevantes.</value>
     <comment>sound effect; no need to localize</comment>
   </data>
   <data name="MabelPowerUpClipped_subtitle" xml:space="preserve">
-    <value>Ligando Sistemas</value>
+    <value>Ligando Sistemas.</value>
   </data>
   <data name="MabelUncoveringFiles_file" xml:space="preserve">
     <value>MabelUncoveringFiles_pt_BR</value>
   </data>
   <data name="MabelUncoveringFiles_subtitle" xml:space="preserve">
-    <value>Descriptando os Arquivos do Computador</value>
+    <value>Descriptando os Arquivos do Computador.</value>
   </data>
   <data name="MarsCommunicationsSatellite" xml:space="preserve">
-    <value>Satélite de comunicações de Marte</value>
+    <value>Satélite de comunicações de Marte.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="MarsGCorpOperationsExplained_file" xml:space="preserve">
@@ -549,38 +548,38 @@ Vou envia-los para você, se eles parecerem relevantes.</value>
 colonos foram realocados. Magnésio, alumínio, titânio, ferro e cromo compõem a maioria de suas exportações.</value>
   </data>
   <data name="MarsIceMininigFacility" xml:space="preserve">
-    <value>Instalação de mineração de gelo em Marte</value>
+    <value>Instalação de mineração de gelo em Marte.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="MedicalConvoyDispatched_file" xml:space="preserve">
     <value>MedicalConvoyDispatched_pt_BR</value>
   </data>
   <data name="MedicalConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Suprimentos Médicos despachado</value>
+    <value>Comboio de Suprimentos Médicos despachado.</value>
   </data>
   <data name="MetalGridConvoyDispatched_file" xml:space="preserve">
-    <value>MetalGridConvoyDispatched</value>
+    <value>MetalGridConvoyDispatched_pt_BR</value>
   </data>
   <data name="MetalGridConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Grades de Metal enviado</value>
+    <value>Comboio de Grades de Metal enviado.</value>
   </data>
   <data name="MilitaryPatrolInitiated_file" xml:space="preserve">
     <value>MilitaryPatrolInitiated_pt_BR</value>
   </data>
   <data name="MilitaryPatrolInitiated_subtitle" xml:space="preserve">
-    <value>Patrulha Militar iniciada em busca dos intrusos</value>
+    <value>Patrulha Militar iniciada em busca dos intrusos.</value>
   </data>
   <data name="Missile200mmConvoyDispatched_file" xml:space="preserve">
     <value>Missile200mmConvoyDispatched_pt_BR</value>
   </data>
   <data name="Missile200mmConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Misseis despachado</value>
+    <value>Comboio de Misseis despachado.</value>
   </data>
   <data name="MotorConvoyDispatched_file" xml:space="preserve">
     <value>MotorConvoyDispatched_pt_BR</value>
   </data>
   <data name="MotorConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Motores enviado</value>
+    <value>Comboio de Motores enviado.</value>
   </data>
   <data name="MreDefunded_file" xml:space="preserve">
     <value>MreDefunded_pt_BR</value>
@@ -591,20 +590,20 @@ No entanto, eles também administravam várias instalações médicas de emergê
 Algumas delas ainda podem estar em funcionamento.</value>
   </data>
   <data name="MREExperimentSite" xml:space="preserve">
-    <value>EPM Base Experimental</value>
+    <value>EPM Base Experimental.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="NATO25x184mmConvoyDispatched_file" xml:space="preserve">
     <value>NATO25x184mmConvoyDispatched_pt_BR</value>
   </data>
   <data name="NATO25x184mmConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Munição NATO 25x184mm despachado</value>
+    <value>Comboio de Munição NATO 25x184mm despachado.</value>
   </data>
   <data name="NATO_5p56x45mmConvoyDispatched_file" xml:space="preserve">
     <value>NATO_5p56x45mmConvoyDispatched_pt_BR</value>
   </data>
   <data name="NATO_5p56x45mmConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Munição NATO 56x45mm despachado</value>
+    <value>Comboio de Munição NATO 56x45mm despachado.</value>
   </data>
   <data name="NewMikiScrapsOpen_file" xml:space="preserve">
     <value>NewMikiScrapsOpen_pt_BR</value>
@@ -617,7 +616,7 @@ Algumas delas ainda podem estar em funcionamento.</value>
   </data>
   <data name="NotifyOfSatellite_subtitle" xml:space="preserve">
     <value>Eu calculei a localização do satélite de comunicações geossíncronico mais próximo.
-Se você conseguir deixar o planeta, deve direcionar sua nave para lá, para que eu possa transmitir as evidências que reunimos da corporação em todos os canais públicos</value>
+Se você conseguir deixar o planeta, deve direcionar sua nave para lá, para que eu possa transmitir as evidências que reunimos da corporação em todos os canais públicos.</value>
   </data>
   <data name="OhDear_file" xml:space="preserve">
     <value>OhDear_pt_BR</value>
@@ -631,7 +630,7 @@ Por favor, exiba seu crachá de identidade ou saia do prédio.</value>
   </data>
   <data name="OldFreighterFound_subtitle" xml:space="preserve">
     <value>Os sensores mostram um antigo cargueiro da classe Iguana. Nenhum de seus sistemas está ativo.
-Reparar pode levar algum tempo, mas pode ser sua única maneira de deixar Marte com segurança</value>
+Reparar pode levar algum tempo, mas pode ser sua única maneira de deixar Marte com segurança.</value>
   </data>
   <data name="OlympusMons_file" xml:space="preserve">
     <value>OlympusMons_pt_BR</value>
@@ -662,7 +661,7 @@ Os vulcões inicialmente ajudaram a criar uma atmosfera em Marte, até os pontos
     <value>PowerCellConvoyDispatched_pt_BR</value>
   </data>
   <data name="PowerCellConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Célula de Energia despachado</value>
+    <value>Comboio de Células de Energia despachado.</value>
   </data>
   <data name="PowerSignatureBehindWall_file" xml:space="preserve">
     <value>PowerSignatureBehindWall_pt_BR</value>
@@ -687,13 +686,13 @@ Os vulcões inicialmente ajudaram a criar uma atmosfera em Marte, até os pontos
     <value>RadioCommunicationConvoyDispatched_pt_BR</value>
   </data>
   <data name="RadioCommunicationConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Peças de Rádio despachado</value>
+    <value>Comboio de Peças de Rádio despachado.</value>
   </data>
   <data name="ReactorConvoyDispatched_file" xml:space="preserve">
     <value>ReactorConvoyDispatched_pt_BR</value>
   </data>
   <data name="ReactorConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Reatores despachado</value>
+    <value>Comboio de Reatores despachado.</value>
   </data>
   <data name="ReturningToBase" xml:space="preserve">
     <value> *RETORNANDO A BASE*</value>
@@ -704,10 +703,10 @@ Os vulcões inicialmente ajudaram a criar uma atmosfera em Marte, até os pontos
   </data>
   <data name="RingAroundMars_subtitle" xml:space="preserve">
     <value>Pelos meus cálculos, em 27,6 milhões de anos Phobos será dilacerado por forças gravitacionais,
-levando à criação de um anel em torno de Marte</value>
+levando à criação de um anel em torno de Marte.</value>
   </data>
   <data name="SecretWeaponResearchFacility" xml:space="preserve">
-    <value>Centro de Pesquisa de Armas Secretas</value>
+    <value>Centro de Pesquisa de Armas Secretas.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="SensorsLostTrack_file" xml:space="preserve">
@@ -725,7 +724,7 @@ Vários drones GCorp detectados nas proximidades.</value>
   </data>
   <data name="ShuttleDatabanks_subtitle" xml:space="preserve">
     <value>Os bancos de dados dos transportadores espaciais não contêm projetos de construção para propulsão atmosférica ou baseada em hidrogênio.
-\nRecomendo investigar os bancos de dados dos computadores da G-Corp</value>
+\nRecomendo investigar os bancos de dados dos computadores da G-Corp.</value>
   </data>
   <data name="ShuttleDatabanks_file" xml:space="preserve">
     <value>ShuttleDatabanks_pt_BR</value>
@@ -734,36 +733,36 @@ Vários drones GCorp detectados nas proximidades.</value>
     <value>SmallTubeConvoyDispatched_pt_BR</value>
   </data>
   <data name="SmallTubeConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Tubos Pequenos de Aço enviado</value>
+    <value>Comboio de Tubos Pequenos de Aço enviado.</value>
   </data>
   <data name="SolarCellConvoyDispatched_file" xml:space="preserve">
     <value>SolarCellConvoyDispatched_pt_BR</value>
   </data>
   <data name="SolarCellConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Células Solares despachado</value>
+    <value>Comboio de Células Solares despachado.</value>
   </data>
   <data name="SteelPlateConvoyDispatched_file" xml:space="preserve">
     <value>SteelPlateConvoyDispatched_pt_BR</value>
   </data>
   <data name="SteelPlateConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Placas de Aço enviado</value>
+    <value>Comboio de Placas de Aço enviado.</value>
   </data>
   <data name="SuggestPiracy_file" xml:space="preserve">
     <value>SuggestPiracy_pt_BR</value>
   </data>
   <data name="SuggestPiracy_subtitle" xml:space="preserve">
     <value>Calculei que o método ideal para adquirir recursos é interceptar os transportes de carga da G-Corp.
-No entanto, esteja ciente de que eles podem aumentar a segurança se muitas de suas remessas desaparecerem</value>
+No entanto, esteja ciente de que eles podem aumentar a segurança se muitas de suas remessas desaparecerem.</value>
   </data>
   <data name="SuspiciousStorageFacility" xml:space="preserve">
-    <value>Instalação de Armazenamento Suspeita</value>
+    <value>Instalação de Armazenamento Suspeita.</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="TargetFleeingPursuit_file" xml:space="preserve">
     <value>TargetFleeingPursuit_pt_BR</value>
   </data>
   <data name="TargetFleeingPursuit_subtitle" xml:space="preserve">
-    <value>Alvo em fuga, drones retornaram à base</value>
+    <value>Alvo em fuga, drones retornaram à base.</value>
   </data>
   <data name="TargetFoundDronesAttack_file" xml:space="preserve">
     <value>TargetFoundDronesAttack_pt_BR</value>
@@ -781,7 +780,7 @@ No entanto, esteja ciente de que eles podem aumentar a segurança se muitas de s
     <value>TargetLost_pt_BR</value>
   </data>
   <data name="TargetLost_subtitle" xml:space="preserve">
-    <value>Alvo perdido, retorno às posições</value>
+    <value>Alvo perdido, retorne às posições.</value>
   </data>
   <data name="TellAllFriends_file" xml:space="preserve">
     <value>TellAllFriends_pt_BR</value>
@@ -809,7 +808,7 @@ No entanto, esteja ciente de que eles podem aumentar a segurança se muitas de s
     <value>TurretsAtTheMine_pt_BR</value>
   </data>
   <data name="TurretsAtTheMine_subtitle" xml:space="preserve">
-    <value>Detectando computadores ativos ao redor da mina. Tenha cuidado com as torres de segurança da G-Corp</value>
+    <value>Detectando computadores ativos ao redor da mina. Tenha cuidado com as torres de segurança da G-Corp.</value>
   </data>
   <data name="UnknownHostileOnScanners_file" xml:space="preserve">
     <value>UnknownHostileOnScanners_pt_BR</value>
@@ -833,13 +832,13 @@ No entanto, esteja ciente de que eles podem aumentar a segurança se muitas de s
     <value>UraniumConvoyDispatched_pt_BR</value>
   </data>
   <data name="UraniumConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Urânio despachado</value>
+    <value>Comboio de Urânio despachado.</value>
   </data>
   <data name="WeaponsFacilityFoundByAccident_file" xml:space="preserve">
     <value>WeaponsFacilityFoundByAccident_pt_BR</value>
   </data>
   <data name="WeaponsFacilityFoundByAccident_subtitle" xml:space="preserve">
-    <value>Esta instalação de armazenamento não está em nenhum mapa oficial. Eu recomendo investigá-la completamente</value>
+    <value>Esta instalação de armazenamento não está em nenhum mapa oficial. Eu recomendo investigá-la completamente.</value>
   </data>
   <data name="WeaponsResearchFacility_file" xml:space="preserve">
     <value>WeaponsResearchFacility_pt_BR</value>
@@ -858,7 +857,7 @@ Enviando para o seu HUD.</value>
     <value>WelcomeBack_pt_BR</value>
   </data>
   <data name="WelcomeBack_subtitle" xml:space="preserve">
-    <value>em-vindo de volta, pe-pe-pe-pesquisador anônimo!\n
+    <value>Bem-vindo de volta, pe-pe-pe-pesquisador anônimo!\n
 O elevador está pronto para levá-lo para a área do experimento.</value>
   </data>
   <data name="WelcomeMikiScrap_file" xml:space="preserve">
@@ -880,8 +879,8 @@ O elevador está pronto para levá-lo para a área do experimento.</value>
     <value>De onde é isso? Deixa pra lá! Nós vamos fazer desaparecer para você.</value>
   </data>
   <data name="T100199375462012403" xml:space="preserve">
-    <value>MEDBAY \n &lt;---------| \n\n    ENGINEERING \n            |-----------&gt;</value>
-    <comment>HQ Rocket</comment>
+    <value>SALA MÉDICA \n &lt;---------| \n\n    ENGENHARIA \n                |-----------&gt;</value>
+    <comment>HQ foguete</comment>
   </data>
   <data name="T100805083727067672" xml:space="preserve">
     <value>Pitman,
@@ -896,17 +895,16 @@ experimento.
 Vierra
 
 -----------------
-
 DEUS DAMNIT PITMAN</value>
-    <comment>MRE Hidden Base</comment>
+    <comment>MRE Base Oculta</comment>
   </data>
   <data name="T101085728829590847" xml:space="preserve">
     <value>Senhor,
  
 O agente terminou sua tarefa.
 Ele sabotou o banco de dados e o
-farol de emergência, será difícil até
-para o MRE encontrar o local.
+farol de emergência, será difícil
+até para o MRE encontrar o local.
 Anexei as coordenadas.
  
 Smythe
@@ -916,7 +914,7 @@ Smythe
 Coordenar os dados recuperados
 e adicionados ao seu processo
 HUD - Mabel</value>
-    <comment>Bunker in weapons Research</comment>
+    <comment>Bunker de pesquisas de armas</comment>
   </data>
   <data name="T101174654334777857" xml:space="preserve">
     <value>PROPULSOR X5011
@@ -928,7 +926,7 @@ HUD - Mabel</value>
     EM 2085
 
     APELIDADO: O CLANGER</value>
-    <comment>GCorp Flight Research Center</comment>
+    <comment>GCorp Centro de Pesquisa de Voo</comment>
   </data>
   <data name="T101419842949782053" xml:space="preserve">
     <value>Ei pessoal!
@@ -945,34 +943,35 @@ que o Seriado fizessem os outros
 programas de TV parecerem ruins.
 
 ~~~ Milly ~~~</value>
-    <comment>MRE Hidden Base</comment>
+    <comment>MRE Base oculta</comment>
   </data>
   <data name="T101437493495586418" xml:space="preserve">
-    <value>\n\n\nFERRO VELHO
+    <value>\n\nFERRO VELHO
 RECICLAGEM</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T103510832821425962" xml:space="preserve">
     <value>ACESSO PRINCIPAL</value>
-    <comment>Bunker in weapons Research</comment>
+    <comment>Bunker de pesquisas de armas</comment>
   </data>
   <data name="T105777410721323302" xml:space="preserve">
-    <value>BAÍA ROVER I</value>
-    <comment>Ground Base Gamma</comment>
+    <value>ROVER: BAÍA I</value>
+    <comment>Base Terrestre Gamma</comment>
   </data>
   <data name="T108450012927909707" xml:space="preserve">
-    <value>GIRAR
+    <value>
+GIRAR
 Inverter</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T108488677170964366" xml:space="preserve">
     <value>APENAS PESSOAL
 DE PESQUISA</value>
-    <comment>GCorp Flight Research Center</comment>
+    <comment>GCorp Centro de Pesquisa de Voo</comment>
   </data>
   <data name="T108740138683771799" xml:space="preserve">
     <value>Aviso: atividade suspeita \n detectada no setor 15!</value>
-    <comment>GCorp HQ Tower</comment>
+    <comment>GCorp HQ Torre</comment>
   </data>
   <data name="T108840172688336316" xml:space="preserve">
     <value>VÉICULOS E RESÍDUOS
@@ -981,12 +980,12 @@ DE PESQUISA</value>
     CONSTRUÇÃO E 
     DEMOLIÇÃO DE DETRITOS
 
-    EQUIPAMENTO ELETRÔNICOS
+    EQUIPAMENTOS ELETRICOS
     E MECÂNICOS
 
     MECAS E DRONES
     DESATIVADOS</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T109969046554135449" xml:space="preserve">
     <value>ENFERMEIRA JESSICA</value>
@@ -998,7 +997,7 @@ DE PESQUISA</value>
   </data>
   <data name="T110853790184710627" xml:space="preserve">
     <value>LIBERAR</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T111924674388302700" xml:space="preserve">
     <value>Solte
@@ -1007,16 +1006,16 @@ e grandes
 itens
 indesejados
 no forno</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T112112793066134801" xml:space="preserve">
     <value>GIRAR
 Iniciar/Parar</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T112650211190598054" xml:space="preserve">
     <value>TORRE\nDE\nRÁDIO</value>
-    <comment>Ground base Alpha</comment>
+    <comment>Base Terrestre Alpha</comment>
   </data>
   <data name="T112721174565728932" xml:space="preserve">
     <value>Solte
@@ -1025,23 +1024,24 @@ e grandes
 itens
 indesejados
 no forno</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T114123195861242522" xml:space="preserve">
     <value>SALA DO REATOR</value>
-    <comment>MRE Hidden Base</comment>
+    <comment>MRE Base Oculta</comment>
   </data>
   <data name="T115445256264180919" xml:space="preserve">
-    <value>GUINDASTE
+    <value>
+GUINDASTE
 Subir/Descer</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T117087962786183236" xml:space="preserve">
     <value>DR H.P. BRAINCASE</value>
     <comment>MRE MedBay 1</comment>
   </data>
   <data name="T117856802065242608" xml:space="preserve">
-    <value>BRUCE,\n\n PARE DE TENTAR FAZER FUNCIONAR\nOS ANTIGOS ANTIGOS ANIMAIS\n E CORRECIONAR O TERCEIRO HANGAR\nN EM VEZ!! \n\n ELES NÃO IRÃO TRABALHAR\n novamente.</value>
+    <value>BRUCE,\n\n PARE DE TENTAR CONSERTAR\nESSES ANTIGOS DRONES\n E VOLTE AO TERCEIRO HANGAR\nAGORA!! \n\n ELES NÃO IRÃO FUNCIONAR\n novamente.</value>
     <comment>tablet @ Wrecked Drone</comment>
   </data>
   <data name="T118405294099572669" xml:space="preserve">
@@ -1061,28 +1061,28 @@ Subir/Descer</value>
    Setor 11!</value>
     <comment>GCorp HQ Tower</comment>
   </data>
-  <data name="T118625769002601328" xml:space="preserve">
+  <data name="T120136635151312472" xml:space="preserve">
     <value>DR G.T.L PHOERA</value>
     <comment>MRE MedBay 2</comment>
   </data>
   <data name="T119027964533267043" xml:space="preserve">
-    <value>[''''''''''''''''''''''] Cilindro de ..           0 / 5
+    <value>[''''''''''''''''''''''] Cilindro de ..        0 / 5
 
            &lt;&lt; Munição Armazenados &gt;&gt;
  [''''''''''''''''''''''] 5.56x45mm            0 / 8 k
- [''''''''''''''''''''''] 25x184mm              0 / 2.5 k
- [''''''''''''''''''''''] 200mm Mi..            0 / 1.6 k
+ [''''''''''''''''''''''] 25x184mm             0 / 2.5 k
+ [''''''''''''''''''''''] 200mm Mi..           0 / 1.6 k
 
-        &lt;&lt; Ferramentas Armazenados &gt;&gt;
- Rifle Automatico:                                    0
- * Rifle De Precisão:                                 0
+        &lt;&lt; Ferramentas Armazenadas &gt;&gt;
+ Rifle Automatico:0
+ * Rifle De Precisão:                              0
  ** Rifle de Fogo Rápido:                          0
- *** Rifle De Elite:                                     0
- Solda:                                                      0
- * Enh. Welder:                                         0
- ** Prof. Welder:                                       0
- *** Elite Welder:                                      0
- Angle Grinder:                                         0</value>
+ *** Rifle De Elite:                               0
+ Solda:                                            0
+ * Enh. Welder:                                    0
+ ** Prof. Welder:                                  0
+ *** Elite Welder:                                 0
+ Angle Grinder:                                    0</value>
     <comment>HQ Rocket</comment>
   </data>
   <data name="T119396907696605251" xml:space="preserve">
@@ -1104,16 +1104,16 @@ Subir/Descer</value>
     <comment>Crashed Shuttle</comment>
   </data>
   <data name="T123167881858177673" xml:space="preserve">
-    <value>FORA DE
-
+    <value>FORA
+ DE
 ORDEM</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T123209375839748933" xml:space="preserve">
     <value>ESTAÇÃO DE
 CONTROLE DO
 CLIENTE</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T123983074205720301" xml:space="preserve">
     <value>ENTRADA PROIBIDA
@@ -1144,7 +1144,7 @@ DE PESQUISA</value>
   </data>
   <data name="T128143755055297004" xml:space="preserve">
     <value>LUZES</value>
-    <comment>Miki Scrap</comment>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T128768918300188309" xml:space="preserve">
     <value>Smythe,
@@ -1183,7 +1183,7 @@ Smythe</value>
     <comment>Bunker in weapons Research</comment>
   </data>
   <data name="T132977230724001624" xml:space="preserve">
-    <value>SINAL DE EMERGENCIA
+    <value>SINAL DE EMERGÊNCIA
 SINALIZADOR</value>
     <comment>MRE Hidden Base</comment>
   </data>
@@ -1196,22 +1196,21 @@ SINALIZADOR</value>
     <comment>GCorp Flight Research Center</comment>
   </data>
   <data name="T134675554373261627" xml:space="preserve">
-    <value>NO CONTACTS FOUND</value>
+    <value>NENHUM CONTATO LOCALIZADO</value>
     <comment>Jim's House by MRE MedBay 1</comment>
   </data>
   <data name="T136093371177096394" xml:space="preserve">
     <value>Senhor,
  
 Tenho relatos perturbadores de nosso
-agente dentro de um grupo de
-cientistas do MRE que tiveram um
-sucesso significativo com um bioma
-contido.
+agente sobre um grupo de cientistas
+do MRE que tiveram um sucesso
+significativo com um bioma contido.
 Eles desembarcaram hoje em um
 cargueiro da classe Iguana com
 suprimentos de nutrientes de solo e
-reatores de hidrólise para expandir a
-escala do seu trabalho.
+reatores de hidrólise para expandir
+a escala do seu trabalho.
 Eles ainda não foram publicados, mas,
 quando o fizerem, aumentarão
 exponencialmente os custos da terra.
@@ -1221,16 +1220,17 @@ Smythe</value>
   </data>
   <data name="T139455670524903855" xml:space="preserve">
     <value>USE A ESTAÇÃO DE CONTROLE
-    PARA AJUSTAR A POSIÇÃO
-    DO DISPENSADOR
+  PARA AJUSTAR A POSIÇÃO
+  DO DISPENSADOR
 
-    USE O COMANDO DE LIBERAÇÃO
-    QUANTO ESTIVER PRONTO PARA
-    RECEBER OS BENS
+  USE O COMANDO DE
+  LIBERAÇÃO QUANTO
+  ESTIVER PRONTO PARA
+  RECEBER OS BENS
 
-    DESATIVAR A LIBERAÇÃO
-    PARA O PRÓXIMO CLIENTE!</value>
-    <comment>Miki Scrap</comment>
+  DESATIVE A LIBERAÇÃO
+  PARA O PRÓXIMO CLIENTE!</value>
+    <comment>Miki Sucata</comment>
   </data>
   <data name="T140053056838285883" xml:space="preserve">
     <value>PONTE
@@ -1238,7 +1238,7 @@ Smythe</value>
     <comment>HQ Rocket</comment>
   </data>
   <data name="T142327787680059637" xml:space="preserve">
-    <value>NURSE REXXAR</value>
+    <value>ENFERMEIRA REXXAR</value>
     <comment>MRE MedBay 2</comment>
   </data>
   <data name="T142625361712416552" xml:space="preserve">
@@ -1249,7 +1249,7 @@ Smythe</value>
     <value>A remessa nunca chegou: 
 
   Computadores para o
-  Mainframe</value>
+  Mainframe.</value>
     <comment>GCorp HQ Tower</comment>
   </data>
   <data name="T142828776791892368" xml:space="preserve">
@@ -1286,7 +1286,7 @@ DE REPOSIÇÃO</value>
     <comment>GCorp Flight Research Center</comment>
   </data>
   <data name="T76722197005722112" xml:space="preserve">
-    <value>Somente\n
+    <value>Somente
 Manutenção</value>
     <comment>GCorp HQ Tower</comment>
   </data>
@@ -1353,8 +1353,8 @@ Manutenção</value>
    45 TESTES NOS SISTEMA
    FALHARAM
    APOIO À VIDA: NEGATIVO
-   SISTEMAS DE SUPORTE DE VIDA
-   EM 23%
+   SISTEMAS DE SUPORTE DE
+   VIDA EM 23%
 
    CONCLUSÃO:
    REPARO HUMANO NECESSÁRIO
@@ -1364,17 +1364,17 @@ Manutenção</value>
     <comment>MRE Hidden Base</comment>
   </data>
   <data name="T82130275158280452" xml:space="preserve">
-    <value>JIM\n\n ONDE ESTÁ MEU PLATINUM SKUNK?\n\n -CUTTER</value>
+    <value>JIM\n\n ONDE ESTÁ MINHA PLATINA SKUNK?\n\n -CUTTER</value>
     <comment>Jim's House by MRE MedBay 1</comment>
   </data>
   <data name="T83845427523798018" xml:space="preserve">
     <value>NÍVEL 8 ACESSO APENAS
-COM LIBERAÇÃO</value>
+COM AUTORIZAÇÃO</value>
     <comment>weapons research</comment>
   </data>
   <data name="T84842282397051154" xml:space="preserve">
-    <value>ACESSO DE ENGENHARIA
-APENAS
+    <value>ACESSO APENAS AOS
+ENGENHEIROS
 
 
 GCORP</value>
@@ -1389,7 +1389,7 @@ GCORP</value>
     <comment>GCorp HQ Tower</comment>
   </data>
   <data name="T85441312020805004" xml:space="preserve">
-    <value>TODO\n\n MUDAR ÓLEO\n VERIFICAR PNEUS\n CORRIGIR PAINÉIS SOLARES\n   NO TELHADO</value>
+    <value>TAREFAS:\n\n -TROCAR O ÓLEO\n -VERIFICAR OS PNEUS\n -CONSERTAR OS PAINÉIS\n  SOLARES NO TELHADO</value>
     <comment>Mars Garage</comment>
   </data>
   <data name="T85854553194821606" xml:space="preserve">
@@ -1424,7 +1424,7 @@ GCORP</value>
     <comment>GCorp HQ Tower</comment>
   </data>
   <data name="T86242283427338241" xml:space="preserve">
-    <value>Nurse,\n\n We have a patient with\n serious radiation burns,\n please see to him as soon\n as you get in. \n=======================\n\n DON'T WORRY DOCTOR,\n\n I FIX, I FIX - Nurse R</value>
+    <value>Enfermeira,\n\n Temos um paciente com\n serias queimaduras radioativas,\n por favor, cuide dele rapidamente\n quando chegar. \n=======================\n\n NÃO SE PREOCUPE DOUTOR,\n\n EU RESOLVO, EU RESOLVO - Enfermeira R</value>
     <comment>Tablet @ MedBay2</comment>
   </data>
   <data name="T86380250472251270" xml:space="preserve">
@@ -1451,16 +1451,17 @@ NECESSÁRIO</value>
     <comment>Bunker in weapons Research</comment>
   </data>
   <data name="T89121948394092071" xml:space="preserve">
-    <value>Inicializando o MRED (Marte Pesquisa
-Banco de Dados da Expedição)
+    <value>Inicializando o MRED (Marte
+Pesquisa Banco de Dados da
+Expedição)
 
-Sistemas AI online ...
+Sistemas IA online...
 
-Sinal de Socorro:         ERRO CRÍTICO
-Processamento de Ar: ERRO MENOR
-Reator:                          ERRO CRÍTICO
-Sistemas Sonoros:      ERRO MENOR
-Energia de Backup:      ATIVO</value>
+Sinal de Socorro:  ERRO CRÍTICO
+Suporte Ambiental: ERRO BAIXO
+Reator:                  ERRO CRÍTICO
+Sistemas Sonoros:  ERRO BAIXO
+Energia de Backup: ATIVO</value>
     <comment>MRE Hidden Base</comment>
   </data>
   <data name="T91069750493456357" xml:space="preserve">
@@ -1481,8 +1482,8 @@ urânio. Fomos informados que essa
 informação sera lugar comum a
 qualquer momento, e um desses
 colonos ira tropeçar em um
-depósito e desencader um corrida
-do ouro.
+depósito e desencader uma nova
+corrida ao ouro.
  
 Gestão</value>
     <comment>Bunker in weapons Research</comment>
@@ -1501,11 +1502,13 @@ Gestão</value>
     <comment>HQ Rocket</comment>
   </data>
   <data name="T96403258546369540" xml:space="preserve">
-    <value>Extender\n   On/Off</value>
+    <value>
+Extender
+   On/Off</value>
     <comment>Miki Scrap</comment>
   </data>
   <data name="A106886072118273256" xml:space="preserve">
-    <value>Satélite de comunicações da Mars</value>
+    <value>Satélite de comunicações da Marte.</value>
     <comment>Mars Communications Satellite</comment>
   </data>
   <data name="A107985154416944207" xml:space="preserve">
@@ -1513,7 +1516,7 @@ Gestão</value>
     <comment>Miki Scrap</comment>
   </data>
   <data name="A118354650868624012" xml:space="preserve">
-    <value>NÃO SE APROXIMAR SEM APURAMENTO</value>
+    <value>NÃO SE APROXIME SEM AUTORIZAÇÃO</value>
     <comment>GCorp Air Base</comment>
   </data>
   <data name="A121291155732609779" xml:space="preserve">
@@ -1521,11 +1524,11 @@ Gestão</value>
     <comment>GCorp Space Transport</comment>
   </data>
   <data name="A130875671283281685" xml:space="preserve">
-    <value>NÃO SE APROXIMAR SEM APURAMENTO</value>
+    <value>NÃO SE APROXIME SEM AUTORIZAÇÃO</value>
     <comment>GCorp Air Base</comment>
   </data>
   <data name="A135868073768940823" xml:space="preserve">
-    <value>NÃO SE APROXIMAR SEM APURAMENTO</value>
+    <value>NÃO SE APROXIME SEM AUTORIZAÇÃO</value>
     <comment>GCorp Ground Base</comment>
   </data>
   <data name="A138196704256894211" xml:space="preserve">
@@ -1536,7 +1539,7 @@ Gestão</value>
     <value>Dozer</value>
   </data>
   <data name="A142063182641634049" xml:space="preserve">
-    <value>NÃO SE APROXIMAR SEM APURAMENTO</value>
+    <value>NÃO SE APROXIME SEM AUTORIZAÇÃO</value>
     <comment>GCorp Ground Base</comment>
   </data>
   <data name="A77742705396161669" xml:space="preserve">
@@ -1551,7 +1554,7 @@ Gestão</value>
     <value>amostrador de broca</value>
   </data>
   <data name="A83618452962628276" xml:space="preserve">
-    <value>NÃO SE APROXIMAR SEM APURAMENTO</value>
+    <value>NÃO SE APROXIME SEM AUTORIZAÇÃO</value>
     <comment>GCorp Ground Base</comment>
   </data>
   <data name="A88963939448436160" xml:space="preserve">
@@ -1563,7 +1566,7 @@ Gestão</value>
     <comment>Iguana Class Freighter</comment>
   </data>
   <data name="B103943960949187538" xml:space="preserve">
-    <value>Organics Not Welcome</value>
+    <value>Organicos Não São Bem-Vindos.</value>
     <comment>Mars Communications Satellite</comment>
   </data>
   <data name="B107999816899487659" xml:space="preserve">
@@ -1575,7 +1578,7 @@ Gestão</value>
     <comment>GCorp Mobile SAM</comment>
   </data>
   <data name="B114327741329818984" xml:space="preserve">
-    <value>Sede da GCorp [ADQUIRIR APROVAÇÃO PARA ABORDAR]</value>
+    <value>Sede da GCorp [NECESSARIO LIBERAÇÃO PARA ACESSO]</value>
     <comment>GCorp HQ Tower</comment>
   </data>
   <data name="B117771267643808106" xml:space="preserve">
@@ -1591,23 +1594,23 @@ Gestão</value>
     <comment>Miki Scrap</comment>
   </data>
   <data name="B131177215470147492" xml:space="preserve">
-    <value>MALFUNCTION: ERRO # 4494</value>
+    <value>MALFUNCIONAMENTO: ERRO # 4494</value>
     <comment>Shuttle Wreckage #1</comment>
   </data>
   <data name="B135742555627672015" xml:space="preserve">
-    <value>Transport Z846</value>
+    <value>Transporte Z846</value>
     <comment>GCorp Mobile SAM</comment>
   </data>
   <data name="B136127254211416530" xml:space="preserve">
-    <value>Centro de Pesquisa Aérea</value>
+    <value>Centro de Pesquisa Aérea.</value>
     <comment>Signal Station</comment>
   </data>
   <data name="B136388408526692347" xml:space="preserve">
-    <value>Sinal de socorro</value>
+    <value>Sinal de socorro.</value>
     <comment>Ruined GCorp Vehicle</comment>
   </data>
   <data name="B73619126108173423" xml:space="preserve">
-    <value>Drone de combate antigo</value>
+    <value>Antigo Drone de Combate.</value>
     <comment>Old GCorp Drone</comment>
   </data>
   <data name="B77857318468023915" xml:space="preserve">
@@ -1615,7 +1618,7 @@ Gestão</value>
     <comment>GCorp Ground Base</comment>
   </data>
   <data name="B78739418076383698" xml:space="preserve">
-    <value>Drone de combate antigo</value>
+    <value>Antigo Drone de Combate.</value>
     <comment>Old GCorp Drone</comment>
   </data>
   <data name="B80024983798728336" xml:space="preserve">
@@ -1627,11 +1630,11 @@ Gestão</value>
     <comment>GCorp Ground Base</comment>
   </data>
   <data name="B80939640883825173" xml:space="preserve">
-    <value>Drone de combate antigo</value>
+    <value>Antigo Drone de Combate.</value>
     <comment>Old GCorp Drone</comment>
   </data>
   <data name="B82332328645507954" xml:space="preserve">
-    <value>Posto Médico de Emergência MRE</value>
+    <value>Posto Médico de Emergência MRE.</value>
     <comment>MRE Emergency Medical Station</comment>
   </data>
   <data name="B86634524592378143" xml:space="preserve">
@@ -1661,7 +1664,8 @@ Gestão</value>
     <value>center</value>
   </data>
   <data name="T106394285460413007" xml:space="preserve">
-    <value>Extender
+    <value>
+Extender
   Reverter</value>
     <comment>'Hercules' Piston Crane (Vanilla)</comment>
   </data>
@@ -1669,7 +1673,7 @@ Gestão</value>
     <value>center</value>
   </data>
   <data name="T110371608100898677_padding" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="T110371608100898677_size" xml:space="preserve">
     <value>5</value>
@@ -1681,7 +1685,7 @@ Gestão</value>
     <value>center</value>
   </data>
   <data name="T119396907696605251_size" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="T127352732953182807" xml:space="preserve">
     <value>Whip Memorial
@@ -1693,7 +1697,7 @@ Loja de lembranças</value>
     <value>1.5</value>
   </data>
   <data name="T128623467162369040" xml:space="preserve">
-    <value>TRANSMISSÃO RECEBIDA ...
+    <value>TRANSMISSÃO RECEBIDA...
 
      T,
 
@@ -1718,20 +1722,23 @@ Loja de lembranças</value>
   <data name="T135823840195019440" xml:space="preserve">
     <value>ERRO 0x40EF
 
-    MARS BROADCASTING SERVICE
-    ESTÁ OFFLINE</value>
+    SERVIÇO DE TRANSMISSÃO
+    MARCIANO
+    PERMANECE OFFLINE</value>
     <comment>Abandoned Mars Shack</comment>
   </data>
   <data name="T137035464895120237" xml:space="preserve">
-    <value>Minha bateria está fraca
-e está ficando escuro</value>
+    <value>Minha bateria
+está fraca
+e está ficando
+escuro</value>
     <comment>Opportunity</comment>
   </data>
   <data name="T142991621661418713_alignment" xml:space="preserve">
     <value>center</value>
   </data>
   <data name="T142991621661418713_size" xml:space="preserve">
-    <value>7</value>
+    <value>4.6</value>
   </data>
   <data name="T143319951822334717_alignment" xml:space="preserve">
     <value>center</value>
@@ -1754,14 +1761,14 @@ e está ficando escuro</value>
     <value>Smythe,
  
 O conselho quer saber quando
-podemos adquirir ações no
-terra ao redor do outro urânio
-depósitos. A informação é
-vai se tornar comum
-conhecimento a qualquer momento, um dos
-esses colonos é certo tropeçar
-para um deles e desencadeou uma
-corrida do ouro.
+poderemos adquirir ações das
+terras ao redor dos depositos de
+urânio. Fomos informados que essa
+informação sera lugar comum a
+qualquer momento, e SEum desses
+colonos tropeçar em um depósito
+ira desencader uma nova corrida
+ao ouro.
  
 Gestão</value>
     <comment>GCorp Bunker</comment>
@@ -1774,7 +1781,7 @@ Gestão</value>
     <value>center</value>
   </data>
   <data name="T87005598531295535_padding" xml:space="preserve">
-    <value>7</value>
+    <value>17</value>
   </data>
   <data name="T87005598531295535_size" xml:space="preserve">
     <value>5</value>
@@ -1789,7 +1796,7 @@ Gestão</value>
     <value>center</value>
   </data>
   <data name="T97547981527537368" xml:space="preserve">
-    <value>HOVER BAY 1</value>
+    <value>ROVER: BAÍA I</value>
     <comment>GCorp Ground Base</comment>
   </data>
   <data name="T97547981527537368_alignment" xml:space="preserve">
@@ -1797,7 +1804,7 @@ Gestão</value>
     <comment>left,right,center</comment>
   </data>
   <data name="T97815012978320797" xml:space="preserve">
-    <value>HOVER BAY 1</value>
+    <value>ROVER: BAÍA I</value>
     <comment>GCorp Ground Base</comment>
   </data>
   <data name="T97815012978320797_alignment" xml:space="preserve">
@@ -1807,5 +1814,316 @@ Gestão</value>
   <data name="WelcomeToGcorp" xml:space="preserve">
     <value>WelcomeToGcorp_pt_BR</value>
     <comment>soundblock sound. replace value with localized audio</comment>
+  </data>
+  <data name="T72618230494179514_padding" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="T112650211190598054_padding" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="T93442238558464001_padding" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="T105777410721323302_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T97547981527537368_padding" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="T97815012978320797_padding" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="T105777410721323302_padding" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="T139455670524903855_size" xml:space="preserve">
+    <value>1.352</value>
+  </data>
+  <data name="T108840172688336316_size" xml:space="preserve">
+    <value>1.352</value>
+  </data>
+  <data name="T123167881858177673_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T123167881858177673_padding" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="T128143755055297004_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T128143755055297004_padding" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="T110853790184710627_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T110853790184710627_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T112112793066134801_size" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="T112112793066134801_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T108450012927909707_size" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="T108450012927909707_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T115445256264180919_size" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="T115445256264180919_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T96403258546369540_size" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="T96403258546369540_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T106394285460413007_size" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="T106394285460413007_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T142991621661418713_padding" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="T91522547712251695_size" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="T91522547712251695_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T91522547712251695_padding" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="T119396907696605251_padding" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="T108488677170964366_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T108488677170964366_padding" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="T83845427523798018_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T83845427523798018_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T83845427523798018_padding" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="T124418170114666546_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T124418170114666546_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T124418170114666546_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T103510832821425962_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T103510832821425962_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T103510832821425962_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T125988292358464782_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T125988292358464782_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T125988292358464782_padding" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="T88608941859622846_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T88608941859622846_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T88608941859622846_padding" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="T91069750493456357_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T91069750493456357_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T91069750493456357_padding" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="T101085728829590847_size" xml:space="preserve">
+    <value>1.100</value>
+  </data>
+  <data name="T128768918300188309_size" xml:space="preserve">
+    <value>1.100</value>
+  </data>
+  <data name="T130862794454016677_size" xml:space="preserve">
+    <value>1.100</value>
+  </data>
+  <data name="T136093371177096394_size" xml:space="preserve">
+    <value>1.080</value>
+  </data>
+  <data name="T93302907874761586_size" xml:space="preserve">
+    <value>1.100</value>
+  </data>
+  <data name="T78975817285695063_size" xml:space="preserve">
+    <value>1.100</value>
+  </data>
+  <data name="T120136635151312472_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T120136635151312472_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T120136635151312472_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T117087962786183236_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T117087962786183236_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T117087962786183236_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T109969046554135449_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T109969046554135449_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T109969046554135449_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T142625361712416552_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T142625361712416552_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T142625361712416552_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T101419842949782053_size" xml:space="preserve">
+    <value>1.185</value>
+  </data>
+  <data name="T100805083727067672_size" xml:space="preserve">
+    <value>1.185</value>
+  </data>
+  <data name="T114123195861242522_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T114123195861242522_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T114123195861242522_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T87367419229874157_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T87367419229874157_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T87367419229874157_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T132977230724001624_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T132977230724001624_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T132977230724001624_padding" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="T85372231632250420_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T85372231632250420_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T85372231632250420_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T76722197005722112_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T76722197005722112_padding" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="T84893899376328615_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T84893899376328615_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="T84893899376328615_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T109612659496363471" xml:space="preserve">
+    <value>ENFERMEIRA ReXXAR</value>
+    <comment>MRE MedBay 2</comment>
+  </data>
+  <data name="T109612659496363471_padding" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="T109612659496363471_size" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="T109612659496363471_alignment" xml:space="preserve">
+    <value>center</value>
+    <comment>left,right,center</comment>
+  </data>
+  <data name="EndCredits_file" xml:space="preserve">
+    <value>EndCredits_pt_BR</value>
+  </data>
+  <data name="NATO25x184mmConvoyDispatched_file1" xml:space="preserve">
+    <value>NATO25x184mmConvoyDispatched_pt_BR</value>
+  </data>
+  <data name="NATO56x45mmConvoyDispatched_subtitle" xml:space="preserve">
+    <value>Comboio de Munição NATO 56x45mm despachado</value>
   </data>
 </root>
