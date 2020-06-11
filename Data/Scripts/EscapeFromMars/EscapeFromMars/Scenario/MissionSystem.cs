@@ -189,7 +189,7 @@ namespace EscapeFromMars
             AddInterest(gasGenID);
 //            ModLog.Info("AddedInterest()");
 
-            AddTimePrompt(1, new TimeSpan(0, 0, 1),
+            AddTimePrompt(1, new TimeSpan(0, 0, 0),
             TurnBlockOff(outgoingID),
             TurnBlockOff(icomingID),
             TurnBlockOff(friendlyFireID),
@@ -207,10 +207,10 @@ namespace EscapeFromMars
 
             // battery
 
-            AddTimePrompt(5, new TimeSpan(0, 0, 5),
+            AddTimePrompt(5, new TimeSpan(0, 0, 2),
 				PlayAudioClip(AudioClip.ShuttleDamageReport));
 
-            AddTimePrompt(7, new TimeSpan(0, 0, 11), TurnBlockOn(batteryID), PlayAudioClip(AudioClip.MabelPowerUpClipped));
+            AddTimePrompt(7, new TimeSpan(0, 0, 15), TurnBlockOn(batteryID), PlayAudioClip(AudioClip.MabelPowerUpClipped));
 
 
             // Medbay and gas Gen
