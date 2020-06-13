@@ -26,7 +26,7 @@ namespace EscapeFromMars
 
 		private static readonly DateTime ZeroDate = new DateTime(1970, 1, 1);
 
-        bool bDumpLocalization = true;
+        bool bDumpLocalization = false;
 
         internal BaseManager(HeatSystem heatSystem, QueuedAudioSystem audioSystem)
 		{
@@ -120,22 +120,12 @@ namespace EscapeFromMars
                 var gatling = slim.FatBlock as IMyLargeGatlingTurret;
  //              gatling.Range get only :(
             }
-            // fix up the LCD blocks with show on hud // V27
-            var slimBlocksT = new List<IMySlimBlock>();
-            grid.GetBlocks(slimBlocksT, b => b.FatBlock is IMyTextPanel);
-            foreach (var slim in slimBlocksT)
-            {
-                var textPanel = slim.FatBlock as IMyTextPanel;
-                textPanel.ShowOnHUD = false;
-            }
 
             // fix up the beacon blocks  // V26
+            //V 36: dump and get localization
             var slimBlocksB = new List<IMySlimBlock>();
             grid.GetBlocks(slimBlocksB, b => b.FatBlock is IMyBeacon);
-
-
             if (bDumpLocalization) ModLog.Info("BEACON");
-
             foreach (var slim in slimBlocksB)
             {
                 var beacon = slim.FatBlock as IMyBeacon;
@@ -145,21 +135,34 @@ namespace EscapeFromMars
                     string sName = beacon.CustomName;
                     ModLog.Info("Fixing Beacon Text:" + sName);
                     beacon.CustomName = sName.Replace("CLEANCE", "CLEARANCE");
-
-
                 }
                 if (bDumpLocalization) ModLog.Info(" B" + beacon.EntityId.ToString()+" :"+ beacon.CustomName);
+                MyStringId beaconID;
+                if (MyStringId.TryGet("B" + beacon.EntityId.ToString(), out beaconID))
+                {
+                    // we found size setting
+                    string str = VRage.MyTexts.Get(beaconID).ToString();
+                    beacon.CustomName = str;
+                }
 
             }
 
+
+            //V 36: dump and get localization
             if (bDumpLocalization) ModLog.Info("Antenna");
             var slimBlocksA = new List<IMySlimBlock>();
             grid.GetBlocks(slimBlocksA, b => b.FatBlock is IMyRadioAntenna);
-
             foreach (var slim in slimBlocksA)
             {
                 var antenna = slim.FatBlock as IMyRadioAntenna;
                 if (bDumpLocalization) ModLog.Info(" A" + antenna.EntityId.ToString()+ " : "+ antenna.CustomName);
+                MyStringId antenaID;
+                if (MyStringId.TryGet("A" + antenna.EntityId.ToString(), out antenaID))
+                {
+                    // we found size setting
+                    string str = VRage.MyTexts.Get(antenaID).ToString();
+                    antenna.CustomName = str;
+                }
             }
 
 
@@ -170,9 +173,12 @@ namespace EscapeFromMars
             foreach (var slim in slimBlocks)
             {
                 var textPanel = slim.FatBlock as IMyTextPanel;
+
+                textPanel.ShowOnHUD = false; // optimize; only one pass through textpanels
+
                 //bool bShow = textPanel.GetValueBool("ShowTextOnScreen");
                 // V 1.190
-                bool bShow=textPanel.ContentType == VRage.Game.GUI.TextPanel.ContentType.TEXT_AND_IMAGE;
+                bool bShow =textPanel.ContentType == VRage.Game.GUI.TextPanel.ContentType.TEXT_AND_IMAGE;
                 //                bool bShow = textPanel.ShowOnScreen != VRage.Game.GUI.TextPanel.ShowTextOnScreenFlag.NONE;
                 if (bShow)
                 {
