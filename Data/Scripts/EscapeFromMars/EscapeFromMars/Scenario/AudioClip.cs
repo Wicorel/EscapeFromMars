@@ -22,15 +22,33 @@ namespace EscapeFromMars
 		internal static readonly Speaker Miki = new Speaker("Miki", MyFontEnum.White);
 		internal static readonly Speaker None = new Speaker("None", MyFontEnum.BuildInfo);
 
-// radio sound  https://www.youtube.com/watch?v=YantpouC4Mk
+        // radio sound  https://www.youtube.com/watch?v=YantpouC4Mk
 
-		internal string Name { get; }
-		internal MyFontEnum Font { get; }
+        internal string _name;
+		internal string Name
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_name))
+                {
+//                    ModLog.Info("Null file name for: " + _name);
+                    return _name;
+                }
+                MyStringId NameID;
+                if (!MyStringId.TryGet("Speaker_"+_name, out NameID))
+                {
+                    ModLog.Info("No MYTEXT file name for:" + _name + ": Using default");
+                    return _name;
+                }
+                return VRage.MyTexts.Get(NameID).ToString();
+            }
+        }
+        internal MyFontEnum Font { get; }
 
 		private Speaker(string name, MyFontEnum font)
 		{
 			Font = font;
-			Name = name;
+			_name = name;
 		}
 	}
 

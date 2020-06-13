@@ -1479,4 +1479,25 @@ Management</value>
   <data name="EndCredits_file" xml:space="preserve">
     <value>EndCredits</value>
   </data>
+  <data name="Speaker_Experimental Mech" xml:space="preserve">
+    <value>Experimental Mech</value>
+  </data>
+  <data name="Speaker_GCorp Transmission" xml:space="preserve">
+    <value>GCorp Transmission</value>
+  </data>
+  <data name="Speaker_Mabel" xml:space="preserve">
+    <value>Mabel</value>
+  </data>
+  <data name="Speaker_Miki" xml:space="preserve">
+    <value>Miki</value>
+  </data>
+  <data name="Speaker_MR.ED" xml:space="preserve">
+    <value>MR.ED</value>
+  </data>
+  <data name="Speaker_None" xml:space="preserve">
+    <value>none</value>
+  </data>
+  <data name="T142828776791892368_size" xml:space="preserve">
+    <value>1.1</value>
+  </data>
 </root>

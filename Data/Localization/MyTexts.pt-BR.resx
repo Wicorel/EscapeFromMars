@@ -2126,4 +2126,22 @@ Gestão</value>
   <data name="NATO56x45mmConvoyDispatched_subtitle" xml:space="preserve">
     <value>Comboio de Munição NATO 56x45mm despachado</value>
   </data>
+  <data name="Speaker_Experimental Mech" xml:space="preserve">
+    <value>Experimental Mech</value>
+  </data>
+  <data name="Speaker_GCorp Transmission" xml:space="preserve">
+    <value>GCorp Transmission</value>
+  </data>
+  <data name="Speaker_Mabel" xml:space="preserve">
+    <value>Mabel</value>
+  </data>
+  <data name="Speaker_Miki" xml:space="preserve">
+    <value>Miki</value>
+  </data>
+  <data name="Speaker_MR.ED" xml:space="preserve">
+    <value>MR.ED</value>
+  </data>
+  <data name="Speaker_None" xml:space="preserve">
+    <value>none</value>
+  </data>
 </root>
