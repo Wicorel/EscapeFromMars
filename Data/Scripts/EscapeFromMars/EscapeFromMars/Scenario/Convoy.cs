@@ -173,7 +173,7 @@ namespace EscapeFromMars
                                 // force it to use Keen Autopilot
                                 remoteControl.ClearWaypoints();
                                 remoteControl.AddWaypoint(Destination, "Target");
-                                remoteControl.SpeedLimit = 10;
+                                remoteControl.SpeedLimit = 10; // should come from NPCGroupManager
                                 remoteControl.SetAutoPilotEnabled(true);
 
                                 /*
