@@ -177,6 +177,8 @@ namespace Duckroll
 		/// <param name="toRemove"></param>
 		public static void RemoveFromFirstBeaconName(this IMyCubeGrid grid, string toRemove)
 		{
+            if (string.IsNullOrWhiteSpace(toRemove)) return;
+
 			var slimBlocks = new List<IMySlimBlock>();
 			grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyBeacon);
 			foreach (var slim in slimBlocks)
