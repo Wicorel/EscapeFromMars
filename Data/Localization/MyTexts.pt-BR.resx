@@ -267,7 +267,7 @@ Se for o caso, você morreria horrivelmente.</value>
     <value>As plantas mostram que deveria haver um elevador aqui. Estranho. Elas devem estar desatualizadas.</value>
   </data>
   <data name="EndCredits_subtitle" xml:space="preserve">
-    <value>...Transmitindo dados em todas as frequências...
+    <value>...Transmitindo dados em todas as frequências... /n 
 [O cenário está completo. É recomendável remover o Mod EscapeFromMars se você quiser continuar jogando]</value>
   </data>
   <data name="EnemyDetectedMovingToIntercept_file" xml:space="preserve">
@@ -374,7 +374,7 @@ A G-Corp está bloqueando todos os sinais do planeta, exceto os deles.</value>
   </data>
   <data name="GCorpFacilitiesHeavilyArmed_subtitle" xml:space="preserve">
     <value>O escaneamento mostra que as instalações da G-Corp na área são cuidadosamente vigiadas,
-se aproximar de uma não é recomendado, a menos que você esteja bem armado.</value>
+se aproximar não é recomendado, a menos que você esteja bem armado.</value>
   </data>
   <data name="GCorpFacilityThreatened_file" xml:space="preserve">
     <value>GCorpFacilityThreatened_pt_BR</value>
@@ -501,7 +501,7 @@ Vou envia-los para você, se eles parecerem relevantes.</value>
     <value>Os invasores devem ser destruídos.</value>
   </data>
   <data name="InvestigatingBackupCall" xml:space="preserve">
-    <value> Investigando um pedido de ajuda.</value>
+    <value> Investigando pedido de ajuda.</value>
     <comment>BackupGroup Needs initial space</comment>
   </data>
   <data name="LargeTubeConvoyDispatched_file" xml:space="preserve">
@@ -599,10 +599,10 @@ Algumas delas ainda podem estar em funcionamento.</value>
   <data name="NATO25x184mmConvoyDispatched_subtitle" xml:space="preserve">
     <value>Comboio de Munição NATO 25x184mm despachado.</value>
   </data>
-  <data name="NATO_5p56x45mmConvoyDispatched_file" xml:space="preserve">
-    <value>NATO_5p56x45mmConvoyDispatched_pt_BR</value>
+  <data name="NATO5656x45mmConvoyDispatched_file" xml:space="preserve">
+    <value>NATO5656x45mmConvoyDispatched_pt_BR</value>
   </data>
-  <data name="NATO_5p56x45mmConvoyDispatched_subtitle" xml:space="preserve">
+  <data name="NATO5656x45mmConvoyDispatched_subtitle" xml:space="preserve">
     <value>Comboio de Munição NATO 56x45mm despachado.</value>
   </data>
   <data name="NewMikiScrapsOpen_file" xml:space="preserve">
@@ -955,7 +955,7 @@ RECICLAGEM</value>
     <comment>Bunker de pesquisas de armas</comment>
   </data>
   <data name="T105777410721323302" xml:space="preserve">
-    <value>ROVER: BAÍA I</value>
+    <value>ROVER: BAIA I</value>
     <comment>Base Terrestre Gamma</comment>
   </data>
   <data name="T108450012927909707" xml:space="preserve">
@@ -1009,7 +1009,8 @@ no forno</value>
     <comment>Miki Sucata</comment>
   </data>
   <data name="T112112793066134801" xml:space="preserve">
-    <value>GIRAR
+    <value>
+GIRAR
 Iniciar/Parar</value>
     <comment>Miki Sucata</comment>
   </data>
@@ -1294,7 +1295,7 @@ Manutenção</value>
     <value>Escaneando formas de
   vida não autorizadas.
 
-  Terminando não-GCorp 
+  Deterrminado não-GCorp 
   Pessoal no Sector 10</value>
     <comment>GCorp HQ Tower</comment>
   </data>
@@ -1796,7 +1797,7 @@ Gestão</value>
     <value>center</value>
   </data>
   <data name="T97547981527537368" xml:space="preserve">
-    <value>ROVER: BAÍA I</value>
+    <value>ROVER: BAIA I</value>
     <comment>GCorp Ground Base</comment>
   </data>
   <data name="T97547981527537368_alignment" xml:space="preserve">
@@ -1804,7 +1805,7 @@ Gestão</value>
     <comment>left,right,center</comment>
   </data>
   <data name="T97815012978320797" xml:space="preserve">
-    <value>ROVER: BAÍA I</value>
+    <value>ROVER: BAIA I</value>
     <comment>GCorp Ground Base</comment>
   </data>
   <data name="T97815012978320797_alignment" xml:space="preserve">
@@ -2124,7 +2125,7 @@ Gestão</value>
     <value>NATO25x184mmConvoyDispatched_pt_BR</value>
   </data>
   <data name="NATO56x45mmConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Munição NATO 56x45mm despachado</value>
+    <value>Comboio de Munição NATO 56x45mm despachado.</value>
   </data>
   <data name="Speaker_Experimental Mech" xml:space="preserve">
     <value>Experimental Mech</value>

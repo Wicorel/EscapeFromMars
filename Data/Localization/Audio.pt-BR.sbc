@@ -7,7 +7,7 @@
         <SubtypeId>ConvoyArrivedSafely_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -22,7 +22,7 @@
         <SubtypeId>ConvoyDispatched1_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -37,7 +37,7 @@
         <SubtypeId>ConvoyDispatched2_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -52,7 +52,7 @@
         <SubtypeId>ConvoyDispatched3_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -142,7 +142,7 @@
         <SubtypeId>GCorpBlockingSignals_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -157,7 +157,7 @@
         <SubtypeId>GCorpFacilitiesHeavilyArmed_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -187,7 +187,7 @@
         <SubtypeId>GCorpTowerScan_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -202,7 +202,7 @@
         <SubtypeId>HackProgrammingBlocks_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -277,7 +277,7 @@
         <SubtypeId>LocatedIceMine_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -292,7 +292,7 @@
         <SubtypeId>MarsGCorpOperationsExplained_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -322,7 +322,7 @@
         <SubtypeId>OldFreighterFound_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -337,7 +337,7 @@
         <SubtypeId>OxygenGeneratorUnlocked_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -352,7 +352,7 @@
         <SubtypeId>RingAroundMars_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -367,7 +367,7 @@
         <SubtypeId>ShuttleDamage_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -382,7 +382,7 @@
         <SubtypeId>ShuttleDatabanks_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -397,7 +397,7 @@
         <SubtypeId>SuggestPiracy_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -472,7 +472,7 @@
         <SubtypeId>TurretsAtTheMine_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -502,7 +502,7 @@
         <SubtypeId>UnlockAtmospherics_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -517,7 +517,7 @@
         <SubtypeId>UnlockedMissiles_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -547,7 +547,7 @@
         <SubtypeId>OxygenFarmUnlocked_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -562,7 +562,7 @@
         <SubtypeId>DistressBeaconSilly_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -577,7 +577,7 @@
         <SubtypeId>EscapedMars_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -592,7 +592,7 @@
         <SubtypeId>FlightResearchCenter_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -607,7 +607,7 @@
         <SubtypeId>OlympusMons_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -622,7 +622,7 @@
         <SubtypeId>WeaponsResearchFacility_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -667,7 +667,7 @@
         <SubtypeId>GasStorageUnlocked_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -682,7 +682,7 @@
         <SubtypeId>InterceptingTransmissions_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -697,7 +697,7 @@
         <SubtypeId>AllTechUnlocked_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -742,7 +742,7 @@
         <SubtypeId>NotifyOfSatellite_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -772,7 +772,7 @@
         <SubtypeId>ExplosivesNearby_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -787,7 +787,7 @@
         <SubtypeId>PowerSignatureBehindWall_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -802,7 +802,7 @@
         <SubtypeId>FoundFilesOnNetwork_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -817,7 +817,7 @@
         <SubtypeId>IceMineFoundByAccident_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -832,7 +832,7 @@
         <SubtypeId>AccidentallyFoundFlightResearchCenter_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -847,7 +847,7 @@
         <SubtypeId>WeaponsFacilityFoundByAccident_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -862,7 +862,7 @@
         <SubtypeId>OhDear_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.8</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -877,7 +877,7 @@
         <SubtypeId>WelcomeBack_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.8</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -892,7 +892,7 @@
         <SubtypeId>ExperimentProgress_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.8</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -907,7 +907,7 @@
         <SubtypeId>ElevatorHere_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -922,7 +922,7 @@
         <SubtypeId>ArmorVehicles_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.8</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -937,7 +937,7 @@
         <SubtypeId>FaintPowerSignature_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.8</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -952,7 +952,7 @@
         <SubtypeId>MreDefunded_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.8</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1222,7 +1222,7 @@
         <SubtypeId>BasicWeaponsUnlocked_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.5</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1237,7 +1237,7 @@
         <SubtypeId>SteelPlateConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1252,7 +1252,7 @@
         <SubtypeId>SteelPlateConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1267,7 +1267,7 @@
         <SubtypeId>ConstructionConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1282,7 +1282,7 @@
         <SubtypeId>InteriorPlateConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1297,7 +1297,7 @@
         <SubtypeId>GirderConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1312,7 +1312,7 @@
         <SubtypeId>SmallTubeConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1327,7 +1327,7 @@
         <SubtypeId>LargeTubeConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1342,7 +1342,7 @@
         <SubtypeId>MotorConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1357,7 +1357,7 @@
         <SubtypeId>DisplayConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1372,7 +1372,7 @@
         <SubtypeId>BulletproofGlassConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1387,7 +1387,7 @@
         <SubtypeId>ComputerConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1402,7 +1402,7 @@
         <SubtypeId>ReactorConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1417,7 +1417,7 @@
         <SubtypeId>MedicalConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1432,7 +1432,7 @@
         <SubtypeId>RadioCommunicationConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1447,7 +1447,7 @@
         <SubtypeId>ExplosivesConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1462,7 +1462,7 @@
         <SubtypeId>SolarCellConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1477,7 +1477,7 @@
         <SubtypeId>PowerCellConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1492,7 +1492,7 @@
         <SubtypeId>NATO56x45mmConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1507,7 +1507,7 @@
         <SubtypeId>NATO25x184mmConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1522,7 +1522,7 @@
         <SubtypeId>Missile200mmConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
@@ -1537,7 +1537,7 @@
         <SubtypeId>UraniumConvoyDispatched_pt_BR</SubtypeId>
       </Id>
       <MaxDistance>1</MaxDistance>
-      <Volume>0.4</Volume>
+      <Volume>1.0</Volume>
       <Loopable>false</Loopable>
       <Pitch>0</Pitch>
       <Waves>
