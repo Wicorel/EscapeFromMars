@@ -146,7 +146,6 @@ namespace EscapeFromMars
 
             var slimBlocks = new List<IMySlimBlock>();
 
-
         }
 
         public override void Close()

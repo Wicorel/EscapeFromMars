@@ -149,23 +149,23 @@ namespace EscapeFromMars
 			EscapeFromMars.Speaker.Mabel,
 			@"Our adversary has full control of the Martian surface. 
 All of the initial colonists were ""removed"" following their acquistion of exclusive mining rights. 
-G-Corp is blocking all signals from the planet except their own.",
+GCorp is blocking all signals from the planet except their own.",
 			13000);
 
 		internal static readonly AudioClip GCorpFacilitiesHeavilyArmed = Create("GCorpFacilitiesHeavilyArmed", "GCorpFacilitiesHeavilyArmed",					// USED
 			EscapeFromMars.Speaker.Mabel,
-			@"Scanning shows G-Corp facilities in the area are carefully guarded, 
+			@"Scanning shows GCorp facilities in the area are carefully guarded, 
 approaching one is not recommended unless heavily armed yourself",
 			8000);
 
 		internal static readonly AudioClip GCorpFacilityThreatened = Create("GCorpFacilityThreatened", "GCorpFacilityThreatened",
 		EscapeFromMars.Speaker.GCorp,
 			// USED
-			"G-Corp facility threatened, dispatching additional drones");
+			"GCorp facility threatened, dispatching additional drones");
 
 		internal static readonly AudioClip GCorpTowerScan = Create("GCorpTowerScan", "GCorpTowerScan", EscapeFromMars.Speaker.Mabel,
 		// USED
-			@"I am detecting unusual readings inside the G-Corp headquarters tower.
+			@"I am detecting unusual readings inside the GCorp headquarters tower.
 It may be a way to leave the planet, however safer options may exist [This area is extremely dangerous]",
 			10000);
 
@@ -195,7 +195,7 @@ Uploading coordinates to suit HUD.", 7000);
 		internal static readonly AudioClip MarsGCorpOperationsExplained = Create("MarsGCorpOperationsExplained", "MarsGCorpOperationsExplained",
 		EscapeFromMars.Speaker
 		.Mabel,	// USED
-			@"Mars is littered with G-Corp facilities and operations. They have exclusive access to the planet's surface since the
+			@"Mars is littered with GCorp facilities and operations. They have exclusive access to the planet's surface since the
 colonists were relocated. Magnesium, aluminium, titanium, iron, and chromium make up the majority of their exports.", 16000);
 
 		internal static readonly AudioClip MilitaryPatrolInitiated = Create("MilitaryPatrolInitiated", "MilitaryPatrolInitiated",
@@ -211,7 +211,7 @@ Repairing it will take some time, but it may also be your only way to leave Mars
 		internal static readonly AudioClip OxygenGeneratorUnlocked = Create("OxygenGeneratorUnlocked", "OxygenGeneratorUnlocked",
 		EscapeFromMars.Speaker.Mabel,
 		// USED
-			"Searching G-Corp data files. Oxygen generator technology unlocked!", 5000);
+			"Searching GCorp data files. Oxygen generator technology unlocked!", 5000);
 
 		internal static readonly AudioClip PowerUpClipped = Create("PowerUpClipped", "PowerUpClipped", EscapeFromMars.Speaker.None, "");
 
@@ -232,12 +232,12 @@ Multiple GCorp drones detected nearby",
 		internal static readonly AudioClip ShuttleDatabanks = Create("ShuttleDatabanks", "ShuttleDatabanks", EscapeFromMars.Speaker.Mabel,
 			// USED
 			@"Shuttle data-banks do not contain construction blueprints for atmospheric or hydrogen based propulsion.
-Recommend investigating G-Corp computer storage",
+Recommend investigating GCorp computer storage",
 			10000);
 
 		internal static readonly AudioClip SuggestPiracy = Create("SuggestPiracy", "SuggestPiracy", EscapeFromMars.Speaker.Mabel,
 			// USED
-			@"I have calculated the optimal method to acquire resources is by intercepting G-Corp cargo transports.
+			@"I have calculated the optimal method to acquire resources is by intercepting GCorp cargo transports.
 However, be aware that they may increase security if too many of their shipments go missing",
 			12000);
 
@@ -256,7 +256,7 @@ However, be aware that they may increase security if too many of their shipments
 			"Target lost, return to positions");
 
 		internal static readonly AudioClip TurretsAtTheMine = Create("TurretsAtTheMine", "TurretsAtTheMine", EscapeFromMars.Speaker.Mabel,
-			"Detecting active computers around the mine. Be cautious of G-Corp  security turrets",
+			"Detecting active computers around the mine. Be cautious of GCorp  security turrets",
 			6000);
 
 		internal static readonly AudioClip UnknownHostileOnScanners = Create("UnknownHostileOnScanners", "UnknownHostileOnScanners",
@@ -265,10 +265,10 @@ However, be aware that they may increase security if too many of their shipments
 			"Unknown hostile showing up on scanners. Engaging");
 
 		internal static readonly AudioClip UnlockAtmospherics = Create("UnlockAtmospherics", "UnlockAtmospherics", EscapeFromMars.Speaker
-		.Mabel, "Searching G-Corp data files. Atmospheric thruster technology unlocked!", 5000);
+		.Mabel, "Searching GCorp data files. Atmospheric thruster technology unlocked!", 5000);
 
 		internal static readonly AudioClip UnlockedMissiles = Create("UnlockedMissiles", "UnlockedMissiles", EscapeFromMars.Speaker.Mabel,
-			"Searching G-Corp data files. Missile technology unlocked!", 5000);
+			"Searching GCorp data files. Missile technology unlocked!", 5000);
 
 		internal static readonly AudioClip OxygenFarmUnlocked = Create("OxygenFarmUnlocked", "OxygenFarmUnlocked", EscapeFromMars.Speaker.Mabel,
 		// USED
@@ -302,7 +302,7 @@ Uploading to suit hud.", 9000);
 
 		internal static readonly AudioClip GasStorageUnlocked = Create("GasStorageUnlocked", "GasStorageUnlocked", EscapeFromMars.Speaker.Mabel,
 		//USED
-			"Searching G-Corp data files. Gas storage technology unlocked.", 4000);
+			"Searching GCorp data files. Gas storage technology unlocked.", 4000);
 
 		internal static readonly AudioClip InterceptingTransmissions = Create("InterceptingTransmissions", "InterceptingTransmissions",
 		EscapeFromMars.Speaker.Mabel,
@@ -451,7 +451,7 @@ Just follow antenna signal!", 16000);
             {
                 if (string.IsNullOrWhiteSpace(_filename))
                 {
-                    ModLog.Info("Null file name for:" + UniqueSoundName);
+//                    ModLog.Info("Null file name for: " + UniqueSoundName);
                     return _filename;
                 }
                 MyStringId fileNameID;

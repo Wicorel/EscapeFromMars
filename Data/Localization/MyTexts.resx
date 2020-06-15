@@ -129,7 +129,7 @@
   <data name="AllTechUnlocked_subtitle" xml:space="preserve">
     <value>All technologies unlocked.</value>
   </data>
-  <data name="AreaExtremelyDangerous" xml:space="preserve">
+  <data name="This area is extremely dangerous" xml:space="preserve">
     <value>This area is extremely dangerous</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -165,7 +165,7 @@
     <value />
     <comment>audioclip</comment>
   </data>
-  <data name="CommunicationsSatellite" xml:space="preserve">
+  <data name="Communications Satellite" xml:space="preserve">
     <value>Communications Satellite</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -306,7 +306,7 @@
   <data name="FacilityDetectedHostile_subtitle" xml:space="preserve">
     <value>Facility scanners have picked up a hostile. Dispatch nearby patrols to location.</value>
   </data>
-  <data name="FacilityNotOnAnyOfficalMap" xml:space="preserve">
+  <data name="This facility was not on any official maps" xml:space="preserve">
     <value>This facility was not on any official maps</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -322,7 +322,7 @@
   <data name="FlightResearchCenter_subtitle" xml:space="preserve">
     <value>Corporation records indicate there is a flight research station on Mars with technology blueprints you may find useful.\nUploading coordinates to suit hud.</value>
   </data>
-  <data name="FlightResearchStation" xml:space="preserve">
+  <data name="Flight Research Station" xml:space="preserve">
     <value>Flight Research Station</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -348,39 +348,39 @@
     <value>GasStorageUnlocked</value>
   </data>
   <data name="GasStorageUnlocked_subtitle" xml:space="preserve">
-    <value>Searching G-Corp data files. Gas storage technology unlocked.</value>
+    <value>Searching GCorp data files. Gas storage technology unlocked.</value>
   </data>
   <data name="GCorpBlockingSignals_file" xml:space="preserve">
     <value>GCorpBlockingSignals</value>
   </data>
   <data name="GCorpBlockingSignals_subtitle" xml:space="preserve">
-    <value>Our adversary has full control of the Martian surface.\nAll of the initial colonists were ""removed"" following their acquistion of exclusive mining rights.\nG-Corp is blocking all signals from the planet except their own.</value>
+    <value>Our adversary has full control of the Martian surface.\nAll of the initial colonists were ""removed"" following their acquistion of exclusive mining rights.\nGCorp is blocking all signals from the planet except their own.</value>
   </data>
   <data name="GCorpFacilitiesHeavilyArmed_file" xml:space="preserve">
     <value>GCorpFacilitiesHeavilyArmed</value>
   </data>
   <data name="GCorpFacilitiesHeavilyArmed_subtitle" xml:space="preserve">
-    <value>Scanning shows G-Corp facilities in the area are carefully guarded,\napproaching one is not recommended unless heavily armed yourself</value>
+    <value>Scanning shows GCorp facilities in the area are carefully guarded,\napproaching one is not recommended unless heavily armed yourself</value>
   </data>
   <data name="GCorpFacilityThreatened_file" xml:space="preserve">
     <value>GCorpFacilityThreatened</value>
   </data>
   <data name="GCorpFacilityThreatened_subtitle" xml:space="preserve">
-    <value>G-Corp facility threatened, dispatching additional drones</value>
+    <value>GCorp facility threatened, dispatching additional drones</value>
   </data>
-  <data name="GCorpFlightResearchStation" xml:space="preserve">
+  <data name="GCorp Flight Research Station" xml:space="preserve">
     <value>GCorp Flight Research Station</value>
     <comment>MissionSystem (gps)</comment>
   </data>
-  <data name="GCorpHeadquarters" xml:space="preserve">
-    <value>G-Corp Headquarters</value>
+  <data name="GCorp Headquarters" xml:space="preserve">
+    <value>GCorp Headquarters</value>
     <comment>MissionSystem (gps)</comment>
   </data>
-  <data name="GCorpHiddenFileContents" xml:space="preserve">
+  <data name="GCorp hidden file contents" xml:space="preserve">
     <value>GCorp hidden file contents</value>
     <comment>MissionSystem (gps)</comment>
   </data>
-  <data name="GCorpIceMine" xml:space="preserve">
+  <data name="GCorp Ice Mine" xml:space="preserve">
     <value>GCorp Ice Mine</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -388,7 +388,7 @@
     <value>GCorpTowerScan</value>
   </data>
   <data name="GCorpTowerScan_subtitle" xml:space="preserve">
-    <value>I am detecting unusual readings inside the G-Corp headquarters tower.\nIt may be a way to leave the planet, however safer options may exist [This area is extremely dangerous]</value>
+    <value>I am detecting unusual readings inside the GCorp headquarters tower.\nIt may be a way to leave the planet, however safer options may exist [This area is extremely dangerous]</value>
   </data>
   <data name="GirderConvoyDispatched_file" xml:space="preserve">
     <value>GirderConvoyDispatched</value>
@@ -418,11 +418,11 @@
     <value>Hack in progress:</value>
     <comment>ResearchHacking</comment>
   </data>
-  <data name="HiddenFilesFoundByMabel" xml:space="preserve">
+  <data name="Hidden files found by Mabel" xml:space="preserve">
     <value>Hidden files found by Mabel</value>
     <comment>MissionSystem (gps)</comment>
   </data>
-  <data name="HiddenSiteofMRE" xml:space="preserve">
+  <data name="Hidden site of Mars Research Expeditions terraforming poject" xml:space="preserve">
     <value>Hidden site of Mars Research Expeditions terraforming poject</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -444,7 +444,7 @@
   <data name="IceMineFoundByAccident_subtitle" xml:space="preserve">
     <value>You have located a disused corporation ice mining facility. This will be a valuable resource for oxygen generation.</value>
   </data>
-  <data name="IllegalGCorpResearchFacility" xml:space="preserve">
+  <data name="Illegal GCorp Research Facility" xml:space="preserve">
     <value>Illegal GCorp Research Facility</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -514,7 +514,7 @@
   <data name="MabelUncoveringFiles_subtitle" xml:space="preserve">
     <value>Decrypting Computer files</value>
   </data>
-  <data name="MarsCommunicationsSatellite" xml:space="preserve">
+  <data name="Mars Communications Satellite" xml:space="preserve">
     <value>Mars Communications Satellite</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -522,10 +522,10 @@
     <value>MarsGCorpOperationsExplained</value>
   </data>
   <data name="MarsGCorpOperationsExplained_subtitle" xml:space="preserve">
-    <value>Mars is littered with G-Corp facilities and operations. They have exclusive access to the planet's surface since the
+    <value>Mars is littered with GCorp facilities and operations. They have exclusive access to the planet's surface since the
  colonists were relocated. Magnesium, aluminium, titanium, iron, and chromium make up the majority of their exports.</value>
   </data>
-  <data name="MarsIceMininigFacility" xml:space="preserve">
+  <data name="Mars ice mining facility" xml:space="preserve">
     <value>Mars ice mining facility</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -565,7 +565,7 @@
   <data name="MreDefunded_subtitle" xml:space="preserve">
     <value>The Mars Research Expedition was defunded after their terraforming projects on mars failed.\nHowever, they also ran several emergency medical facilities around the planet.\nSome of them may still be in working order.</value>
   </data>
-  <data name="MREExperimentSite" xml:space="preserve">
+  <data name="MRE Experiment Site" xml:space="preserve">
     <value>MRE Experiment Site</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -621,7 +621,7 @@
     <value>OxygenGeneratorUnlocked</value>
   </data>
   <data name="OxygenGeneratorUnlocked_subtitle" xml:space="preserve">
-    <value>Searching G-Corp data files. Oxygen generator technology unlocked!</value>
+    <value>Searching GCorp data files. Oxygen generator technology unlocked!</value>
   </data>
   <data name="PartOfBuilding_file" xml:space="preserve">
     <value>PartOfBuilding</value>
@@ -675,7 +675,7 @@
   <data name="RingAroundMars_subtitle" xml:space="preserve">
     <value>By my calculations, in 27.6 million years Phobos will be torn apart by gravitational forces,\nleading to the creation of a ring around Mars</value>
   </data>
-  <data name="SecretWeaponResearchFacility" xml:space="preserve">
+  <data name="Secret Weapon Research Facility" xml:space="preserve">
     <value>Secret Weapon Research Facility</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -692,7 +692,7 @@
     <value>Shuttle has taken critical damage. Communications offline. Engines not found.\nMultiple GCorp drones detected nearby</value>
   </data>
   <data name="ShuttleDatabanks_subtitle" xml:space="preserve">
-    <value>Shuttle data-banks do not contain construction blueprints for atmospheric or hydrogen based propulsion.\nRecommend investigating G-Corp computer storage</value>
+    <value>Shuttle data-banks do not contain construction blueprints for atmospheric or hydrogen based propulsion.\nRecommend investigating GCorp computer storage</value>
   </data>
   <data name="ShuttleDatabanks_file" xml:space="preserve">
     <value>ShuttleDatabanks</value>
@@ -719,9 +719,9 @@
     <value>SuggestPiracy</value>
   </data>
   <data name="SuggestPiracy_subtitle" xml:space="preserve">
-    <value>I have calculated the optimal method to acquire resources is by intercepting G-Corp cargo transports.\nHowever, be aware that they may increase security if too many of their shipments go missing</value>
+    <value>I have calculated the optimal method to acquire resources is by intercepting GCorp cargo transports.\nHowever, be aware that they may increase security if too many of their shipments go missing</value>
   </data>
-  <data name="SuspiciousStorageFacility" xml:space="preserve">
+  <data name="Suspicious Storage Facility" xml:space="preserve">
     <value>Suspicious Storage Facility</value>
     <comment>MissionSystem (gps)</comment>
   </data>
@@ -775,7 +775,7 @@
     <value>TurretsAtTheMine</value>
   </data>
   <data name="TurretsAtTheMine_subtitle" xml:space="preserve">
-    <value>Detecting active computers around the mine. Be cautious of G-Corp  security turrets</value>
+    <value>Detecting active computers around the mine. Be cautious of GCorp  security turrets</value>
   </data>
   <data name="UnknownHostileOnScanners_file" xml:space="preserve">
     <value>UnknownHostileOnScanners</value>
@@ -787,13 +787,13 @@
     <value>UnlockAtmospherics</value>
   </data>
   <data name="UnlockAtmospherics_subtitle" xml:space="preserve">
-    <value>Searching G-Corp data files. Atmospheric thruster technology unlocked!</value>
+    <value>Searching GCorp data files. Atmospheric thruster technology unlocked!</value>
   </data>
   <data name="UnlockedMissiles_file" xml:space="preserve">
     <value>UnlockedMissiles</value>
   </data>
   <data name="UnlockedMissiles_subtitle" xml:space="preserve">
-    <value>Searching G-Corp data files. Missile technology unlocked!</value>
+    <value>Searching GCorp data files. Missile technology unlocked!</value>
   </data>
   <data name="UraniumConvoyDispatched_file" xml:space="preserve">
     <value>UraniumConvoyDispatched</value>
@@ -1478,6 +1478,114 @@ Management</value>
   </data>
   <data name="EndCredits_file" xml:space="preserve">
     <value>EndCredits</value>
+  </data>
+  <data name="Crash Site" xml:space="preserve">
+    <value>Crash Site</value>
+    <comment>Mission GPS</comment>
+  </data>
+  <data name="G104361129531664144" xml:space="preserve">
+    <value>MRE Experiment Base</value>
+    <comment>Grid Name</comment>
+  </data>
+  <data name="G104401314853855872" xml:space="preserve">
+    <value>GCorp Ground Base</value>
+    <comment>Ground Base Gamma</comment>
+  </data>
+  <data name="G108245713014936511" xml:space="preserve">
+    <value>Old GCorp Drone</value>
+    <comment>Grid Name</comment>
+  </data>
+  <data name="G109860709347788978" xml:space="preserve">
+    <value>GCorp Air Base</value>
+    <comment>Air Base Alpha</comment>
+  </data>
+  <data name="G110760975034878882" xml:space="preserve">
+    <value>GCorp Air Base</value>
+    <comment>Air Base Beta</comment>
+  </data>
+  <data name="G114105633279074526" xml:space="preserve">
+    <value>Ruined GCorp Vehicle</value>
+    <comment>Grid Name</comment>
+  </data>
+  <data name="G117297155456773569" xml:space="preserve">
+    <value>Mars Garage</value>
+    <comment>Grid Name</comment>
+  </data>
+  <data name="G119098008400517704" xml:space="preserve">
+    <value>GCorp Hangar</value>
+    <comment>hangar 2 @ Air Research</comment>
+  </data>
+  <data name="G120085596920753880" xml:space="preserve">
+    <value>MRE Emergency Medical Station</value>
+    <comment>MRE MedBay 2</comment>
+  </data>
+  <data name="G121781861229132223" xml:space="preserve">
+    <value>MRE Emergency Medical Station</value>
+    <comment>MRE MedBay 1</comment>
+  </data>
+  <data name="G132649980418733079" xml:space="preserve">
+    <value>GCorp Bunker</value>
+    <comment>Bunker in weapons Research</comment>
+  </data>
+  <data name="G135216604045890710" xml:space="preserve">
+    <value>Miki Scrap</value>
+    <comment>Miki Scrap</comment>
+  </data>
+  <data name="G137699461534422634" xml:space="preserve">
+    <value>GCorp Ground Base</value>
+    <comment>Ground Base Beta</comment>
+  </data>
+  <data name="G139030682896359375" xml:space="preserve">
+    <value>Signal Station</value>
+    <comment>Signal Station @ Medbay2</comment>
+  </data>
+  <data name="G141539423784393296" xml:space="preserve">
+    <value>Ruined Refuling Station</value>
+    <comment>Grid Name</comment>
+  </data>
+  <data name="G144104082158837389" xml:space="preserve">
+    <value>GCorp HQ Tower</value>
+    <comment>GCorp HQ Tower</comment>
+  </data>
+  <data name="G76779347935557670" xml:space="preserve">
+    <value>GCorp Flight Research Center</value>
+    <comment>Grid Name</comment>
+  </data>
+  <data name="G77425199507156893" xml:space="preserve">
+    <value>Jim's House</value>
+    <comment>Jim's House @ MRE Medbay 1</comment>
+  </data>
+  <data name="G82956013501475003" xml:space="preserve">
+    <value>GCorp Mobile SAM</value>
+    <comment>wheeled vehicle in mainframe</comment>
+  </data>
+  <data name="G84998510375140511" xml:space="preserve">
+    <value>GCorp Ground Base</value>
+    <comment>Grid Name Ground base Alpha</comment>
+  </data>
+  <data name="G86773281471237981" xml:space="preserve">
+    <value>Signal Station</value>
+    <comment>signal station at air research</comment>
+  </data>
+  <data name="G86938570775375127" xml:space="preserve">
+    <value>GCorp Hangar</value>
+    <comment>Hanger 1 @ air research</comment>
+  </data>
+  <data name="G88755030636380323" xml:space="preserve">
+    <value>GCorp Hangar</value>
+    <comment>hangar 3 @ air research</comment>
+  </data>
+  <data name="G91712174990175924" xml:space="preserve">
+    <value>Iguana Class Freighter</value>
+    <comment>Grid Name</comment>
+  </data>
+  <data name="G92770753627258475" xml:space="preserve">
+    <value>Crashed Shuttle</value>
+    <comment>Grid Name</comment>
+  </data>
+  <data name="G97585502667028994" xml:space="preserve">
+    <value>GCorp Space Transport</value>
+    <comment>HQ Rocket</comment>
   </data>
   <data name="Speaker_Experimental Mech" xml:space="preserve">
     <value>Experimental Mech</value>

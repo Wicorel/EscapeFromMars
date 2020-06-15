@@ -49,9 +49,12 @@ namespace EscapeFromMars
 		private readonly Vector3D mreMedFacility1 = new Vector3D(1857942.38, -2006158.62, 1324054);
 		private readonly Vector3D droneWreck = new Vector3D(1854936.75, -2006193.25, 1325297.5);
 
-        // GPS:Opportunity:1859277.56:-2019476.58:1327135.68:
+        private readonly Vector3D crashSite = new Vector3D(1868092.62,-2003480.62,1316653.75);
 
-		private readonly QueuedAudioSystem audioSystem;
+        // GPS:Opportunity:1859277.56:-2019476.58:1327135.68:
+        // GPS:Crash Site:1868092.62:-2003480.62:1316653.75:
+
+        private readonly QueuedAudioSystem audioSystem;
 		private readonly ResearchControl researchControl;
 		private readonly DateTime missionStartTime;
 		private readonly HashSet<int> excludedIDs;
@@ -66,6 +69,9 @@ namespace EscapeFromMars
         private int modBuildWhenLastSaved;
 
          List<IMyTerminalBlock> cachedTerminalBlocks = new List<IMyTerminalBlock>();
+
+        /*
+        private bool bMyTextInit = false;
 
         private MyStringId GCorpIceMineID;
         private MyStringId MarsIceMininigFacilityID;
@@ -90,7 +96,7 @@ namespace EscapeFromMars
 
         private MyStringId MREExperimentSiteID;
         private MyStringId HiddenSiteofMREID;
-
+        */
         internal MissionSystem(int modBuildWhenLastSaved, Version gameVersion, long missionStartTimeBinary, HashSet<int> alreadyExecutedPrompts,
 			QueuedAudioSystem audioSystem, ResearchControl researchControl)
 		{
@@ -105,30 +111,6 @@ namespace EscapeFromMars
             GeneratePrompts();
 			timeBasedPrompts.Sort((x, y) => -x.TriggerTime.CompareTo(y.TriggerTime));
 
-            GCorpIceMineID = MyStringId.TryGet("GCorpIceMine");
-            MarsIceMininigFacilityID = MyStringId.TryGet("MarsIceMininigFacility");
-
-            FlightResearchStationID = MyStringId.TryGet("FlightResearchStation");
-            GCorpFlightResearchStationID = MyStringId.TryGet("GCorpFlightResearchStation");
-
-            SecretWeaponResearchFacilityID = MyStringId.TryGet("SecretWeaponResearchFacility");
-            IllegalGCorpResearchFacilityID = MyStringId.TryGet("IllegalGCorpResearchFacility");
-
-            SuspiciousStorageFacilityID = MyStringId.TryGet("SuspiciousStorageFacility");
-            FacilityNotOnAnyOfficalMapID = MyStringId.TryGet("FacilityNotOnAnyOfficalMap");
-
-            CommunicationsSatelliteID = MyStringId.TryGet("CommunicationsSatellite");
-            MarsCommunicationsSatelliteID = MyStringId.TryGet("MarsCommunicationsSatellite");
-
-            GCorpHeadquartersID = MyStringId.TryGet("GCorpHeadquarters");
-            AreaExtremelyDangerousID = MyStringId.TryGet("AreaExtremelyDangerous");
-
-
-            GCorpHiddenFileContentsID = MyStringId.TryGet("GCorpHiddenFileContents");
-            HiddenFilesFoundByMabelID = MyStringId.TryGet("HiddenFilesFoundByMabel");
-
-            MREExperimentSiteID = MyStringId.TryGet("MREExperimentSite");
-            HiddenSiteofMREID = MyStringId.TryGet("HiddenSiteofMRE");
 
         //            ModLog.Info("Start Time = " + missionStartTime.ToString());
         ModLog.Info("Current Mission Length: " + (MyAPIGateway.Session.GameDateTime - missionStartTime).ToString(@"hh\:mm\:ss")); //V27
@@ -201,16 +183,21 @@ namespace EscapeFromMars
             TurnBlockOff(alarmSoundID),
  //           TurnBlockOff(medbayID), DO NOT TURN OFF.  NEEDED TO SPAWN PLAYERS!!!
             TurnBlockOn(medbayID),
-            TurnBlockOff(batteryID),
+//            TurnBlockOff(batteryID),
             TurnBlockOff(gasGenID)
                 );
 
             // battery
 
-            AddTimePrompt(5, new TimeSpan(0, 0, 2),
-				PlayAudioClip(AudioClip.ShuttleDamageReport));
+            AddTimePrompt(5, new TimeSpan(0, 0, 2)
+				,PlayAudioClip(AudioClip.ShuttleDamageReport)
+                ,AddGps("Crash Site", "Crash Site", crashSite)
+                );
 
-            AddTimePrompt(7, new TimeSpan(0, 0, 15), TurnBlockOn(batteryID), PlayAudioClip(AudioClip.MabelPowerUpClipped));
+            AddTimePrompt(7, new TimeSpan(0, 0, 15)
+                ,TurnBlockOn(batteryID)
+                ,PlayAudioClip(AudioClip.MabelPowerUpClipped)
+                );
 
 
             // Medbay and gas Gen
@@ -257,13 +244,13 @@ namespace EscapeFromMars
 
 			AddTimePrompt(40, new TimeSpan(0, 10, 0),
 				PlayAudioClip(AudioClip.LocatedIceMine),
-                AddGps(VRage.MyTexts.Get(GCorpIceMineID).ToString(), VRage.MyTexts.Get(MarsIceMininigFacilityID).ToString(), iceMineCoords));
-//            AddGps("GCorp Ice Mine", "Mars ice mining facility", iceMineCoords));
+//                AddGps(VRage.MyTexts.Get(GCorpIceMineID).ToString(), VRage.MyTexts.Get(MarsIceMininigFacilityID).ToString(), iceMineCoords));
+            AddGps("GCorp Ice Mine", "Mars ice mining facility", iceMineCoords));
 
             AddProximityPrompt(40, iceMineCoords, 300,
 				PlayAudioClip(AudioClip.IceMineFoundByAccident),
-                AddGps(VRage.MyTexts.Get(GCorpIceMineID).ToString(), VRage.MyTexts.Get(MarsIceMininigFacilityID).ToString(), iceMineCoords));
-            //			AddGps("GCorp Ice Mine", "Mars ice mining facility", iceMineCoords));
+//                AddGps(VRage.MyTexts.Get(GCorpIceMineID).ToString(), VRage.MyTexts.Get(MarsIceMininigFacilityID).ToString(), iceMineCoords));
+           			AddGps("GCorp Ice Mine", "Mars ice mining facility", iceMineCoords));
 
             AddTimePrompt(45, new TimeSpan(0, 15, 0),
 				PlayAudioClip(AudioClip.ArmorVehicles),TurnBlockOn(80461927256500036));
@@ -276,13 +263,13 @@ namespace EscapeFromMars
 
 			AddTimePrompt(70, new TimeSpan(2, 0, 0),
 				PlayAudioClip(AudioClip.FlightResearchCenter),
-                AddGps(VRage.MyTexts.Get(FlightResearchStationID).ToString(), VRage.MyTexts.Get(GCorpFlightResearchStationID).ToString(), flightResearchStationCoords));
-//            AddGps("Flight Research Station", "GCorp Flight Research Station", flightResearchStationCoords));
+//                AddGps(VRage.MyTexts.Get(FlightResearchStationID).ToString(), VRage.MyTexts.Get(GCorpFlightResearchStationID).ToString(), flightResearchStationCoords));
+            AddGps("Flight Research Station", "GCorp Flight Research Station", flightResearchStationCoords));
 
 			AddProximityPrompt(70, flightResearchStationCoords, 1000,
 				PlayAudioClip(AudioClip.AccidentallyFoundFlightResearchCenter),
-                AddGps(VRage.MyTexts.Get(FlightResearchStationID).ToString(), VRage.MyTexts.Get(GCorpFlightResearchStationID).ToString(), flightResearchStationCoords));
-            //				AddGps("Flight Research Station", "GCorp Flight Research Station", flightResearchStationCoords));
+//                AddGps(VRage.MyTexts.Get(FlightResearchStationID).ToString(), VRage.MyTexts.Get(GCorpFlightResearchStationID).ToString(), flightResearchStationCoords));
+				AddGps("Flight Research Station", "GCorp Flight Research Station", flightResearchStationCoords));
 
             AddTimePrompt(80, new TimeSpan(3, 0, 0),
 				PlayAudioClip(AudioClip.MarsGCorpOperationsExplained));
@@ -290,18 +277,18 @@ namespace EscapeFromMars
 //            AddTimePrompt(90, new TimeSpan(5, 0, 0),
             AddTimePrompt(90, new TimeSpan(4, 0, 0), // Changed V12 Reduce time to reveal
                 PlayAudioClip(AudioClip.WeaponsResearchFacility),
-                AddGps(VRage.MyTexts.Get(SecretWeaponResearchFacilityID).ToString(), VRage.MyTexts.Get(IllegalGCorpResearchFacilityID).ToString(), weaponsResearchStationCoords));
-            // 				AddGps("Secret Weapon Research Facility", "Illegal GCorp Research Facility", weaponsResearchStationCoords));
+//                AddGps(VRage.MyTexts.Get(SecretWeaponResearchFacilityID).ToString(), VRage.MyTexts.Get(IllegalGCorpResearchFacilityID).ToString(), weaponsResearchStationCoords));
+ 				AddGps("Secret Weapon Research Facility", "Illegal GCorp Research Facility", weaponsResearchStationCoords));
 
             AddProximityPrompt(90, weaponsResearchStationCoords, 200,
 				PlayAudioClip(AudioClip.WeaponsFacilityFoundByAccident),
-         AddGps(VRage.MyTexts.Get(SuspiciousStorageFacilityID).ToString(), VRage.MyTexts.Get(FacilityNotOnAnyOfficalMapID).ToString(), weaponsResearchStationCoords));
-            // 				AddGps("Suspicious Storage Facility", "This facility was not on any official maps", weaponsResearchStationCoords));
+//         AddGps(VRage.MyTexts.Get(SuspiciousStorageFacilityID).ToString(), VRage.MyTexts.Get(FacilityNotOnAnyOfficalMapID).ToString(), weaponsResearchStationCoords));
+ 				AddGps("Suspicious Storage Facility", "This facility was not on any official maps", weaponsResearchStationCoords));
 
             AddTimePrompt(100, new TimeSpan(6, 0, 0),
 				PlayAudioClip(AudioClip.NotifyOfSatellite),
-                AddObjectiveGps(VRage.MyTexts.Get(CommunicationsSatelliteID).ToString(), VRage.MyTexts.Get(MarsCommunicationsSatelliteID).ToString(), commsSatellite, Color.LawnGreen));
-//            AddObjectiveGps("Communications Satellite", "Mars Communications Satellite", commsSatellite, Color.LawnGreen));
+//                AddObjectiveGps(VRage.MyTexts.Get(CommunicationsSatelliteID).ToString(), VRage.MyTexts.Get(MarsCommunicationsSatelliteID).ToString(), commsSatellite, Color.LawnGreen));
+            AddObjectiveGps("Communications Satellite", "Mars Communications Satellite", commsSatellite, Color.LawnGreen));
 
             AddTimePrompt(110, new TimeSpan(7, 0, 0),
 				PlayAudioClip(AudioClip.RingAroundMars));
@@ -319,8 +306,8 @@ namespace EscapeFromMars
 
 			AddProximityPrompt(140, gCorpHqTower, 3000,
 				PlayAudioClip(AudioClip.GCorpTowerScan),
-                AddObjectiveGps(VRage.MyTexts.Get(GCorpHeadquartersID).ToString(), VRage.MyTexts.Get(AreaExtremelyDangerousID).ToString(), gCorpHqTower, Color.LightBlue)
-//                AddObjectiveGps("G-Corp Headquarters", "This area is extremely dangerous",gCorpHqTower,Color.LightBlue)
+//                AddObjectiveGps(VRage.MyTexts.Get(GCorpHeadquartersID).ToString(), VRage.MyTexts.Get(AreaExtremelyDangerousID).ToString(), gCorpHqTower, Color.LightBlue)
+                AddObjectiveGps("GCorp Headquarters", "This area is extremely dangerous",gCorpHqTower,Color.LightBlue)
                 );
 
 
@@ -341,22 +328,22 @@ namespace EscapeFromMars
 
 			AddProximityPrompt(200, computerSystems, 13,
 				PlayAudioClip(AudioClip.FoundFilesOnNetwork),
-                AddGps(VRage.MyTexts.Get(GCorpHiddenFileContentsID).ToString(), VRage.MyTexts.Get(HiddenFilesFoundByMabelID).ToString(), computerSystems),
-                AddObjectiveGps(VRage.MyTexts.Get(MREExperimentSiteID).ToString(), VRage.MyTexts.Get(HiddenSiteofMREID).ToString(), hiddenMreBase, Color.LightBlue)
-//                AddGps("GCorp hidden file contents", "Hidden files found by Mabel", computerSystems),
-//                AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue)
+//                AddGps(VRage.MyTexts.Get(GCorpHiddenFileContentsID).ToString(), VRage.MyTexts.Get(HiddenFilesFoundByMabelID).ToString(), computerSystems),
+//                AddObjectiveGps(VRage.MyTexts.Get(MREExperimentSiteID).ToString(), VRage.MyTexts.Get(HiddenSiteofMREID).ToString(), hiddenMreBase, Color.LightBlue)
+                AddGps("GCorp hidden file contents", "Hidden files found by Mabel", computerSystems),
+                AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue)
                 );
 
             // V 12 Add other ways to find out about MRE base.  The two 'far' ground bases have computer systems that reveal the location
             AddProximityPrompt(200, GBAlphacomputerSystems, 13,
                 PlayAudioClip(AudioClip.FoundFilesOnNetwork),
-                AddObjectiveGps(VRage.MyTexts.Get(MREExperimentSiteID).ToString(), VRage.MyTexts.Get(HiddenSiteofMREID).ToString(), hiddenMreBase, Color.LightBlue)
-                //                AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue)
+//                AddObjectiveGps(VRage.MyTexts.Get(MREExperimentSiteID).ToString(), VRage.MyTexts.Get(HiddenSiteofMREID).ToString(), hiddenMreBase, Color.LightBlue)
+                AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue)
                 );
             AddProximityPrompt(200, GBGammacomputerSystems, 13,
                 PlayAudioClip(AudioClip.FoundFilesOnNetwork),
-                AddObjectiveGps(VRage.MyTexts.Get(MREExperimentSiteID).ToString(), VRage.MyTexts.Get(HiddenSiteofMREID).ToString(), hiddenMreBase, Color.LightBlue)
-                //                AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue)
+//                AddObjectiveGps(VRage.MyTexts.Get(MREExperimentSiteID).ToString(), VRage.MyTexts.Get(HiddenSiteofMREID).ToString(), hiddenMreBase, Color.LightBlue)
+                AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue)
                 );
 
 
@@ -397,12 +384,44 @@ namespace EscapeFromMars
 
 		internal static Action AddGps(string name, string description, Vector3D coords)
 		{
-			return () => { DuckUtils.AddGpsToAllPlayers(name, description, coords); };
+            MyStringId nameID;
+            MyStringId descriptionID;
+
+            string _name = name;
+            string _description = description;
+
+            if (MyStringId.TryGet(name, out nameID))
+            {
+                _name = VRage.MyTexts.Get(nameID).ToString();
+//                ModLog.Info("Found GPS localization for " + name+ " as:" + _name);
+            }
+            else ModLog.Info("No name found for GPS:" + name);
+            if (MyStringId.TryGet(description, out descriptionID))
+            {
+                _description = VRage.MyTexts.Get(descriptionID).ToString();
+//                ModLog.Info("Found GPS localization for " + description + " as:" + _description);
+            }
+
+            return () => { DuckUtils.AddGpsToAllPlayers(_name, _description, coords); };
 		}
 
         internal static Action AddObjectiveGps(string name, string description, Vector3D coords, Color color)
         {
-            return () => { MyVisualScriptLogicProvider.AddGPSObjectiveForAll(name, description, coords, color); };
+            MyStringId nameID;
+            MyStringId descriptionID;
+
+            string _name = name;
+            string _description = description;
+            if (MyStringId.TryGet(name, out nameID))
+            {
+                _name = VRage.MyTexts.Get(nameID).ToString();
+            }
+            if (MyStringId.TryGet(name, out descriptionID))
+            {
+                _description = VRage.MyTexts.Get(descriptionID).ToString();
+            }
+
+            return () => { MyVisualScriptLogicProvider.AddGPSObjectiveForAll(_name, _description, coords, color); };
         }
 
 
@@ -513,7 +532,37 @@ namespace EscapeFromMars
 
 		public override void Update60()
 		{
-			UpdateLocationBasedPrompts();
+            /*
+            if(!bMyTextInit)
+            {
+                bMyTextInit = true;
+                GCorpIceMineID = MyStringId.TryGet("GCorpIceMine");
+                MarsIceMininigFacilityID = MyStringId.TryGet("MarsIceMininigFacility");
+
+                FlightResearchStationID = MyStringId.TryGet("FlightResearchStation");
+                GCorpFlightResearchStationID = MyStringId.TryGet("GCorpFlightResearchStation");
+
+                SecretWeaponResearchFacilityID = MyStringId.TryGet("SecretWeaponResearchFacility");
+                IllegalGCorpResearchFacilityID = MyStringId.TryGet("IllegalGCorpResearchFacility");
+
+                SuspiciousStorageFacilityID = MyStringId.TryGet("SuspiciousStorageFacility");
+                FacilityNotOnAnyOfficalMapID = MyStringId.TryGet("FacilityNotOnAnyOfficalMap");
+
+                CommunicationsSatelliteID = MyStringId.TryGet("CommunicationsSatellite");
+                MarsCommunicationsSatelliteID = MyStringId.TryGet("MarsCommunicationsSatellite");
+
+                GCorpHeadquartersID = MyStringId.TryGet("GCorpHeadquarters");
+                AreaExtremelyDangerousID = MyStringId.TryGet("AreaExtremelyDangerous");
+
+
+                GCorpHiddenFileContentsID = MyStringId.TryGet("GCorpHiddenFileContents");
+                HiddenFilesFoundByMabelID = MyStringId.TryGet("HiddenFilesFoundByMabel");
+
+                MREExperimentSiteID = MyStringId.TryGet("MREExperimentSite");
+                HiddenSiteofMREID = MyStringId.TryGet("HiddenSiteofMRE");
+            }
+            */
+            UpdateLocationBasedPrompts();
 			UpdateTimeBasedPrompts();
 		}
 

@@ -96,6 +96,15 @@ namespace EscapeFromMars
                 Vector3D gridPos = grid.GetPosition();
                 ModLog.Info(" GPS:" + grid.CustomName + ":" + gridPos.X.ToString("0.00") + ":" + gridPos.Y.ToString("0.00") + ":" + gridPos.Z.ToString("0.00") + ":");
             }
+
+            MyStringId gridID;
+            if (MyStringId.TryGet("G" + grid.EntityId.ToString(), out gridID))
+            {
+                // we found grid name
+                string str = VRage.MyTexts.Get(gridID).ToString();
+                grid.CustomName = str;
+            }
+
             bool bMiki = false;
             if (grid.EntityId == 135216604045890710)
                 bMiki = true;
