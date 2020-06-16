@@ -142,7 +142,30 @@ namespace Duckroll
                 ownerId: factionId);
 		}
 
-		internal static void AddGpsToAllPlayers(string name, string description, Vector3D coords)
+        internal static void RenameGPS(string name, string toName, string toDescription)
+        {
+            if (name == toName) return;
+
+            var gpsSystem = MyAPIGateway.Session.GPS;
+            var players = new List<IMyPlayer>();
+            MyAPIGateway.Players.GetPlayers(players);
+            foreach (var myPlayer in players)
+            {
+                List<IMyGps> list = new List<IMyGps>();
+                gpsSystem.GetGpsList(myPlayer.IdentityId, list);
+                foreach (var mygps in list)
+                {
+                    if(mygps.Name==name)
+                    {
+                        mygps.Name = toName;
+                        mygps.Description = toDescription;
+                        break;
+                    }
+                }
+            }
+        }
+
+        internal static void AddGpsToAllPlayers(string name, string description, Vector3D coords)
 		{
 			var gpsSystem = MyAPIGateway.Session.GPS;
 			var gps = gpsSystem.Create(name, description, coords, true);
@@ -151,8 +174,8 @@ namespace Duckroll
 			foreach (var myPlayer in players)
 			{
 				gpsSystem.AddGps(myPlayer.IdentityId, gps);
-			}
-		}
+            }
+        }
 
 		internal static bool IsPlayerId(long id)
 		{
