@@ -65,6 +65,11 @@ namespace EscapeFromMars
             string sTranslationBy = VRage.MyTexts.Get(TranslationByID).ToString();
             if (!string.IsNullOrWhiteSpace(sTranslationBy))
                 sInit += "\n  " + sTranslationBy;
+
+            var AudioByID = MyStringId.TryGet("AudioBy");
+            string sAudioBy = VRage.MyTexts.Get(AudioByID).ToString();
+            if (!string.IsNullOrWhiteSpace(sAudioBy))
+                sInit += "\n  " + sAudioBy;
             //            string sInit = "Initialising Escape From Mars build " + CurrentModVersion;
 
             MyAPIGateway.Utilities.ShowNotification(sInit, 5000, MyFontEnum.DarkBlue);

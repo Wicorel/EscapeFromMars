@@ -1479,6 +1479,10 @@ Management</value>
   <data name="EndCredits_file" xml:space="preserve">
     <value>EndCredits</value>
   </data>
+  <data name="AudioBy" xml:space="preserve">
+    <value />
+    <comment>Audio recorded by.  The "producer" of the audio portion of the translation. Put "Audio by" as part of string..</comment>
+  </data>
   <data name="Crash Site" xml:space="preserve">
     <value>Crash Site</value>
     <comment>MissionSystem (gps)</comment>
@@ -1586,6 +1590,14 @@ Management</value>
   <data name="G97585502667028994" xml:space="preserve">
     <value>GCorp Space Transport</value>
     <comment>HQ Rocket</comment>
+  </data>
+  <data name="shipment_append" xml:space="preserve">
+    <value>shipment</value>
+    <comment>added to end of localized component name in shipments</comment>
+  </data>
+  <data name="shipment_prepend" xml:space="preserve">
+    <value />
+    <comment>put in front of localized component name in shipments</comment>
   </data>
   <data name="Speaker_Experimental Mech" xml:space="preserve">
     <value>Experimental Mech</value>

@@ -397,7 +397,20 @@ namespace EscapeFromMars
                         if (unitType == UnitType.Air) sPrefix += "A";
                         else sPrefix += "G";
 
-                        grid.SetAllBeaconNames(sPrefix + random.Next(10000, 99999) + " - " + cargoType.GetDisplayName() + " Shipment",
+                        string prepend = "";
+                        string append = " Shipment";
+                        MyStringId stringID;
+                        if (MyStringId.TryGet("shipment_prepend", out stringID))
+                        {
+                            prepend=VRage.MyTexts.Get(stringID).ToString()+" ";
+                        }
+                        if (MyStringId.TryGet("shipment_append", out stringID))
+                        {
+                            append = " "+ VRage.MyTexts.Get(stringID).ToString();
+                        }
+
+
+                        grid.SetAllBeaconNames(sPrefix + random.Next(10000, 99999) + " - " + prepend + cargoType.GetDisplayName() + append,
 							200f); // V31 set short until initialize check timeout
 						var destination = unitType == UnitType.Air ? airConvoyDestinationPosition : groundConvoyDestinationPosition;
 

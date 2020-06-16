@@ -801,7 +801,7 @@ No entanto, esteja ciente de que eles podem aumentar a segurança se muitas de s
     <value>Cansado de triturar porcaria? Nós podemos fazer isso! Miki Sucata.</value>
   </data>
   <data name="TranslationBy" xml:space="preserve">
-    <value>Tradução por Aggelus</value>
+    <value>Traduzido por Aggelus</value>
     <comment>Who did the translation? If non whitespace it will display after init string.  Put "Translated By" as part of text. EfmCore.cs</comment>
   </data>
   <data name="TurretsAtTheMine_file" xml:space="preserve">
@@ -2253,10 +2253,22 @@ Gestão</value>
     <value>Sr.ED</value>
   </data>
   <data name="Speaker_None" xml:space="preserve">
-    <value>none</value>
+    <value></value>
   </data>
   <data name="Crash Site" xml:space="preserve">
     <value>Local da Queda</value>
     <comment>Mission GPS</comment>
+  </data>
+  <data name="AudioBy" xml:space="preserve">
+    <value>Audio por Aggelus</value>
+    <comment>Audio recorded by.  The "producer" of the audio portion of the translation. Put "Audio by" as part of string..</comment>
+  </data>
+  <data name="shipment_append" xml:space="preserve">
+    <value>Enviado</value>
+    <comment>added to end of localized component name in shipments</comment>
+  </data>
+  <data name="shipment_prepend" xml:space="preserve">
+    <value />
+    <comment>put in front of localized component name in shipments</comment>
   </data>
 </root>
