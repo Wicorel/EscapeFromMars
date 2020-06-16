@@ -191,7 +191,8 @@ namespace EscapeFromMars
 
             AddTimePrompt(5, new TimeSpan(0, 0, 2)
 				,PlayAudioClip(AudioClip.ShuttleDamageReport)
-                ,AddGps("Crash Site", "Crash Site", crashSite)
+                , LocalizeGps("Crash Site", "Crash Site")
+ //               , AddGps("Crash Site", "Crash Site", crashSite)
                 );
 
             AddTimePrompt(7, new TimeSpan(0, 0, 15)
@@ -382,7 +383,30 @@ namespace EscapeFromMars
             };
 		}
 
-		internal static Action AddGps(string name, string description, Vector3D coords)
+        internal static Action LocalizeGps(string name, string description)
+        {
+            MyStringId nameID;
+            MyStringId descriptionID;
+
+            string _name = name;
+            string _description = description;
+
+            if (MyStringId.TryGet(name, out nameID))
+            {
+                _name = VRage.MyTexts.Get(nameID).ToString();
+                //                ModLog.Info("Found GPS localization for " + name+ " as:" + _name);
+            }
+            else ModLog.Info("No name found for GPS:" + name);
+            if (MyStringId.TryGet(description, out descriptionID))
+            {
+                _description = VRage.MyTexts.Get(descriptionID).ToString();
+                //                ModLog.Info("Found GPS localization for " + description + " as:" + _description);
+            }
+
+            return () => { DuckUtils.RenameGPS(name,_name, _description); };
+        }
+
+        internal static Action AddGps(string name, string description, Vector3D coords)
 		{
             MyStringId nameID;
             MyStringId descriptionID;
