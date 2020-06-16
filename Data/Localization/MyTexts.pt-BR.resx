@@ -131,7 +131,7 @@ Enviando as coordenadas para o seu HUD.</value>
     <value>Todas as tecnologias desbloqueadas.</value>
   </data>
   <data name="This area is extremely dangerous" xml:space="preserve">
-    <value>Esta área é extremamente perigosa.</value>
+    <value>Esta área é extremamente perigosa</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="ArmorVehicles_file" xml:space="preserve">
@@ -168,7 +168,7 @@ Para áreas especialmente hostis, você pode usar drones em vez de arriscar sua 
     <comment>audioclip</comment>
   </data>
   <data name="Communications Satellite" xml:space="preserve">
-    <value>Communications Satellite</value>
+    <value>Satélite de Comunicações</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="ComputerConvoyDispatched_file" xml:space="preserve">
@@ -283,7 +283,7 @@ Se for o caso, você morreria horrivelmente.</value>
     <value>Nós escapamos com sucesso da gravidade marciana. Nenhuma perseguição detectada.</value>
   </data>
   <data name="EscortName" xml:space="preserve">
-    <value>Convoy Escort</value>
+    <value>Escolta do Comboio</value>
     <comment>NpcGroupManager</comment>
   </data>
   <data name="ExperimentProgress_file" xml:space="preserve">
@@ -312,7 +312,7 @@ A atmosfera é de 95% de nitrogênio, 3% de oxigênio, 1% de argônio, pequenas 
     <value>Os sensores das instalações detectaram intrusos. Enviar patrulhas próximas para a localização.</value>
   </data>
   <data name="This facility was not on any official maps" xml:space="preserve">
-    <value>Centro de Pesquisas ilegais da GCorp.</value>
+    <value>Centro de Pesquisas ilegais da GCorp</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="FaintPowerSignature_file" xml:space="preserve">
@@ -329,7 +329,7 @@ A atmosfera é de 95% de nitrogênio, 3% de oxigênio, 1% de argônio, pequenas 
 Enviando as coordenadas para o seu HUD.</value>
   </data>
   <data name="Flight Research Station" xml:space="preserve">
-    <value>Centro de Pesquisa de Propulsores.</value>
+    <value>Centro de Pesquisa de Propulsores</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="FoundFilesOnNetwork_file" xml:space="preserve">
@@ -383,19 +383,19 @@ se aproximar não é recomendado, a menos que você esteja bem armado.</value>
     <value>Instalação da GCorp ameaçada, enviando drones adicionais.</value>
   </data>
   <data name="GCorp Flight Research Station" xml:space="preserve">
-    <value>Centro de Pesquisa de Propulsores.</value>
+    <value>Centro de Pesquisa de Propulsores</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="GCorp Headquarters" xml:space="preserve">
-    <value>GCorp Quartel General.</value>
+    <value>GCorp Quartel General</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="GCorp hidden file contents" xml:space="preserve">
-    <value>Conteúdo do arquivo oculto da GCorp.</value>
+    <value>Conteúdo do arquivo oculto da GCorp</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="GCorp Ice Mine" xml:space="preserve">
-    <value>Mina de Gelo da GCorp.</value>
+    <value>Mina de Gelo da GCorp</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="GCorpTowerScan_file" xml:space="preserve">
@@ -438,11 +438,11 @@ Basta seguir o sinal da antena!</value>
     <comment>ResearchHacking</comment>
   </data>
   <data name="Hidden files found by Mabel" xml:space="preserve">
-    <value>Arquivos ocultos encontrados pela ONI.</value>
+    <value>Arquivos ocultos encontrados pela ONI</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="Hidden site of Mars Research Expeditions terraforming poject" xml:space="preserve">
-    <value>Local Oculto do Projeto de Terraformação da Expedição de Pesquisa de Marte.</value>
+    <value>Local Oculto do Projeto de Terraformação da Expedição de Pesquisa de Marte</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="HostileDisappeared_file" xml:space="preserve">
@@ -464,7 +464,7 @@ Basta seguir o sinal da antena!</value>
     <value>Você localizou uma instalação de mineração de gelo corporativa abandonada. Este será um recurso valioso para a geração de oxigênio.</value>
   </data>
   <data name="Illegal GCorp Research Facility" xml:space="preserve">
-    <value>Centro de Pesquisa ilegal da GCorp.</value>
+    <value>Centro de Pesquisa ilegal da GCorp</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="Init" xml:space="preserve">
@@ -537,7 +537,7 @@ Vou envia-los para você, se eles parecerem relevantes.</value>
     <value>Descriptando os Arquivos do Computador.</value>
   </data>
   <data name="Mars Communications Satellite" xml:space="preserve">
-    <value>Satélite de Comunicações Marciano.</value>
+    <value>Satélite de Comunicações Marciano</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="MarsGCorpOperationsExplained_file" xml:space="preserve">
@@ -548,7 +548,7 @@ Vou envia-los para você, se eles parecerem relevantes.</value>
 colonos foram realocados. Magnésio, alumínio, titânio, ferro e cromo compõem a maioria de suas exportações.</value>
   </data>
   <data name="Mars ice mining facility" xml:space="preserve">
-    <value>Instalação de Mineração de Gelo em Marte.</value>
+    <value>Instalação de Mineração de Gelo em Marte</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="MedicalConvoyDispatched_file" xml:space="preserve">
@@ -590,7 +590,7 @@ No entanto, eles também administravam várias instalações médicas de emergê
 Algumas delas ainda podem estar em funcionamento.</value>
   </data>
   <data name="MRE Experiment Site" xml:space="preserve">
-    <value>EPM Base Experimental.</value>
+    <value>EPM Base Experimental</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="NATO25x184mmConvoyDispatched_file" xml:space="preserve">
@@ -706,7 +706,7 @@ Os vulcões inicialmente ajudaram a criar uma atmosfera em Marte, até os pontos
 levando à criação de um anel em torno de Marte.</value>
   </data>
   <data name="Secret Weapon Research Facility" xml:space="preserve">
-    <value>Centro de Pesquisa de Armas Secretas.</value>
+    <value>Centro de Pesquisa de Armas Secretas</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="SensorsLostTrack_file" xml:space="preserve">
@@ -755,7 +755,7 @@ Vários drones GCorp detectados nas proximidades.</value>
 No entanto, esteja ciente de que eles podem aumentar a segurança se muitas de suas remessas desaparecerem.</value>
   </data>
   <data name="Suspicious Storage Facility" xml:space="preserve">
-    <value>Instalação de Armazenamento Suspeita.</value>
+    <value>Instalação de Armazenamento Suspeita</value>
     <comment>MissionSystem (gps)</comment>
   </data>
   <data name="TargetFleeingPursuit_file" xml:space="preserve">
@@ -1611,7 +1611,7 @@ Extender
     <comment>Signal Station</comment>
   </data>
   <data name="B136388408526692347" xml:space="preserve">
-    <value>Sinal de Socorro.</value>
+    <value>Sinal de Socorro</value>
     <comment>Ruined GCorp Vehicle</comment>
   </data>
   <data name="B73619126108173423" xml:space="preserve">
