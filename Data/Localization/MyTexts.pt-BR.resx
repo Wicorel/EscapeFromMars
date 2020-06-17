@@ -157,7 +157,7 @@ Para áreas especialmente hostis, você pode usar drones em vez de arriscar sua 
     <value>BulletproofGlassConvoyDispatched_pt_BR</value>
   </data>
   <data name="BulletproofGlassConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Vidro à Prova de Balas despachado.</value>
+    <value>Comboio de Vidro à Prova de Balas enviado.</value>
   </data>
   <data name="Cavern_file" xml:space="preserve">
     <value>Cavern</value>
@@ -175,7 +175,7 @@ Para áreas especialmente hostis, você pode usar drones em vez de arriscar sua 
     <value>ComputerConvoyDispatched_pt_BR</value>
   </data>
   <data name="ComputerConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Computadores despachado.</value>
+    <value>Comboio de Computadores enviado.</value>
   </data>
   <data name="ConnectionLost" xml:space="preserve">
     <value>CONEXÃO PERDIDA</value>
@@ -198,26 +198,26 @@ Para áreas especialmente hostis, você pode usar drones em vez de arriscar sua 
     <comment>audioclip</comment>
   </data>
   <data name="ConvoyArrivedSafely_subtitle" xml:space="preserve">
-    <value>*Muffled* O comboio chegou em segurança.</value>
+    <value>*Estática* O comboio chegou em segurança.</value>
     <comment>audioclip</comment>
   </data>
   <data name="ConvoyDispatched1_file" xml:space="preserve">
     <value>ConvoyDispatched1_pt_BR</value>
   </data>
   <data name="ConvoyDispatched1_subtitle" xml:space="preserve">
-    <value>*Muffled* O comboio foi enviado.</value>
+    <value>*Estática* O comboio foi enviado.</value>
   </data>
   <data name="ConvoyDispatched2_file" xml:space="preserve">
     <value>ConvoyDispatched2_pt_BR</value>
   </data>
   <data name="ConvoyDispatched2_subtitle" xml:space="preserve">
-    <value>*Muffled* O comboio foi enviado.</value>
+    <value>*Estática* O comboio foi enviado.</value>
   </data>
   <data name="ConvoyDispatched3_file" xml:space="preserve">
     <value>ConvoyDispatched3_pt_BR</value>
   </data>
   <data name="ConvoyDispatched3_subtitle" xml:space="preserve">
-    <value>*Muffled* O comboio foi enviado.</value>
+    <value>*Estática* O comboio foi enviado.</value>
   </data>
   <data name="ConvoyRecalled" xml:space="preserve">
     <value>Convoy Recalled</value>
@@ -239,7 +239,7 @@ Para áreas especialmente hostis, você pode usar drones em vez de arriscar sua 
     <value>DisplayConvoyDispatched_pt_BR</value>
   </data>
   <data name="DisplayConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Telas despachado.</value>
+    <value>Comboio de Telas enviado.</value>
   </data>
   <data name="DistressBeaconSilly_file" xml:space="preserve">
     <value>DistressBeaconSilly_pt_BR</value>
@@ -297,7 +297,7 @@ A atmosfera é de 95% de nitrogênio, 3% de oxigênio, 1% de argônio, pequenas 
     <value>ExplosivesConvoyDispatched_pt_BR</value>
   </data>
   <data name="ExplosivesConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Explosivos despachado.</value>
+    <value>Comboio de Explosivos enviado.</value>
   </data>
   <data name="ExplosivesNearby_file" xml:space="preserve">
     <value>ExplosivesNearby_pt_BR</value>
@@ -555,7 +555,7 @@ colonos foram realocados. Magnésio, alumínio, titânio, ferro e cromo compõem
     <value>MedicalConvoyDispatched_pt_BR</value>
   </data>
   <data name="MedicalConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Suprimentos Médicos despachado.</value>
+    <value>Comboio de Suprimentos Médicos enviado.</value>
   </data>
   <data name="MetalGridConvoyDispatched_file" xml:space="preserve">
     <value>MetalGridConvoyDispatched_pt_BR</value>
@@ -573,7 +573,7 @@ colonos foram realocados. Magnésio, alumínio, titânio, ferro e cromo compõem
     <value>Missile200mmConvoyDispatched_pt_BR</value>
   </data>
   <data name="Missile200mmConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Misseis despachado.</value>
+    <value>Comboio de Misseis enviado.</value>
   </data>
   <data name="MotorConvoyDispatched_file" xml:space="preserve">
     <value>MotorConvoyDispatched_pt_BR</value>
@@ -597,13 +597,13 @@ Algumas delas ainda podem estar em funcionamento.</value>
     <value>NATO25x184mmConvoyDispatched_pt_BR</value>
   </data>
   <data name="NATO25x184mmConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Munição NATO 25x184mm despachado.</value>
+    <value>Comboio de Munição NATO 25x184mm enviado.</value>
   </data>
   <data name="NATO5656x45mmConvoyDispatched_file" xml:space="preserve">
     <value>NATO5656x45mmConvoyDispatched_pt_BR</value>
   </data>
   <data name="NATO5656x45mmConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Munição NATO 56x45mm despachado.</value>
+    <value>Comboio de Munição NATO 56x45mm enviado.</value>
   </data>
   <data name="NewMikiScrapsOpen_file" xml:space="preserve">
     <value>NewMikiScrapsOpen_pt_BR</value>
@@ -661,7 +661,7 @@ Os vulcões inicialmente ajudaram a criar uma atmosfera em Marte, até os pontos
     <value>PowerCellConvoyDispatched_pt_BR</value>
   </data>
   <data name="PowerCellConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Células de Energia despachado.</value>
+    <value>Comboio de Células de Energia enviado.</value>
   </data>
   <data name="PowerSignatureBehindWall_file" xml:space="preserve">
     <value>PowerSignatureBehindWall_pt_BR</value>
@@ -686,13 +686,13 @@ Os vulcões inicialmente ajudaram a criar uma atmosfera em Marte, até os pontos
     <value>RadioCommunicationConvoyDispatched_pt_BR</value>
   </data>
   <data name="RadioCommunicationConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Peças de Rádio despachado.</value>
+    <value>Comboio de Peças de Rádio enviado.</value>
   </data>
   <data name="ReactorConvoyDispatched_file" xml:space="preserve">
     <value>ReactorConvoyDispatched_pt_BR</value>
   </data>
   <data name="ReactorConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Reatores despachado.</value>
+    <value>Comboio de Reatores enviado.</value>
   </data>
   <data name="ReturningToBase" xml:space="preserve">
     <value> *RETORNANDO A BASE*</value>
@@ -739,7 +739,7 @@ Vários drones GCorp detectados nas proximidades.</value>
     <value>SolarCellConvoyDispatched_pt_BR</value>
   </data>
   <data name="SolarCellConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Células Solares despachado.</value>
+    <value>Comboio de Células Solares enviado.</value>
   </data>
   <data name="SteelPlateConvoyDispatched_file" xml:space="preserve">
     <value>SteelPlateConvoyDispatched_pt_BR</value>
@@ -832,7 +832,7 @@ No entanto, esteja ciente de que eles podem aumentar a segurança se muitas de s
     <value>UraniumConvoyDispatched_pt_BR</value>
   </data>
   <data name="UraniumConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Urânio despachado.</value>
+    <value>Comboio de Urânio enviado.</value>
   </data>
   <data name="WeaponsFacilityFoundByAccident_file" xml:space="preserve">
     <value>WeaponsFacilityFoundByAccident_pt_BR</value>
@@ -2133,7 +2133,7 @@ Gestão</value>
     <value>NATO25x184mmConvoyDispatched_pt_BR</value>
   </data>
   <data name="NATO56x45mmConvoyDispatched_subtitle" xml:space="preserve">
-    <value>Comboio de Munição NATO 56x45mm despachado.</value>
+    <value>Comboio de Munição NATO 56x45mm enviado.</value>
   </data>
   <data name="G104361129531664144" xml:space="preserve">
     <value>MRE Base de Experimentos</value>
