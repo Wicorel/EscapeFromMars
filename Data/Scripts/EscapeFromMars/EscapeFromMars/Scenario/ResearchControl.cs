@@ -481,8 +481,70 @@ SubtyepID=SmallHydrogenTankSmall
         SubtyepID=LargeLCDPanel5x5
         */
 
+        /* LG
+         * 
+         * Scrap
+         * 
+         * TyepID=MyObjectBuilder_MotorSuspension
+        SubtyepID=OffroadSuspension3x3mirrored
+
+            TyepID=MyObjectBuilder_MotorSuspension
+        SubtyepID=OffroadSuspension1x1mirrored
+
+            TyepID=MyObjectBuilder_MotorSuspension
+        SubtyepID=OffroadSuspension5x5mirrored
+
+
+            TyepID=MyObjectBuilder_ExhaustBlock
+        SubtyepID=LargeExhaustPipe
+         */
+
+        /* SG
+         * Scap
+         * 
+         TyepID=MyObjectBuilder_MotorSuspension
+        SubtyepID=OffroadSmallSuspension3x3
+
+        TyepID=MyObjectBuilder_MotorSuspension
+        SubtyepID=OffroadSmallSuspension1x1
+
+        TyepID=MyObjectBuilder_MotorSuspension
+        SubtyepID=OffroadSmallSuspension5x5
+
+        TyepID=MyObjectBuilder_InteriorLight
+        SubtyepID=OffsetLight
+
+        TyepID=MyObjectBuilder_ReflectorLight
+        SubtyepID=OffsetSpotlight
+
+        TyepID=MyObjectBuilder_ExhaustBlock
+        SubtyepID=SmallExhaustPipe
+
+        TyepID=MyObjectBuilder_Cockpit
+        SubtyepID=BuggyCockpit
+         */
+
+        /* SE 1.198 Warefare 1
+         * 
+         * LG
+        TyepID=MyObjectBuilder_CargoContainer
+        SubtyepID=LargeBlockWeaponRack
+        
+        TyepID=MyObjectBuilder_TargetDummyBlock
+        SubtyepID=TargetDummy
+
+        TyepID=MyObjectBuilder_InteriorLight
+        SubtyepID=PassageSciFiLight
+
+            SG
+
+        TyepID=MyObjectBuilder_CargoContainer
+        SubtyepID=SmallBlockWeaponRack
+
+            */
+
         private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
-        new Dictionary<TechGroup, HashSet<MyDefinitionId>>();
+            new Dictionary<TechGroup, HashSet<MyDefinitionId>>();
 
         private readonly QueuedAudioSystem audioSystem;
 
