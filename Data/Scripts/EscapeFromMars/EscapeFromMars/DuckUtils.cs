@@ -362,10 +362,21 @@ namespace Duckroll
 			{
 				return;
 			}
+            PutPlayerIntoFaction(player.IdentityId, tag);
 
-			MyAPIGateway.Session.Factions.SendJoinRequest(faction.FactionId, player.IdentityId);
-			MyAPIGateway.Session.Factions.AcceptJoin(faction.FactionId, player.IdentityId);
 		}
+
+        internal static void PutPlayerIntoFaction(long playerIdentityID, string tag)
+        {
+            var faction = MyAPIGateway.Session.Factions.TryGetFactionByTag(tag);
+            if (faction == null)
+            {
+                ModLog.Error("Can't find faction: " + tag);
+                return;
+            }
+            MyAPIGateway.Session.Factions.SendJoinRequest(faction.FactionId, playerIdentityID);
+            MyAPIGateway.Session.Factions.AcceptJoin(faction.FactionId, playerIdentityID);
+        }
 
         internal static void PlaceItemIntoCargo(MyInventory inventory, MyObjectBuilder_Base cargoitem, int amount)
         {
