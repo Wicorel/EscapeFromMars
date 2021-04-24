@@ -146,6 +146,9 @@ namespace EscapeFromMars
             //V27 for SE 1.192
             DuckUtils.SetPlayerReputation(playerId, "MIKI", 0);
 
+            // V37 to force CRASH faction
+            DuckUtils.PutPlayerIntoFaction(playerId, "CRASH");
+
 			if (!RegisteredPlayers.Contains(playerId))
 			{
                 //V26 fix no player in DS
