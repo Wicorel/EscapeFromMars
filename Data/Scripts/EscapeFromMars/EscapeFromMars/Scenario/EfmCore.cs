@@ -21,13 +21,16 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 36;
+        private const int CurrentModVersion = 37;
 
         // V31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
         // V33 SE 1.194
         // V34 SE 1.195
         // V35 MyTexts for Mod Text localization
         // V36 MyTexts for Audio and subtitle and LCD SCreen Text localizations
+        // V37 04/21/2021 Prep for SE 1.198 release
+        ///    create ammos.sbc from keen base and update trajectory from 800 to 1200 (1.198 ammos.sbc doesn't work on 1.197)
+        ///    Force CRASH faction on server for player on client joint
 
         private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -115,10 +118,15 @@ namespace EscapeFromMars
 
             Session.SessionSettings.EnableBountyContracts = false; // SE V1.192
 
-            if ((gameVersion.Major == 1 && gameVersion.Minor >= 192 ) || gameVersion.Major>1)
+            if ((gameVersion.Major == 1 && gameVersion.Minor >= 192) || gameVersion.Major > 1)
             {
                 ModLog.Info("Economy items enabled");
                 CargoType.AllowEconomyItems();
+            }
+            if ((gameVersion.Major == 1 && gameVersion.Minor >= 198) || gameVersion.Major > 1)
+            {
+                ModLog.Info("Warefare1 items enabled");
+                CargoType.AllowWarefare1Items();
             }
 
             if (!bResearch)
@@ -127,7 +135,7 @@ namespace EscapeFromMars
                 ModLog.Info("Research was not turned on");
             }
             TextAPI = new HudAPIv2();
-            if (modBuildWhenGameStarted > 4)
+//            if (modBuildWhenGameStarted > 4) V37
 			{
 				DuckUtils.PutPlayerIntoFaction("CRASH");
             }
