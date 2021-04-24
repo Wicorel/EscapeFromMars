@@ -91,6 +91,14 @@ namespace EscapeFromMars
             AddConsumable("Medkit", 500, 2);
             AddConsumable("Powerkit", 500, 2);
         }
+        internal static void AllowWarefare1Items()
+        {
+            // SE 1.198
+            AddAmmo("AutomaticRifleGun_Mag_20rd", 100, 3);
+            AddAmmo("RapidFireAutomaticRifleGun_Mag_50rd", 100, 3);
+            AddAmmo("PreciseAutomaticRifleGun_Mag_5rd", 100, 3);
+            AddAmmo("UltimateAutomaticRifleGun_Mag_30rd", 100, 3);
+        }
 
         internal static CargoType GenerateRandomCargo(Random random)
 		{
