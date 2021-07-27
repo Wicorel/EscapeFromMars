@@ -21,7 +21,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 37;
+        private const int CurrentModVersion = 38;
 
         // V31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
         // V33 SE 1.194
@@ -29,8 +29,9 @@ namespace EscapeFromMars
         // V35 MyTexts for Mod Text localization
         // V36 MyTexts for Audio and subtitle and LCD SCreen Text localizations
         // V37 04/21/2021 Prep for SE 1.198 release
-        ///    create ammos.sbc from keen base and update trajectory from 800 to 1200 (1.198 ammos.sbc doesn't work on 1.197)
-        ///    Force CRASH faction on server for player on client joint
+        //    create ammos.sbc from keen base and update trajectory from 800 to 1200 (1.198 ammos.sbc doesn't work on 1.197)
+        //    Force CRASH faction on server for player on client joint
+        // V38 SE 1.199 (many blocks added)
 
         private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);

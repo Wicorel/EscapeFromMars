@@ -543,6 +543,68 @@ SubtyepID=SmallHydrogenTankSmall
 
             */
 
+        /* SE 1.199
+         * LG
+            TyepID=MyObjectBuilder_CargoContainer
+            SubtyepID=LargeBlockLargeIndustrialContainer
+
+            TyepID=MyObjectBuilder_LandingGear
+            SubtyepID=LargeBlockMagneticPlate
+
+            TyepID=MyObjectBuilder_LandingGear
+            SubtyepID=LargeBlockSmallMagneticPlate
+
+            TyepID=MyObjectBuilder_Refinery
+            SubtyepID=LargeRefineryIndustrial
+            a
+                <TypeId>ButtonPanel</TypeId>
+                 <SubtypeId>VerticalButtonPanelLarge</SubtypeId>
+
+                <TypeId>OxygenTank</TypeId>
+                <SubtypeId>LargeHydrogenTankIndustrial</SubtypeId>
+
+                <TypeId>Assembler</TypeId>
+                <SubtypeId>LargeAssemblerIndustrial</SubtypeId>
+
+                <TypeId>ConveyorSorter</TypeId>
+                <SubtypeId>LargeBlockConveyorSorterIndustrial</SubtypeId>
+
+        <TypeId>Thrust</TypeId>
+        <SubtypeId>LargeBlockLargeHydrogenThrustIndustrial</SubtypeId>
+
+        <TypeId>Thrust</TypeId>
+        <SubtypeId>LargeBlockSmallHydrogenThrustIndustrial</SubtypeId>
+
+
+          * SG
+            TyepID=MyObjectBuilder_LandingGear
+            SubtyepID=SmallBlockMagneticPlate
+
+            TyepID=MyObjectBuilder_LandingGear
+            SubtyepID=SmallBlockSmallMagneticPlate
+
+            TyepID=MyObjectBuilder_MergeBlock
+            SubtyepID=SmallShipSmallMergeBlock
+
+        <TypeId>Thrust</TypeId>
+        <SubtypeId>SmallBlockLargeHydrogenThrustIndustrial</SubtypeId>
+
+        <TypeId>Thrust</TypeId>
+        <SubtypeId>SmallBlockSmallHydrogenThrustIndustrial</SubtypeId>
+
+        */
+        private readonly MyDefinitionId IndustrialRefinery = MyVisualScriptLogicProvider.GetDefinitionId("Refinery", "LargeRefineryIndustrial");
+        private readonly MyDefinitionId IndustrialAssembler = MyVisualScriptLogicProvider.GetDefinitionId("Assembler", "LargeAssemblerIndustrial");
+
+        private readonly MyDefinitionId IndustrialLGLargeHTruster = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "LargeBlockLargeHydrogenThrustIndustrial");
+        private readonly MyDefinitionId IndustrialLGSmallHTruster = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "LargeBlockSmallHydrogenThrustIndustrial");
+        private readonly MyDefinitionId IndustrialSGLargeHTruster = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "SmallBlockLargeHydrogenThrustIndustrial");
+        private readonly MyDefinitionId IndustrialSGSmallHTruster = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "SmallBlockSmallHydrogenThrustIndustrial");
+
+        private readonly MyDefinitionId LargeHydrogenTankIndustrial = MyVisualScriptLogicProvider.GetDefinitionId("OxygenTank", "LargeHydrogenTankIndustrial");
+
+
+        //
         private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
             new Dictionary<TechGroup, HashSet<MyDefinitionId>>();
 
@@ -666,6 +728,19 @@ SubtyepID=SmallHydrogenTankSmall
             if ((gameVersion.Major == 1 && gameVersion.Minor >= 193) || gameVersion.Major > 1)
             {
                 NeedsResearch(FoodDispenser, TechGroup.Permabanned);
+            }
+            //   For SE 1.199
+            if ((gameVersion.Major == 1 && gameVersion.Minor >= 199) || gameVersion.Major > 1)
+            {
+                NeedsResearch(IndustrialRefinery, TechGroup.Permabanned);
+//                NeedsResearch(IndustrialAssembler, TechGroup.Permabanned);
+
+                NeedsResearch(IndustrialLGLargeHTruster, TechGroup.Permabanned);
+                NeedsResearch(IndustrialLGSmallHTruster, TechGroup.Permabanned);
+                NeedsResearch(IndustrialSGLargeHTruster, TechGroup.Permabanned);
+                NeedsResearch(IndustrialSGSmallHTruster, TechGroup.Permabanned);
+
+                NeedsResearch(LargeHydrogenTankIndustrial, TechGroup.GasStorage);
             }
         }
 
