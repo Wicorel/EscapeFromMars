@@ -21,7 +21,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 38;
+        private const int CurrentModVersion = 39;
 
         // V31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
         // V33 SE 1.194
@@ -32,6 +32,8 @@ namespace EscapeFromMars
         //    create ammos.sbc from keen base and update trajectory from 800 to 1200 (1.198 ammos.sbc doesn't work on 1.197)
         //    Force CRASH faction on server for player on client joint
         // V38 SE 1.199 (many blocks added)
+        // V39 SE 1.200 prep for Warefare2 many weapon blocks and ammo types added
+        //   NOTE: Need to remove/edit EFM ammos.sbc
 
         private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -128,6 +130,11 @@ namespace EscapeFromMars
             {
                 ModLog.Info("Warefare1 items enabled");
                 CargoType.AllowWarefare1Items();
+            }
+            if ((gameVersion.Major == 1 && gameVersion.Minor >= 200) || gameVersion.Major > 1)
+            {
+                ModLog.Info("Warefare2 items enabled");
+                CargoType.AllowWarefare2Items();
             }
 
             if (!bResearch)

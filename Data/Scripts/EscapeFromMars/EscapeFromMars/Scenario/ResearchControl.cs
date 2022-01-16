@@ -593,6 +593,8 @@ SubtyepID=SmallHydrogenTankSmall
         <SubtypeId>SmallBlockSmallHydrogenThrustIndustrial</SubtypeId>
 
         */
+
+
         private readonly MyDefinitionId IndustrialRefinery = MyVisualScriptLogicProvider.GetDefinitionId("Refinery", "LargeRefineryIndustrial");
         private readonly MyDefinitionId IndustrialAssembler = MyVisualScriptLogicProvider.GetDefinitionId("Assembler", "LargeAssemblerIndustrial");
 
@@ -603,6 +605,148 @@ SubtyepID=SmallHydrogenTankSmall
 
         private readonly MyDefinitionId LargeHydrogenTankIndustrial = MyVisualScriptLogicProvider.GetDefinitionId("OxygenTank", "LargeHydrogenTankIndustrial");
 
+        /*
+         * V1.200 Warfare 2
+         * SG
+         * 
+         * TyepID=MyObjectBuilder_InteriorLight
+            SubtyepID=SmallLightPanel
+
+            TyepID=MyObjectBuilder_SmallMissileLauncher
+            SubtyepID=SmallMissileLauncherWarfare2
+
+            TyepID=MyObjectBuilder_SmallMissileLauncher
+            SubtyepID=SmallBlockAutocannon
+
+            TyepID=MyObjectBuilder_SmallGatlingGun
+            SubtyepID=SmallGatlingGunWarfare2
+            
+            TyepID=MyObjectBuilder_BatteryBlock
+            SubtyepID=SmallBlockBatteryBlockWarfare2
+
+            TyepID=MyObjectBuilder_Reactor
+            SubtyepID=SmallBlockLargeGeneratorWarfare2
+            
+            TyepID=MyObjectBuilder_Reactor
+            SubtyepID=SmallBlockSmallGeneratorWarfare2
+
+                            <TypeId>Cockpit</TypeId>
+                <SubtypeId>PassengerBench</SubtypeId>
+
+                <TypeId>TurretControlBlock</TypeId>
+                <SubtypeId>LargeTurretControlBlock</SubtypeId>
+
+                <TypeId>Searchlight</TypeId>
+                <SubtypeId>SmallSearchlight</SubtypeId>
+                <TypeId>HeatVentBlock</TypeId>
+                <SubtypeId>SmallHeatVentBlock</SubtypeId>
+
+                <TypeId>Cockpit</TypeId>
+                <SubtypeId>PassengerBench</SubtypeId>
+                <TypeId>BatteryBlock</TypeId>
+                <SubtypeId>SmallBlockBatteryBlockWarfare2</SubtypeId>
+
+                <TypeId>Thrust</TypeId>
+                <SubtypeId>SmallBlockSmallModularThruster</SubtypeId>
+                <TypeId>Thrust</TypeId>
+                <SubtypeId>SmallBlockLargeModularThruster</SubtypeId>
+
+
+TyepID=MyObjectBuilder_LargeGatlingTurret
+SubtyepID=AutoCannonTurret
+TyepID=MyObjectBuilder_LargeMissileTurret
+SubtyepID=SmallBlockMediumCalibreTurret
+
+TyepID=MyObjectBuilder_SmallMissileLauncher
+SubtyepID=SmallMissileLauncherWarfare2
+
+TyepID=MyObjectBuilder_SmallMissileLauncher
+SubtyepID=SmallBlockMediumCalibreGun
+
+TyepID=MyObjectBuilder_SmallGatlingGun
+SubtyepID=SmallBlockAutocannon
+
+            TyepID=MyObjectBuilder_SmallGatlingGun
+SubtyepID=SmallGatlingGunWarfare2
+
+TyepID=MyObjectBuilder_SmallMissileLauncherReload
+SubtyepID=SmallRailgun
+
+            TyepID=MyObjectBuilder_TurretControlBlock
+SubtyepID=SmallTurretControlBlock
+
+            LG
+                <TypeId>Thrust</TypeId>
+                <SubtypeId>LargeBlockSmallModularThruster</SubtypeId>
+                <TypeId>Thrust</TypeId>
+                <SubtypeId>LargeBlockLargeModularThruster</SubtypeId>
+
+            TyepID=MyObjectBuilder_Reactor
+            SubtyepID=LargeBlockSmallGeneratorWarfare2
+
+            TyepID=MyObjectBuilder_Reactor
+            SubtyepID=LargeBlockLargeGeneratorWarfare2
+
+            TyepID=MyObjectBuilder_InteriorLight
+            SubtyepID=LargeLightPanel
+
+            TyepID=MyObjectBuilder_AirtightHangarDoor
+            SubtyepID=AirtightHangarDoorWarfare2C
+
+            TyepID=MyObjectBuilder_AirtightHangarDoor
+            SubtyepID=AirtightHangarDoorWarfare2B
+
+            TyepID=MyObjectBuilder_AirtightHangarDoor
+            SubtyepID=AirtightHangarDoorWarfare2A
+
+                <TypeId>TurretControlBlock</TypeId>
+                <SubtypeId>LargeTurretControlBlock</SubtypeId>
+
+                <TypeId>Door</TypeId>
+                <SubtypeId>SlidingHatchDoor</SubtypeId>
+                <TypeId>Door</TypeId>
+                <SubtypeId>SlidingHatchDoorHalf</SubtypeId>
+
+                            <TypeId>Searchlight</TypeId>
+                <SubtypeId>LargeSearchlight</SubtypeId>
+                <TypeId>HeatVentBlock</TypeId>
+                <SubtypeId>LargeHeatVentBlock</SubtypeId>
+                <TypeId>BatteryBlock</TypeId>
+                <SubtypeId>LargeBlockBatteryBlockWarfare2</SubtypeId>
+
+TyepID=MyObjectBuilder_SmallMissileLauncherReload
+SubtyepID=LargeRailgun
+
+            TyepID=MyObjectBuilder_TurretControlBlock
+SubtyepID=LargeTurretControlBlock
+
+TyepID=MyObjectBuilder_LargeMissileTurret
+SubtyepID=LargeBlockMediumCalibreTurret
+
+TyepID=MyObjectBuilder_SmallMissileLauncher
+SubtyepID=LargeBlockLargeCalibreGun
+         */
+        private readonly MyDefinitionId SmallMissileLauncherWarfare2 = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncher", "SmallMissileLauncherWarfare2");
+        private readonly MyDefinitionId SmallBlockAutocannon = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncher", "SmallBlockAutocannon");
+        private readonly MyDefinitionId SmallGatlingGunWarfare2 = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallGatlingGun", "SmallGatlingGunWarfare2");
+
+        private readonly MyDefinitionId LargeBlockLargeCalibreGun = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncher", "LargeBlockLargeCalibreGun");
+
+        private readonly MyDefinitionId LargeBlockMediumCalibreTurret = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_LargeMissileTurret", "LargeBlockMediumCalibreTurret");
+        private readonly MyDefinitionId AutoCannonTurret = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_LargeGatlingTurret", "AutoCannonTurret");
+        private readonly MyDefinitionId SmallBlockMediumCalibreTurret = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_LargeMissileTurret", "SmallBlockMediumCalibreTurret");
+
+        private readonly MyDefinitionId LargeTurretControlBlock = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_TurretControlBlock", "LargeTurretControlBlock");
+        private readonly MyDefinitionId SmallTurretControlBlock = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_TurretControlBlock", "SmallTurretControlBlock");
+
+
+        private readonly MyDefinitionId LargeRailgun = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncherReload", "LargeRailgun");
+        private readonly MyDefinitionId SmallRailgun = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncherReload", "SmallRailgun");
+
+        private readonly MyDefinitionId SmallBlockSmallModularThruster = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "SmallBlockSmallModularThruster");
+        private readonly MyDefinitionId SmallBlockLargeModularThruster = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "SmallBlockLargeModularThruster");
+        private readonly MyDefinitionId LargeBlockSmallModularThruster = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "LargeBlockSmallModularThruster");
+        private readonly MyDefinitionId LargeBlockLargeModularThruster = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "LargeBlockLargeModularThruster");
 
         //
         private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
@@ -741,6 +885,34 @@ SubtyepID=SmallHydrogenTankSmall
                 NeedsResearch(IndustrialSGSmallHTruster, TechGroup.Permabanned);
 
                 NeedsResearch(LargeHydrogenTankIndustrial, TechGroup.GasStorage);
+            }
+            if ((gameVersion.Major == 1 && gameVersion.Minor >= 200) || gameVersion.Major > 1)
+            {
+
+                NeedsResearch(LargeBlockLargeCalibreGun, TechGroup.BasicWeapons);
+                NeedsResearch(SmallBlockAutocannon, TechGroup.BasicWeapons);
+                NeedsResearch(SmallGatlingGunWarfare2, TechGroup.BasicWeapons);
+
+                // encourage engineering
+                NeedsResearch(LargeTurretControlBlock, TechGroup.BasicWeapons);
+                NeedsResearch(SmallTurretControlBlock, TechGroup.BasicWeapons);
+
+
+                NeedsResearch(SmallMissileLauncherWarfare2, TechGroup.Rockets);
+                NeedsResearch(LargeRailgun, TechGroup.Rockets);
+                NeedsResearch(SmallRailgun, TechGroup.Rockets);
+                NeedsResearch(SmallMissileLauncherWarfare2, TechGroup.Rockets);
+
+                // new turrets are banned because they might change the balance too much
+                NeedsResearch(LargeBlockMediumCalibreTurret, TechGroup.Permabanned);
+                NeedsResearch(AutoCannonTurret, TechGroup.Permabanned);
+                NeedsResearch(SmallBlockMediumCalibreTurret, TechGroup.Permabanned);
+
+                NeedsResearch(SmallBlockSmallModularThruster, TechGroup.Permabanned);
+                NeedsResearch(SmallBlockLargeModularThruster, TechGroup.Permabanned);
+                NeedsResearch(LargeBlockSmallModularThruster, TechGroup.Permabanned);
+                NeedsResearch(LargeBlockLargeModularThruster, TechGroup.Permabanned);
+
             }
         }
 

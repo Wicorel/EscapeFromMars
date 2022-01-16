@@ -99,6 +99,19 @@ namespace EscapeFromMars
             AddAmmo("PreciseAutomaticRifleGun_Mag_5rd", 100, 3);
             AddAmmo("UltimateAutomaticRifleGun_Mag_30rd", 100, 3);
         }
+        internal static void AllowWarefare2Items()
+        {
+            // SE 1.200
+
+            // ammo mags
+            AddAmmo("AutocannonClip", 500, 3);
+            AddAmmo("NATO_25x184mm", 300, 3);
+            AddAmmo("LargeCalibreAmmo", 200, 3);
+            AddAmmo("MediumCalibreAmmo", 200, 3);
+            AddAmmo("LargeRailgunAmmo", 100, 3);
+            AddAmmo("SmallRailgunAmmo", 300, 3);
+
+        }
 
         internal static CargoType GenerateRandomCargo(Random random)
 		{
@@ -195,9 +208,9 @@ namespace EscapeFromMars
 		{
 			public MyObjectBuilder_PhysicalObject GetObjectBuilder(string subtypeName)
 			{
-				return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_AmmoMagazine>(subtypeName);
-			}
-		}
+                return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_AmmoMagazine>(subtypeName);
+            }
+        }
 
 		private class IngotObjectBuilder : IObjectBuilderFactory
 		{

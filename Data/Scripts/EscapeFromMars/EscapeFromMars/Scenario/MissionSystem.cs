@@ -647,12 +647,12 @@ namespace EscapeFromMars
 //            ModLog.Info(desiredEntityIDs.Count + " Desired Blocks");
             var slimBlocks = new List<IMySlimBlock>();
             if (grid.EntityId == 92770753627258475 // crash ship
-                && modBuildWhenLastSaved<27 // we haven't done this already
+                && modBuildWhenLastSaved < 27 // we haven't done this already
                 )
             {
                 grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyCargoContainer);
 
-//                ModLog.Info("Found Crash Ship on initial load"+modBuildWhenLastSaved);
+                //                ModLog.Info("Found Crash Ship on initial load:"+modBuildWhenLastSaved);
 
                 /* SE 1.192 */
                 var medkit = MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_ConsumableItem>("Medkit");
@@ -664,15 +664,18 @@ namespace EscapeFromMars
                 */
                 var spacecredit = MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_PhysicalObject>("SpaceCredit");
 
+                var powercells = MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_Component>("PowerCell");
+
                 foreach (var slim in slimBlocks)
                 {
                     IMyTerminalBlock tb = slim.FatBlock as IMyTerminalBlock;
+                    ModLog.Info("Cargo: " + tb.CustomName + " " + tb.EntityId);
                     if (tb == null) continue;
                     if (tb.EntityId == 115310750474309501) // Emergency Supplies
                     {
+                        tb.CustomName = "Emergency Supplies"; // Not localized...
                         var cargoContainer = (IMyCargoContainer)slim.FatBlock;
-                        //                MyLog.Default.WriteLine("LoadCargo: " + cargoContainer.CustomName);
-                        //                MyLog.Default.Flush();
+                        //                        ModLog.Info("ESupplies LoadCargo: " + cargoContainer.CustomName);
                         var entity = cargoContainer as MyEntity;
                         if (entity.HasInventory)
                         {
@@ -683,14 +686,34 @@ namespace EscapeFromMars
                             DuckUtils.PlaceItemIntoCargo(inventory, medkit, 15);
                             DuckUtils.PlaceItemIntoCargo(inventory, powerkit, 15);
                             //                            PlaceItemIntoCargo(inventory, datapad, 1);
-                            DuckUtils.PlaceItemIntoCargo(inventory, spacecredit, 100);
+                            DuckUtils.PlaceItemIntoCargo(inventory, spacecredit, 42);
 
                         }
                     }
-                }
-                /* */
-            }
+                    if (tb.EntityId == 80222532396731795) // spare parts
+                    {
+                        tb.CustomName = "Spare Parts"; // Not localized...
+                        var cargoContainer = (IMyCargoContainer)slim.FatBlock;
+                        //                        ModLog.Info("SpareParts LoadCargo: " + cargoContainer.CustomName);
+                        //                        if(powercells!=null) ModLog.Info("Powercells=" + powercells.SubtypeName);
+                        //                        else ModLog.Info("Powercells NULL!");
+                        //                        MyLog.Default.Flush();
+                        var entity = cargoContainer as MyEntity;
+                        if (entity.HasInventory)
+                        {
+                            MyInventory inventory = entity.GetInventoryBase() as MyInventory;
+                            if (inventory == null) continue;
 
+                            DuckUtils.PlaceItemIntoCargo(inventory, powercells, 8); // 1 sg small battery needs 2 
+                        }
+                    }
+                    if (tb.EntityId == 136767719383723898) // Tools Locker
+                    {
+                        tb.CustomName = "Tools Locker"; // Not localized...
+                    }
+                    /* */
+                }
+            }
             grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyTerminalBlock);
             foreach (var slim in slimBlocks)
             {
