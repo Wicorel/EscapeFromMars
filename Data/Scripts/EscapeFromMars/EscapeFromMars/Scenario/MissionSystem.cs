@@ -113,7 +113,7 @@ namespace EscapeFromMars
 
 
         //            ModLog.Info("Start Time = " + missionStartTime.ToString());
-        ModLog.Info("Current Mission Length: " + (MyAPIGateway.Session.GameDateTime - missionStartTime).ToString(@"hh\:mm\:ss")); //V27
+            ModLog.Info("Current Mission Length: " + (MyAPIGateway.Session.GameDateTime - missionStartTime).ToString(@"hh\:mm\:ss")); //V27
         }
 
         internal long GetMissionStartTimeBinary()
@@ -650,6 +650,20 @@ namespace EscapeFromMars
                 && modBuildWhenLastSaved < 27 // we haven't done this already
                 )
             {
+                /*
+                // 77953268669314449 is oxygen tank.
+                grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyGasTank);
+                foreach (var slim in slimBlocks)
+                {
+                    IMyGasTank tb = slim.FatBlock as IMyGasTank;
+                    tb.  nothing to call to set contents to zero :(
+
+                }
+                */
+
+                grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyCargoContainer);
+
+                slimBlocks.Clear();
                 grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyCargoContainer);
 
                 //                ModLog.Info("Found Crash Ship on initial load:"+modBuildWhenLastSaved);

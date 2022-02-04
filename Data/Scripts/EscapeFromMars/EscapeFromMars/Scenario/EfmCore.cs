@@ -33,7 +33,7 @@ namespace EscapeFromMars
         //    Force CRASH faction on server for player on client joint
         // V38 SE 1.199 (many blocks added)
         // V39 SE 1.200 prep for Warefare2 many weapon blocks and ammo types added
-        //   NOTE: Need to remove/edit EFM ammos.sbc
+        //   NOTE: Removed EFM ammos.sbc
 
         private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
