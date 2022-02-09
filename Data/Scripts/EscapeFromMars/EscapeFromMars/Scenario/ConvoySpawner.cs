@@ -8,6 +8,7 @@ using VRageMath;
 using Sandbox.Game.Entities;
 using IMyCubeGrid = VRage.Game.ModAPI.IMyCubeGrid;
 using Duckroll;
+using VRage.Game;
 
 namespace EscapeFromMars
 {
@@ -56,9 +57,21 @@ namespace EscapeFromMars
         public override void AllGridsInitialised()
         {
             // log to remind that they are on..
-            if (DebugConvoys) ModLog.Info("Convoy Debug is ON");
-            if (ForceAirOnly) ModLog.Info(" Force Air only is ON");
-            if (ForceGroundOnly) ModLog.Info(" Force Ground only is ON");
+            if (DebugConvoys)
+            {
+                ModLog.Info("Convoy Debug is ON");
+                MyAPIGateway.Utilities.ShowNotification("Convoy Debug is ON", 5000, MyFontEnum.Red);
+            }
+            if (ForceAirOnly)
+            {
+                ModLog.Info(" Force Air only is ON");
+                MyAPIGateway.Utilities.ShowNotification(" Force Air only is ON", 5000, MyFontEnum.Red);
+            }
+            if (ForceGroundOnly)
+            {
+                ModLog.Info(" Force Ground only is ON");
+                MyAPIGateway.Utilities.ShowNotification("Force Ground only is ON", 5000, MyFontEnum.Red);
+            }
         }
 
         internal void RestoreSpawnTimeFromSave(long savedTime)

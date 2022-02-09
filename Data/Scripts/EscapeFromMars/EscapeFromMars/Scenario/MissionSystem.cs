@@ -683,7 +683,7 @@ namespace EscapeFromMars
                 foreach (var slim in slimBlocks)
                 {
                     IMyTerminalBlock tb = slim.FatBlock as IMyTerminalBlock;
-                    ModLog.Info("Cargo: " + tb.CustomName + " " + tb.EntityId);
+//                    ModLog.Info("Cargo: " + tb.CustomName + " " + tb.EntityId);
                     if (tb == null) continue;
                     if (tb.EntityId == 115310750474309501) // Emergency Supplies
                     {

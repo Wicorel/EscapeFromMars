@@ -21,7 +21,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 39;
+        private const int CurrentModVersion = 40;
 
         // V31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
         // V33 SE 1.194
@@ -34,6 +34,7 @@ namespace EscapeFromMars
         // V38 SE 1.199 (many blocks added)
         // V39 SE 1.200 prep for Warefare2 many weapon blocks and ammo types added
         //   NOTE: Removed EFM ammos.sbc
+        // V40 SE 1.200 Fix convoys not piloting.
 
         private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -80,6 +81,8 @@ namespace EscapeFromMars
 
             MyAPIGateway.Utilities.ShowNotification(sInit, 5000, MyFontEnum.DarkBlue);
             ModLog.Info(sInit);
+            MyLog.Default.Info("EFM Init"+sInit);
+
 //            var gamelanguage = MySpaceTexts.ToolTipOptionsGame_Language;
             var gamelanguage=MyAPIGateway.Session.Config.Language;
             ModLog.Info("Game Language="+ gamelanguage.ToString());

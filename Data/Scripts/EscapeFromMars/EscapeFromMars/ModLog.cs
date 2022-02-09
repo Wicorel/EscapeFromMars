@@ -175,6 +175,11 @@ It can be found at C:\Users\[YOUR USER]\AppData\Roaming\SpaceEngineers\SpaceEngi
 
 			_writer = MyAPIGateway.Utilities.WriteFileInLocalStorage(LogFile, typeof(ModLog));
 
+            if(_writer==null)
+            {
+                MyLog.Default.Log(MyLogSeverity.Info, "EFM: Log Writer is null");
+            }
+
 			if (_preInitMessages.Count > 0)
 			{
 				foreach (var msg in _preInitMessages)
