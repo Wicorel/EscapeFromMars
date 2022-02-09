@@ -16,7 +16,7 @@ namespace EscapeFromMars
 		private string InterceptingBeaconSuffix = " *INTERCEPTING*"; // loaded from mytexts
 		private string FleeingBeaconSuffix = " *FLEEING*"; // loaded from mytexts
 
-        private static bool ConvoySpawnerDebug = false;
+        private static bool ConvoyUpdateDebug = false;
 
         protected static readonly IList<EscortPosition> AllEscortPositions =
 			new List<EscortPosition>(DuckUtils.GetEnumValues<EscortPosition>()).AsReadOnly();
@@ -146,7 +146,7 @@ namespace EscapeFromMars
                 {
                     remoteControl = slim.FatBlock as IMyRemoteControl;
                     bKeenAutopilotActive = remoteControl.IsAutoPilotEnabled;
-                    if (ConvoySpawnerDebug) ModLog.Info("Keen Autopilot:" + bKeenAutopilotActive.ToString());
+                    if (ConvoyUpdateDebug) ModLog.Info("Keen Autopilot:" + bKeenAutopilotActive.ToString());
                     break;
                 }
 
@@ -163,7 +163,7 @@ namespace EscapeFromMars
                             && GroupSpawnTime + convoyInitiateTime < currentTime // delay check for mode change.
                             )
                         {
-                            if (ConvoySpawnerDebug) ModLog.Info("NAV Bock:" + block.CustomName + "\nDetailedInfo:\n" + block.DetailedInfo+"\n---");
+                            if (ConvoyUpdateDebug) ModLog.Info("NAV Bock:" + block.CustomName + "\nDetailedInfo:\n" + block.DetailedInfo+"\n---");
                             if (//!bKeenAutopilotActive && 
                                 block.DetailedInfo.Contains("Assembly") || // "Assembly not found. Please compile script."
                                 block.DetailedInfo.Contains("mode=0") || block.DetailedInfo.Contains("mode=-1"))
@@ -174,7 +174,7 @@ namespace EscapeFromMars
                                     GroupState = NpcGroupState.Inactive; // this will cause NpcGroupManager to spawn a new convoy to replace this one.
                                     return;
                                 }
-                                if(ConvoySpawnerDebug) ModLog.Info("Forcing Keen autopilot");
+                                if(ConvoyUpdateDebug) ModLog.Info("Forcing Keen autopilot");
                                 // force it to use Keen Autopilot
                                 remoteControl.ClearWaypoints();
                                 remoteControl.AddWaypoint(Destination, "Target");
