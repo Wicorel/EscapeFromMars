@@ -8,6 +8,7 @@ using VRage.ModAPI;
 using VRageMath;
 using Duckroll;
 using VRage.Utils;
+using SpaceEngineers.Game.ModAPI;
 
 namespace EscapeFromMars
 {
@@ -102,36 +103,66 @@ namespace EscapeFromMars
 		internal override void Update()
 		{
 			CheckEscortsAlive();
-			if (!leader.IsControlledByFaction("GCORP"))
-			{
-				GroupState = NpcGroupState.Disbanding;
-				InitiateDisbandProtocols();
-			}
-			else if ((GroupState == NpcGroupState.Travelling || GroupState == NpcGroupState.InCombat)
-                     && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 300.0 * 300) // increase to 300 to allow for variations in height. V26
-//                     && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 200.0*200) // increase to 200 to allow for variations in height.
-//                     && Vector3D.Distance(Destination, leader.GetPosition()) < 100.0)
+            if (!leader.IsControlledByFaction("GCORP"))
             {
-                string sBeacons = "";
-                var slimBlocks2 = new List<IMySlimBlock>();
-                leader.GetBlocks(slimBlocks2, b => b.FatBlock is IMyBeacon);
-                foreach (var slim2 in slimBlocks2)
+                GroupState = NpcGroupState.Disbanding;
+                InitiateDisbandProtocols();
+            }
+            else if ((GroupState == NpcGroupState.Travelling || GroupState == NpcGroupState.InCombat)
+                )
+            {
+                if (Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 300.0 * 300) // increase to 300 to allow for variations in height. V26
+                                                                                               //                     && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 200.0*200) // increase to 200 to allow for variations in height.
+                                                                                               //                     && Vector3D.Distance(Destination, leader.GetPosition()) < 100.0)
                 {
-                    var beacon = slim2.FatBlock as IMyBeacon;
-                    sBeacons += beacon.CustomName;
+                    string sBeacons = "";
+                    var slimBlocks2 = new List<IMySlimBlock>();
+                    leader.GetBlocks(slimBlocks2, b => b.FatBlock is IMyBeacon);
+                    foreach (var slim2 in slimBlocks2)
+                    {
+                        var beacon = slim2.FatBlock as IMyBeacon;
+                        sBeacons += beacon.CustomName;
+                    }
+
+                    ModLog.Info("Group Arrived at destination: " + leader.CustomName + " " + sBeacons);
+                    ArrivalObserver.GroupArrivedIntact();
+                    audioSystem.PlayAudioRandomChance(0.1, AudioClip.ConvoyArrivedSafely);
+                    GroupState = NpcGroupState.Disbanding;
+                    InitiateDisbandProtocols();
+                    ResetBeaconNames();
                 }
+                else if (Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 1200 * 1200) // max weapons range
+                { // turn off target neutrals if within max weapon range of the HQ (destination)..added V41
 
-                ModLog.Info("Group Arrived at destination: " + leader.CustomName+ " " +sBeacons);
-                ArrivalObserver.GroupArrivedIntact();
-				audioSystem.PlayAudioRandomChance(0.1, AudioClip.ConvoyArrivedSafely);
-				GroupState = NpcGroupState.Disbanding;
-				InitiateDisbandProtocols();
-			    ResetBeaconNames();
-			}
+                    var slimBlocks2 = new List<IMySlimBlock>();
+                    leader.GetBlocks(slimBlocks2, b => b.FatBlock is IMyBeacon);
+                    var slimBlocksG = new List<IMySlimBlock>();
+                    leader.GetBlocks(slimBlocksG, b => b.FatBlock is IMyLargeGatlingTurret);
+                    foreach (var slim in slimBlocksG)
+                    {
+                        var gatling = slim.FatBlock as IMyLargeGatlingTurret;
+                        gatling.TargetNeutrals = false; //V41
+                    }
 
+                    slimBlocksG.Clear();
+                    leader.GetBlocks(slimBlocksG, b => b.FatBlock is IMyLargeMissileTurret);
+                    foreach (var slim in slimBlocksG)
+                    {
+                        var missile = slim.FatBlock as IMyLargeMissileTurret;
+                        missile.TargetNeutrals = false;
+                    }
+                    slimBlocksG.Clear();
+                    leader.GetBlocks(slimBlocksG, b => b.FatBlock is IMyLargeInteriorTurret);
+                    foreach (var slim in slimBlocksG)
+                    {
+                        var interior = slim.FatBlock as IMyLargeInteriorTurret;
+                        interior.TargetNeutrals = false;
+                    }
+                }
+            }
             // ModLogs are for DEBUG nav script
-//            ModLog.Info("Convoy update:" + leader.CustomName+" ID:"+leader.EntityId.ToString() + " State:"+GroupState.ToString());
-            if((GroupState == NpcGroupState.Travelling))
+            //            ModLog.Info("Convoy update:" + leader.CustomName+" ID:"+leader.EntityId.ToString() + " State:"+GroupState.ToString());
+            if ((GroupState == NpcGroupState.Travelling))
             {
                 var currentTime = MyAPIGateway.Session.GameDateTime;
                 if (GroupSpawnTime + convoyInitiateTime < currentTime)

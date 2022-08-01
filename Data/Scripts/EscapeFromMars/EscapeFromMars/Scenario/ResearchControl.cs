@@ -725,6 +725,8 @@ SubtyepID=LargeBlockMediumCalibreTurret
 
 TyepID=MyObjectBuilder_SmallMissileLauncher
 SubtyepID=LargeBlockLargeCalibreGun
+
+
          */
         private readonly MyDefinitionId SmallMissileLauncherWarfare2 = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncher", "SmallMissileLauncherWarfare2");
         private readonly MyDefinitionId SmallBlockAutocannon = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncher", "SmallBlockAutocannon");
@@ -748,6 +750,37 @@ SubtyepID=LargeBlockLargeCalibreGun
         private readonly MyDefinitionId LargeBlockSmallModularThruster = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "LargeBlockSmallModularThruster");
         private readonly MyDefinitionId LargeBlockLargeModularThruster = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "LargeBlockLargeModularThruster");
 
+
+        /* 1.201
+                 LG
+
+                 Wheel Suspension 2x2 Left
+        TyepID=MyObjectBuilder_MotorSuspension
+        SubtyepID=Suspension2x2Mirrored
+        (removed)
+
+        Offroad Wheel Suspension 2x2 Left
+        TyepID=MyObjectBuilder_MotorSuspension
+        SubtyepID=OffroadSuspension2x2Mirrored
+        (removed)
+
+
+        SG
+
+        Offroad Wheel Suspension 2x2 Left
+        TyepID=MyObjectBuilder_MotorSuspension
+        SubtyepID=OffroadSmallSuspension2x2Mirrored
+        (removed)
+
+        MyMotorAdvancedStator {135FE96106CDDE2} Advanced Rotor
+        TyepID=MyObjectBuilder_MotorAdvancedStator
+        SubtyepID=SmallAdvancedStatorSmall
+
+        MyMotorSuspension {1CAEAE003F8F59B} Wheel Suspension 2x2 Right
+        TyepID=MyObjectBuilder_MotorSuspension
+        SubtyepID=SmallSuspension2x2
+        (removed)
+*/
         //
         private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
             new Dictionary<TechGroup, HashSet<MyDefinitionId>>();

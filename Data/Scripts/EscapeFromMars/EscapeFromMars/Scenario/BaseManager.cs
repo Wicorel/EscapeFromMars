@@ -83,8 +83,8 @@ namespace EscapeFromMars
         }
 
         /// <summary>
-        /// Fix up the blocks in ALL grids to have correct values
-        /// This routine could also be used to set text panels for other languages.
+        /// Fix up the blocks in ALL grids (not just bases) to have correct values
+        /// This routine is used to set text panels for other languages.
         /// 
         /// </summary>
         /// <param name="grid"></param>
@@ -108,7 +108,8 @@ namespace EscapeFromMars
             bool bMiki = false;
             if (grid.EntityId == 135216604045890710)
                 bMiki = true;
-
+            /* GCorp HQ Tower:144104082158837389 */
+            long gcorpHQ = 144104082158837389;
             long medbayID = 79910699489349926;
             var slimBlocksMed = new List<IMySlimBlock>();
             grid.GetBlocks(slimBlocksMed, b => b.FatBlock is IMyMedicalRoom);
@@ -127,7 +128,34 @@ namespace EscapeFromMars
             foreach (var slim in slimBlocksG)
             {
                 var gatling = slim.FatBlock as IMyLargeGatlingTurret;
+                if(grid.EntityId==gcorpHQ)
+                {
+                    gatling.TargetNeutrals = false; //V41
+                }
  //              gatling.Range get only :(
+            }
+
+            slimBlocksG.Clear();
+            grid.GetBlocks(slimBlocksG, b => b.FatBlock is IMyLargeMissileTurret);
+            foreach (var slim in slimBlocksG)
+            {
+                var missile = slim.FatBlock as IMyLargeMissileTurret;
+                if (missile.EntityId == gcorpHQ)
+                {
+                    missile.TargetNeutrals = false;
+                }
+                //              gatling.Range get only :(
+            }
+            slimBlocksG.Clear();
+            grid.GetBlocks(slimBlocksG, b => b.FatBlock is IMyLargeInteriorTurret);
+            foreach (var slim in slimBlocksG)
+            {
+                var interior = slim.FatBlock as IMyLargeInteriorTurret;
+                if (interior.EntityId == gcorpHQ)
+                {
+                    interior.TargetNeutrals = false;
+                }
+                //              gatling.Range get only :(
             }
 
             // fix up the beacon blocks  // V26
@@ -149,7 +177,7 @@ namespace EscapeFromMars
                 MyStringId beaconID;
                 if (MyStringId.TryGet("B" + beacon.EntityId.ToString(), out beaconID))
                 {
-                    // we found size setting
+                    // we found setting
                     string str = VRage.MyTexts.Get(beaconID).ToString();
                     beacon.CustomName = str;
                 }
@@ -168,7 +196,7 @@ namespace EscapeFromMars
                 MyStringId antenaID;
                 if (MyStringId.TryGet("A" + antenna.EntityId.ToString(), out antenaID))
                 {
-                    // we found size setting
+                    // we found setting
                     string str = VRage.MyTexts.Get(antenaID).ToString();
                     antenna.CustomName = str;
                 }
@@ -220,7 +248,7 @@ namespace EscapeFromMars
                     }
                     if (MyStringId.TryGet("T" + textPanel.EntityId.ToString() + "_padding", out textID))
                     {
-                        // we found size setting
+                        // we found setting
                         float size = textPanel.FontSize;
                         string str = VRage.MyTexts.Get(textID).ToString();
                         if (float.TryParse(str, out size))
@@ -268,7 +296,7 @@ namespace EscapeFromMars
                                     textPanel.TextPadding = 20f; // 20%
                                 else textPanel.TextPadding = 1f;
                                 */
-                                break;
+            break;
 
                             case 87005598531295535: //87005598531295535TEXT!EMERGENCY SUPPLIES
                                 /*
