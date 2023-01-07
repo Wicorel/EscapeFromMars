@@ -178,12 +178,17 @@ namespace EscapeFromMars
 			{
 				return MyTexts.GetString("DisplayName_Item_ReactorComponents");
 			}
-			if (subtypeName.Equals("Medical"))
-			{
-				return MyTexts.GetString("DisplayName_Item_MedicalComponents");
-			}
+            if (subtypeName.Equals("Medical"))
+            {
+                return MyTexts.GetString("DisplayName_Item_MedicalComponents");
+            }
+            if (subtypeName.Equals("AutocannonClip"))
+            {
+                return MyTexts.GetString("DisplayName_Item_AutocannonClipComponents");
+            }
 
-			return MyTexts.GetString("DisplayName_Item_" + subtypeName);
+
+            return MyTexts.GetString("DisplayName_Item_" + subtypeName);
 		}
 
 		internal MyObjectBuilder_Base GetObjectBuilder()

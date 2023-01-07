@@ -21,7 +21,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 41;
+        private const int CurrentModVersion = 42;
 
         // V31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
         // V33 SE 1.194
@@ -36,6 +36,7 @@ namespace EscapeFromMars
         //   NOTE: Removed EFM ammos.sbc
         // V40 SE 1.200 Fix convoys not piloting.
         // V41 SE 1.201 (or before) fix turrets default to targetting neutrals.  (ie, the HQ Rocket)
+        // V42 SE 1.201 AutocannonClip cargo name fixup in CargoTypes
 
         private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
