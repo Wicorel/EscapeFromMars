@@ -781,341 +781,452 @@ SubtyepID=LargeBlockLargeCalibreGun
         SubtyepID=SmallSuspension2x2
         (removed)
 */
+
+        /* 1.202
+         * LG
+        TyepID=MyObjectBuilder_EventControllerBlock
+        SubtyepID=EventControllerLarge
+
+        TyepID=MyObjectBuilder_DefensiveCombatBlock
+        SubtyepID=LargeDefensiveCombat
+
+            TyepID=MyObjectBuilder_FlightMovementBlock
+SubtyepID=LargeFlightMovement
+
+TyepID=MyObjectBuilder_CameraBlock
+SubtyepID=LargeCameraTopMounted
+
+TyepID=MyObjectBuilder_AirVent
+SubtyepID=AirVentFanFull
+
+TyepID=MyObjectBuilder_AirVent
+SubtyepID=AirVentFull
+
+            TyepID=MyObjectBuilder_OffensiveCombatBlock
+SubtyepID=LargeOffensiveCombat
+
+            TyepID=MyObjectBuilder_BasicMissionBlock
+SubtyepID=LargeBasicMission
+
+TyepID=MyObjectBuilder_PathRecorderBlock
+SubtyepID=LargePathRecorderBlock
+
+            TyepID=MyObjectBuilder_TerminalBlock
+SubtyepID=MaintenancePanelLarge
+
+            TyepID=MyObjectBuilder_SensorBlock
+SubtyepID=LargeBlockSensorReskin
+
+TyepID=MyObjectBuilder_MotorSuspension
+SubtyepID=OffroadSuspension2x2Mirrored
+
+            TyepID=MyObjectBuilder_MotorSuspension
+SubtyepID=OffroadSuspension2x2
+
+            TyepID=MyObjectBuilder_MotorSuspension
+SubtyepID=Suspension2x2Mirrored
+
+TyepID=MyObjectBuilder_MotorSuspension
+SubtyepID=Suspension2x2
+
+TyepID=MyObjectBuilder_TerminalBlock
+SubtyepID=LargeBlockAccessPanel1
+
+TyepID=MyObjectBuilder_ButtonPanel
+SubtyepID=LargeBlockAccessPanel3
+
+            TyepID=MyObjectBuilder_MyProgrammableBlock
+SubtyepID=LargeProgrammableBlockReskin
+
+            SG
+
+            TyepID=MyObjectBuilder_MergeBlock
+SubtyepID=SmallShipSmallMergeBlock
+
+            TyepID=MyObjectBuilder_MotorAdvancedStator
+SubtyepID=SmallAdvancedStatorSmall
+
+            TyepID=MyObjectBuilder_DefensiveCombatBlock
+SubtyepID=SmallDefensiveCombat
+
+            TyepID=MyObjectBuilder_OffensiveCombatBlock
+SubtyepID=SmallOffensiveCombat
+
+            TyepID=MyObjectBuilder_CameraBlock
+SubtyepID=SmallCameraTopMounted
+
+            TyepID=MyObjectBuilder_FlightMovementBlock
+SubtyepID=SmallFlightMovement
+
+            TyepID=MyObjectBuilder_SensorBlock
+SubtyepID=SmallBlockSensorReskin
+
+            TyepID=MyObjectBuilder_BasicMissionBlock
+SubtyepID=SmallBasicMission
+
+            TyepID=MyObjectBuilder_PathRecorderBlock
+SubtyepID=SmallPathRecorderBlock
+
+            TyepID=MyObjectBuilder_MotorSuspension
+SubtyepID=OffroadSmallSuspension2x2
+
+            TyepID=MyObjectBuilder_MotorSuspension
+SubtyepID=OffroadSmallSuspension2x2Mirrored
+
+            TyepID=MyObjectBuilder_MotorSuspension
+SubtyepID=SmallSuspension2x2
+
+            TyepID=MyObjectBuilder_MotorSuspension
+SubtyepID=SmallSuspension2x2Mirrored
+
+            TyepID=MyObjectBuilder_TerminalBlock
+SubtyepID=SmallBlockAccessPanel1
+
+TyepID=MyObjectBuilder_ButtonPanel
+SubtyepID=SmallBlockAccessPanel3
+
+            TyepID=MyObjectBuilder_MyProgrammableBlock
+SubtyepID=SmallProgrammableBlockReskin
+
+            TyepID=MyObjectBuilder_WorkAreaMissionBlock
+SubtyepID=SmallWorkAreaMission
+
+            */
         //
         private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
-            new Dictionary<TechGroup, HashSet<MyDefinitionId>>();
+new Dictionary<TechGroup, HashSet<MyDefinitionId>>();
 
-        private readonly QueuedAudioSystem audioSystem;
+private readonly QueuedAudioSystem audioSystem;
 
-        internal ResearchControl(QueuedAudioSystem audioSystem)
-        {
-            this.audioSystem = audioSystem;
-        }
+internal ResearchControl(QueuedAudioSystem audioSystem)
+{
+this.audioSystem = audioSystem;
+}
 
-        internal HashSet<TechGroup> UnlockedTechs { get; set; } = new HashSet<TechGroup>();
+internal HashSet<TechGroup> UnlockedTechs { get; set; } = new HashSet<TechGroup>();
 
-        // UNTESTED:
-        void FunctionalityChanged(long entityId, long gridid, string entityName, string gridName, string typeid, string subtypeid, bool becameFunctional)
-        {
-            if (subtypeid.Contains("Hydrogen"))
-            { // it's likely a hydrogen tank
-                ModLog.Info(" It looks like a hydrogen tank just got built.");
-                KeepTechsLocked();
-            }
+// UNTESTED:
+void FunctionalityChanged(long entityId, long gridid, string entityName, string gridName, string typeid, string subtypeid, bool becameFunctional)
+{
+if (subtypeid.Contains("Hydrogen"))
+{ // it's likely a hydrogen tank
+    ModLog.Info(" It looks like a hydrogen tank just got built.");
+    KeepTechsLocked();
+}
 
-        }
+}
 
-        internal void InitResearchRestrictions()
-        {
-            // 1.194            MySectorWeatherComponent wc;
-            //            WeatherType wt;
+internal void InitResearchRestrictions()
+{
+// 1.194            MySectorWeatherComponent wc;
+//            WeatherType wt;
 
-            if (bNewResearch)
-            {
-                MyVisualScriptLogicProvider.ResearchListClear();
-                MyVisualScriptLogicProvider.ResearchListWhitelist(false); // set it to be 'black list'
-            }
+if (bNewResearch)
+{
+    MyVisualScriptLogicProvider.ResearchListClear();
+    MyVisualScriptLogicProvider.ResearchListWhitelist(false); // set it to be 'black list'
+}
 
-            // TODO: Figure out how to disable game-based progression tree...
-            // A: you can't.  combo of editting researchgroups.sbc and MOD API
+// TODO: Figure out how to disable game-based progression tree...
+// A: you can't.  combo of editting researchgroups.sbc and MOD API
 
-            //            MyVisualScriptLogicProvider.BlockFunctionalityChanged += FunctionalityChanged;
+//            MyVisualScriptLogicProvider.BlockFunctionalityChanged += FunctionalityChanged;
 
-            NeedsResearch(refinery, TechGroup.Permabanned);
-            NeedsResearch(blastFurnace, TechGroup.Permabanned);
-            NeedsResearch(blastFurnace, TechGroup.Permabanned);
-            NeedsResearch(jumpDrive, TechGroup.Permabanned);
-            NeedsResearch(projectorLarge, TechGroup.Permabanned);
-            NeedsResearch(projectorSmall, TechGroup.Permabanned);
-            NeedsResearch(largeMissileTurret, TechGroup.Rockets);
-            NeedsResearch(smallMissileTurret, TechGroup.Rockets);
-            NeedsResearch(rocketLauncher, TechGroup.Rockets);
-            NeedsResearch(largeRocketLauncher, TechGroup.Rockets);
-            NeedsResearch(smallReloadableRocketLauncher, TechGroup.Rockets);
-            NeedsResearch(ionThrusterSmallShipSmall, TechGroup.Permabanned);
-            NeedsResearch(ionThrusterSmallShipLarge, TechGroup.Permabanned);
-            NeedsResearch(ionThrusterLargeShipSmall, TechGroup.Permabanned);
-            NeedsResearch(ionThrusterLargeShipLarge, TechGroup.Permabanned);
-            NeedsResearch(hydroThrusterSmallShipSmall, TechGroup.Permabanned);
-            NeedsResearch(hydroThrusterSmallShipLarge, TechGroup.Permabanned);
-            NeedsResearch(hydroThrusterLargeShipSmall, TechGroup.Permabanned);
-            NeedsResearch(hydroThrusterLargeShipLarge, TechGroup.Permabanned);
-            NeedsResearch(atmoThrusterSmallShipSmall, TechGroup.AtmosphericEngines);
-            NeedsResearch(atmoThrusterSmallShipLarge, TechGroup.AtmosphericEngines);
-            NeedsResearch(atmoThrusterLargeShipSmall, TechGroup.AtmosphericEngines);
-            NeedsResearch(atmoThrusterLargeShipLarge, TechGroup.AtmosphericEngines);
+NeedsResearch(refinery, TechGroup.Permabanned);
+NeedsResearch(blastFurnace, TechGroup.Permabanned);
+NeedsResearch(blastFurnace, TechGroup.Permabanned);
+NeedsResearch(jumpDrive, TechGroup.Permabanned);
+NeedsResearch(projectorLarge, TechGroup.Permabanned);
+NeedsResearch(projectorSmall, TechGroup.Permabanned);
+NeedsResearch(largeMissileTurret, TechGroup.Rockets);
+NeedsResearch(smallMissileTurret, TechGroup.Rockets);
+NeedsResearch(rocketLauncher, TechGroup.Rockets);
+NeedsResearch(largeRocketLauncher, TechGroup.Rockets);
+NeedsResearch(smallReloadableRocketLauncher, TechGroup.Rockets);
+NeedsResearch(ionThrusterSmallShipSmall, TechGroup.Permabanned);
+NeedsResearch(ionThrusterSmallShipLarge, TechGroup.Permabanned);
+NeedsResearch(ionThrusterLargeShipSmall, TechGroup.Permabanned);
+NeedsResearch(ionThrusterLargeShipLarge, TechGroup.Permabanned);
+NeedsResearch(hydroThrusterSmallShipSmall, TechGroup.Permabanned);
+NeedsResearch(hydroThrusterSmallShipLarge, TechGroup.Permabanned);
+NeedsResearch(hydroThrusterLargeShipSmall, TechGroup.Permabanned);
+NeedsResearch(hydroThrusterLargeShipLarge, TechGroup.Permabanned);
+NeedsResearch(atmoThrusterSmallShipSmall, TechGroup.AtmosphericEngines);
+NeedsResearch(atmoThrusterSmallShipLarge, TechGroup.AtmosphericEngines);
+NeedsResearch(atmoThrusterLargeShipSmall, TechGroup.AtmosphericEngines);
+NeedsResearch(atmoThrusterLargeShipLarge, TechGroup.AtmosphericEngines);
 
-            NeedsResearch(oxygenFarm, TechGroup.OxygenFarm);
-            NeedsResearch(oxygenGeneratorLarge, TechGroup.OxygenGenerators);
-            NeedsResearch(oxygenGeneratorSmall, TechGroup.OxygenGenerators);
-            NeedsResearch(oxygenTankLarge, TechGroup.GasStorage);
-            NeedsResearch(oxygenTankSmall, TechGroup.GasStorage);
-            NeedsResearch(hydrogenTankLarge, TechGroup.GasStorage);
-            NeedsResearch(hydrogenTankSmall, TechGroup.GasStorage);
+NeedsResearch(oxygenFarm, TechGroup.OxygenFarm);
+NeedsResearch(oxygenGeneratorLarge, TechGroup.OxygenGenerators);
+NeedsResearch(oxygenGeneratorSmall, TechGroup.OxygenGenerators);
+NeedsResearch(oxygenTankLarge, TechGroup.GasStorage);
+NeedsResearch(oxygenTankSmall, TechGroup.GasStorage);
+NeedsResearch(hydrogenTankLarge, TechGroup.GasStorage);
+NeedsResearch(hydrogenTankSmall, TechGroup.GasStorage);
 
-            //SE 1.194 V33
-            NeedsResearch(LargeHydrogenTankSmall, TechGroup.GasStorage);
-            NeedsResearch(SmallHydrogenTankSmall, TechGroup.GasStorage);
+//SE 1.194 V33
+NeedsResearch(LargeHydrogenTankSmall, TechGroup.GasStorage);
+NeedsResearch(SmallHydrogenTankSmall, TechGroup.GasStorage);
 
-            NeedsResearch(EngineLarge, TechGroup.GasStorage);
-            NeedsResearch(EngineSmall, TechGroup.GasStorage);
+NeedsResearch(EngineLarge, TechGroup.GasStorage);
+NeedsResearch(EngineSmall, TechGroup.GasStorage);
 
-            NeedsResearch(WindTurbineLarge, TechGroup.AtmosphericEngines);
+NeedsResearch(WindTurbineLarge, TechGroup.AtmosphericEngines);
 
-            NeedsResearch(SmallGatlingTurret, TechGroup.BasicWeapons);
-            NeedsResearch(SmallRocketLauncherReload, TechGroup.BasicWeapons);
-            NeedsResearch(InteriorTurret, TechGroup.BasicWeapons);
-            NeedsResearch(LargeGatlingTurret, TechGroup.BasicWeapons);
-            //            NeedsResearch(largeMissileTurret, TechGroup.BasicWeapons);
-            //            NeedsResearch(smallMissileTurret, TechGroup.BasicWeapons);
+NeedsResearch(SmallGatlingTurret, TechGroup.BasicWeapons);
+NeedsResearch(SmallRocketLauncherReload, TechGroup.BasicWeapons);
+NeedsResearch(InteriorTurret, TechGroup.BasicWeapons);
+NeedsResearch(LargeGatlingTurret, TechGroup.BasicWeapons);
+//            NeedsResearch(largeMissileTurret, TechGroup.BasicWeapons);
+//            NeedsResearch(smallMissileTurret, TechGroup.BasicWeapons);
 
-            NeedsResearch(SkLarge, TechGroup.Permabanned);
-            NeedsResearch(SkSmall, TechGroup.Permabanned);
-            NeedsResearch(BasicAssembler, TechGroup.Permabanned);
+NeedsResearch(SkLarge, TechGroup.Permabanned);
+NeedsResearch(SkSmall, TechGroup.Permabanned);
+NeedsResearch(BasicAssembler, TechGroup.Permabanned);
 
 
-            var gameVersion = MyAPIGateway.Session.Version;
+var gameVersion = MyAPIGateway.Session.Version;
 
-            if ((gameVersion.Major == 1 && gameVersion.Minor >= 195) || gameVersion.Major > 1)
-            {
-                // V1.195 DLC
-                NeedsResearch(SmallBlockSmallAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
-                NeedsResearch(SmallBlockLargeAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
-                NeedsResearch(LargeBlockSmallAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
-                NeedsResearch(LargeBlockLargeAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
+if ((gameVersion.Major == 1 && gameVersion.Minor >= 195) || gameVersion.Major > 1)
+{
+    // V1.195 DLC
+    NeedsResearch(SmallBlockSmallAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
+    NeedsResearch(SmallBlockLargeAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
+    NeedsResearch(LargeBlockSmallAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
+    NeedsResearch(LargeBlockLargeAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
 
-                NeedsResearch(SmallBlockSmallThrustSciFi, TechGroup.Permabanned);
-                NeedsResearch(SmallBlockLargeThrustSciFi, TechGroup.Permabanned);
-                NeedsResearch(LargeBlockSmallThrustSciFi, TechGroup.Permabanned);
-                NeedsResearch(LargeBlockLargeThrustSciFi, TechGroup.Permabanned);
-            }
+    NeedsResearch(SmallBlockSmallThrustSciFi, TechGroup.Permabanned);
+    NeedsResearch(SmallBlockLargeThrustSciFi, TechGroup.Permabanned);
+    NeedsResearch(LargeBlockSmallThrustSciFi, TechGroup.Permabanned);
+    NeedsResearch(LargeBlockLargeThrustSciFi, TechGroup.Permabanned);
+}
 
-            // V26.  For SE 1.192
-            if ((gameVersion.Major == 1 && gameVersion.Minor >= 192) || gameVersion.Major > 1)
-            {
-                NeedsResearch(SafeZoneBlock, TechGroup.Permabanned);
-                NeedsResearch(StoreBlock, TechGroup.Permabanned);
-                NeedsResearch(ContractBlock, TechGroup.Permabanned);
+// V26.  For SE 1.192
+if ((gameVersion.Major == 1 && gameVersion.Minor >= 192) || gameVersion.Major > 1)
+{
+    NeedsResearch(SafeZoneBlock, TechGroup.Permabanned);
+    NeedsResearch(StoreBlock, TechGroup.Permabanned);
+    NeedsResearch(ContractBlock, TechGroup.Permabanned);
 
-                // V27 SE 1.192 Economy DLC
-                NeedsResearch(VendingMachine, TechGroup.Permabanned);
-                NeedsResearch(AtmBlock, TechGroup.Permabanned);
-            }
-            //   For SE 1.193
-            if ((gameVersion.Major == 1 && gameVersion.Minor >= 193) || gameVersion.Major > 1)
-            {
-                NeedsResearch(FoodDispenser, TechGroup.Permabanned);
-            }
-            //   For SE 1.199
-            if ((gameVersion.Major == 1 && gameVersion.Minor >= 199) || gameVersion.Major > 1)
-            {
-                NeedsResearch(IndustrialRefinery, TechGroup.Permabanned);
+    // V27 SE 1.192 Economy DLC
+    NeedsResearch(VendingMachine, TechGroup.Permabanned);
+    NeedsResearch(AtmBlock, TechGroup.Permabanned);
+}
+//   For SE 1.193
+if ((gameVersion.Major == 1 && gameVersion.Minor >= 193) || gameVersion.Major > 1)
+{
+    NeedsResearch(FoodDispenser, TechGroup.Permabanned);
+}
+//   For SE 1.199
+if ((gameVersion.Major == 1 && gameVersion.Minor >= 199) || gameVersion.Major > 1)
+{
+    NeedsResearch(IndustrialRefinery, TechGroup.Permabanned);
 //                NeedsResearch(IndustrialAssembler, TechGroup.Permabanned);
 
-                NeedsResearch(IndustrialLGLargeHTruster, TechGroup.Permabanned);
-                NeedsResearch(IndustrialLGSmallHTruster, TechGroup.Permabanned);
-                NeedsResearch(IndustrialSGLargeHTruster, TechGroup.Permabanned);
-                NeedsResearch(IndustrialSGSmallHTruster, TechGroup.Permabanned);
+    NeedsResearch(IndustrialLGLargeHTruster, TechGroup.Permabanned);
+    NeedsResearch(IndustrialLGSmallHTruster, TechGroup.Permabanned);
+    NeedsResearch(IndustrialSGLargeHTruster, TechGroup.Permabanned);
+    NeedsResearch(IndustrialSGSmallHTruster, TechGroup.Permabanned);
 
-                NeedsResearch(LargeHydrogenTankIndustrial, TechGroup.GasStorage);
-            }
-            if ((gameVersion.Major == 1 && gameVersion.Minor >= 200) || gameVersion.Major > 1)
-            {
+    NeedsResearch(LargeHydrogenTankIndustrial, TechGroup.GasStorage);
+}
+if ((gameVersion.Major == 1 && gameVersion.Minor >= 200) || gameVersion.Major > 1)
+{
 
-                NeedsResearch(LargeBlockLargeCalibreGun, TechGroup.BasicWeapons);
-                NeedsResearch(SmallBlockAutocannon, TechGroup.BasicWeapons);
-                NeedsResearch(SmallGatlingGunWarfare2, TechGroup.BasicWeapons);
+    NeedsResearch(LargeBlockLargeCalibreGun, TechGroup.BasicWeapons);
+    NeedsResearch(SmallBlockAutocannon, TechGroup.BasicWeapons);
+    NeedsResearch(SmallGatlingGunWarfare2, TechGroup.BasicWeapons);
 
-                // encourage engineering
-                NeedsResearch(LargeTurretControlBlock, TechGroup.BasicWeapons);
-                NeedsResearch(SmallTurretControlBlock, TechGroup.BasicWeapons);
+    // encourage engineering
+    NeedsResearch(LargeTurretControlBlock, TechGroup.BasicWeapons);
+    NeedsResearch(SmallTurretControlBlock, TechGroup.BasicWeapons);
 
 
-                NeedsResearch(SmallMissileLauncherWarfare2, TechGroup.Rockets);
-                NeedsResearch(LargeRailgun, TechGroup.Rockets);
-                NeedsResearch(SmallRailgun, TechGroup.Rockets);
-                NeedsResearch(SmallMissileLauncherWarfare2, TechGroup.Rockets);
+    NeedsResearch(SmallMissileLauncherWarfare2, TechGroup.Rockets);
+    NeedsResearch(LargeRailgun, TechGroup.Rockets);
+    NeedsResearch(SmallRailgun, TechGroup.Rockets);
+    NeedsResearch(SmallMissileLauncherWarfare2, TechGroup.Rockets);
 
-                // new turrets are banned because they might change the balance too much
-                NeedsResearch(LargeBlockMediumCalibreTurret, TechGroup.Permabanned);
-                NeedsResearch(AutoCannonTurret, TechGroup.Permabanned);
-                NeedsResearch(SmallBlockMediumCalibreTurret, TechGroup.Permabanned);
+    // new turrets are banned because they might change the balance too much
+    NeedsResearch(LargeBlockMediumCalibreTurret, TechGroup.Permabanned);
+    NeedsResearch(AutoCannonTurret, TechGroup.Permabanned);
+    NeedsResearch(SmallBlockMediumCalibreTurret, TechGroup.Permabanned);
 
-                NeedsResearch(SmallBlockSmallModularThruster, TechGroup.Permabanned);
-                NeedsResearch(SmallBlockLargeModularThruster, TechGroup.Permabanned);
-                NeedsResearch(LargeBlockSmallModularThruster, TechGroup.Permabanned);
-                NeedsResearch(LargeBlockLargeModularThruster, TechGroup.Permabanned);
+    NeedsResearch(SmallBlockSmallModularThruster, TechGroup.Permabanned);
+    NeedsResearch(SmallBlockLargeModularThruster, TechGroup.Permabanned);
+    NeedsResearch(LargeBlockSmallModularThruster, TechGroup.Permabanned);
+    NeedsResearch(LargeBlockLargeModularThruster, TechGroup.Permabanned);
 
-            }
-        }
+}
+}
 
-        public void AllowUnlockedTechs()
+public void AllowUnlockedTechs()
+{
+//            ModLog.Info("AllowUnlockTechs():" + UnlockedTechs.Count.ToString() + " unlocked groups");
+
+UnlockTechsSilently(0, UnlockedTechs);
+}
+
+private void NeedsResearch(MyDefinitionId techDef, TechGroup techgroup)
+{
+if (techDef == null)
+{
+    ModLog.Info("Request for NULL techDef");
+    return;
+}
+
+MyVisualScriptLogicProvider.ResearchListAddItem(techDef);
+
+HashSet<MyDefinitionId> techsInGroup;
+if (!techsForGroup.TryGetValue(techgroup, out techsInGroup))
+{
+    techsInGroup = new HashSet<MyDefinitionId>();
+    techsForGroup.Add(techgroup, techsInGroup);
+}
+techsInGroup.Add(techDef);
+}
+
+public void KeepTechsLocked()
+{
+//            ModLog.Info("KeepTechsLocked()");
+
+foreach (var techGroup in techsForGroup)
+{
+    var group = techGroup.Key;
+    //                ModLog.Info("KTL: Group=" + group.ToString());
+    if (UnlockedTechs.Contains(group))
+    {
+        //                    ModLog.Info(" UNLOCKED");
+        // OK to unlock
+        var technologies = techsForGroup[group];
+        foreach (var technology in technologies)
         {
-            //            ModLog.Info("AllowUnlockTechs():" + UnlockedTechs.Count.ToString() + " unlocked groups");
-
-            UnlockTechsSilently(0, UnlockedTechs);
-        }
-
-        private void NeedsResearch(MyDefinitionId techDef, TechGroup techgroup)
-        {
-            if (techDef == null)
-            {
-                ModLog.Info("Request for NULL techDef");
-                return;
-            }
-
-            MyVisualScriptLogicProvider.ResearchListAddItem(techDef);
-
-            HashSet<MyDefinitionId> techsInGroup;
-            if (!techsForGroup.TryGetValue(techgroup, out techsInGroup))
-            {
-                techsInGroup = new HashSet<MyDefinitionId>();
-                techsForGroup.Add(techgroup, techsInGroup);
-            }
-            techsInGroup.Add(techDef);
-        }
-
-        public void KeepTechsLocked()
-        {
-            //            ModLog.Info("KeepTechsLocked()");
-
-            foreach (var techGroup in techsForGroup)
-            {
-                var group = techGroup.Key;
-                //                ModLog.Info("KTL: Group=" + group.ToString());
-                if (UnlockedTechs.Contains(group))
-                {
-                    //                    ModLog.Info(" UNLOCKED");
-                    // OK to unlock
-                    var technologies = techsForGroup[group];
-                    foreach (var technology in technologies)
-                    {
-                        MyVisualScriptLogicProvider.ResearchListRemoveItem(technology);
-                    }
-                }
-                else
-                {
-                    //                    ModLog.Info(" LOCKED");
-                    // block should be locked
-                    var technologies = techsForGroup[group];
-                    if (technologies == null)
-                    {
-                        ModLog.Error("No technologies for group: " + techGroup);
-                        continue;
-                    }
-                    //                    ModLog.Info(" # blocks=" + technologies.Count.ToString());
-                    foreach (var technology in technologies)
-                    {
-                        MyVisualScriptLogicProvider.ResearchListAddItem(technology);
-                    }
-                }
-            }
-
-        }
-
-
-        internal void UnlockTechGroupForAllPlayers(TechGroup techGroup)
-        {
-            if (UnlockedTechs.Contains(techGroup))
-            {
-                //                ModLog.Info("UTGFAP():" + UnlockedTechs.Count.ToString() + " unlocked groups. Already contains TechGroup:"+techGroup.ToString());
-                return; // Already unlocked
-            }
-
-            HashSet<MyDefinitionId> technologies;
-            if (!techsForGroup.TryGetValue(techGroup, out technologies))
-            {
-                ModLog.Error("No technologies for group: " + techGroup);
-                return;
-            }
-            var players = new List<IMyPlayer>();
-            MyAPIGateway.Players.GetPlayers(players);
-            foreach (var player in players)
-            {
-                foreach (var technology in technologies)
-                {
-                    if (bNewResearch)
-                    {
-                        MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
-                    }
-                    else
-                    {
-                        //                        ModLog.Info("Old research Method: Unlock for player:" + player.IdentityId.ToString() + " tech=" + technology.ToString());
-                        MyVisualScriptLogicProvider.PlayerResearchUnlock(player.IdentityId, technology);
-                    }
-                }
-            }
-            UnlockedTechs.Add(techGroup);
-            audioSystem.PlayAudio(GetAudioClipForTechGroup(techGroup));
-        }
-
-        private static AudioClip GetAudioClipForTechGroup(TechGroup techGroup)
-        {
-            switch (techGroup)
-            {
-                case TechGroup.Permabanned:
-                    return AudioClip.AllTechUnlocked;
-                case TechGroup.AtmosphericEngines:
-                    return AudioClip.UnlockAtmospherics;
-                case TechGroup.Rockets:
-                    return AudioClip.UnlockedMissiles;
-                case TechGroup.OxygenGenerators:
-                    return AudioClip.OxygenGeneratorUnlocked;
-                case TechGroup.OxygenFarm:
-                    return AudioClip.OxygenFarmUnlocked;
-                case TechGroup.GasStorage:
-                    return AudioClip.GasStorageUnlocked;
-                case TechGroup.BasicWeapons:
-                    return AudioClip.BasicWeaponsUnlocked;
-                default:
-                    return AudioClip.PowerUpClipped;
-            }
-        }
-
-        public void UnlockTechsSilently(long playerId, HashSet<TechGroup> techGroups)
-        {
-            foreach (var techGroup in techGroups)
-            {
-                var technologies = techsForGroup[techGroup];
-                if (technologies == null)
-                {
-                    ModLog.Error("No technologies for group: " + techGroup);
-                    return;
-                }
-
-                foreach (var technology in technologies)
-                {
-                    if (bNewResearch)
-                        // unknown: does this work for ALL players?
-                        MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
-                    else
-                    {
-                        MyVisualScriptLogicProvider.PlayerResearchUnlock(playerId, technology);
-                    }
-                }
-            }
-        }
-
-        public void UnlockTechForJoiningPlayer(long playerId)
-        {
-            foreach (var techGroup in UnlockedTechs)
-            {
-                var technologies = techsForGroup[techGroup];
-                if (technologies == null)
-                {
-                    ModLog.Error("No technologies for group: " + techGroup);
-                    return;
-                }
-
-                foreach (var technology in technologies)
-                {
-                    if (bNewResearch)
-                        MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
-                    else
-                        MyVisualScriptLogicProvider.PlayerResearchUnlock(playerId, technology);
-                }
-            }
+            MyVisualScriptLogicProvider.ResearchListRemoveItem(technology);
         }
     }
+    else
+    {
+        //                    ModLog.Info(" LOCKED");
+        // block should be locked
+        var technologies = techsForGroup[group];
+        if (technologies == null)
+        {
+            ModLog.Error("No technologies for group: " + techGroup);
+            continue;
+        }
+        //                    ModLog.Info(" # blocks=" + technologies.Count.ToString());
+        foreach (var technology in technologies)
+        {
+            MyVisualScriptLogicProvider.ResearchListAddItem(technology);
+        }
+    }
+}
+
+}
+
+
+internal void UnlockTechGroupForAllPlayers(TechGroup techGroup)
+{
+if (UnlockedTechs.Contains(techGroup))
+{
+    //                ModLog.Info("UTGFAP():" + UnlockedTechs.Count.ToString() + " unlocked groups. Already contains TechGroup:"+techGroup.ToString());
+    return; // Already unlocked
+}
+
+HashSet<MyDefinitionId> technologies;
+if (!techsForGroup.TryGetValue(techGroup, out technologies))
+{
+    ModLog.Error("No technologies for group: " + techGroup);
+    return;
+}
+var players = new List<IMyPlayer>();
+MyAPIGateway.Players.GetPlayers(players);
+foreach (var player in players)
+{
+    foreach (var technology in technologies)
+    {
+        if (bNewResearch)
+        {
+            MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
+        }
+        else
+        {
+            //                        ModLog.Info("Old research Method: Unlock for player:" + player.IdentityId.ToString() + " tech=" + technology.ToString());
+            MyVisualScriptLogicProvider.PlayerResearchUnlock(player.IdentityId, technology);
+        }
+    }
+}
+UnlockedTechs.Add(techGroup);
+audioSystem.PlayAudio(GetAudioClipForTechGroup(techGroup));
+}
+
+private static AudioClip GetAudioClipForTechGroup(TechGroup techGroup)
+{
+switch (techGroup)
+{
+    case TechGroup.Permabanned:
+        return AudioClip.AllTechUnlocked;
+    case TechGroup.AtmosphericEngines:
+        return AudioClip.UnlockAtmospherics;
+    case TechGroup.Rockets:
+        return AudioClip.UnlockedMissiles;
+    case TechGroup.OxygenGenerators:
+        return AudioClip.OxygenGeneratorUnlocked;
+    case TechGroup.OxygenFarm:
+        return AudioClip.OxygenFarmUnlocked;
+    case TechGroup.GasStorage:
+        return AudioClip.GasStorageUnlocked;
+    case TechGroup.BasicWeapons:
+        return AudioClip.BasicWeaponsUnlocked;
+    default:
+        return AudioClip.PowerUpClipped;
+}
+}
+
+public void UnlockTechsSilently(long playerId, HashSet<TechGroup> techGroups)
+{
+foreach (var techGroup in techGroups)
+{
+    var technologies = techsForGroup[techGroup];
+    if (technologies == null)
+    {
+        ModLog.Error("No technologies for group: " + techGroup);
+        return;
+    }
+
+    foreach (var technology in technologies)
+    {
+        if (bNewResearch)
+            // unknown: does this work for ALL players?
+            MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
+        else
+        {
+            MyVisualScriptLogicProvider.PlayerResearchUnlock(playerId, technology);
+        }
+    }
+}
+}
+
+public void UnlockTechForJoiningPlayer(long playerId)
+{
+foreach (var techGroup in UnlockedTechs)
+{
+    var technologies = techsForGroup[techGroup];
+    if (technologies == null)
+    {
+        ModLog.Error("No technologies for group: " + techGroup);
+        return;
+    }
+
+    foreach (var technology in technologies)
+    {
+        if (bNewResearch)
+            MyVisualScriptLogicProvider.ResearchListRemoveItem(technology); // SE 1.189
+        else
+            MyVisualScriptLogicProvider.PlayerResearchUnlock(playerId, technology);
+    }
+}
+}
+}
 }
 
