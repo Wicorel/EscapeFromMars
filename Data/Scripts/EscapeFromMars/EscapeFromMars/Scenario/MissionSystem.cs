@@ -111,7 +111,6 @@ namespace EscapeFromMars
             GeneratePrompts();
 			timeBasedPrompts.Sort((x, y) => -x.TriggerTime.CompareTo(y.TriggerTime));
 
-
         //            ModLog.Info("Start Time = " + missionStartTime.ToString());
             ModLog.Info("Current Mission Length: " + (MyAPIGateway.Session.GameDateTime - missionStartTime).ToString(@"hh\:mm\:ss")); //V27
         }
@@ -600,10 +599,16 @@ namespace EscapeFromMars
 			var players = new List<IMyPlayer>();
 			MyAPIGateway.Players.GetPlayers(players);
 
-			foreach (var player in players)
+//            ModLog.Info("ULBP: " + players.Count + " players");
+
+            foreach (var player in players)
 			{
 				var controlled = player.Controller.ControlledEntity;
-				if (controlled == null) continue;
+                if (controlled == null)
+                {
+//                    ModLog.Info("Player not controlled" + player.DisplayName);
+                    continue;
+                }
 				var position = controlled.Entity.GetPosition();
 
 				foreach (var locationPrompt in locationbasedMissionPrompts.Reverse<LocationBasedMissionPrompt>())
