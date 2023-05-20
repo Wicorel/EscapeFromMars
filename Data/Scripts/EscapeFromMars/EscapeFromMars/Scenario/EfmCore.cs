@@ -21,7 +21,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 42;
+        private const int CurrentModVersion = 43;
 
         // V31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
         // V33 SE 1.194
@@ -37,6 +37,11 @@ namespace EscapeFromMars
         // V40 SE 1.200 Fix convoys not piloting.
         // V41 SE 1.201 (or before) fix turrets default to targetting neutrals.  (ie, the HQ Rocket)
         // V42 SE 1.201 AutocannonClip cargo name fixup in CargoTypes
+        //
+        //  Reports of Miki not working
+        //     and reports of research progress not correctly copied into joining players
+        // V43 Trying to fix above
+        
 
         private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -318,6 +323,92 @@ namespace EscapeFromMars
                     }
                     else { sMsg += " No character loaded yet"; }
                     MyVisualScriptLogicProvider.SendChatMessage(sMsg, "Wicorel", 0, MyFontEnum.DarkBlue);
+                }
+
+            }
+            if (args[1].ToLower() == "debug")
+            {
+                bool bDisplaySyntax = false;
+
+                if (args.Length > 2)
+                {
+                    bool bOK;
+                    bool bArgument = false;
+                    if (args.Length > 3)
+                    {
+                        bOK = bool.TryParse(args[3], out bArgument);
+                    }
+                    if (args[2].ToLower() == "convoys")
+                    {
+                        if (args.Length > 3)
+                        {
+                            // set
+                            ConvoySpawner.DebugConvoys = bArgument;
+                            ModLog.Info("DebugConvoys Set to" + ConvoySpawner.DebugConvoys);
+                        }
+                        else
+                        {
+                            // display
+                            MyVisualScriptLogicProvider.SendChatMessage("DebugConboys="+ConvoySpawner.DebugConvoys.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
+                        }
+
+                    }
+                    if (args[2].ToLower() == "air")
+                    {
+                        if (args.Length > 3)
+                        {
+                            // set
+                            ConvoySpawner.ForceAirOnly = bArgument;
+                            ModLog.Info("ForceAirOnly Set to" + ConvoySpawner.ForceAirOnly);
+                        }
+                        else
+                        {
+                            // display
+                            MyVisualScriptLogicProvider.SendChatMessage("ForceAirOnly=" + ConvoySpawner.ForceAirOnly.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
+                        }
+
+                    }
+                    if (args[2].ToLower() == "ground")
+                    {
+                        if (args.Length > 3)
+                        {
+                            // set
+                            ConvoySpawner.ForceGroundOnly = bArgument;
+                            ModLog.Info("ForceGroundOnly Set to" + ConvoySpawner.ForceGroundOnly);
+                        }
+                        else
+                        {
+                            // display
+                            MyVisualScriptLogicProvider.SendChatMessage("ForceGroundOnly=" + ConvoySpawner.ForceGroundOnly.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
+                        }
+
+                    }
+                }
+                else
+                {
+                    bDisplaySyntax = true;
+                }
+                int iParam = 0;
+                bool bOk = int.TryParse(args[2], out iParam);
+
+                if (bOk && iParam >= 0)
+                {
+                    heatSystem.HeatDifficulty = iParam;
+                    MyVisualScriptLogicProvider.SendChatMessage("Difficulty set to " + heatSystem.HeatDifficulty.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
+                    if (heatSystem.HeatDifficulty > 3)
+                    {
+                        GCorpBase.SetFastBackupDelay();
+                    }
+                    else
+                    {
+                        GCorpBase.SetNormalBackupDelay();
+                    }
+                }
+                if (bDisplaySyntax)
+                {
+                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm debug <convoy|air|ground> [true|false]", "Wicorel", 0, MyFontEnum.DarkBlue);
+                    visible = true;
+                    return;
                 }
 
             }
