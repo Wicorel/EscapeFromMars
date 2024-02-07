@@ -45,7 +45,7 @@ namespace EscapeFromMars
 				return d100 < HeatLevel ? ShipSize.Medium : ShipSize.Small;
 			}
 
-			if (HeatLevel < 100)  // Larges start to appear after 50
+			if (HeatLevel < 100)  // Largs start to appear after 50
 			{
 				if (d100 < 10)
 				{
@@ -55,10 +55,10 @@ namespace EscapeFromMars
 			}
 
 			// End game - player killed 100+ convoys!
-			if (d100 < 10)
-			{
-				return ShipSize.Small;
-			}
+//			if (d100 < 10)
+//			{
+//				return ShipSize.Small;
+//			}
 			return d100 < 40 ? ShipSize.Medium : ShipSize.Large;
 		}
 
