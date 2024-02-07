@@ -30,11 +30,18 @@ namespace Duckroll
 					interruptingSoundEmitter = new MyEntity3DSoundEmitter(ent as VRage.Game.Entity.MyEntity);
 					playerEntityId2 = ent.EntityId;
 				}
-
-				var soundPair = new MySoundPair(clip.Filename);
-				interruptingSoundEmitter.StopSound(true);
-				interruptingSoundEmitter.PlaySingleSound(soundPair);
-				currentlyPlaying = clip;
+                currentlyPlaying = clip;
+                string audiofile = clip.Filename;
+                if (!string.IsNullOrWhiteSpace(audiofile))
+                {
+                    var soundPair = new MySoundPair(audiofile);
+                    interruptingSoundEmitter.StopSound(true);
+                    interruptingSoundEmitter.PlaySingleSound(soundPair);
+                }
+				else
+				{
+					interruptingSoundEmitter.StopSound(true);
+                }
 			}
 		}
 
