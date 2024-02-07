@@ -11,32 +11,44 @@ namespace EscapeFromMars
 		private const string EscortRole = Unitialised + "_ESCORT";
 		private const string CargoRole = Unitialised + "_CARGO";
 		private const string EscortAir = EscortRole + "_AIR";
-		private const string EscortGround = EscortRole + "_GROUND";
-		private const string CargoAir = CargoRole + "_AIR";
+        private const string EscortGround = EscortRole + "_GROUND";
+        private const string CargoAir = CargoRole + "_AIR";
 		private const string CargoGround = CargoRole + "_GROUND";
-		private const string BackupAir = Unitialised + "_BACKUP_AIR";
+        private const string BackupAir = Unitialised + "_BACKUP_AIR";
+
+        private const string EscortSpace = EscortRole + "_SPACE"; //V44
+        private const string CargoSpace = CargoRole + "_SPACE"; //V44
+        private const string BackupSpace = Unitialised + "_BACKUP_SPACE"; // V44
 
         private const string Bomb = Unitialised + "_BOMB";
 
         private static readonly PrefabGrid LightAirTransport = new PrefabGrid("Envoy", UnitType.Air, UnitRole.Delivery);
 
-		private static readonly PrefabGrid MediumAirTransport = new PrefabGrid("Medium GCorp Transport", UnitType.Air,
-			UnitRole.Delivery);
+//        private static readonly PrefabGrid MediumAirTransport = new PrefabGrid("Medium GCorp Transport", UnitType.Air,
+
+        private static readonly PrefabGrid MediumAirTransport = new PrefabGrid("Medium GCorp Transport", UnitType.Air,
+UnitRole.Delivery);
 
 		private static readonly PrefabGrid LargeAirTransport = new PrefabGrid("Large GCorp Transport", UnitType.Air,
 			UnitRole.Delivery);
 
-		private static readonly PrefabGrid LightAirEscort = new PrefabGrid("Combat Drone", UnitType.Air, UnitRole.Escort);
+//		private static readonly PrefabGrid LightAirEscort = new PrefabGrid("Combat Drone", UnitType.Air, UnitRole.Escort);
+        private static readonly PrefabGrid LightAirEscort = new PrefabGrid("Combat Drone Flat", UnitType.Air, UnitRole.Escort); // V44
 
-		private static readonly PrefabGrid MediumAirEscort = new PrefabGrid("Medium GCorp Combat Flyer", UnitType.Air, UnitRole.Escort);
 
-		private static readonly PrefabGrid RocketAirEscort = new PrefabGrid("Medium GCorp Missile Flyer", UnitType.Air, UnitRole.Escort);
+//        private static readonly PrefabGrid MediumAirEscort = new PrefabGrid("Medium GCorp Combat Flyer", UnitType.Air, UnitRole.Escort);
+        private static readonly PrefabGrid MediumAirEscort = new PrefabGrid("Combat Drone Gatling", UnitType.Air, UnitRole.Escort); // V44
 
-		private static readonly PrefabGrid LightGroundTransport = new PrefabGrid("Small Hover Transport", UnitType.Ground,
-			UnitRole.Delivery);
+        private static readonly PrefabGrid HeavyAirEscort = new PrefabGrid("Medium GCorp Missile Flyer", UnitType.Air, UnitRole.Escort);
 
-		private static readonly PrefabGrid MediumGroundTransport = new PrefabGrid("Medium Hover Transport", UnitType.Ground,
-			UnitRole.Delivery);
+
+
+
+		private static readonly PrefabGrid LightGroundTransport = new PrefabGrid("Small Hover Transport Flat", UnitType.Ground,
+			UnitRole.Delivery); // V44
+
+        private static readonly PrefabGrid MediumGroundTransport = new PrefabGrid("Medium Hover Transport Flat", UnitType.Air,
+            UnitRole.Delivery); //V44
 
 		private static readonly PrefabGrid LargeGroundTransport = new PrefabGrid("Large Hover Transport", UnitType.Ground,
 				UnitRole.Delivery);
@@ -47,20 +59,43 @@ namespace EscapeFromMars
 		private static readonly PrefabGrid MediumGroundEscort = new PrefabGrid("Medium Hover Drone", UnitType.Ground,
 			UnitRole.Escort);
 
-		private static readonly PrefabGrid RocketGroundEscort = new PrefabGrid("Medium Rocket Hover Drone", UnitType.Ground,
+		private static readonly PrefabGrid HeavyGroundEscort = new PrefabGrid("Medium Rocket Hover Drone", UnitType.Ground,
 			UnitRole.Escort);
 
 		private static readonly PrefabGrid LightAirBackup = new PrefabGrid("Combat Drone", UnitType.Air, UnitRole.Backup);
 
 		private static readonly PrefabGrid MediumAirBackup = new PrefabGrid("Medium GCorp Combat Flyer", UnitType.Air, UnitRole.Backup);
 
-		private static readonly PrefabGrid RocketAirBackup = new PrefabGrid("Medium GCorp Missile Flyer", UnitType.Air, UnitRole.Backup);
+		private static readonly PrefabGrid HeavyAirBackup = new PrefabGrid("Medium GCorp Missile Flyer", UnitType.Air, UnitRole.Backup);
 
         //V26
         private static readonly PrefabGrid BombDefense = new PrefabGrid("GCorp Large Bomb", UnitType.Air, UnitRole.Bomb);
 
+        //V44 Space prefabs
+
+        // TODO: make space versions of all of these.
+        private static readonly PrefabGrid LightSpaceTransport = new PrefabGrid("Envoy", UnitType.Air, UnitRole.Delivery);
+
+        private static readonly PrefabGrid MediumSpaceTransport = new PrefabGrid("Medium GCorp Transport", UnitType.Air,
+            UnitRole.Delivery);
+
+        private static readonly PrefabGrid LargeSpaceTransport = new PrefabGrid("Large GCorp Transport", UnitType.Air,
+            UnitRole.Delivery);
+
+        private static readonly PrefabGrid LightSpaceEscort = new PrefabGrid("Combat Drone", UnitType.Air, UnitRole.Escort);
+
+        private static readonly PrefabGrid MediumSpaceEscort = new PrefabGrid("Medium GCorp Combat Flyer", UnitType.Air, UnitRole.Escort);
+
+        private static readonly PrefabGrid HeavySpaceEscort = new PrefabGrid("Medium GCorp Missile Flyer", UnitType.Air, UnitRole.Escort);
+
+        private static readonly PrefabGrid LightSpaceBackup = new PrefabGrid("Combat Drone", UnitType.Air, UnitRole.Backup);
+
+        private static readonly PrefabGrid MediumSpaceBackup = new PrefabGrid("Medium GCorp Combat Flyer", UnitType.Air, UnitRole.Backup);
+
+        private static readonly PrefabGrid HeavySpaceBackup = new PrefabGrid("Medium GCorp Missile Flyer", UnitType.Air, UnitRole.Backup);
 
         // Define more prefabs here...
+
 
 
         internal string PrefabName { get; }
@@ -81,10 +116,23 @@ namespace EscapeFromMars
 			switch (unitRole)
 			{
 				case UnitRole.Delivery:
-					return unitType == UnitType.Air ? CargoAir : CargoGround;
-				case UnitRole.Escort:
-					return unitType == UnitType.Air ? EscortAir : EscortGround;
+                    if (unitType == UnitType.Air)
+                        return CargoAir;
+                    if (unitType == UnitType.Space)
+                        return CargoSpace;
+                    return CargoGround;
+                //					return unitType == UnitType.Air ? CargoAir : CargoGround;
+                case UnitRole.Escort:
+                    if (unitType == UnitType.Air)
+                        return EscortAir;
+                    if (unitType == UnitType.Space)
+                        return EscortSpace;
+                    return EscortGround;
+                    //return unitType == UnitType.Air ? EscortAir : EscortGround;
 				case UnitRole.Backup:
+                    if (unitType == UnitType.Space)
+                        return BackupSpace;
+
 					return BackupAir; // Currently all backup is air, ground is tricky to place at random
                 case UnitRole.Bomb: // V26
                     return Bomb;
@@ -98,7 +146,7 @@ namespace EscapeFromMars
 			switch (size)
 			{
 				case ShipSize.Large:
-					return RocketAirBackup;
+					return HeavyAirBackup;
 				case ShipSize.Medium:
 					return MediumAirBackup;
 				case ShipSize.Small:
@@ -107,6 +155,20 @@ namespace EscapeFromMars
 					throw new ArgumentException(size + " air backup not found!");
 			}
 		}
+        internal static PrefabGrid GetSpaceBackup(ShipSize size)
+        {
+            switch (size)
+            {
+                case ShipSize.Large:
+                    return HeavySpaceBackup;
+                case ShipSize.Medium:
+                    return MediumSpaceBackup;
+                case ShipSize.Small:
+                    return LightSpaceBackup;
+                default:
+                    throw new ArgumentException(size + " space backup not found!");
+            }
+        }
 
         internal static PrefabGrid GetBomb()
         {
@@ -128,32 +190,58 @@ namespace EscapeFromMars
 			}
 		}
 
-		internal static PrefabGrid GetGroundTransport(ShipSize size)
+        internal static PrefabGrid GetGroundTransport(ShipSize size)
+        {
+            switch (size)
+            {
+                case ShipSize.Large:
+                    return LargeGroundTransport;
+                case ShipSize.Medium:
+                    return MediumGroundTransport;
+                case ShipSize.Small:
+                    return LightGroundTransport;
+                default:
+                    throw new ArgumentException(size + " ground transport not found!");
+            }
+        }
+
+        internal static PrefabGrid GetSpaceTransport(ShipSize size)
+        {
+            switch (size)
+            {
+                case ShipSize.Large:
+                    return LargeSpaceTransport;
+                case ShipSize.Medium:
+                    return MediumSpaceTransport;
+                case ShipSize.Small:
+                    return LightSpaceTransport;
+                default:
+                    throw new ArgumentException(size + " space transport not found!");
+            }
+        }
+        internal static PrefabGrid GetEscort(UnitType unitType, ShipSize shipSize)
 		{
-			switch (size)
+			if(unitType == UnitType.Air)
 			{
-				case ShipSize.Large:
-					return LargeGroundTransport;
-				case ShipSize.Medium:
-					return MediumGroundTransport;
-				case ShipSize.Small:
-					return LightGroundTransport;
-				default:
-					throw new ArgumentException(size + " ground transport not found!");
+				return GetAirEscort(shipSize);
 			}
-		}
+            else if (unitType == UnitType.Ground)
+            {
+                return GetGroundEscort(shipSize);
+            }
+            else //if (unitType == UnitType.Space)
+            {
+                return GetSpaceEscort(shipSize);
+            }
+            //            return unitType == UnitType.Air ? GetAirEscort(shipSize) : GetGroundEscort(shipSize);
+        }
 
-		internal static PrefabGrid GetEscort(UnitType unitType, ShipSize shipSize)
-		{
-			return unitType == UnitType.Air ? GetAirEscort(shipSize) : GetGroundEscort(shipSize);
-		}
-
-		private static PrefabGrid GetAirEscort(ShipSize size)
+        private static PrefabGrid GetAirEscort(ShipSize size)
 		{
 			switch (size)
 			{
 				case ShipSize.Large:
-					return RocketAirEscort;
+					return HeavyAirEscort;
 				case ShipSize.Medium:
 					return MediumAirEscort;
 				case ShipSize.Small:
@@ -163,22 +251,36 @@ namespace EscapeFromMars
 			}
 		}
 
-		private static PrefabGrid GetGroundEscort(ShipSize size)
-		{
-			switch (size)
-			{
-				case ShipSize.Large:
-					return RocketGroundEscort;
-				case ShipSize.Medium:
-					return MediumGroundEscort;
-				case ShipSize.Small:
-					return LightGroundEscort;
-				default:
-					throw new ArgumentException(size + " ground escort not found!");
-			}
-		}
+        private static PrefabGrid GetGroundEscort(ShipSize size)
+        {
+            switch (size)
+            {
+                case ShipSize.Large:
+                    return HeavyGroundEscort;
+                case ShipSize.Medium:
+                    return MediumGroundEscort;
+                case ShipSize.Small:
+                    return LightGroundEscort;
+                default:
+                    throw new ArgumentException(size + " ground escort not found!");
+            }
+        }
 
-		internal static RoleAndUnitType? GetRoleAndUnitType(IMyCubeGrid grid)
+        private static PrefabGrid GetSpaceEscort(ShipSize size)
+        {
+            switch (size)
+            {
+                case ShipSize.Large:
+                    return HeavySpaceEscort;
+                case ShipSize.Medium:
+                    return MediumSpaceEscort;
+                case ShipSize.Small:
+                    return LightSpaceEscort;
+                default:
+                    throw new ArgumentException(size + " space escort not found!");
+            }
+        }
+        internal static RoleAndUnitType? GetRoleAndUnitType(IMyCubeGrid grid)
 		{
 			var slimBlocks = new List<IMySlimBlock>();
 			grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyBeacon);
@@ -212,7 +314,24 @@ namespace EscapeFromMars
                     return new RoleAndUnitType { UnitRole = UnitRole.Bomb, UnitType = UnitType.Air };
                 }
 
+                //V44
+                if (beaconName.Contains(EscortSpace))
+                {
+                    return new RoleAndUnitType { UnitRole = UnitRole.Escort, UnitType = UnitType.Space };
+                }
+                if (beaconName.Contains(CargoSpace))
+                {
+                    return new RoleAndUnitType { UnitRole = UnitRole.Delivery, UnitType = UnitType.Space };
+                }
+                if (beaconName.Contains(BackupSpace))
+                {
+                    return new RoleAndUnitType { UnitRole = UnitRole.Backup, UnitType = UnitType.Space };
+                }
+
+				// TODO add PMW missiles here
+
             }
+
             grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyWarhead);
             if (slimBlocks.Count>0)
             {
