@@ -2,6 +2,6 @@
 {
 	public enum UnitType
 	{
-		Air, Ground
+		Air, Ground, Space
 	}
 }
