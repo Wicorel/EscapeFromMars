@@ -10,6 +10,7 @@ using VRage.ModAPI;
 using VRageMath;
 using VRage.Utils;
 using VRage.Game;
+using Sandbox.Game.Entities;
 
 namespace EscapeFromMars
 {
@@ -17,6 +18,8 @@ namespace EscapeFromMars
 	{
 		private Vector3D airConvoyDestinationPosition;
 		private Vector3D groundConvoyDestinationPosition;
+
+        private Vector3D spaceConvoyDestinationPosition; //V44
 
 		private readonly HeatSystem heatSystem;
 		private readonly QueuedAudioSystem audioSystem;
@@ -37,6 +40,8 @@ namespace EscapeFromMars
         private string EscortName = "Convoy Escort"; // loaded from mytexts
         private bool bOldRemovals = false;
         private static float ConvoySpeed = 10f; // needs to be 10f for release
+
+        private static float SpaceConvoySpeed = 75f; // V44
 
         private string InvestigatingBackupCall = " Investigating Backup Call"; // loaded from mytexts
         private string ConvoyRecalled = "Convoy Recalled"; // loaded my mytexts
@@ -154,24 +159,36 @@ namespace EscapeFromMars
                     }
                 }
                 else if (remoteControl.CustomName.Contains("GROUND_DELIVERY_DESTINATION"))
-				{
-					//basesToInit.Add(remoteControl); // Is in the same place as the air destination, so disabled this
-					// If the destination has not yet been setup (ie restored from a save), do so now
-					if (Vector3D.IsZero(groundConvoyDestinationPosition))
-					{
-//                        ModLog.Info(" Setting groundConvoyDestinationPosition:" + remoteControl.GetPosition().ToString());
+                {
+                    //basesToInit.Add(remoteControl); // Is in the same place as the air destination, so disabled this
+                    // If the destination has not yet been setup (ie restored from a save), do so now
+                    if (Vector3D.IsZero(groundConvoyDestinationPosition))
+                    {
+                        //                        ModLog.Info(" Setting groundConvoyDestinationPosition:" + remoteControl.GetPosition().ToString());
                         groundConvoyDestinationPosition = remoteControl.GetPosition() + remoteControl.GetNaturalGravity() * -0.3f;
                         //                      // 3M above for Ground Destination
-//                        ModLog.Info(" Gravity:" + remoteControl.GetNaturalGravity());
-//                        ModLog.Info(" Set groundConvoyDestinationPosition:" + groundConvoyDestinationPosition.ToString());
+                        //                        ModLog.Info(" Gravity:" + remoteControl.GetNaturalGravity());
+                        //                        ModLog.Info(" Set groundConvoyDestinationPosition:" + groundConvoyDestinationPosition.ToString());
                     }
                     else
                     {
-//                        ModLog.Info(" using Saved groundConvoyDestinationPosition:" + groundConvoyDestinationPosition.ToString());
+                        //                        ModLog.Info(" using Saved groundConvoyDestinationPosition:" + groundConvoyDestinationPosition.ToString());
                     }
                 }
-			}
-//            ModLog.Info("EO:Potential Destination:" + grid.CustomName);
+                else if (remoteControl.CustomName.Contains("SPACE_DELIVERY_DESTINATION"))
+                {
+                    // If the destination has not yet been setup (ie restored from a save), do so now
+                    if (Vector3D.IsZero(spaceConvoyDestinationPosition))
+                    {
+                        spaceConvoyDestinationPosition = remoteControl.GetPosition();
+                    }
+                    else
+                    {
+                        //                        ModLog.Info(" using Saved groundConvoyDestinationPosition:" + groundConvoyDestinationPosition.ToString());
+                    }
+                }
+            }
+            //            ModLog.Info("EO:Potential Destination:" + grid.CustomName);
         }
 
         private void OfferPotentialNpcShip(IMyCubeGrid grid)
@@ -395,6 +412,7 @@ namespace EscapeFromMars
 
                         string sPrefix = "T";
                         if (unitType == UnitType.Air) sPrefix += "A";
+                        else if (unitType == UnitType.Space) sPrefix += "S";
                         else sPrefix += "G";
 
                         string prepend = "";
@@ -411,16 +429,34 @@ namespace EscapeFromMars
 
                         grid.SetAllBeaconNames(sPrefix + random.Next(10000, 99999) + " - " + prepend + cargoType.GetDisplayName() + append,
 							200f); // V31 set short until initialize check timeout
-						var destination = unitType == UnitType.Air ? airConvoyDestinationPosition : groundConvoyDestinationPosition;
 
-//                        ModLog.Info("Air Destination=" + airConvoyDestinationPosition.ToString());
-//                        ModLog.Info("GND Destination=" + groundConvoyDestinationPosition.ToString());
-//                        ModLog.Info("Chosen Dest=" + destination.ToString());
-                        SetDestination(grid, destination);
+                        // V44
+                        var destination = groundConvoyDestinationPosition;
+                        float speed = ConvoySpeed;
+                        if(unitType==UnitType.Air) 
+                        {
+                            destination = airConvoyDestinationPosition;
+                        }
+                        else if (unitType==UnitType.Space)
+                        {
+                            speed = SpaceConvoySpeed;
+                            destination = spaceConvoyDestinationPosition;
+                        }
+                        //						var destination = unitType == UnitType.Air ? airConvoyDestinationPosition : groundConvoyDestinationPosition;
+
+                        //                        ModLog.Info("Air Destination=" + airConvoyDestinationPosition.ToString());
+                        //                        ModLog.Info("GND Destination=" + groundConvoyDestinationPosition.ToString());
+                        //                        ModLog.Info("SPACE Destination=" + spaceConvoyDestinationPosition.ToString());
+                        //                        ModLog.Info("Chosen Dest=" + destination.ToString());
+
+                        //SetDestination(grid, destination);
+
+                        grid.SendToPosition(destination, 0, speed); // v44
+
 						RegisterConvoy(grid, NpcGroupState.Travelling, unitType, destination, MyAPIGateway.Session.GameDateTime);
 
 						var planet = DuckUtils.FindPlanetInGravity(grid.GetPosition());
-						if (planet != null)
+//						if (planet != null)
 						{
 							convoySpawner.SpawnConvoyEscorts(grid, unitType, planet);
 						}
@@ -434,11 +470,19 @@ namespace EscapeFromMars
 						}
 						else
 						{
-							grid.SetAllBeaconNames("E" + random.Next(10000, 99999) + " - " + EscortName, 2500f); // V31 shorten escort beacon range to decrease hud spam
 							var nearestPlanet = DuckUtils.FindPlanetInGravity(grid.GetPosition());
-							if (nearestPlanet != null)
-							{
-								group.JoinAsEscort(grid, unitType, nearestPlanet);
+                            if (nearestPlanet != null)
+                            {
+                                grid.SetAllBeaconNames("E" + random.Next(10000, 99999) + " - " + EscortName, 2500f); // V31 shorten escort beacon range to decrease hud spam
+                            }
+                            else // space
+                            {
+                                grid.SetAllBeaconNames("SE" + random.Next(10000, 99999) + " - " + EscortName, 3500f); 
+                            }
+
+                            //							if (nearestPlanet != null)
+                            {
+                                group.JoinAsEscort(grid, unitType, nearestPlanet);
 							}
 						}
 						break;
@@ -505,6 +549,7 @@ namespace EscapeFromMars
 			{
 				convoy = new ConvoyAir(destination, npcGroupState, heatSystem, audioSystem, leaderGrid, spawnTime);
 			}
+            // TODO: Convoy space
 			else
 			{
 				convoy = new ConvoyGround(destination, npcGroupState, heatSystem, audioSystem, leaderGrid, spawnTime);
@@ -551,16 +596,40 @@ namespace EscapeFromMars
 
 		private static void SetDestination(IMyCubeGrid grid, Vector3D destination)
 		{
+            grid.SendToPosition(destination, 0, ConvoySpeed);
+
+            /*
+
+            var slimBlocks = new List<IMySlimBlock>();
+
             bool bOldNav = false; // true=old way of NAV, false= new way
             // old= set gyro customname to NAV:
             // new = run PB directly with argument
 
-            bool bKeenAutopilot = false; // force using keen autopilot
+            //V44 default to keen autopilot
+            bool bKeenAutopilot = true; // force using keen autopilot
+
+            // Turn off AI move blocks
+            grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyFlightMovementBlock);
+            foreach (var slim in slimBlocks)
+            {
+                var block = slim.FatBlock as IMyFlightMovementBlock;
+                block.Enabled = false;
+            }
+
+            // IMyDefensiveCombatBlock
+            // IMyOffensiveCombatBlock
+
+            // IMyBasicMissionBlock
+
+            // IMyEventControllerBlock
+
+            // IMyPathRecorderBlock
+
 
             if (ConvoySpeed != 10f)
                 ModLog.Info("Using test convoy speed of " + ConvoySpeed.ToString());
 
-            var slimBlocks = new List<IMySlimBlock>();
 
             grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyProgrammableBlock);
             IMyProgrammableBlock NavPB = null;
@@ -637,13 +706,20 @@ namespace EscapeFromMars
                 foreach (var slim in slimBlocks)
                 {
                     var remoteControl = slim.FatBlock as IMyRemoteControl;
+
+                    if(remoteControl.GetNaturalGravity() == Vector3D.Zero)
+                        remoteControl.SpeedLimit = SpaceConvoySpeed; //V44
+                    else
+                        remoteControl.SpeedLimit = ConvoySpeed;
+
                     remoteControl.ClearWaypoints();
                     remoteControl.AddWaypoint(destination, "Target");
-                    remoteControl.SpeedLimit = ConvoySpeed;
                     remoteControl.SetAutoPilotEnabled(true);
+                    break;
                 }
                 // throw exception if no remote found? (change to Inactive state...)
             }
+            */
         }
 
         public override void Update1200()
