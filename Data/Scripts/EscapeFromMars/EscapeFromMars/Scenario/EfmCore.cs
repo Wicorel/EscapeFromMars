@@ -14,6 +14,8 @@ using VRage.ObjectBuilders;
 using Sandbox.Game.Localization;
 using VRage.Utils;
 using SISK.LoadLocalization;
+using VRage.Library.Utils;
+using Sandbox.Game.Entities;
 
 namespace EscapeFromMars
 {
@@ -21,7 +23,7 @@ namespace EscapeFromMars
 	public class EfmCore : AbstractCore<SaveData>
 	{
         // Current mod version, increased each time before workshop publish
-        private const int CurrentModVersion = 43;
+        private const int CurrentModVersion = 44;
 
         // V31.  Drone script update for 1.193.100.  All previous drones have scripts that will not compile.
         // V33 SE 1.194
@@ -41,7 +43,8 @@ namespace EscapeFromMars
         //  Reports of Miki not working
         //     and reports of research progress not correctly copied into joining players
         // V43 Trying to fix above
-        
+        // V44 Remove Uranium and reactors; they are no longer expected on planets
+        // V44 major 2023(/4) update. remove any source of U and reactors.
 
         private readonly QueuedAudioSystem audioSystem = new QueuedAudioSystem();
 		private readonly HeatSystem heatSystem = new HeatSystem(-7,1);
@@ -70,6 +73,14 @@ namespace EscapeFromMars
 
         private Version gameVersion;
 
+        private const string InfoName = "Wicorel";
+
+        // V44
+        public HashSet<IMyEntity> planets = new HashSet<IMyEntity>();
+        public static bool ExtendedScenario = false; // This is the extended scenario
+        public static bool OldWorld = false; // this is the old EFM world
+
+        private string efmusage = "Valid Commands \n/efm heat\n/efm difficulty #\n/efm scale [true|false]";
         protected override void InitCommon(IModSystemRegistry modSystemRegistry)
 		{
             var stringIdInit= MyStringId.TryGet("Init");
@@ -86,12 +97,25 @@ namespace EscapeFromMars
                 sInit += "\n  " + sAudioBy;
             //            string sInit = "Initialising Escape From Mars build " + CurrentModVersion;
 
+            MyAPIGateway.Entities.GetEntities(planets, x => x is MyPlanet);
+            //            MyAPIGateway.Utilities.ShowNotification("# planets=" + planets.Count, 5000, MyFontEnum.DarkBlue);
+
+            if (planets.Count > 1)
+                ExtendedScenario = true;
+            if (ExtendedScenario)
+            {
+                ModLog.Info("This is an extended Scenario!");
+                sInit += "\n Extended Scenario!";
+            }
+
             MyAPIGateway.Utilities.ShowNotification(sInit, 5000, MyFontEnum.DarkBlue);
             ModLog.Info(sInit);
             MyLog.Default.Info("EFM Init"+sInit);
 
-//            var gamelanguage = MySpaceTexts.ToolTipOptionsGame_Language;
-            var gamelanguage=MyAPIGateway.Session.Config.Language;
+            ModLog.Info("# planets=" + planets.Count); // For verification
+
+            //            var gamelanguage = MySpaceTexts.ToolTipOptionsGame_Language;
+            var gamelanguage =MyAPIGateway.Session.Config.Language;
             ModLog.Info("Game Language="+ gamelanguage.ToString());
 
             /*
@@ -102,7 +126,7 @@ namespace EscapeFromMars
             */
 
             if (MyAPIGateway.Session.IsServer)
-                MyVisualScriptLogicProvider.SendChatMessage(sInit, "Wicorel", 0, MyFontEnum.DarkBlue);
+                MyVisualScriptLogicProvider.SendChatMessage(sInit, InfoName, 0, MyFontEnum.DarkBlue);
 
             gameVersion = MyAPIGateway.Session.Version;
             ModLog.Info("SE Version=" + gameVersion.ToString());
@@ -158,8 +182,8 @@ namespace EscapeFromMars
 				DuckUtils.PutPlayerIntoFaction("CRASH");
             }
             researchControl = new ResearchControl(audioSystem);
-			researchControl.InitResearchRestrictions();
-            researchHacking = new ResearchHacking(researchControl, TextAPI, networkComms);
+			researchControl.InitResearchRestrictions(ExtendedScenario);
+            researchHacking = new ResearchHacking(ExtendedScenario, researchControl, TextAPI, networkComms);
             networkComms.Init(audioSystem, researchControl, researchHacking);
 			modSystemRegistry.AddCloseableModSystem(networkComms);
 			modSystemRegistry.AddUpatableModSystem(audioSystem);
@@ -192,7 +216,7 @@ namespace EscapeFromMars
         {
             if (msg.Equals("/efm", StringComparison.InvariantCultureIgnoreCase))
             {
-                MyAPIGateway.Utilities.ShowMessage("EFM", "Valid Commands \n/efm heat\n/efm difficulty #");
+                MyAPIGateway.Utilities.ShowMessage("EFM", efmusage);
                 visible = false;
                 return;
             }
@@ -202,7 +226,7 @@ namespace EscapeFromMars
             string[] args = msg.Split(' ');
             if (args.Length <= 1)
             {
-                MyAPIGateway.Utilities.ShowMessage("EFM", "Valid Commands \n/efm heat\n/efm difficulty #\n/efm scale [true|false]");
+                MyAPIGateway.Utilities.ShowMessage("EFM", efmusage);
                 return;
             }
             if (args[1].ToLower() == "heat")
@@ -222,25 +246,40 @@ namespace EscapeFromMars
                     + "\n MultiplayerScaling=" + heatSystem.MultiplayerScaling.ToString()
                 ;
 
-                MyVisualScriptLogicProvider.SendChatMessage(sHeat, "Wicorel", 0, MyFontEnum.DarkBlue);
+                MyVisualScriptLogicProvider.SendChatMessage(sHeat, InfoName, 0, MyFontEnum.DarkBlue);
 
             }
+            if (args[1].ToLower() == "settings")
+            {
+                MyVisualScriptLogicProvider.SendChatMessage("Debug Convoys= " + ConvoySpawner.DebugConvoys.ToString(), InfoName, 0, MyFontEnum.DarkBlue);
+                MyVisualScriptLogicProvider.SendChatMessage("ForceGroundOnly= " + ConvoySpawner.ForceGroundOnly.ToString(), InfoName, 0, MyFontEnum.DarkBlue);
+                MyVisualScriptLogicProvider.SendChatMessage("ForceAirOnly= " + ConvoySpawner.ForceAirOnly.ToString(), InfoName, 0, MyFontEnum.DarkBlue);
+                MyVisualScriptLogicProvider.SendChatMessage("ForceSpaceOnly= " + ConvoySpawner.ForceSpaceOnly.ToString(), InfoName, 0, MyFontEnum.DarkBlue);
+            }
+            if (args[1].ToLower() == "debugconvoys")
+            {
+                ConvoySpawner.DebugConvoys = !ConvoySpawner.DebugConvoys;
+                convoySpawner.CalculateSpawnTime();
+
+                MyVisualScriptLogicProvider.SendChatMessage("Debug Convoys= " + ConvoySpawner.DebugConvoys.ToString(), InfoName, 0, MyFontEnum.DarkBlue);
+            }
+
             if (args[1].ToLower() == "difficulty")
             {
                 if (args.Length < 3)
                 {
-                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm difficulty #", "Wicorel", 0, MyFontEnum.DarkBlue);
+                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm difficulty #", InfoName, 0, MyFontEnum.DarkBlue);
                     visible = true;
                     return;
                 }
                 int iParam = 0;
-                bool bOk=int.TryParse(args[2], out iParam);
+                bool bOk = int.TryParse(args[2], out iParam);
 
-                if(bOk && iParam>=0)
+                if (bOk && iParam >= 0)
                 {
                     heatSystem.HeatDifficulty = iParam;
-                    MyVisualScriptLogicProvider.SendChatMessage("Difficulty set to "+heatSystem.HeatDifficulty.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
-                    if(heatSystem.HeatDifficulty>3)
+                    MyVisualScriptLogicProvider.SendChatMessage("Difficulty set to " + heatSystem.HeatDifficulty.ToString(), InfoName, 0, MyFontEnum.DarkBlue);
+                    if (heatSystem.HeatDifficulty > 3)
                     {
                         GCorpBase.SetFastBackupDelay();
                     }
@@ -251,7 +290,7 @@ namespace EscapeFromMars
                 }
                 else
                 {
-                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm difficulty #", "Wicorel", 0, MyFontEnum.DarkBlue);
+                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm difficulty #", InfoName, 0, MyFontEnum.DarkBlue);
                 }
 
             }
@@ -259,7 +298,7 @@ namespace EscapeFromMars
             {
                 if (args.Length < 3)
                 {
-                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm scale [true|false]", "Wicorel", 0, MyFontEnum.DarkBlue);
+                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm scale [true|false]", InfoName, 0, MyFontEnum.DarkBlue);
                     visible = true;
                     return;
                 }
@@ -269,35 +308,35 @@ namespace EscapeFromMars
                 if (bOk)
                 {
                     heatSystem.MultiplayerScaling= bParam;
-                    MyVisualScriptLogicProvider.SendChatMessage("MultiplayerScaling set to " + heatSystem.MultiplayerScaling.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
+                    MyVisualScriptLogicProvider.SendChatMessage("MultiplayerScaling set to " + heatSystem.MultiplayerScaling.ToString(), InfoName, 0, MyFontEnum.DarkBlue);
                 }
                 else
                 {
-                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm scale [true|false]", "Wicorel", 0, MyFontEnum.DarkBlue);
+                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm scale [true|false]", InfoName, 0, MyFontEnum.DarkBlue);
                 }
 
             }
             if (args[1].ToLower()== "convoy")
             {
                 string sMsg = npcGroupManager.NpcGroupInfo(NpcGroupType.Convoy);
-                MyVisualScriptLogicProvider.SendChatMessage(sMsg, "Wicorel", 0, MyFontEnum.DarkBlue);
+                MyVisualScriptLogicProvider.SendChatMessage(sMsg, InfoName, 0, MyFontEnum.DarkBlue);
             }
             if (args[1].ToLower()=="backup")
             {
                 string sMsg = npcGroupManager.NpcGroupInfo(NpcGroupType.Backup);
-                MyVisualScriptLogicProvider.SendChatMessage(sMsg, "Wicorel", 0, MyFontEnum.DarkBlue);
+                MyVisualScriptLogicProvider.SendChatMessage(sMsg, InfoName, 0, MyFontEnum.DarkBlue);
             }
             if (args[1].ToLower() == "base")
             {
                 string sMsg=baseManager.BaseInfo();
-                MyVisualScriptLogicProvider.SendChatMessage(sMsg, "Wicorel", 0, MyFontEnum.DarkBlue);
+                MyVisualScriptLogicProvider.SendChatMessage(sMsg, InfoName, 0, MyFontEnum.DarkBlue);
             }
             if (args[1].ToLower() == "players")
             {
                 var players = new List<IMyPlayer>();
                 MyAPIGateway.Players.GetPlayers(players);
                 string sMsg = "#Players=" + players.Count;
-                MyVisualScriptLogicProvider.SendChatMessage(sMsg, "Wicorel", 0, MyFontEnum.DarkBlue);
+                MyVisualScriptLogicProvider.SendChatMessage(sMsg, InfoName, 0, MyFontEnum.DarkBlue);
                 foreach(var player in players)
                 {
                     sMsg=" "+ player.DisplayName;
@@ -306,6 +345,8 @@ namespace EscapeFromMars
                     var chara= player.Character;
                     if (chara != null)
                     {
+                        var grids=player.Grids;
+                        sMsg += " " + grids.Count + " grids\n";
                         bool bUnderCover = DuckUtils.IsPlayerUnderCover(player);
                         if(bUnderCover) sMsg += " IS under cover\n";
                         bool bIsUnderground = DuckUtils.IsPlayerUnderground(player);
@@ -322,10 +363,45 @@ namespace EscapeFromMars
                         sMsg += "\n H=" + hLevel.ToString("0.00") + " O2=" + o2Level.ToString("0.00");
                     }
                     else { sMsg += " No character loaded yet"; }
-                    MyVisualScriptLogicProvider.SendChatMessage(sMsg, "Wicorel", 0, MyFontEnum.DarkBlue);
+                    MyVisualScriptLogicProvider.SendChatMessage(sMsg, InfoName, 0, MyFontEnum.DarkBlue);
                 }
-
             }
+            if (args[1].ToLower() == "unlock" || args[1].ToLower() == "research")
+            {
+                string sMsg = "Tech Groups\n";
+//                sMsg += " Args=" + args.Length + "\n";
+                if (args.Length == 3)
+                {
+                    int iParam = 0;
+                    bool bOk = int.TryParse(args[2], out iParam);
+
+                    if (bOk)
+                    {
+                        if (!researchControl.IsTechUnlocked((TechGroup)iParam))
+                        {
+                            researchControl.UnlockTechGroupForAllPlayers((TechGroup)iParam);
+                            sMsg += "Unlocking Tech:" + Enum.GetName(typeof(TechGroup), iParam) + "\n";
+                        }
+                        else sMsg += "Tech already unlocked:" + iParam +"\n";
+                    } 
+                }
+                else
+                {
+                    foreach (int i in Enum.GetValues(typeof(TechGroup)))
+                    {
+                        sMsg += i + ":" + Enum.GetName(typeof(TechGroup), i) + " ";
+                        if (researchControl.IsTechUnlocked((TechGroup)i))
+                        {
+                            sMsg += " unlocked";
+                        }
+                        else
+                            sMsg += " LOCKED";
+                        sMsg += "\n";
+                    }
+                }
+                MyVisualScriptLogicProvider.SendChatMessage(sMsg, InfoName, 0, MyFontEnum.DarkBlue);
+            }
+
             if (args[1].ToLower() == "debug")
             {
                 bool bDisplaySyntax = false;
@@ -344,12 +420,22 @@ namespace EscapeFromMars
                         {
                             // set
                             ConvoySpawner.DebugConvoys = bArgument;
-                            ModLog.Info("DebugConvoys Set to" + ConvoySpawner.DebugConvoys);
+
+                            if (bArgument)
+                            {
+                                //v44 cause spawning to start soon.
+                                convoySpawner.ResetTimeUntilNextConvoy();
+
+                                // if debugging, dump cargo types
+                                Random random = new Random();
+                                CargoType.GenerateRandomCargo(random);
+                            }
+                            ModLog.Info("DebugConvoys Set to " + ConvoySpawner.DebugConvoys);
                         }
                         else
                         {
                             // display
-                            MyVisualScriptLogicProvider.SendChatMessage("DebugConboys="+ConvoySpawner.DebugConvoys.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
+                            MyVisualScriptLogicProvider.SendChatMessage("DebugConvoys="+ConvoySpawner.DebugConvoys.ToString(), InfoName, 0, MyFontEnum.DarkBlue);
                         }
 
                     }
@@ -364,7 +450,7 @@ namespace EscapeFromMars
                         else
                         {
                             // display
-                            MyVisualScriptLogicProvider.SendChatMessage("ForceAirOnly=" + ConvoySpawner.ForceAirOnly.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
+                            MyVisualScriptLogicProvider.SendChatMessage("ForceAirOnly=" + ConvoySpawner.ForceAirOnly.ToString(), InfoName, 0, MyFontEnum.DarkBlue);
                         }
 
                     }
@@ -379,7 +465,7 @@ namespace EscapeFromMars
                         else
                         {
                             // display
-                            MyVisualScriptLogicProvider.SendChatMessage("ForceGroundOnly=" + ConvoySpawner.ForceGroundOnly.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
+                            MyVisualScriptLogicProvider.SendChatMessage("ForceGroundOnly=" + ConvoySpawner.ForceGroundOnly.ToString(), InfoName, 0, MyFontEnum.DarkBlue);
                         }
 
                     }
@@ -388,29 +474,12 @@ namespace EscapeFromMars
                 {
                     bDisplaySyntax = true;
                 }
-                int iParam = 0;
-                bool bOk = int.TryParse(args[2], out iParam);
-
-                if (bOk && iParam >= 0)
-                {
-                    heatSystem.HeatDifficulty = iParam;
-                    MyVisualScriptLogicProvider.SendChatMessage("Difficulty set to " + heatSystem.HeatDifficulty.ToString(), "Wicorel", 0, MyFontEnum.DarkBlue);
-                    if (heatSystem.HeatDifficulty > 3)
-                    {
-                        GCorpBase.SetFastBackupDelay();
-                    }
-                    else
-                    {
-                        GCorpBase.SetNormalBackupDelay();
-                    }
-                }
                 if (bDisplaySyntax)
                 {
-                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm debug <convoy|air|ground> [true|false]", "Wicorel", 0, MyFontEnum.DarkBlue);
+                    MyVisualScriptLogicProvider.SendChatMessage("syntax: /efm debug <convoys|air|ground> [true|false]", InfoName, 0, MyFontEnum.DarkBlue);
                     visible = true;
                     return;
                 }
-
             }
         }
         protected override void InitHostPreLoading()
@@ -429,6 +498,7 @@ namespace EscapeFromMars
             ModLog.Info("Original world was loaded by Version:" + modBuildWhenGameStarted.ToString());
             ModLog.Info("Loaded world was saved by Version:" + modBuildWhenLastSaved.ToString());
 
+            
             npcGroupManager.SetBuildWhenSaved(modBuildWhenLastSaved);
 
             researchHacking.InitHackingLocations(); // Uses research restrictions and save data
@@ -438,6 +508,10 @@ namespace EscapeFromMars
             //V27 for SE 1.192
             DuckUtils.RemoveFaction("SPRT");
             DuckUtils.SetAllPlayerReputation("MIKI", 0);
+
+            //V44
+            DuckUtils.MakePeaceBetweenFactions("MARS", "CRASH");
+            DuckUtils.DeclareWarBetweenFactions("MARS", "GCORP");
 
             audioSystem.AudioRelay = networkComms;
 			networkComms.StartWipeHostToolbar();
@@ -528,13 +602,13 @@ namespace EscapeFromMars
             heatSystem.MultiplayerScaling = saveData.MultiplayerScaling;
 
             // Move to the end so other saved info is already loadedf
-            missionSystem = new MissionSystem(modBuildWhenLastSaved, gameVersion, saveData.MissionStartTimeBinary, saveData.ExcludedMissionPrompts,
+            missionSystem = new MissionSystem(ExtendedScenario, modBuildWhenLastSaved, gameVersion, saveData.MissionStartTimeBinary, saveData.ExcludedMissionPrompts,
                 audioSystem, researchControl);
         }
 
         public override void StartedNewGame()
 		{
-			missionSystem = new MissionSystem(modBuildWhenLastSaved,gameVersion, MyAPIGateway.Session.GameDateTime.ToBinary(), new HashSet<int>(),
+			missionSystem = new MissionSystem(ExtendedScenario, modBuildWhenLastSaved,gameVersion, MyAPIGateway.Session.GameDateTime.ToBinary(), new HashSet<int>(),
 				audioSystem, researchControl);
 			modBuildWhenGameStarted = CurrentModVersion;
 		}
