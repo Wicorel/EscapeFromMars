@@ -15,6 +15,7 @@ namespace EscapeFromMars
         // Miki (Crazy male russian):
         // Mech: (Robot)
         // MrEd: (highly procesed computer voice) (male?)
+		// GCorp: ???
         internal static readonly Speaker Mabel = new Speaker("Mabel", MyFontEnum.Green);
 		internal static readonly Speaker GCorp = new Speaker("GCorp Transmission", MyFontEnum.Red);
 		internal static readonly Speaker Mech = new Speaker("Experimental Mech", MyFontEnum.Red);
@@ -321,11 +322,17 @@ I will relay them to your suit if they seem relevant.", 9000);
 		//USED
 	        "All technologies unlocked.", 2000);
 
-	    internal static readonly AudioClip EndCredits = Create("EndCredits", "EndCredits", EscapeFromMars.Speaker.Mabel,    //USED
-	        @"... Transmitting data on all frequencies...
+        internal static readonly AudioClip EndCredits = Create("EndCredits", "", EscapeFromMars.Speaker.Mabel,    //USED
+            @"... Transmitting data on all frequencies...
 [Scenario is complete. It is recommended to remove the EscapeFromMars Mod if you want to carry on playing]", 120000);
 
-	    internal static readonly AudioClip NotifyOfSatellite = Create("NotifyOfSatellite", "NotifyOfSatellite", EscapeFromMars.Speaker.Mabel,
+		internal static readonly AudioClip ArrivedSatellite = Create("ArrivedSatellite", "", EscapeFromMars.Speaker.Mabel,    //USED
+	@"... Transmitting data on all frequencies...", 120000);
+
+        internal static readonly AudioClip ScenarioCompleted = Create("ScenarioCompleted", "", EscapeFromMars.Speaker.Mabel,    //USED
+        @"[Scenario is complete. It is recommended to remove the EscapeFromMars Mod if you want to carry on playing]", 120000);
+
+        internal static readonly AudioClip NotifyOfSatellite = Create("NotifyOfSatellite", "NotifyOfSatellite", EscapeFromMars.Speaker.Mabel,
 	    //USED
 	        @"I have computed the location of the nearest geosynchronous communications satellite.
 If you manage to leave the planet, you should direct your ship there so I can transmit the evidence we gathered on the corporation to all public channels.", 14000);
