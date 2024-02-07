@@ -1,25 +1,35 @@
 ﻿using Sandbox.Common.ObjectBuilders.Definitions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using VRage;
 using VRage.Game;
 using VRage.ObjectBuilders;
+using VRage.Utils;
 
 namespace EscapeFromMars
 {
 	internal class CargoType
 	{
+		public static bool Debug = true;
+
 		private static readonly List<CargoType> AllTypes = new List<CargoType>();
 		private static int _totalProbability;
 		private static readonly IObjectBuilderFactory ComponentType = new ComponentObjectBuilder();
 		private static readonly IObjectBuilderFactory AmmoType = new AmmoObjectBuilder();
 		private static readonly IObjectBuilderFactory IngotType = new IngotObjectBuilder();
 
+		
+
         /* SE 1.192 */
         private static readonly IObjectBuilderFactory DatapadType = new DatapadObjectBuilder();
         private static readonly IObjectBuilderFactory ConsumableType = new ConsumableObjectBuilder();
         private static readonly IObjectBuilderFactory CreditType = new CreditObjectBuilder();
         private static readonly IObjectBuilderFactory PackageType = new PackageObjectBuilder();
+
+        //V44 Add Ice
+        private static readonly IObjectBuilderFactory OreType = new OreObjectBuilder();
+
         /* */
         private static void AddComponent(string subtypeName, int amountPerCargoContainer, int probability)
 		{
@@ -48,6 +58,10 @@ namespace EscapeFromMars
         {
             Add(subtypeName, amountPerCargoContainer, probability, PackageType);
         }
+        private static void AddOre(string subtypeName, int amountPerCargoContainer, int probability)
+        {
+            Add(subtypeName, amountPerCargoContainer, probability, PackageType);
+        }
         /* */
         private static void Add(string subtypeName, int amountPerCargoContainer, int probability,
 			IObjectBuilderFactory objectBuilderFactory)
@@ -62,34 +76,40 @@ namespace EscapeFromMars
             // these should be base/faction specific
 
             // Also would be nice to have changing list as game goes on.. and maybe based on difficulty and heatlevel
-			AddComponent("SteelPlate", 500, 2);
-			AddComponent("MetalGrid", 300, 4);
-			AddComponent("Construction", 350, 5);
-			AddComponent("InteriorPlate", 300, 3);
-			AddComponent("Girder", 300, 2);
-			AddComponent("SmallTube", 300, 4);
+			AddComponent("SteelPlate", 250, 2);
+			AddComponent("MetalGrid", 200, 4);
+			AddComponent("Construction", 150, 5);
+			AddComponent("InteriorPlate", 100, 3);
+			AddComponent("Girder", 1500, 2);
+			AddComponent("SmallTube", 150, 4);
 			AddComponent("LargeTube", 125, 4);
-			AddComponent("Motor", 300, 2);
-			AddComponent("Display", 200, 2);
-			AddComponent("BulletproofGlass", 300, 3);
-			AddComponent("Computer", 250, 3);
-			AddComponent("Reactor", 100, 2);
+			AddComponent("Motor", 125, 2);
+			AddComponent("Display", 100, 2);
+			AddComponent("BulletproofGlass", 125, 3);
+			AddComponent("Computer", 150, 3);
 			AddComponent("Medical", 50, 2);
 			AddComponent("RadioCommunication", 50, 2);
 			AddComponent("Explosives", 30, 2);
-			AddComponent("SolarCell", 200, 4);
-			AddComponent("PowerCell", 150, 4);
+			AddComponent("SolarCell", 100, 4);
+			AddComponent("PowerCell", 75, 4);
 			AddAmmo("NATO_5p56x45mm", 100, 2);
 			AddAmmo("NATO_25x184mm", 50, 5);
-			AddAmmo("Missile200mm", 30, 4);
-			AddIngot("Uranium", 15, 3);
-		}
+
+			// Remove Uranium V44
+			if (EfmCore.OldWorld)
+			{
+                AddAmmo("Missile200mm", 30, 4);
+                AddIngot("Uranium", 15, 3);
+				AddComponent("Reactor", 100, 2);
+			}
+			AddOre("Ice", 500, 3);
+        }
 
         internal static void AllowEconomyItems()
         {
             // SE 1.192
-            AddConsumable("Medkit", 500, 2);
-            AddConsumable("Powerkit", 500, 2);
+            AddConsumable("Medkit", 200, 2);
+            AddConsumable("Powerkit", 200, 2);
         }
         internal static void AllowWarefare1Items()
         {
@@ -104,17 +124,27 @@ namespace EscapeFromMars
             // SE 1.200
 
             // ammo mags
-            AddAmmo("AutocannonClip", 500, 3);
-            AddAmmo("NATO_25x184mm", 300, 3);
-            AddAmmo("LargeCalibreAmmo", 200, 3);
-            AddAmmo("MediumCalibreAmmo", 200, 3);
-            AddAmmo("LargeRailgunAmmo", 100, 3);
-            AddAmmo("SmallRailgunAmmo", 300, 3);
+            AddAmmo("AutocannonClip", 100, 3);
+            AddAmmo("NATO_25x184mm", 150, 3);
+//            AddAmmo("LargeCalibreAmmo", 100, 3); // Contains U
+//            AddAmmo("MediumCalibreAmmo", 150, 3);
+//            AddAmmo("LargeRailgunAmmo", 25, 3);
+//            AddAmmo("SmallRailgunAmmo", 50, 3);
 
         }
+		private static bool bDumpedList=false;
 
         internal static CargoType GenerateRandomCargo(Random random)
 		{
+			if(Debug && !bDumpedList)
+			{
+                foreach (var cargo in AllTypes)
+                {
+					MyLog.Default.Info(cargo.GetDisplayName() + " " +cargo.subtypeName+" "+cargo.AmountPerCargoContainer);
+                }
+
+                bDumpedList = true;
+			}
 			var randomNumber = random.Next(_totalProbability);
 			foreach (var cargo in AllTypes)
 			{
@@ -187,7 +217,6 @@ namespace EscapeFromMars
                 return MyTexts.GetString("DisplayName_Item_AutocannonClipComponents");
             }
 
-
             return MyTexts.GetString("DisplayName_Item_" + subtypeName);
 		}
 
@@ -256,6 +285,14 @@ namespace EscapeFromMars
             public MyObjectBuilder_PhysicalObject GetObjectBuilder(string subtypeName)
             {
                 return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_Package>(subtypeName);
+            }
+        }
+        private class OreObjectBuilder : IObjectBuilderFactory
+        {
+            // Ore
+            public MyObjectBuilder_PhysicalObject GetObjectBuilder(string subtypeName)
+            {
+                return MyObjectBuilderSerializer.CreateNewObject<MyObjectBuilder_Ore>(subtypeName);
             }
         }
         /**/
