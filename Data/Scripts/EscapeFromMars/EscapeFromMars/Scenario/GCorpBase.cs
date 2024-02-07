@@ -6,14 +6,14 @@ using VRage.Game.ModAPI;
 using VRage.Utils;
 using VRageMath;
 using Duckroll;
+using Sandbox.ModAPI.Interfaces;
 
 namespace EscapeFromMars
 {
 	internal class GCorpBase
 	{
-        // TODO: Change this to be lower/higher depending on difficulty & # of players
-		private static //readonly 
-            TimeSpan BackupTimeDelay = new TimeSpan(0, 5, 0);
+		private static TimeSpan BackupTimeDelay = new TimeSpan(0, 5, 0);
+
         // set to true to turn off all backups
 		public static readonly bool DebugStopBackupGroups = false;
 
@@ -25,10 +25,13 @@ namespace EscapeFromMars
 		private bool waitingOnBackup;
 		private DateTime lastBackupRespondTime;
 
-        private List<IMyLargeTurretBase> turrets;
+        private List<IMyLargeTurretBase> turrets = new List<IMyLargeTurretBase>();
 
         private bool bLostProcessed = false;
+        private int startTurrets = 0; // a measure of how 'strong' the base is supposed to be
 
+        //v44
+        private List<IMyDefensiveCombatBlock> defensiveAI= new List<IMyDefensiveCombatBlock>();
 
         internal GCorpBase(IMyRemoteControl remoteControl, DateTime lastBackupRespondTime, MyPlanet marsPlanet, HeatSystem heatSystem, QueuedAudioSystem audioSystem)
         {
@@ -39,7 +42,6 @@ namespace EscapeFromMars
             this.audioSystem = audioSystem;
             baseId = remoteControl.EntityId;
 
-            turrets = new List<IMyLargeTurretBase>();
             var slimBlocks2 = new List<IMySlimBlock>();
             remoteControl.CubeGrid.GetBlocks(slimBlocks2, b => b.FatBlock is IMyLargeTurretBase);
             foreach (var slim in slimBlocks2)
@@ -47,6 +49,15 @@ namespace EscapeFromMars
                 var turret = slim.FatBlock as IMyLargeTurretBase;
                 //                turret.Enabled = false;
                 turrets.Add(turret);
+            }
+            startTurrets = turrets.Count;
+
+            slimBlocks2.Clear();
+            remoteControl.CubeGrid.GetBlocks(slimBlocks2, b => b.FatBlock is IMyDefensiveCombatBlock);
+            foreach (var slim in slimBlocks2)
+            {
+                var defensiveblock = slim.FatBlock as IMyDefensiveCombatBlock;
+                defensiveAI.Add(defensiveblock);
             }
         }
 
@@ -74,24 +85,36 @@ namespace EscapeFromMars
             }
 
             // TODO: get this value from base itself instead of hard-coding?
-            var player = DuckUtils.GetNearestPlayerToPosition(RemoteControl.GetPosition(), 1300);
+            var player = DuckUtils.GetNearestPlayerToPosition(RemoteControl.GetPosition(), 2300); // 1300->2300 V44
 
             // turn turrets off on bases if no player is nearby to save simspeed hits
             if (player != null)
             {
                 foreach (var turret in turrets)
                 {
-                    turret.Enabled = true;
+                    if(turret.Enabled != true)
+                        turret.Enabled = true;
+                }
+                // V44  make sure they are on
+                foreach (var block in defensiveAI)
+                {
+                    if (block.Enabled != true)
+                        block.Enabled = true;
+                    block.SetValueBool("ActivateBehavior", true);
                 }
             }
             else
             {
-                foreach (var turret in turrets)
-                    turret.Enabled = false;
+                /* Optimization no longer needed
+                 * 
+                    foreach (var turret in turrets)
+                        turret.Enabled = false;
+                */
             }
+                
 
-            int nPlayers = 0; // number of players in range
-            var playerClose1 = DuckUtils.GetNearestPlayerToPosition(RemoteControl.GetPosition(), 1200, out nPlayers);
+                int nPlayers = 0; // number of players in range
+            var playerClose1 = DuckUtils.GetNearestPlayerToPosition(RemoteControl.GetPosition(), 2200, out nPlayers); // 1200->2200 V44
             if (!DebugStopBackupGroups && playerClose1 != null)
             {
                 if (lastBackupRespondTime + BackupTimeDelay < MyAPIGateway.Session.GameDateTime)
@@ -116,7 +139,7 @@ namespace EscapeFromMars
 
                             }
                         }
-                        else if (distSq < 1000*1000)
+                        else if (distSq < 1500*1500) // V44 <-1000*1000)
                         { // betwee 100->1000
                             if (DuckUtils.IsPlayerUnderground(aplayer))
                             {
@@ -136,15 +159,16 @@ namespace EscapeFromMars
                     }
 
 //                    ModLog.Info("Backup Player Close 1");
-                    SpawnHelperPatrol(playerClose1);
+                    SpawnHelperPatrol(RemoteControl, playerClose1);
+                    // TODO: check player grid turret strength and spawn more backups.
 
-                    // if higher difficulty and player(s) get closer, then spawn more backup per backup event
+                    // if higher difficulty and other player(s) get closer, then spawn more backup per backup event
                     if (heatSystem.HeatDifficulty > 1 || (heatSystem.MultiplayerScaling && nPlayers>1))
                     {
-                        var playerClose2 = DuckUtils.GetNearestPlayerToPosition(RemoteControl.GetPosition(), 800);
+                        var playerClose2 = DuckUtils.GetNearestPlayerToPosition(RemoteControl.GetPosition(), 1000); // 800->1000 V44
                         if (playerClose2 != null)
                         {
-                            SpawnHelperPatrol(playerClose2);
+                            SpawnHelperPatrol(RemoteControl, playerClose2);
 //                            ModLog.Info("Backup Player Close 2");
                         }
                     }
@@ -153,7 +177,7 @@ namespace EscapeFromMars
                         var playerClose3 = DuckUtils.GetNearestPlayerToPosition(RemoteControl.GetPosition(), 300);
                         if (playerClose3 != null)
                         {
-                            SpawnHelperPatrol(playerClose3);
+                            SpawnHelperPatrol(RemoteControl, playerClose3);
 //                            ModLog.Info("Backup Player Close 4");
                         }
                     }
@@ -181,45 +205,76 @@ namespace EscapeFromMars
 		internal Vector3D GetBackupPosition()
 		{
             // maybe use center of grid and then top of grid (bounding box) and then xx meters 'above' it.
-            // also. handle space-based bases (use .Up?)
 
             // V26
             var vng = RemoteControl.GetNaturalGravity();
-            vng.Normalize();
+            if (vng.IsZero())
+            { //V44
+                vng = RemoteControl.WorldMatrix.Down;
+            }
+            else
+                vng.Normalize();
             return RemoteControl.GetPosition() + vng * -20; // 20m above remote
-            // RemoteControl.GetNaturalGravity() * -5f; //50m above us
 		}
 
-		private void SpawnHelperPatrol(IMyPlayer player)
+		private void SpawnHelperPatrol(IMyRemoteControl remoteControl, IMyPlayer player)
 		{
 			var playerPos = player.GetPosition();
-			var playerNaturalGravity = marsPlanet.GetGravityAtPoint(playerPos);
-			var perpendicularDistance = MyUtils.GetRandomPerpendicularVector(ref playerNaturalGravity) * 400; //4km away NOTE: since mars NG is not 1.0, it's NOT 4km
-			var locationToSpawnPatrol = playerPos + perpendicularDistance + playerNaturalGravity * -200f; // 2km up
-			var naturalGravityAtSpawn = marsPlanet.GetGravityAtPoint(locationToSpawnPatrol);
+            var naturalGravity= remoteControl.GetNaturalGravity();
+            var baseLocation= remoteControl.GetPosition();
+            if (naturalGravity.IsZero())
+            { // in space V44
 
-			var spawnLocation = MyAPIGateway.Entities.FindFreePlace(locationToSpawnPatrol, 10, 20, 5, 10);
+                var spawnLocation = MyAPIGateway.Entities.FindFreePlace(baseLocation, 20, 20, 5, 15);
 
-//            ModLog.Info("Spawning helper patrol. perpD=" + perpendicularDistance.ToString("N2"));
+                //            ModLog.Info("Spawning helper patrol. perpD=" + perpendicularDistance.ToString("N2"));
 
-			if (spawnLocation.HasValue)
-			{
-				PrefabGrid backup = PrefabGrid.GetBackup(heatSystem.GenerateBackupShipSize());
-				DuckUtils.SpawnInGravity(spawnLocation.Value, naturalGravityAtSpawn, RemoteControl.OwnerId,
-					backup.PrefabName, backup.InitialBeaconName);
-			}
-			else
-			{
-				ModLog.DebugError("Couldn't spawn backup!", locationToSpawnPatrol);
-			}
+                if (spawnLocation.HasValue)
+                {
+                    PrefabGrid backup = PrefabGrid.GetSpaceBackup(heatSystem.GenerateBackupShipSize());
+                    DuckUtils.SpawnInGravity(spawnLocation.Value, remoteControl.WorldMatrix.Down, RemoteControl.OwnerId,
+                        backup.PrefabName, backup.InitialBeaconName);
+                }
+                else
+                {
+                    ModLog.DebugError("Couldn't spawn backup!", baseLocation);
+                }
 
-		}
+            }
+            else // on planet
+            {
+                var playerNaturalGravity = marsPlanet.GetGravityAtPoint(playerPos);
+                var perpendicularDistance = MyUtils.GetRandomPerpendicularVector(ref playerNaturalGravity) * 300; //~~300M  away
+                var locationToSpawnPatrol = playerPos + perpendicularDistance + playerNaturalGravity * -300f; // 200m up
+                var naturalGravityAtSpawn = marsPlanet.GetGravityAtPoint(locationToSpawnPatrol);
+
+                var spawnLocation = MyAPIGateway.Entities.FindFreePlace(locationToSpawnPatrol, 10, 20, 5, 10);
+
+                //            ModLog.Info("Spawning helper patrol. perpD=" + perpendicularDistance.ToString("N2"));
+
+                if (spawnLocation.HasValue)
+                {
+                    PrefabGrid backup = PrefabGrid.GetBackup(heatSystem.GenerateBackupShipSize());
+                    DuckUtils.SpawnInGravity(spawnLocation.Value, naturalGravityAtSpawn, RemoteControl.OwnerId,
+                        backup.PrefabName, backup.InitialBeaconName);
+                }
+                else
+                {
+                    ModLog.DebugError("Couldn't spawn backup!", locationToSpawnPatrol);
+                }
+
+            }
+
+        }
 
         private void SpawnUndergroundDefense(IMyPlayer player)
         {
             var playerPos = player.GetPosition();
             var playerNaturalGravity = marsPlanet.GetGravityAtPoint(playerPos);
             var vng = playerNaturalGravity;
+            if (vng.IsZero()) //V44
+                return;
+
             vng.Normalize();
 
             var surface = marsPlanet.GetClosestSurfacePointGlobal(player.GetPosition());
