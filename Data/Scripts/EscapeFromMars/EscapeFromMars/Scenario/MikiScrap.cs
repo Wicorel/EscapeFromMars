@@ -59,9 +59,37 @@ namespace EscapeFromMars
 			this.furnaceSpotlights = furnaceSpotlights;
 			this.furnaceOutput = furnaceOutput;
 			this.audioSystem = audioSystem;
-		}
 
-		internal void RestoreSavedData(MikiScrapSaveData saveData)
+            if (mikiScrapGrid == null)
+                ModLog.Info("midiScrapGrid is null");
+            if (remoteControl == null)
+                ModLog.Info("remoteControl is null");
+            if (scrapIn == null)
+                ModLog.Info("scrapIn is null");
+
+            if (output == null)
+                ModLog.Info("output is null");
+
+            if (furnaceDoor == null)
+                ModLog.Info("furnaceDoor is null");
+
+            if (speaker == null)
+                ModLog.Info("speaker is null");
+
+            if (furnaceLcds == null)
+                ModLog.Info("furnaceLcds is null");
+
+            if (furnaceSpotlights == null)
+                ModLog.Info("furnaceSpotlights is null");
+            if (furnaceOutput == null)
+                ModLog.Info("furnaceOutput is null");
+            if (audioSystem == null)
+                ModLog.Info("audioSystem is null");
+
+            ModLog.Info("End of Miki loading");
+        }
+
+        internal void RestoreSavedData(MikiScrapSaveData saveData)
 		{
 			furnaceState = saveData.FurnaceState;
 			furnaceWorkingCountdown = saveData.FurnaceWorkingCountdown;
@@ -212,6 +240,7 @@ namespace EscapeFromMars
 					}
 				}
 			}
+            ModLog.Info("Found " + cubeGrids.Count.ToString() + " grids inside furnace");
 			return cubeGrids;
 		}
 

@@ -15,7 +15,7 @@ namespace EscapeFromMars
 
 		public MikiScrapManager(QueuedAudioSystem audioSystem)
 		{
-			this.audioSystem = audioSystem;
+            this.audioSystem = audioSystem;
 		}
 
 		public override void GridInitialising(IMyCubeGrid grid)
@@ -34,6 +34,8 @@ namespace EscapeFromMars
 
 				if (remoteControl.CustomName.Contains("RC_FURNACE") && remoteControl.IsOwnedByFaction("MIKI"))
 				{
+                    ModLog.Info("Found Miki scrap RC");
+
 					grid.SetAllSubgridsInvulnerable(true);
 					var mikiScrap = new MikiScrap(grid, remoteControl,
 						grid.GetContainerInventoryOfName("MIKISCRAP_INPUT"),
