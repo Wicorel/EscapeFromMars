@@ -284,18 +284,74 @@ namespace Duckroll
 		}
 
 		/// <summary>
-		///  Sends grid to position if it has a remote control module.
+		///  Sends grid to position if it has a remote control module. TODO: turn off AI Blocks?  Or don't use RC if AIMove is present?
 		/// </summary>
 		/// <param name="grid"></param> this grid
-		/// <param name="targetPosition"></param> target position to go to
-		/// <param name="heightModifier"></param> where 1f is 10m above target
-		public static void SendToPosition(this IMyCubeGrid grid, Vector3D targetPosition, float heightModifier = 0f)
+		/// <param name="targetPosition"></param> target world position to go to
+		/// <param name="heightModifier"></param> where 1f is 10m above target. Default 0
+		/// <param name="SpeedLimit"></param> Set the speed limit for RC. meters/second. Default 100
+		public static void SendToPosition(this IMyCubeGrid grid, Vector3D targetPosition, float heightModifier = 0f, float SpeedLimit=100f)
 		{
+
 			var slimBlocks = new List<IMySlimBlock>();
-			grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyRemoteControl);
+			var rcBlocks = new List<IMySlimBlock>();
+
+			if(grid==null)
+			{
+				ModLog.Error("NULL Grid in SendToPosition!!!");
+//				return;
+			}
+            grid.GetBlocks(rcBlocks, b => b.FatBlock is IMyRemoteControl);
+
+			bool bRcAvailable = rcBlocks.Count > 0;
+
+			grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyFlightMovementBlock);
 			foreach (var slim in slimBlocks)
 			{
-				var remoteControl = slim.FatBlock as IMyRemoteControl;
+				var block = slim.FatBlock as IMyFlightMovementBlock;
+				block.Enabled = !bRcAvailable;
+                block.SetValueBool("ActivateBehavior", false);
+            }
+
+            // IMyDefensiveCombatBlock
+            /*
+            grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyDefensiveCombatBlock);
+            foreach (var slim in slimBlocks)
+            {
+                var block = slim.FatBlock as IMyDefensiveCombatBlock;
+                block.Enabled = !bRcAvailable;
+
+			// ACTIONS
+			//ActivateBehavior_On
+			// ActivateBehavior_Off
+
+			// Property
+			// ActivateBehavior (bool)
+
+            }
+			*/
+            // IMyOffensiveCombatBlock
+            slimBlocks.Clear();
+            grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyOffensiveCombatBlock);
+            foreach (var slim in slimBlocks)
+            {
+                var block = slim.FatBlock as IMyOffensiveCombatBlock;
+                block.Enabled = !bRcAvailable;
+				block.SetValueBool("ActivateBehavior", false);
+            }
+
+            // IMyBasicMissionBlock
+
+            // IMyEventControllerBlock
+
+            // IMyPathRecorderBlock
+
+            foreach (var slim in rcBlocks)
+			{
+                var rcFunctional = slim.FatBlock as IMyFunctionalBlock;
+                rcFunctional.Enabled = true;
+
+                var remoteControl = slim.FatBlock as IMyRemoteControl;
 				remoteControl.ClearWaypoints();
 				if (heightModifier > 0)
 				{
@@ -304,9 +360,11 @@ namespace Duckroll
 
                     targetPosition = targetPosition +  vng* -heightModifier;
 				}
-				remoteControl.AddWaypoint(targetPosition, "Target");
+                if(SpeedLimit>0) remoteControl.SpeedLimit = SpeedLimit;
+
+                remoteControl.AddWaypoint(targetPosition, "Target");
 				remoteControl.SetAutoPilotEnabled(true);
-				break; // We have to break because of the if statement, otherwise height will keep increasing!
+				break; // We only need to do one RC.
 			}
 		}
 
@@ -532,7 +590,7 @@ namespace Duckroll
 			{
 				return false;
 			}
-            // TODO: checks ownership by founder and not members
+            // TODO: fix checks ownership by founder and not members
 			return block.OwnerId == faction.FounderId;
 		}
 	}

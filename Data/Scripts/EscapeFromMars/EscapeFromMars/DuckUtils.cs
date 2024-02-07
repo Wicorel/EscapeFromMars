@@ -273,10 +273,11 @@ namespace Duckroll
 				ModLog.Error("Can't find faction: " + tag2);
 				return;
 			}
+            
 			MyAPIGateway.Session.Factions.SendPeaceRequest(faction1.FactionId, faction2.FactionId);
-			MyAPIGateway.Session.Factions.AcceptPeace(faction2.FactionId, faction1.FactionId);
+            MyAPIGateway.Session.Factions.AcceptPeace(faction2.FactionId, faction1.FactionId);
 
-//            MyAPIGateway.Session.Factions.DeclareWar(faction2.FactionId, faction1.FactionId);
+            //            MyAPIGateway.Session.Factions.DeclareWar(faction2.FactionId, faction1.FactionId);
 
         }
 
