@@ -9,6 +9,7 @@ using VRageMath;
 using Duckroll;
 using VRage.Utils;
 using SpaceEngineers.Game.ModAPI;
+using Sandbox.ModAPI.Interfaces;
 
 namespace EscapeFromMars
 {
@@ -17,11 +18,14 @@ namespace EscapeFromMars
 		private string InterceptingBeaconSuffix = " *INTERCEPTING*"; // loaded from mytexts
 		private string FleeingBeaconSuffix = " *FLEEING*"; // loaded from mytexts
 
-        private static bool ConvoyUpdateDebug = false;
+        private static bool ConvoyUpdateDebug = true; // TODO: Change to false before release
 
         protected static readonly IList<EscortPosition> AllEscortPositions =
 			new List<EscortPosition>(DuckUtils.GetEnumValues<EscortPosition>()).AsReadOnly();
         private readonly TimeSpan convoyInitiateTime = new TimeSpan(0, 0, 5);
+
+		private readonly int ConvoyLeaderMaxSpeed = 10;
+		private readonly double ConvoyLeaderArrivalDistance = 300.0;
 
         internal static readonly IList<EscortPosition> AirEscortPositions = new List<EscortPosition>
 		{
@@ -43,6 +47,8 @@ namespace EscapeFromMars
 		private readonly Dictionary<EscortPosition, IMyCubeGrid> escortDic = new Dictionary<EscortPosition, IMyCubeGrid>();
 		private readonly QueuedAudioSystem audioSystem;
 
+		private readonly IMyRemoteControl remoteControl; //V44
+
 		internal Convoy(Vector3D destination, NpcGroupState initialState, NpcGroupArrivalObserver arrivalObserver,
 			QueuedAudioSystem audioSystem, IMyCubeGrid leader, DateTime groupSpawnTime)
 			: base(leader.EntityId, initialState, destination, NpcGroupType.Convoy, groupSpawnTime, arrivalObserver)
@@ -52,12 +58,26 @@ namespace EscapeFromMars
 
             InterceptingBeaconSuffix = VRage.MyTexts.Get(MyStringId.TryGet("InterceptingBeaconSuffix")).ToString();
             FleeingBeaconSuffix = VRage.MyTexts.Get(MyStringId.TryGet("FleeingBeaconSuffix")).ToString();
+
+            var slimBlocks = new List<IMySlimBlock>();
+            leader.GetBlocks(slimBlocks, b => b.FatBlock is IMyRemoteControl);
+            foreach (var slim in slimBlocks)
+            {
+                remoteControl = slim.FatBlock as IMyRemoteControl;
+            }
+
         }
 
         internal override void JoinAsEscort(IMyCubeGrid escortApplicant, UnitType unitType, MyPlanet marsPlanet)
 		{
 			var applicantPosition = escortApplicant.GetPosition();
-			var gravity = marsPlanet.GetGravityAtPoint(applicantPosition);
+
+			//V44 rewrite to allow null marsPlanet
+			Vector3D gravity = remoteControl.WorldMatrix.Down;
+            if (marsPlanet != null) 
+			{
+				gravity = marsPlanet.GetGravityAtPoint(applicantPosition);
+            }
 			var closestDistSq = double.MaxValue;
 			EscortPosition? closestPosition = null;
 
@@ -111,9 +131,11 @@ namespace EscapeFromMars
             else if ((GroupState == NpcGroupState.Travelling || GroupState == NpcGroupState.InCombat)
                 )
             {
-                if (Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 300.0 * 300) // increase to 300 to allow for variations in height. V26
-                                                                                               //                     && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 200.0*200) // increase to 200 to allow for variations in height.
-                                                                                               //                     && Vector3D.Distance(Destination, leader.GetPosition()) < 100.0)
+				// TODO: allow target base to define arrival radius
+                if (Vector3D.DistanceSquared(Destination, leader.GetPosition()) < ConvoyLeaderArrivalDistance * ConvoyLeaderArrivalDistance) 
+					// increase to 300 to allow for variations in height. V26
+                    //                     && Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 200.0*200) // increase to 200 to allow for variations in height.
+                    //                     && Vector3D.Distance(Destination, leader.GetPosition()) < 100.0)
                 {
                     string sBeacons = "";
                     var slimBlocks2 = new List<IMySlimBlock>();
@@ -131,11 +153,11 @@ namespace EscapeFromMars
                     InitiateDisbandProtocols();
                     ResetBeaconNames();
                 }
-                else if (Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 1200 * 1200) // max weapons range
+                else if (Vector3D.DistanceSquared(Destination, leader.GetPosition()) < 2000 * 2000) // max weapons range
                 { // turn off target neutrals if within max weapon range of the HQ (destination)..added V41
 
-                    var slimBlocks2 = new List<IMySlimBlock>();
-                    leader.GetBlocks(slimBlocks2, b => b.FatBlock is IMyBeacon);
+//                    var slimBlocks2 = new List<IMySlimBlock>();
+//                    leader.GetBlocks(slimBlocks2, b => b.FatBlock is IMyBeacon);
                     var slimBlocksG = new List<IMySlimBlock>();
                     leader.GetBlocks(slimBlocksG, b => b.FatBlock is IMyLargeGatlingTurret);
                     foreach (var slim in slimBlocksG)
@@ -174,7 +196,7 @@ namespace EscapeFromMars
                 leader.GetBlocks(slimBlocks, b => b.FatBlock is IMyRemoteControl);
                 IMyRemoteControl remoteControl = null;
                 foreach (var slim in slimBlocks)
-                {
+                { // should only be one RC, but loop anyway, I guess
                     remoteControl = slim.FatBlock as IMyRemoteControl;
                     bKeenAutopilotActive = remoteControl.IsAutoPilotEnabled;
                     if (ConvoyUpdateDebug) ModLog.Info("Keen Autopilot:" + bKeenAutopilotActive.ToString());
@@ -182,37 +204,42 @@ namespace EscapeFromMars
                 }
 
                 slimBlocks.Clear();
+				bool bNavStarted = false;
                 leader.GetBlocks(slimBlocks, b => b.FatBlock is IMyProgrammableBlock);
                 foreach (var slim in slimBlocks)
                 {
                     var block = slim.FatBlock as IMyProgrammableBlock;
                     if (block == null) continue;
 
-                    if (block.CustomName.Contains("NAV"))
-                    {
-                        if (!bKeenAutopilotActive 
-                            && GroupSpawnTime + convoyInitiateTime < currentTime // delay check for mode change.
-                            )
-                        {
-                            if (ConvoyUpdateDebug) ModLog.Info("NAV Bock:" + block.CustomName + "\nDetailedInfo:\n" + block.DetailedInfo+"\n---");
-                            if (//!bKeenAutopilotActive && 
-                                block.DetailedInfo.Contains("Assembly") || // "Assembly not found. Please compile script."
-                                block.DetailedInfo.Contains("mode=0") || block.DetailedInfo.Contains("mode=-1"))
-                            {
-                                if(remoteControl==null)
-                                {
-                                    // nothing left to do.  Remove it (and try again)
-                                    GroupState = NpcGroupState.Inactive; // this will cause NpcGroupManager to spawn a new convoy to replace this one.
-                                    return;
-                                }
-                                if(ConvoyUpdateDebug) ModLog.Info("Forcing Keen autopilot");
-                                // force it to use Keen Autopilot
-                                remoteControl.ClearWaypoints();
-                                remoteControl.AddWaypoint(Destination, "Target");
-                                remoteControl.SpeedLimit = 10; // should come from NPCGroupManager
-                                remoteControl.SetAutoPilotEnabled(true);
+					if (block.CustomName.Contains("NAV"))
+					{
+						if (!bKeenAutopilotActive
+							&& GroupSpawnTime + convoyInitiateTime < currentTime // delay check for mode change.
+							)
+						{
+							if (ConvoyUpdateDebug) ModLog.Info("NAV Bock:" + block.CustomName + "\nDetailedInfo:\n" + block.DetailedInfo + "\n---");
+							if (//!bKeenAutopilotActive && 
+								block.DetailedInfo.Contains("Assembly") || // "Assembly not found. Please compile script."
+								block.DetailedInfo.Contains("mode=0") || block.DetailedInfo.Contains("mode=-1"))
+							{
+								if (remoteControl == null)
+								{
+									// No NAV PB and No PB...nothing left to do.  Remove it grid (and try again)
+									GroupState = NpcGroupState.Inactive; // this will cause NpcGroupManager to spawn a new convoy to replace this one.
+									return;
+								}
+								if (ConvoyUpdateDebug) ModLog.Info("Forcing Keen autopilot");
+								// force it to use Keen Autopilot
 
-                                /*
+								leader.SendToPosition(Destination, 0, ConvoyLeaderMaxSpeed);
+								bNavStarted = true;
+								/*
+								remoteControl.ClearWaypoints();
+								remoteControl.AddWaypoint(Destination, "Target");
+								remoteControl.SpeedLimit = ConvoyLeaderMaxSpeed; // should come from NPCGroupManager
+								remoteControl.SetAutoPilotEnabled(true);
+								*/
+								/*
                                  // debug output
                                 var slimBlocks2 = new List<IMySlimBlock>();
                                 leader.GetBlocks(slimBlocks2, b => b.FatBlock is IMyBeacon);
@@ -227,11 +254,24 @@ namespace EscapeFromMars
                                 //                                GroupState = NpcGroupState.Inactive; // this will cause NpcGroupManager to spawn a new convoy to replace this one.
                                 ModLog.Info("Autopilot recovery because leader NAV not in correct mode: "+ sBeacons);
                                 */
-                            }
-                            break;
-                        }
-//                        ModLog.Info("PB:"+block.CustomName+"\n"+"DetailedInfo=:\n" + block.DetailedInfo);
-                    }
+							}
+							break;
+						}
+						//                        ModLog.Info("PB:"+block.CustomName+"\n"+"DetailedInfo=:\n" + block.DetailedInfo);
+					}
+                }
+
+				if(!bNavStarted) //V44
+                {
+                    if (ConvoyUpdateDebug) ModLog.Info("Using Keen autopilot");
+                    //
+                    leader.SendToPosition(Destination, 0, ConvoyLeaderMaxSpeed);
+                    /*
+                    remoteControl.ClearWaypoints();
+                    remoteControl.AddWaypoint(Destination, "Target");
+                    remoteControl.SpeedLimit = ConvoyLeaderMaxSpeed; // should come from NPCGroupManager
+                    remoteControl.SetAutoPilotEnabled(true);
+                    */
                 }
 
                 // Following is just debug info
@@ -254,7 +294,7 @@ namespace EscapeFromMars
 				return;
 			}
 
-			if (DuckUtils.IsAnyPlayerNearPosition(leader.GetPosition(),1000) && GroupState == NpcGroupState.Travelling)
+			if (DuckUtils.IsAnyPlayerNearPosition(leader.GetPosition(),1250) && GroupState == NpcGroupState.Travelling)
 			{
 				GroupState = NpcGroupState.InCombat;
 				InitiateAttackProtocols();
@@ -262,6 +302,7 @@ namespace EscapeFromMars
 
 			if (GroupState == NpcGroupState.InCombat)
 			{
+				// TODO: check if player grid is nearby?
 				var player = DuckUtils.GetNearestPlayerToPosition(leader.GetPosition(), 4000);
 				if (player == null)
 				{
@@ -380,7 +421,12 @@ namespace EscapeFromMars
 
 		private void SendEscortToPosition(EscortPosition position, IMyCubeGrid escort, Vector3D targetPosition)
 		{
-			var slimBlocks = new List<IMySlimBlock>();
+            var escortPosition = GetEscortPositionVector(targetPosition, remoteControl.GetNaturalGravity(), position,
+GetAdditionalHeightModifier());
+            escort.SendToPosition(escortPosition);
+
+			/*
+            var slimBlocks = new List<IMySlimBlock>();
 			escort.GetBlocks(slimBlocks, b => b.FatBlock is IMyRemoteControl);
 			foreach (var slim in slimBlocks)
 			{
@@ -392,6 +438,7 @@ namespace EscapeFromMars
                 // note: default speed limit
 				remoteControl.SetAutoPilotEnabled(true);
 			}
+			*/
 		}
 
 		protected abstract int GetAdditionalHeightModifier();
@@ -401,7 +448,42 @@ namespace EscapeFromMars
 			var haveEscorts = false;
 			foreach (var escort in escortDic.Values)
 			{
-				escort.SetLightingColors(Color.Red);
+                // V44 set each escort to attack mode
+                var movementSlim = new List<IMySlimBlock>();
+                var rcBlocks = new List<IMySlimBlock>();
+                var offensiveSlim = new List<IMySlimBlock>();
+
+                escort.GetBlocks(rcBlocks, b => b.FatBlock is IMyRemoteControl);
+                escort.GetBlocks(movementSlim, b => b.FatBlock is IMyFlightMovementBlock);
+                escort.GetBlocks(offensiveSlim, b => b.FatBlock is IMyOffensiveCombatBlock);
+
+                foreach (var slim in rcBlocks)
+                {
+                    //                    var rcFunctional = slim.FatBlock as IMyFunctionalBlock;
+                    //                    rcFunctional.Enabled = true;
+
+                    var remoteControl = slim.FatBlock as IMyRemoteControl;
+                    remoteControl.SetAutoPilotEnabled(false);
+                    remoteControl.ClearWaypoints();
+                }
+
+                foreach (var slim in movementSlim)
+                {
+                    var block = slim.FatBlock as IMyFlightMovementBlock;
+                    block.Enabled = true;
+                    block.SetValueBool("ActivateBehavior", true);
+                    
+                }
+                foreach (var slim in offensiveSlim)
+                {
+                    var block = slim.FatBlock as IMyOffensiveCombatBlock;
+                    block.Enabled = true;
+                    block.SetValueBool("ActivateBehavior", true);
+                }
+
+
+
+                escort.SetLightingColors(Color.Red);
 				escort.AppendToFirstBeaconName(InterceptingBeaconSuffix);
 				haveEscorts = true;
 			}
@@ -425,21 +507,29 @@ namespace EscapeFromMars
 
 		private void SendEscortToGrid(EscortPosition position, IMyCubeGrid escort, IMyEntity convoyLeaderGrid)
 		{
+            var escortPosition = GetEscortPositionVector(convoyLeaderGrid, remoteControl.GetNaturalGravity(), position,
+GetAdditionalHeightModifier());
+            escort.SendToPosition(escortPosition);
+
+            /*
 			var slimBlocks = new List<IMySlimBlock>();
 			escort.GetBlocks(slimBlocks, b => b.FatBlock is IMyRemoteControl);
 			foreach (var slim in slimBlocks)
 			{
+
+                // This code is in lots of places :(
 				var remoteControl = slim.FatBlock as IMyRemoteControl;
 				remoteControl.ClearWaypoints();
-				var escortPosition = GetEscortPositionVector(convoyLeaderGrid, remoteControl.GetTotalGravity(), position,
+				var escortPosition = GetEscortPositionVector(convoyLeaderGrid, remoteControl.GetNaturalGravity(), position,
 					GetAdditionalHeightModifier());
 				remoteControl.AddWaypoint(escortPosition, "Target");
                 // note: default speed limit
 				remoteControl.SetAutoPilotEnabled(true);
-			}
-		}
+            }
+				*/
+        }
 
-		internal static Vector3D GetEscortPositionVector(IMyEntity convoyLeaderGrid, Vector3D gravity,
+        internal static Vector3D GetEscortPositionVector(IMyEntity convoyLeaderGrid, Vector3D gravity,
 			EscortPosition escortPosition, int additionalHeightModifier)
 		{
 			var deliveryShipPosition = convoyLeaderGrid.GetPosition();
