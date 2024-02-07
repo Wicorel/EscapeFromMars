@@ -15,15 +15,22 @@ namespace EscapeFromMars
 	internal class ConvoySpawner : ModSystemUpdatable
 	{
 		public static bool DebugConvoys = false; // turn on to force lots of convoy spawns
-        public static bool ForceGroundOnly = false; // turn on to force ground-only convoys
-        public static bool ForceAirOnly = false; // uhh.. yeah
+		public static bool ForceGroundOnly = false; // turn on to force ground-only convoys
+		public static bool ForceAirOnly = false; // uhh.. yeah
+		public static bool ForceSpaceOnly = false; //  //V44
+
 
 		private readonly HeatSystem heatSystem;
 		private readonly QueuedAudioSystem audioSystem;
 		private readonly List<IMyRemoteControl> spawningBases = new List<IMyRemoteControl>();
 		private readonly Random random = new Random();
 		private DateTime nextSpawnTime;
-            
+
+		// V44 code constant cleanup
+		private readonly int ConvoyStartDelay = 45; // minutes from game start before convoys start.
+		private readonly int ConvoyNextMinMinutes = 12; // minimum minutes from a convoy spawn until next spawn
+		private readonly int ConvoyNextMaxMinutes = 18; // maximum minutes ""
+
 		internal ConvoySpawner(HeatSystem heatSystem, QueuedAudioSystem audioSystem)
 		{
 			this.heatSystem = heatSystem;
@@ -43,49 +50,57 @@ namespace EscapeFromMars
 			{
 				return;
 			}
-			
+
 			foreach (var remoteControl in grid.GetTerminalBlocksOfType<IMyRemoteControl>())
 			{
-				if (remoteControl.IsControlledByFaction("GCORP") && 
-				    remoteControl.CustomName.Contains(DeliverySpawnerPrefix)) // Finds both ground and air spawners
+				if (remoteControl.IsControlledByFaction("GCORP") &&
+					remoteControl.CustomName.Contains(DeliverySpawnerPrefix)) // Finds both ground and air spawners
 				{
 					spawningBases.Add(remoteControl);
 				}
 			}
 		}
 
-        public override void AllGridsInitialised()
-        {
-            // log to remind that they are on..
-            if (DebugConvoys)
-            {
-                ModLog.Info("Convoy Debug is ON");
-                MyAPIGateway.Utilities.ShowNotification("Convoy Debug is ON", 5000, MyFontEnum.Red);
-            }
-            if (ForceAirOnly)
-            {
-                ModLog.Info(" Force Air only is ON");
-                MyAPIGateway.Utilities.ShowNotification(" Force Air only is ON", 5000, MyFontEnum.Red);
-            }
-            if (ForceGroundOnly)
-            {
-                ModLog.Info(" Force Ground only is ON");
-                MyAPIGateway.Utilities.ShowNotification("Force Ground only is ON", 5000, MyFontEnum.Red);
-            }
-        }
-
-        internal void RestoreSpawnTimeFromSave(long savedTime)
+		public override void AllGridsInitialised()
 		{
-			nextSpawnTime = DebugConvoys ?  MyAPIGateway.Session.GameDateTime 
+			// log to remind that they are on..
+			if (DebugConvoys)
+			{
+				ModLog.Info("Convoy Debug is ON");
+				MyAPIGateway.Utilities.ShowNotification("Convoy Debug is ON", 5000, MyFontEnum.Red);
+			}
+			if (ForceAirOnly)
+			{
+				ModLog.Info(" Force Air only is ON");
+				MyAPIGateway.Utilities.ShowNotification(" Force Air only is ON", 5000, MyFontEnum.Red);
+			}
+			if (ForceGroundOnly)
+			{
+				ModLog.Info(" Force Ground only is ON");
+				MyAPIGateway.Utilities.ShowNotification("Force Ground only is ON", 5000, MyFontEnum.Red);
+			}
+		}
+
+		internal void RestoreSpawnTimeFromSave(long savedTime)
+		{
+			nextSpawnTime = DebugConvoys ? MyAPIGateway.Session.GameDateTime
 				: DateTime.FromBinary(savedTime);
 		}
 
-		public override void Update300()
+		public void CalculateSpawnTime()
+		{
+            var delayUntilFirstConvoy = DebugConvoys ? new TimeSpan(0, 0, 10) : new TimeSpan(0, ConvoyStartDelay, 0);
+            nextSpawnTime = MyAPIGateway.Session.GameDateTime + delayUntilFirstConvoy;
+        }
+
+        public override void Update300()
 		{
 			if (nextSpawnTime.Equals(DateTime.MinValue)) // New game before any save
 			{
-				var delayUntilFirstConvoy = DebugConvoys ? new TimeSpan(0, 0, 10) : new TimeSpan(0, 45, 0);
-				nextSpawnTime = MyAPIGateway.Session.GameDateTime + delayUntilFirstConvoy;
+				// normally, delay 45 minutes from game initial start before spawning convoys
+				CalculateSpawnTime();
+//				var delayUntilFirstConvoy = DebugConvoys ? new TimeSpan(0, 0, 10) : new TimeSpan(0, ConvoyStartDelay, 0);
+//				nextSpawnTime = MyAPIGateway.Session.GameDateTime + delayUntilFirstConvoy;
 			}
 			else
 			{
@@ -97,9 +112,9 @@ namespace EscapeFromMars
 			}
 		}
 
-		private void ResetTimeUntilNextConvoy()
+		public void ResetTimeUntilNextConvoy()
 		{
-			var delayUntilNextConvoy = DebugConvoys ? new TimeSpan(0, 0, 30) : new TimeSpan(0, random.Next(12, 18), 0);
+			var delayUntilNextConvoy = DebugConvoys ? new TimeSpan(0, 0, 30) : new TimeSpan(0, random.Next(ConvoyNextMinMinutes, ConvoyNextMaxMinutes), 0);
 			nextSpawnTime = MyAPIGateway.Session.GameDateTime + delayUntilNextConvoy;
 		}
 
@@ -152,6 +167,7 @@ namespace EscapeFromMars
 				var distSq = Vector3D.DistanceSquared(spawningBase.PositionComp.GetPosition(), positionToSpawnNearTo);
                 if (DebugConvoys && ForceGroundOnly && !spawningBase.CustomName.Contains("GROUND")) continue;
                 if (DebugConvoys && ForceAirOnly && spawningBase.CustomName.Contains("GROUND")) continue;
+                if (DebugConvoys && ForceSpaceOnly && spawningBase.CustomName.Contains("SPACE")) continue;
 
                 baseDistances.Add(distSq, spawningBase);
 			}
@@ -181,7 +197,17 @@ namespace EscapeFromMars
             var factionId = baseToSpawnAt.OwnerId;
             var spawnerPosition = baseToSpawnAt.GetPosition();
             var gravity = baseToSpawnAt.GetNaturalGravity();
-            var unitType = baseToSpawnAt.CustomName.Contains("GROUND") ? UnitType.Ground : UnitType.Air;
+
+			UnitType unitType = UnitType.Air;
+            if(baseToSpawnAt.CustomName.Contains("GROUND"))
+			{
+				unitType = UnitType.Ground;
+			}
+			else if (baseToSpawnAt.CustomName.Contains("SPACE"))
+			{
+				unitType = UnitType.Space;
+			}
+                //            var unitType = baseToSpawnAt.CustomName.Contains("GROUND") ? UnitType.Ground : UnitType.Air;
             var cargoSize = heatSystem.GenerateCargoShipSize();
 
             //TODO: Should let base define the convoy spawn points
@@ -195,11 +221,19 @@ namespace EscapeFromMars
                     transportPrefab.InitialBeaconName,
                     Vector3D.Normalize(baseToSpawnAt.WorldMatrix.Forward));
             }
-            else
+            else if (unitType == UnitType.Ground)
             {
                 var positionToSpawn = spawnerPosition + gravity * -1f + baseToSpawnAt.WorldMatrix.Forward * 35;
                 var transportPrefab = PrefabGrid.GetGroundTransport(cargoSize);
                 DuckUtils.SpawnInGravity(positionToSpawn, gravity, factionId, transportPrefab.PrefabName,
+                    transportPrefab.InitialBeaconName,
+                    Vector3D.Normalize(baseToSpawnAt.WorldMatrix.Forward));
+            }
+            else if (unitType == UnitType.Space)
+            {
+                var positionToSpawn = spawnerPosition + gravity * -1f + baseToSpawnAt.WorldMatrix.Forward * 35;
+                var transportPrefab = PrefabGrid.GetSpaceTransport(cargoSize);
+                DuckUtils.SpawnInGravity(positionToSpawn, baseToSpawnAt.WorldMatrix.Down, factionId, transportPrefab.PrefabName,
                     transportPrefab.InitialBeaconName,
                     Vector3D.Normalize(baseToSpawnAt.WorldMatrix.Forward));
             }
