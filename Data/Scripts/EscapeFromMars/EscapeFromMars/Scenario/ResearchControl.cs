@@ -5,6 +5,7 @@ using Sandbox.Game.SessionComponents;
 using Sandbox.ModAPI;
 using VRage.Game;
 using VRage.Game.ModAPI;
+using VRage.ObjectBuilders;
 
 namespace EscapeFromMars
 {
@@ -12,6 +13,17 @@ namespace EscapeFromMars
     {
         // use the new Keen research system
         readonly bool bNewResearch = true;
+
+        // V44. Remove reactors from mar planet
+        private readonly MyDefinitionId SmallBlockSmallGenerator = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Reactor", "SmallBlockSmallGenerator");
+        private readonly MyDefinitionId SmallBlockLargeGenerator = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Reactor", "SmallBlockLargeGenerator");
+        private readonly MyDefinitionId LargeBlockSmallGenerator = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Reactor", "LargeBlockSmallGenerator");
+        private readonly MyDefinitionId LargeBlockLargeGenerator = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Reactor", "LargeBlockLargeGenerator");
+        private readonly MyDefinitionId LargeBlockSmallGeneratorWarfare2 = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Reactor", "LargeBlockSmallGeneratorWarfare2");
+        private readonly MyDefinitionId LargeBlockLargeGeneratorWarfare2 = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Reactor", "LargeBlockLargeGeneratorWarfare2");
+        private readonly MyDefinitionId SmallBlockSmallGeneratorWarfare2 = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Reactor", "SmallBlockSmallGeneratorWarfare2");
+        private readonly MyDefinitionId SmallBlockLargeGeneratorWarfare2 = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Reactor", "SmallBlockLargeGeneratorWarfare2");
+
 
         private readonly MyDefinitionId refinery = MyVisualScriptLogicProvider.GetDefinitionId("Refinery", "LargeRefinery");
 
@@ -258,7 +270,6 @@ SubtyepID=OxygenGeneratorSmall
             "MyObjectBuilder_StoreBlock", "AtmBlock");
 
         //V1.193
-
 
         /*TyepID=MyObjectBuilder_VendingMachine
         SubtyepID=FoodDispenser
@@ -733,15 +744,17 @@ SubtyepID=LargeBlockLargeCalibreGun
         private readonly MyDefinitionId SmallBlockAutocannon = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncher", "SmallBlockAutocannon");
         private readonly MyDefinitionId SmallGatlingGunWarfare2 = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallGatlingGun", "SmallGatlingGunWarfare2");
 
+        // artillery
         private readonly MyDefinitionId LargeBlockLargeCalibreGun = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncher", "LargeBlockLargeCalibreGun");
+        private readonly MyDefinitionId LargeCalibreTurret = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_LargeMissileTurret", "LargeCalibreTurret");
 
+        // assault cannon
         private readonly MyDefinitionId LargeBlockMediumCalibreTurret = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_LargeMissileTurret", "LargeBlockMediumCalibreTurret");
         private readonly MyDefinitionId AutoCannonTurret = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_LargeGatlingTurret", "AutoCannonTurret");
         private readonly MyDefinitionId SmallBlockMediumCalibreTurret = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_LargeMissileTurret", "SmallBlockMediumCalibreTurret");
 
         private readonly MyDefinitionId LargeTurretControlBlock = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_TurretControlBlock", "LargeTurretControlBlock");
         private readonly MyDefinitionId SmallTurretControlBlock = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_TurretControlBlock", "SmallTurretControlBlock");
-
 
         private readonly MyDefinitionId LargeRailgun = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncherReload", "LargeRailgun");
         private readonly MyDefinitionId SmallRailgun = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_SmallMissileLauncherReload", "SmallRailgun");
@@ -893,9 +906,180 @@ SubtyepID=SmallProgrammableBlockReskin
 SubtyepID=SmallWorkAreaMission
 
             */
+
+        /* 1.203
+         * 
+         Button Pedastal
+             TyepID=MyObjectBuilder_ButtonPanel
+             SubtyepID=LargeButtonPanelPedestal
+
+            TyepID=MyObjectBuilder_ButtonPanel
+            SubtyepID=SmallButtonPanelPedestal
+        
+        Short wheel suspensions
+        Inset blocks
+
+        Holo LCD
+            TyepID=MyObjectBuilder_TextPanel
+            SubtyepID=HoloLCDLarge
+
+        Wind Turbine reskin
+            TyepID=MyObjectBuilder_WindTurbine
+            SubtyepID=LargeBlockWindTurbineReskin
+
+        Round Beacon
+            TyepID=MyObjectBuilder_Beacon
+            SubtyepID=LargeBlockBeaconReskin
+
+            TyepID=MyObjectBuilder_Beacon
+            SubtyepID=SmallBlockBeaconReskin
+
+        Corner medical Room
+            TyepID=MyObjectBuilder_MedicalRoom
+            SubtyepID=LargeMedicalRoomReskin
+
+        Truss Block Decoy
+            TyepID=MyObjectBuilder_Decoy
+            SubtyepID=TrussPillarDecoy
+
+        Solar slope left
+            TyepID=MyObjectBuilder_SolarPanel
+            SubtyepID=LargeBlockColorableSolarPanelCorner
+
+            TyepID=MyObjectBuilder_SolarPanel
+            SubtyepID=SmallBlockColorableSolarPanelCorner
+
+        Solar
+            TyepID=MyObjectBuilder_SolarPanel
+            SubtyepID=LargeBlockColorableSolarPanel
+
+            TyepID=MyObjectBuilder_SolarPanel
+            SubtyepID=SmallBlockColorableSolarPanel
+
+        Solar slope right
+            TyepID=MyObjectBuilder_SolarPanel
+            SubtyepID=LargeBlockColorableSolarPanelCornerInverted
+
+            TyepID=MyObjectBuilder_SolarPanel
+            SubtyepID=SmallBlockColorableSolarPanelCornerInverted
+
+        Control Pedastal
+            TyepID=MyObjectBuilder_TerminalBlock
+            SubtyepID=LargeControlPanelPedestal
+
+        Inset Cryo Room
+            TyepID=MyObjectBuilder_CryoChamber
+            SubtyepID=LargeBlockCryoRoom
+
+        Half Bed
+            TyepID=MyObjectBuilder_CryoChamber
+            SubtyepID=LargeBlockHalfBed
+
+        Half Bed Open
+            TyepID=MyObjectBuilder_CryoChamber
+            SubtyepID=LargeBlockHalfBedOffset
+
+        Inset LCD
+            TyepID=MyObjectBuilder_TextPanel
+            SubtyepID=LargeFullBlockLCDPanel
+        Sloped/diagonal/Curved
+
+        Truss Block Light
+            TyepID=MyObjectBuilder_InteriorLight
+            SubtyepID=TrussPillarBeacon
+
+        Truss Block Decoy
+            TyepID=MyObjectBuilder_Decoy
+            SubtyepID=TrussPillarDecoy
+
+        Inset Bed
+            TyepID=MyObjectBuilder_CryoChamber
+            SubtyepID=LargeBlockInsetBed
+
+        Inset Cryo Room
+            TyepID=MyObjectBuilder_CryoChamber
+            SubtyepID=LargeBlockCryoRoom
+
+        Flat thruster D shape
+            TyepID=MyObjectBuilder_Thrust
+            SubtyepID=LargeBlockSmallFlatAtmosphericThrustDShape  
+        
+            TyepID=MyObjectBuilder_Thrust
+            SubtyepID=SmallBlockSmallFlatAtmosphericThrustDShape
+
+        Flat thruster
+            TyepID=MyObjectBuilder_Thrust
+            SubtyepID=LargeBlockSmallFlatAtmosphericThrust
+
+            TyepID=MyObjectBuilder_Thrust
+            SubtyepID=SmallBlockSmallFlatAtmosphericThrust
+
+        Large Flat thruster D shape
+            TyepID=MyObjectBuilder_Thrust
+            SubtyepID=LargeBlockLargeFlatAtmosphericThrustDShape
+
+            TyepID=MyObjectBuilder_Thrust
+            SubtyepID=SmallBlockLargeFlatAtmosphericThrustDShape
+
+        Large Flat thruster
+            TyepID=MyObjectBuilder_Thrust
+            SubtyepID=LargeBlockLargeFlatAtmosphericThrust
+
+            TyepID=MyObjectBuilder_Thrust
+            SubtyepID=SmallBlockLargeFlatAtmosphericThrust
+
+        Explosive Barrel
+            TyepID=MyObjectBuilder_Warhead
+            SubtyepID=SmallExplosiveBarrel
+
+        Cap Cockpit
+            TyepID=MyObjectBuilder_Cockpit
+            SubtyepID=SmallBlockCapCockpit
+
+         */
+
+        private readonly MyDefinitionId LargeBlockSmallFlatAtmosphericThrustDShape = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "LargeBlockSmallFlatAtmosphericThrustDShape");
+        private readonly MyDefinitionId SmallBlockSmallFlatAtmosphericThrustDShape = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "SmallBlockSmallFlatAtmosphericThrustDShape");
+        private readonly MyDefinitionId LargeBlockSmallFlatAtmosphericThrust = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "LargeBlockSmallFlatAtmosphericThrust");
+        private readonly MyDefinitionId SmallBlockSmallFlatAtmosphericThrust = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "SmallBlockSmallFlatAtmosphericThrust");
+        private readonly MyDefinitionId LargeBlockLargeFlatAtmosphericThrustDShape = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "LargeBlockLargeFlatAtmosphericThrustDShape");
+        private readonly MyDefinitionId SmallBlockLargeFlatAtmosphericThrustDShape = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "SmallBlockLargeFlatAtmosphericThrustDShape");
+        private readonly MyDefinitionId LargeBlockLargeFlatAtmosphericThrust = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "LargeBlockLargeFlatAtmosphericThrust");
+        private readonly MyDefinitionId SmallBlockLargeFlatAtmosphericThrust = MyVisualScriptLogicProvider.GetDefinitionId("Thrust", "SmallBlockLargeFlatAtmosphericThrust");
+
+        private readonly MyDefinitionId LargeBlockWindTurbineReskin = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_WindTurbine", "LargeBlockWindTurbineReskin");
+
+
+        // Ship Tools V44
+        /* 
+         * TyepID=MyObjectBuilder_ShipGrinder
+SubtyepID=LargeShipGrinder
+        TyepID=MyObjectBuilder_ShipWelder
+SubtyepID=LargeShipWelder
+        TyepID=MyObjectBuilder_Drill
+SubtyepID=LargeBlockDrill
+
+
+        */
+        private readonly MyDefinitionId LargeBlockWelder = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_ShipWelder", "LargeShipWelder");
+        private readonly MyDefinitionId LargeBlockDrill = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Drill", "LargeBlockDrill");
+        private readonly MyDefinitionId LargeBlockGrinder = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_ShipGrinder", "LargeShipGrinder");
+
+        /*
+         * 
+        TyepID=MyObjectBuilder_Drill
+SubtyepID=SmallBlockDrill
+        TyepID=MyObjectBuilder_ShipGrinder
+SubtyepID=SmallShipGrinder
+        TyepID=MyObjectBuilder_ShipWelder
+SubtyepID=SmallShipWelder
+        */
+        private readonly MyDefinitionId SmallBlockWelder = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_ShipWelder", "SmallShipWelder");
+        private readonly MyDefinitionId SmallBlockDrill = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_Drill", "SmallBlockDrill");
+        private readonly MyDefinitionId SmallBlockGrinder = MyVisualScriptLogicProvider.GetDefinitionId("MyObjectBuilder_ShipGrinder", "SmallShipGrinder");
+
         //
-        private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup =
-    new Dictionary<TechGroup, HashSet<MyDefinitionId>>();
+        private readonly Dictionary<TechGroup, HashSet<MyDefinitionId>> techsForGroup = new Dictionary<TechGroup, HashSet<MyDefinitionId>>();
 
         private readonly QueuedAudioSystem audioSystem;
 
@@ -917,7 +1101,7 @@ SubtyepID=SmallWorkAreaMission
 
         }
 
-        internal void InitResearchRestrictions()
+        internal void InitResearchRestrictions(bool ExtendedScenario)
         {
             // 1.194            MySectorWeatherComponent wc;
             //            WeatherType wt;
@@ -933,33 +1117,50 @@ SubtyepID=SmallWorkAreaMission
 
             //            MyVisualScriptLogicProvider.BlockFunctionalityChanged += FunctionalityChanged;
 
-            NeedsResearch(refinery, TechGroup.Permabanned);
-            NeedsResearch(blastFurnace, TechGroup.Permabanned);
-            NeedsResearch(blastFurnace, TechGroup.Permabanned);
-            NeedsResearch(jumpDrive, TechGroup.Permabanned);
+            NeedsResearch(refinery, TechGroup.OreProcessing);
+            NeedsResearch(blastFurnace, TechGroup.OreProcessing);
+ //           NeedsResearch(blastFurnace, TechGroup.Permabanned);
+            NeedsResearch(jumpDrive, TechGroup.JumpDrive);
             NeedsResearch(projectorLarge, TechGroup.Permabanned);
             NeedsResearch(projectorSmall, TechGroup.Permabanned);
-            NeedsResearch(largeMissileTurret, TechGroup.Rockets);
-            NeedsResearch(smallMissileTurret, TechGroup.Rockets);
-            NeedsResearch(rocketLauncher, TechGroup.Rockets);
-            NeedsResearch(largeRocketLauncher, TechGroup.Rockets);
-            NeedsResearch(smallReloadableRocketLauncher, TechGroup.Rockets);
-            NeedsResearch(ionThrusterSmallShipSmall, TechGroup.Permabanned);
-            NeedsResearch(ionThrusterSmallShipLarge, TechGroup.Permabanned);
-            NeedsResearch(ionThrusterLargeShipSmall, TechGroup.Permabanned);
-            NeedsResearch(ionThrusterLargeShipLarge, TechGroup.Permabanned);
-            NeedsResearch(hydroThrusterSmallShipSmall, TechGroup.Permabanned);
-            NeedsResearch(hydroThrusterSmallShipLarge, TechGroup.Permabanned);
-            NeedsResearch(hydroThrusterLargeShipSmall, TechGroup.Permabanned);
-            NeedsResearch(hydroThrusterLargeShipLarge, TechGroup.Permabanned);
+
+            NeedsResearch(largeMissileTurret, TechGroup.AdvancedWeapons);
+            NeedsResearch(smallMissileTurret, TechGroup.AdvancedWeapons);
+            NeedsResearch(rocketLauncher, TechGroup.AdvancedWeapons);
+            NeedsResearch(largeRocketLauncher, TechGroup.AdvancedWeapons);
+            NeedsResearch(smallReloadableRocketLauncher, TechGroup.AdvancedWeapons);
+
+            NeedsResearch(ionThrusterSmallShipSmall, TechGroup.IonThrusters);
+            NeedsResearch(ionThrusterSmallShipLarge, TechGroup.IonThrusters);
+            NeedsResearch(ionThrusterLargeShipSmall, TechGroup.IonThrusters);
+            NeedsResearch(ionThrusterLargeShipLarge, TechGroup.IonThrusters);
+
+            NeedsResearch(hydroThrusterSmallShipSmall, TechGroup.HyrdrogenThrusters);
+            NeedsResearch(hydroThrusterSmallShipLarge, TechGroup.HyrdrogenThrusters);
+            NeedsResearch(hydroThrusterLargeShipSmall, TechGroup.HyrdrogenThrusters);
+            NeedsResearch(hydroThrusterLargeShipLarge, TechGroup.HyrdrogenThrusters);
+
+            NeedsResearch(SmallBlockSmallGenerator, TechGroup.UraniumReactors);
+            NeedsResearch(SmallBlockLargeGenerator, TechGroup.UraniumReactors);
+            NeedsResearch(LargeBlockSmallGenerator, TechGroup.UraniumReactors);
+            NeedsResearch(LargeBlockLargeGenerator, TechGroup.UraniumReactors);
+            NeedsResearch(LargeBlockSmallGeneratorWarfare2, TechGroup.UraniumReactors);
+            NeedsResearch(LargeBlockLargeGeneratorWarfare2, TechGroup.UraniumReactors);
+            NeedsResearch(SmallBlockSmallGeneratorWarfare2, TechGroup.UraniumReactors);
+            NeedsResearch(SmallBlockLargeGeneratorWarfare2, TechGroup.UraniumReactors);
+
+
             NeedsResearch(atmoThrusterSmallShipSmall, TechGroup.AtmosphericEngines);
             NeedsResearch(atmoThrusterSmallShipLarge, TechGroup.AtmosphericEngines);
             NeedsResearch(atmoThrusterLargeShipSmall, TechGroup.AtmosphericEngines);
             NeedsResearch(atmoThrusterLargeShipLarge, TechGroup.AtmosphericEngines);
 
+
+
             NeedsResearch(oxygenFarm, TechGroup.OxygenFarm);
             NeedsResearch(oxygenGeneratorLarge, TechGroup.OxygenGenerators);
             NeedsResearch(oxygenGeneratorSmall, TechGroup.OxygenGenerators);
+
             NeedsResearch(oxygenTankLarge, TechGroup.GasStorage);
             NeedsResearch(oxygenTankSmall, TechGroup.GasStorage);
             NeedsResearch(hydrogenTankLarge, TechGroup.GasStorage);
@@ -975,15 +1176,13 @@ SubtyepID=SmallWorkAreaMission
             NeedsResearch(WindTurbineLarge, TechGroup.AtmosphericEngines);
 
             NeedsResearch(SmallGatlingTurret, TechGroup.BasicWeapons);
-            NeedsResearch(SmallRocketLauncherReload, TechGroup.BasicWeapons);
+            NeedsResearch(SmallRocketLauncherReload, TechGroup.AdvancedWeapons);
             NeedsResearch(InteriorTurret, TechGroup.BasicWeapons);
             NeedsResearch(LargeGatlingTurret, TechGroup.BasicWeapons);
-            //            NeedsResearch(largeMissileTurret, TechGroup.BasicWeapons);
-            //            NeedsResearch(smallMissileTurret, TechGroup.BasicWeapons);
 
-            NeedsResearch(SkLarge, TechGroup.Permabanned);
-            NeedsResearch(SkSmall, TechGroup.Permabanned);
-            NeedsResearch(BasicAssembler, TechGroup.Permabanned);
+            NeedsResearch(SkLarge, TechGroup.OreProcessing);
+            NeedsResearch(SkSmall, TechGroup.OreProcessing);
+            NeedsResearch(BasicAssembler, TechGroup.OreProcessing);
 
 
             var gameVersion = MyAPIGateway.Session.Version;
@@ -996,10 +1195,10 @@ SubtyepID=SmallWorkAreaMission
                 NeedsResearch(LargeBlockSmallAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
                 NeedsResearch(LargeBlockLargeAtmosphericThrustSciFi, TechGroup.AtmosphericEngines);
 
-                NeedsResearch(SmallBlockSmallThrustSciFi, TechGroup.Permabanned);
-                NeedsResearch(SmallBlockLargeThrustSciFi, TechGroup.Permabanned);
-                NeedsResearch(LargeBlockSmallThrustSciFi, TechGroup.Permabanned);
-                NeedsResearch(LargeBlockLargeThrustSciFi, TechGroup.Permabanned);
+                NeedsResearch(SmallBlockSmallThrustSciFi, TechGroup.IonThrusters);
+                NeedsResearch(SmallBlockLargeThrustSciFi, TechGroup.IonThrusters);
+                NeedsResearch(LargeBlockSmallThrustSciFi, TechGroup.IonThrusters);
+                NeedsResearch(LargeBlockLargeThrustSciFi, TechGroup.IonThrusters);
             }
 
             // V26.  For SE 1.192
@@ -1021,20 +1220,20 @@ SubtyepID=SmallWorkAreaMission
             //   For SE 1.199
             if ((gameVersion.Major == 1 && gameVersion.Minor >= 199) || gameVersion.Major > 1)
             {
-                NeedsResearch(IndustrialRefinery, TechGroup.Permabanned);
+                NeedsResearch(IndustrialRefinery, TechGroup.OreProcessing);
                 //                NeedsResearch(IndustrialAssembler, TechGroup.Permabanned);
 
-                NeedsResearch(IndustrialLGLargeHTruster, TechGroup.Permabanned);
-                NeedsResearch(IndustrialLGSmallHTruster, TechGroup.Permabanned);
-                NeedsResearch(IndustrialSGLargeHTruster, TechGroup.Permabanned);
-                NeedsResearch(IndustrialSGSmallHTruster, TechGroup.Permabanned);
+                NeedsResearch(IndustrialLGLargeHTruster, TechGroup.HyrdrogenThrusters);
+                NeedsResearch(IndustrialLGSmallHTruster, TechGroup.HyrdrogenThrusters);
+                NeedsResearch(IndustrialSGLargeHTruster, TechGroup.HyrdrogenThrusters);
+                NeedsResearch(IndustrialSGSmallHTruster, TechGroup.HyrdrogenThrusters);
 
                 NeedsResearch(LargeHydrogenTankIndustrial, TechGroup.GasStorage);
             }
             if ((gameVersion.Major == 1 && gameVersion.Minor >= 200) || gameVersion.Major > 1)
             {
-
-                NeedsResearch(LargeBlockLargeCalibreGun, TechGroup.BasicWeapons);
+                // these are guns, not turrets
+                NeedsResearch(LargeBlockLargeCalibreGun, TechGroup.AdvancedWeapons); // artillery
                 NeedsResearch(SmallBlockAutocannon, TechGroup.BasicWeapons);
                 NeedsResearch(SmallGatlingGunWarfare2, TechGroup.BasicWeapons);
 
@@ -1042,30 +1241,58 @@ SubtyepID=SmallWorkAreaMission
                 NeedsResearch(LargeTurretControlBlock, TechGroup.BasicWeapons);
                 NeedsResearch(SmallTurretControlBlock, TechGroup.BasicWeapons);
 
+                NeedsResearch(SmallMissileLauncherWarfare2, TechGroup.AdvancedWeapons);
 
-                NeedsResearch(SmallMissileLauncherWarfare2, TechGroup.Rockets);
-                NeedsResearch(LargeRailgun, TechGroup.Rockets);
-                NeedsResearch(SmallRailgun, TechGroup.Rockets);
-                NeedsResearch(SmallMissileLauncherWarfare2, TechGroup.Rockets);
+                NeedsResearch(LargeRailgun, TechGroup.SpaceWeapons);
+                NeedsResearch(SmallRailgun, TechGroup.SpaceWeapons);
 
-                // new turrets are banned because they might change the balance too much
-                NeedsResearch(LargeBlockMediumCalibreTurret, TechGroup.Permabanned);
-                NeedsResearch(AutoCannonTurret, TechGroup.Permabanned);
-                NeedsResearch(SmallBlockMediumCalibreTurret, TechGroup.Permabanned);
+                // artillery
+                NeedsResearch(LargeCalibreTurret, TechGroup.AdvancedWeapons);
+                
+                NeedsResearch(LargeBlockMediumCalibreTurret, TechGroup.MarsGroundWeapons);
+                NeedsResearch(AutoCannonTurret, TechGroup.MarsGroundWeapons);
+                NeedsResearch(SmallBlockMediumCalibreTurret, TechGroup.MarsGroundWeapons);
 
-                NeedsResearch(SmallBlockSmallModularThruster, TechGroup.Permabanned);
-                NeedsResearch(SmallBlockLargeModularThruster, TechGroup.Permabanned);
-                NeedsResearch(LargeBlockSmallModularThruster, TechGroup.Permabanned);
-                NeedsResearch(LargeBlockLargeModularThruster, TechGroup.Permabanned);
+                NeedsResearch(SmallBlockSmallModularThruster, TechGroup.IonThrusters);
+                NeedsResearch(SmallBlockLargeModularThruster, TechGroup.IonThrusters);
+                NeedsResearch(LargeBlockSmallModularThruster, TechGroup.IonThrusters);
+                NeedsResearch(LargeBlockLargeModularThruster, TechGroup.IonThrusters);
 
             }
+            //V44 SE 1.203
+            NeedsResearch(LargeBlockSmallFlatAtmosphericThrustDShape, TechGroup.AtmosphericEngines);
+            NeedsResearch(SmallBlockSmallFlatAtmosphericThrustDShape, TechGroup.AtmosphericEngines);
+            NeedsResearch(LargeBlockSmallFlatAtmosphericThrust, TechGroup.AtmosphericEngines);
+            NeedsResearch(SmallBlockSmallFlatAtmosphericThrust, TechGroup.AtmosphericEngines);
+            NeedsResearch(LargeBlockLargeFlatAtmosphericThrustDShape, TechGroup.AtmosphericEngines);
+            NeedsResearch(SmallBlockLargeFlatAtmosphericThrustDShape, TechGroup.AtmosphericEngines);
+            NeedsResearch(LargeBlockLargeFlatAtmosphericThrust, TechGroup.AtmosphericEngines);
+            NeedsResearch(SmallBlockLargeFlatAtmosphericThrust, TechGroup.AtmosphericEngines);
+
+            NeedsResearch(LargeBlockWindTurbineReskin, TechGroup.AtmosphericEngines);
+
+            // welders seem to bypass the research contraints
+            NeedsResearch(SmallBlockWelder, TechGroup.Permabanned);
+            NeedsResearch(LargeBlockWelder, TechGroup.Permabanned);
+
+            NeedsResearch(SmallBlockDrill, TechGroup.OreProcessing);
+            NeedsResearch(LargeBlockDrill, TechGroup.OreProcessing);
+
         }
 
         public void AllowUnlockedTechs()
         {
             //            ModLog.Info("AllowUnlockTechs():" + UnlockedTechs.Count.ToString() + " unlocked groups");
-
             UnlockTechsSilently(0, UnlockedTechs);
+        }
+
+        public bool IsTechUnlocked(TechGroup techgroup)
+        {
+            if (UnlockedTechs.Contains(techgroup))
+            {
+                return true;
+            }
+            return false;
         }
 
         private void NeedsResearch(MyDefinitionId techDef, TechGroup techgroup)
@@ -1074,6 +1301,12 @@ SubtyepID=SmallWorkAreaMission
             {
                 ModLog.Info("Request for NULL techDef");
                 return;
+            }
+            if(techDef.TypeId == MyObjectBuilderType.Invalid)
+            {
+                ModLog.Info("Request for invalid techDef");
+                return;
+
             }
 
             MyVisualScriptLogicProvider.ResearchListAddItem(techDef);
@@ -1128,13 +1361,15 @@ SubtyepID=SmallWorkAreaMission
 
         internal void UnlockTechGroupForAllPlayers(TechGroup techGroup)
         {
+            /* joining players may not have gotten the message...
             if (UnlockedTechs.Contains(techGroup))
             {
                 //                ModLog.Info("UTGFAP():" + UnlockedTechs.Count.ToString() + " unlocked groups. Already contains TechGroup:"+techGroup.ToString());
                 return; // Already unlocked
             }
+            */
 
-            HashSet<MyDefinitionId> technologies;
+        HashSet<MyDefinitionId> technologies;
             if (!techsForGroup.TryGetValue(techGroup, out technologies))
             {
                 ModLog.Error("No technologies for group: " + techGroup);
@@ -1169,8 +1404,8 @@ SubtyepID=SmallWorkAreaMission
                     return AudioClip.AllTechUnlocked;
                 case TechGroup.AtmosphericEngines:
                     return AudioClip.UnlockAtmospherics;
-                case TechGroup.Rockets:
-                    return AudioClip.UnlockedMissiles;
+                case TechGroup.MarsGroundWeapons:
+                    return AudioClip.UnlockedMissiles; // TODO: need to re-record
                 case TechGroup.OxygenGenerators:
                     return AudioClip.OxygenGeneratorUnlocked;
                 case TechGroup.OxygenFarm:

@@ -8,6 +8,7 @@ using VRageMath;
 using Draygo.API;
 using System.Text;
 using VRage.Utils;
+using Sandbox.Game.Entities;
 
 namespace EscapeFromMars
 {
@@ -41,9 +42,12 @@ namespace EscapeFromMars
         private MyStringId ConnectionLostID;
         private MyStringId HackInProgressID;
 
-		internal ResearchHacking(ResearchControl researchControl, HudAPIv2 hudTextApi, NetworkComms networkComms)
+		private bool ExtendedScenario = false;
+
+		internal ResearchHacking(bool extendedScenario, ResearchControl researchControl, HudAPIv2 hudTextApi, NetworkComms networkComms)
 		{
             this.researchControl = researchControl;
+			this.ExtendedScenario= extendedScenario; //V44
 
             /*
             // V1
@@ -77,7 +81,7 @@ namespace EscapeFromMars
 		{
 			AddHackingLocation(TechGroup.AtmosphericEngines, new Vector3D(1854774.5,-2005846.88,1325410.5));
 			AddHackingLocation(TechGroup.GasStorage, new Vector3D(1869167.75,-2004920.12,1316376.38));
-			AddHackingLocation(TechGroup.Rockets, new Vector3D(1843300.12,-1996436.5,1324474.12));
+			AddHackingLocation(TechGroup.MarsGroundWeapons, new Vector3D(1843300.12,-1996436.5,1324474.12));
 			AddHackingLocation(TechGroup.OxygenFarm, new Vector3D(1851936.75,-2001115.25,1324439.75));
             AddHackingLocation(TechGroup.OxygenGenerators, new Vector3D(1869136.62, -2004926.38, 1316339.62));
 
@@ -85,10 +89,37 @@ namespace EscapeFromMars
             //GPS: Gatling Crash:1868130.53:-2003476.19:1316621.55:
             AddHackingLocation(TechGroup.BasicWeapons, new Vector3D(1868130.53, -2003476.19, 1316621.55));
 
+			// V44
+			if(ExtendedScenario)
+			{
+				// TODO: Add other hacking stuff here
+
+				// Satellite: hack hydrogen
+				AddHackingLocation(TechGroup.HyrdrogenThrusters, new Vector3D(1891124.79, -1979968.42, 1354180.6));
+                // GPS:Satellite PB:1891124.79477209:-1979968.42082511:1354180.62021757:#FF75C9F1:
+
+                // GPS:Ore Research:1892457.11558696:-1979013.37133087:1359539.46237347:#FF75C9F1:
+                AddHackingLocation(TechGroup.OreProcessing, new Vector3D(1892457.11, -1979013.37, 1359539.46));
+
+                // GPS:Uranium Research:1906663.85:-1972500.72:1360872.71:#FF75C9F1:
+                AddHackingLocation(TechGroup.UraniumReactors, new Vector3D(1906663.85, -1972500.72, 1360872.71));
+
+                /*
+                                HyrdrogenThrusters,
+                        OreProcessing,
+                        UraniumReactors,
+                        IonThrusters,
+                        AdvancedWeapons,
+                        SpaceWeapons,
+                        JumpDrive,
+
+
+                        LastLast
+                */
+
+            }
+
             // GPS:Opportunity:1859277.56:-2019476.58:1327135.68:
-
-
-
         }
 
         private void AddHackingLocation(TechGroup techGroup, Vector3D coords)
