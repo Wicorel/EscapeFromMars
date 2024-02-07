@@ -106,7 +106,10 @@ namespace EscapeFromMars
                     leader.RemoveFromFirstBeaconName(InvestigatingBackupCall); // match text in NpcGroupManager
                     leader.RemoveFromFirstBeaconName(InterceptingBeaconSuffix);
                     leader.AppendToFirstBeaconName(ReturningToBase);
+
+					// TODO: Turn off AI blocks	(put into SendToPosition())
                     leader.SendToPosition(Destination);
+
 					audioSystem.PlayAudio(AudioClip.DroneDisarmed);
                     // disbanding, but for backups we want to extra penalize for killing unit
                     heat.BackupDisabled();
@@ -121,7 +124,9 @@ namespace EscapeFromMars
                         leader.SetLightingColors(GcorpBlue);
 						leader.RemoveFromFirstBeaconName(InterceptingBeaconSuffix);
 						leader.AppendToFirstBeaconName(ReturningToBase);
-						leader.SendToPosition(Destination);
+
+                        // TODO: Turn off AI blocks	(put into SendToPosition())
+                        leader.SendToPosition(Destination);
 						audioSystem.PlayAudio(AudioClip.HostileDisappeared, AudioClip.TargetFleeingPursuit);
 					}
 					else
@@ -133,7 +138,9 @@ namespace EscapeFromMars
                         {
                             heightModifier = 300;
                         }
-						leader.SendToPosition(player.GetPosition(), heightModifier);
+                        // TODO: Use AI offensive module if present instead of RC
+						                        
+                        leader.SendToPosition(player.GetPosition(), heightModifier);
 					}
 				}
 			}
