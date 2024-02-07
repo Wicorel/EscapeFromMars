@@ -19,9 +19,10 @@ namespace EscapeFromMars
 	{
 		private readonly HeatSystem heatSystem;
 		private readonly QueuedAudioSystem audioSystem;
-		private readonly List<GCorpBase> bases = new List<GCorpBase>();
+        private readonly List<GCorpBase> bases = new List<GCorpBase>(); // ground Mars Bases
+        private readonly List<GCorpBase> spacebases = new List<GCorpBase>(); // ground Mars Bases
 
-		private readonly Dictionary<long, GCorpBaseSaveData> restoredGcorpBaseSaveData =
+        private readonly Dictionary<long, GCorpBaseSaveData> restoredGcorpBaseSaveData =
 			new Dictionary<long, GCorpBaseSaveData>();
 
 		private static readonly DateTime ZeroDate = new DateTime(1970, 1, 1);
@@ -37,16 +38,22 @@ namespace EscapeFromMars
 		public override void Update60()
 		{
             // TODO: what if ALL bases are taken out?
-            // TODO: what if the air base (convoy target) is taken out?  what happens to existing convoys? What about new convoys?
-			foreach (var gCorpBase in bases)
-			{
+            // TODO: what if the headquarters (convoy target) is taken out?  what happens to existing convoys? What about new convoys?
+            foreach (var gCorpBase in bases)
+            {
                 //TODO: spread out these updates across bases?
                 //TODO: put this in Update10() instead and above.
-				gCorpBase.Update();
-			}
-		}
+                gCorpBase.Update();
+            }
+            foreach (var gCorpBase in spacebases)
+            {
+                //TODO: spread out these updates across bases?
+                //TODO: put this in Update10() instead and above.
+                gCorpBase.Update();
+            }
+        }
 
-		internal void LoadSaveData(List<GCorpBaseSaveData> saveData)
+        internal void LoadSaveData(List<GCorpBaseSaveData> saveData)
 		{
 			foreach (var gCorpBaseSaveData in saveData)
 			{
@@ -57,30 +64,74 @@ namespace EscapeFromMars
         public override void GridInitialising(IMyCubeGrid grid)
         {
             BlocksFixup(grid);
-
+/*
+            ModLog.Info("  Grid: "+grid.CustomName);
+            if (grid.IsControlledByFaction("CRASH"))
+            {
+                ModLog.Info("   CRASH grid");
+            }
+            if (grid.IsControlledByFaction("GCORP"))
+            {
+                ModLog.Info("   GCORP grid");
+            }
+            if (grid.IsStatic)
+                ModLog.Info("   STATIC");
+*/
             if (grid.IsStatic && grid.IsControlledByFaction("GCORP"))
             {
+
                 var slimBlocks = new List<IMySlimBlock>();
+                grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyReactor);
+
+                bool bHasReactors = false;
+                foreach( var slim in slimBlocks)
+                {
+                    var reactor = slim.FatBlock as IMyReactor;
+                    if (reactor.IsControlledByFaction("GCORP"))
+                    {
+                        bHasReactors = true;
+                        break;    
+                    }
+                }
+
+                slimBlocks.Clear();
                 grid.GetBlocks(slimBlocks, b => b.FatBlock is IMyRemoteControl);
                 foreach (var slim in slimBlocks)
                 {
                     var remoteControl = slim.FatBlock as IMyRemoteControl;
+                    var planet = DuckUtils.FindPlanetInGravity(remoteControl.GetPosition());
+                    if(planet!=null)
+                    {
+                        if (bHasReactors)
+                        {
+                            EfmCore.OldWorld = true;
+                        }
+                    }
                     if (remoteControl.IsControlledByFaction("GCORP") 
                         && remoteControl.CustomName.Contains("DELIVERY")// AIR_DELIVERY_SPAWNER // GROUND_DELIVERY_SPAWNER //Remote Control
+                        // V44 SPACE_DELIVERY_SPAWNER
+                        //
                         )
                     {
-                        var planet = DuckUtils.FindPlanetInGravity(remoteControl.GetPosition());
-
                         if (planet == null)
                         {
-                            continue; // Space bases not yet supported.
+                            ModLog.Info("GCorp base not in gravity\n Grid:" + grid.CustomName + "\n ID=" + grid.EntityId.ToString());
+                            Vector3D gridPos = grid.GetPosition();
+                            ModLog.Info(" GPS:" + grid.CustomName + ":" + gridPos.X.ToString("0.00") + ":" + gridPos.Y.ToString("0.00") + ":" + gridPos.Z.ToString("0.00") + ":");
+                            spacebases.Add(new GCorpBase(remoteControl, ZeroDate, planet, heatSystem, audioSystem));
+
+                            //                            continue; // Space bases not yet supported.
                         }
-                        bases.Add(new GCorpBase(remoteControl, ZeroDate, planet, heatSystem, audioSystem));
+                        else
+                        {
+                            bases.Add(new GCorpBase(remoteControl, ZeroDate, planet, heatSystem, audioSystem));
+                        }
                         return; // Accepted grid, no need to keep looping
                     }
+
                 }
             }
-        }
+       }
 
         /// <summary>
         /// Fix up the blocks in ALL grids (not just bases) to have correct values
@@ -139,6 +190,10 @@ namespace EscapeFromMars
             grid.GetBlocks(slimBlocksG, b => b.FatBlock is IMyLargeMissileTurret);
             foreach (var slim in slimBlocksG)
             {
+                ModLog.Info("MissileTurret found\nGrid:" + grid.CustomName + "\n ID=" + grid.EntityId.ToString());
+                Vector3D gridPos = grid.GetPosition();
+                ModLog.Info(" GPS:" + grid.CustomName + ":" + gridPos.X.ToString("0.00") + ":" + gridPos.Y.ToString("0.00") + ":" + gridPos.Z.ToString("0.00") + ":");
+
                 var missile = slim.FatBlock as IMyLargeMissileTurret;
                 if (missile.EntityId == gcorpHQ)
                 {
@@ -146,6 +201,16 @@ namespace EscapeFromMars
                 }
                 //              gatling.Range get only :(
             }
+
+            slimBlocksG.Clear();
+            grid.GetBlocks(slimBlocksG, b => b.FatBlock is IMyReactor);
+            foreach (var slim in slimBlocksG)
+            {
+                ModLog.Info("IMyReactor found\nGrid:" + grid.CustomName + "\n ID=" + grid.EntityId.ToString());
+                Vector3D gridPos = grid.GetPosition();
+                ModLog.Info(" GPS:" + grid.CustomName + ":" + gridPos.X.ToString("0.00") + ":" + gridPos.Y.ToString("0.00") + ":" + gridPos.Z.ToString("0.00") + ":");
+            }
+
             slimBlocksG.Clear();
             grid.GetBlocks(slimBlocksG, b => b.FatBlock is IMyLargeInteriorTurret);
             foreach (var slim in slimBlocksG)
@@ -772,33 +837,57 @@ Static Grid 1300:141864706275857195
 
         public override void AllGridsInitialised()
 		{
-			foreach (var npcBase in bases)
-			{
-				GCorpBaseSaveData saveData;
-				if (restoredGcorpBaseSaveData.TryGetValue(npcBase.RemoteControl.EntityId, out saveData))
-				{
-					npcBase.RestoreSaveData(saveData);
-				}
-			}
-			restoredGcorpBaseSaveData.Clear();
+            foreach (var npcBase in bases)
+            {
+                GCorpBaseSaveData saveData;
+                if (restoredGcorpBaseSaveData.TryGetValue(npcBase.RemoteControl.EntityId, out saveData))
+                {
+                    npcBase.RestoreSaveData(saveData);
+                }
+            }
+            foreach (var npcBase in spacebases)
+            {
+                GCorpBaseSaveData saveData;
+                if (restoredGcorpBaseSaveData.TryGetValue(npcBase.RemoteControl.EntityId, out saveData))
+                {
+                    npcBase.RestoreSaveData(saveData);
+                }
+            }
+            restoredGcorpBaseSaveData.Clear();
 		}
 
 		internal GCorpBase FindBaseWantingBackup()
 		{
-			foreach (var gCorpBase in bases)
-			{
-				if (gCorpBase.OfferBackup())
-				{
-					return gCorpBase;
-				}
-			}
-			return null;
+            foreach (var gCorpBase in bases)
+            {
+                if (gCorpBase.OfferBackup())
+                {
+                    return gCorpBase;
+                }
+            }
+            foreach (var gCorpBase in spacebases)
+            {
+                if (gCorpBase.OfferBackup())
+                {
+                    return gCorpBase;
+                }
+            }
+            return null;
 		}
         internal GCorpBase FindBaseNear(Vector3D position)
         {
             GCorpBase nearestBase = null;
             var closestDistance = double.MaxValue;
             foreach (var gCorpBase in bases)
+            {
+                var distSquared = Vector3D.DistanceSquared(gCorpBase.RemoteControl.GetPosition(), position);
+                if (distSquared < closestDistance)
+                {
+                    closestDistance = distSquared;
+                    nearestBase = gCorpBase;
+                }
+            }
+            foreach (var gCorpBase in spacebases)
             {
                 var distSquared = Vector3D.DistanceSquared(gCorpBase.RemoteControl.GetPosition(), position);
                 if (distSquared < closestDistance)
@@ -816,16 +905,24 @@ Static Grid 1300:141864706275857195
             {
                 gCorpBase.ClearBackup();
             }
+            foreach (var gCorpBase in spacebases)
+            {
+                gCorpBase.ClearBackup();
+            }
         }
 
         internal List<GCorpBaseSaveData> GetSaveData()
 		{
 			var gcorpBaseDatas = new List<GCorpBaseSaveData>();
-			foreach (var gCorpBase in bases)
-			{
-				gcorpBaseDatas.Add(gCorpBase.GenerateSaveData());
-			}
-			return gcorpBaseDatas;
+            foreach (var gCorpBase in bases)
+            {
+                gcorpBaseDatas.Add(gCorpBase.GenerateSaveData());
+            }
+            foreach (var gCorpBase in spacebases)
+            {
+                gcorpBaseDatas.Add(gCorpBase.GenerateSaveData());
+            }
+            return gcorpBaseDatas;
 		}
 
         public string BaseInfo()
