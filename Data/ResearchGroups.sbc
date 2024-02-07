@@ -162,5 +162,11 @@
         <BlockId Type="MyObjectBuilder_AirtightSlideDoor" Subtype="LargeBlockSlideDoor" />
       </Members>
     </ResearchGroup>
+    <ResearchGroup xsi:type="ResearchGroup">
+      <Id Type="MyObjectBuilder_ResearchGroupDefinition" Subtype="255" />
+      <Members>
+        <BlockId Type="MyObjectBuilder_CubeBlock" Subtype="Monolith" />
+      </Members>
+    </ResearchGroup>
   </ResearchGroups>
 </Definitions>
