@@ -45,8 +45,8 @@
         <IconColor x="0" y="0" z="0" />
         <FactionIcon>Textures\Models\gcorp_logo.dds</FactionIcon>
     </Faction>
-	
-	 <Faction Tag="MIKI" Founder="Miki Scrap">
+
+    <Faction Tag="MIKI" Founder="Miki Scrap">
       <Id>
         <TypeId>MyObjectBuilder_FactionDefinition</TypeId>
         <SubtypeId>MikiScrap</SubtypeId>
@@ -56,11 +56,41 @@
       <AcceptHumans>false</AcceptHumans>
       <AutoAcceptMember>false</AutoAcceptMember>
       <EnableFriendlyFire>false</EnableFriendlyFire>
-	  <DefaultRelation>Neutral</DefaultRelation>
-        <CustomColor x="1" y="1" z="1" />
-        <IconColor x="0" y="0" z="0" />
-        <FactionIcon>Textures\Models\MikiScrap.dds</FactionIcon>
+      <DefaultRelation>Neutral</DefaultRelation>
+      <CustomColor x="1" y="1" z="1" />
+      <IconColor x="0" y="0" z="0" />
+      <FactionIcon>Textures\Models\MikiScrap.dds</FactionIcon>
     </Faction>
-	
+
+    <Faction Tag="MARS" Founder="Mar Research Expedition">
+      <Id>
+        <TypeId>MyObjectBuilder_FactionDefinition</TypeId>
+        <SubtypeId>Mars</SubtypeId>
+      </Id>
+      <DisplayName>Mars Research Expedition</DisplayName>
+      <IsDefault>true</IsDefault>
+      <AcceptHumans>false</AcceptHumans>
+      <AutoAcceptMember>false</AutoAcceptMember>
+      <EnableFriendlyFire>false</EnableFriendlyFire>
+      <DefaultRelation>Neutral</DefaultRelation>
+      <CustomColor x="1" y="1" z="1" />
+      <IconColor x="0" y="0" z="0" />
+      <FactionIcon>Textures\Models\MarsResearchExpedition.dds</FactionIcon>
+    </Faction>
+    <Faction Tag="EAAL" Founder="Earth Alliance">
+      <Id>
+        <TypeId>MyObjectBuilder_FactionDefinition</TypeId>
+        <SubtypeId>EAAL</SubtypeId>
+      </Id>
+      <DisplayName>Earth Alliance</DisplayName>
+      <IsDefault>true</IsDefault>
+      <AcceptHumans>false</AcceptHumans>
+      <AutoAcceptMember>false</AutoAcceptMember>
+      <EnableFriendlyFire>false</EnableFriendlyFire>
+      <DefaultRelation>Neutral</DefaultRelation>
+      <CustomColor x="1" y="1" z="1" />
+      <IconColor x="0" y="0" z="0" />
+    </Faction>
+
   </Factions>
 </Definitions>
