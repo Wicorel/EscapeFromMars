@@ -54,6 +54,18 @@ namespace EscapeFromMars
         // GPS:Opportunity:1859277.56:-2019476.58:1327135.68:
         // GPS:Crash Site:1868092.62:-2003480.62:1316653.75:
 
+        // GPS:Satellite PB:1891124.79477209:-1979968.42082511:1354180.62021757:#FF75C9F1:
+        // GPS:Ore Research:1892457.11558696:-1979013.37133087:1359539.46237347:#FF75C9F1:
+        private readonly Vector3D OreResearch = new Vector3D(1892457.11558696,-1979013.37133087,1359539.46237347);
+        // GPS:Uranium Research:1906663.85:-1972500.72:1360872.71:#FF75C9F1:
+        private readonly Vector3D UraniumResearch = new Vector3D(1906663.85,-1972500.72,1360872.71);
+        // GPS:Uranium, Iron small asteroid:1897750.42590659:-1970273.45967384:1356492.21006961:#FF75C9F1:
+        private readonly Vector3D UraniumOre = new Vector3D(1897750.42590659,-1970273.45967384,1356492.21006961);
+
+        // GPS:iron, nickel, magnesium large:1906766.91618965:-1970477.02479975:1360418.10184045:#FF75C9F1:
+        private readonly Vector3D MagnesiumOre = new Vector3D(1906766.91618965, -1970477.02479975, 1360418.10184045);
+
+
         private readonly QueuedAudioSystem audioSystem;
 		private readonly ResearchControl researchControl;
 		private readonly DateTime missionStartTime;
@@ -67,6 +79,7 @@ namespace EscapeFromMars
 
         private Version gameVersion;
         private int modBuildWhenLastSaved;
+        private bool extendedScenario = false;
 
          List<IMyTerminalBlock> cachedTerminalBlocks = new List<IMyTerminalBlock>();
 
@@ -97,19 +110,22 @@ namespace EscapeFromMars
         private MyStringId MREExperimentSiteID;
         private MyStringId HiddenSiteofMREID;
         */
-        internal MissionSystem(int modBuildWhenLastSaved, Version gameVersion, long missionStartTimeBinary, HashSet<int> alreadyExecutedPrompts,
+        internal MissionSystem(bool extendedScenario, int modBuildWhenLastSaved, Version gameVersion, long missionStartTimeBinary, HashSet<int> alreadyExecutedPrompts,
 			QueuedAudioSystem audioSystem, ResearchControl researchControl)
 		{
             this.gameVersion = gameVersion;
 			this.audioSystem = audioSystem;
 			this.researchControl = researchControl;
             this.modBuildWhenLastSaved = modBuildWhenLastSaved; //V27
+            this.extendedScenario= extendedScenario; //V44
 
 			missionStartTime = DateTime.FromBinary(missionStartTimeBinary);
 			excludedIDs = alreadyExecutedPrompts;
             desiredEntityIDs = new HashSet<long>();
+
             GeneratePrompts();
-			timeBasedPrompts.Sort((x, y) => -x.TriggerTime.CompareTo(y.TriggerTime));
+			
+            timeBasedPrompts.Sort((x, y) => -x.TriggerTime.CompareTo(y.TriggerTime));
 
         //            ModLog.Info("Start Time = " + missionStartTime.ToString());
             ModLog.Info("Current Mission Length: " + (MyAPIGateway.Session.GameDateTime - missionStartTime).ToString(@"hh\:mm\:ss")); //V27
@@ -346,16 +362,54 @@ namespace EscapeFromMars
                 AddObjectiveGps("MRE Experiment Site", "Hidden site of Mars Research Expeditions terraforming poject", hiddenMreBase, Color.LightBlue)
                 );
 
+            if (!extendedScenario)
+            {
+                AddProximityPrompt(210, commsSatellite, 9000,
+                    PlayAudioClip(AudioClip.EscapedMars));
 
+                AddProximityPrompt(220, commsSatellite, 250, // reduced from 500 to allow satelite turret to kill incoming players in jetpack.
+                    PlayAudioClip(AudioClip.EndCredits), // TODO: replace with non-copyright audio (see private notes)
+                    UnlockAllTech());
+            }
+            else
+            { // TODO: Add the extended scenario stuff here.
 
-            AddProximityPrompt(210, commsSatellite, 9000,
-				PlayAudioClip(AudioClip.EscapedMars));
+                AddProximityPrompt(210, commsSatellite, 9000,
+                    PlayAudioClip(AudioClip.EscapedMars));
+                
+                AddProximityPrompt(220, commsSatellite, 250, // reduced from 500 to allow satelite turret to kill incoming players in jetpack.
+                    PlayAudioClip(AudioClip.ArrivedSatellite),
+                    UnlockTech(TechGroup.HyrdrogenThrusters)
+                    );
 
-			AddProximityPrompt(220, commsSatellite, 250, // reduced from 500 to allow satelite turret to kill incoming players in jetpack.
-				PlayAudioClip(AudioClip.EndCredits),
-				UnlockAllTech());
+                AddProximityPrompt(300, commsSatellite, 13,
+                    PlayAudioClip(AudioClip.FoundFilesOnNetwork),
+                    AddObjectiveGps("Ore Processing", "Ore Processing Instructions", OreResearch, Color.LightBlue)
+                    );
 
-			AddProximityPrompt(230, mreBaseEntrance, 13.5,
+                AddProximityPrompt(310, OreResearch, 13,
+                    PlayAudioClip(AudioClip.FoundFilesOnNetwork),
+                    AddObjectiveGps("Uranium Processing", "Uranium Processing Instructions", UraniumResearch, Color.LightBlue)
+                    ,AddObjectiveGps("Magnesium Ore", "Magnesium Ore", MagnesiumOre, Color.LightBlue)
+                    );
+
+                AddProximityPrompt(320, UraniumResearch, 13,
+                    PlayAudioClip(AudioClip.FoundFilesOnNetwork)
+                    , AddObjectiveGps("Uranium Ore", "Uranium Ore", UraniumOre, Color.LightBlue)
+
+                    );
+
+                /*
+                 * 
+                                // Eventually end with... back to mars for finale
+                                AddProximityPrompt(999, commsSatellite, 250, 
+                                    PlayAudioClip(AudioClip.ScenarioCompleted),
+                                    UnlockAllTech()
+                                    );
+                */
+
+            }
+            AddProximityPrompt(230, mreBaseEntrance, 13.5,
 				PlayAudioClip(AudioClip.WelcomeBack));
 
 			AddProximityPrompt(240, mreElevator, 30,
@@ -519,7 +573,14 @@ namespace EscapeFromMars
             };
         }
 
-
+        // Added V44
+        internal Action UnlockTech(TechGroup techGroup)
+        {
+            return () =>
+            {
+                researchControl.UnlockTechGroupForAllPlayers(techGroup);
+            };
+        }
         internal Action UnlockAllTech()
 		{
 			return () =>
